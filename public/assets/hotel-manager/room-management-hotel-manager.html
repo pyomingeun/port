@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="setting-notification-hotel-manager.html" class="setting-icon">
+                <img src="../images/structure/setting-icon.svg" alt=".." class="icon24" />
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="dashboard-hotel-manager.html">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="dashboard-hotel-manager.html" class="nav-link"> <img src="../images/structure/dashboard.svg" alt="" class="sidebarIcon" /> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-management.html" class="nav-link"> <img src="../images/structure/hotel-management.svg" alt="" class="sidebarIcon" /> Hotel Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-bookings-hotel-manager.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> Booking Management</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown active">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> Room Management</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item active" href="room-management-hotel-manager.html">
+                                    Rooms
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="room-calendar.html">
+                                    Room Calendar
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat-hotel-manager.html" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="coupon-codes-hotel-manager.html" class="nav-link"> <img src="../images/structure/coupon-codes.svg" alt="" class="sidebarIcon" /> Coupon Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notification-hotell-manager.html" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="earnings-payouts-hotel-manager.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> Earnings & Payouts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right rooms-managment-sec">
+            <div class="container-fluid">
+                <div class="heading-sec mb-4 d-flex align-items-center">
+                    <h5 class="h5  mb-0">Rooms</h5>
+                    <div class="filter-header-row ml-auto d-flex justify-content-end">
+                        <div class="filter-header-col filter-dd-wt-sd-lable">
+                            <a href="add-rooms.html" class="btn h-36">Add Room</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12 mx-auto empty-list-box text-center">
+                        <img src="../images/structure/room-empty-image.png" alt="" class="empty-list-image">
+                        <h6>Your room list is empty</h6>
+                        <p class="p3 mb-4">Add room now by clicking on below button.</p>
+                        <button class="btn">Add Room</button>
+                    </div>
+                </div> -->
+                <div class="tableboxpadding0">
+                    <div class="table-responsive table-view tableciew1">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <p>
+                                            Room
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Room Size
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Bathroom
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Standard<br> Occupancy
+                                            <span class="sort-arrow-table">
+                                            <i class="fa fa-caret-up arrow-up"></i>
+                                            <i class="fa fa-caret-up arrow-down"></i>
+                                        </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Maximum<br> Occupancy
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Price
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>King Deluxe Room Garden View with Balcony</td>
+                                    <td>450 sq m</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>₩ 500</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Deluxe Room Garden View</td>
+                                    <td>200 sq m</td>
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>₩ 400</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Twin Deluxe Room Garden View</td>
+                                    <td>150 sq m</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 500</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Accessible Room</td>
+                                    <td>200 sq m</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 300</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Accessible Room</td>
+                                    <td>200 sq m</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 300</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Deluxe Room Garden View with Balcony</td>
+                                    <td>450 sq m</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>₩ 500</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".warningDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Deluxe Room Garden View</td>
+                                    <td>200 sq m</td>
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>₩ 400</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".warningDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Twin Deluxe Room Garden View</td>
+                                    <td>150 sq m</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 500</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".warningDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Accessible Room</td>
+                                    <td>200 sq m</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 300</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".warningDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>King Accessible Room</td>
+                                    <td>200 sq m</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>₩ 300</td>
+                                    <td class="actionDropdown">
+                                        <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
+                                            <img src="../images/structure/dots.svg" alt="" class="actiob-dd-Icon">
+                                          </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="edit-rooms.html"><img src="../images/structure/edit.svg" alt="" class="editIcon"> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/trash-20.svg" alt="" class="deleteIcon"> Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="JavaScript:Void(0);" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="JavaScript:Void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">4</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="JavaScript:Void(0);">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Delete Modal -->
+        <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-heads">
+                            <h3 class="h3 mt-2">Delete Room</h3>
+                            <p class="p2 mb-4">Are you sure you want to delete this room?</p>
+                        </div>
+                        <div class="d-flex btns-rw">
+                            <button class="btn bg-gray flex-fill" data-bs-dismiss="modal">Yes</button>
+                            <button class="btn flex-fill" data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Delete Modal -->
+        <div class="modal fade warningDialog" tabindex="-1" aria-labelledby="warningDialogLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-heads">
+                            <div class="text-center">
+                                <img src="../images/structure/warning-red.svg" alt="" class="warningIcon">
+                                <h4 class="h4 mt-2">Oops!</h4>
+                                <p class="p2 mb-4">You already have a booking so cannot delete it.</p>
+                            </div>
+                            <a href="#" class="btn w-100" data-bs-dismiss="modal">Continue</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Change password modal -->
+        <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-heads">
+                            <h3 class="h3">Change Password</h3>
+                            <p class="p2">Set your new password with enter your old password.</p>
+                        </div>
+                        <form action="post">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                                <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                                <label for="newPassword">New Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                                <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="row password-instruction">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2 checked-ins">
+                                        <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2 checked-ins">
+                                        <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="../js/designer.js"></script>
+        <script src="../js/designer-dropdown.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

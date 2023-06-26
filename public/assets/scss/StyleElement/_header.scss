@@ -1,0 +1,249 @@
+// onboarding header start
+.header {
+    height: 80px;
+    width: 100%;
+    padding: 0px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    a.logo-a {
+        img.logo {
+            width: auto;
+            object-fit: contain;
+            @media (min-width: 300px) and (max-width: 576px) {
+                width: 50px !important;
+            }
+        }
+    }
+    #onboardingMenu {
+        background: #D8E8DE;
+        height: 36px;
+        width: 60px;
+        border-radius: 40px;
+        padding: 4px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        .icon28round {
+            width: 28px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .icon16 {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            margin-right: 4px;
+        }
+        &::after {
+            display: none;
+        }
+    }
+    @media (min-width: 300px) and (max-width: 767px) {
+        padding: 0 15px;
+    }
+    &.registerHeader {
+        background-color: #fff;
+    }
+    &.homeHeader {
+        .logo-b {
+            display: none;
+        }
+        .logo-w {
+            display: block;
+        }
+        &.header_top {
+            background-color: #fff;
+            .logo-b {
+                display: block;
+            }
+            .logo-w {
+                display: none;
+            }
+        }
+    }
+    &.header_top {
+        background-color: #fff;
+    }
+}
+
+// onboarding header and
+// header-after-login start
+.header-after-login {
+    height: 80px;
+    width: 100%;
+    padding: 0px 40px 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    &.gray-header {
+        background-color: #EEF5EE;
+    }
+    a.logo-a {
+        img.logo {
+            width: auto;
+            // height: 48px;
+            object-fit: contain;
+        }
+    }
+    .reward-box {
+        margin-right: 15px;
+        position: relative;
+        width: auto;
+        min-width: 70px;
+        height: 36px;
+        border-radius: 40px;
+        background: #5CFEA9;
+        border: 1px solid var(--gray71);
+        font-size: 16px;
+        font-family: 'satoshi-medium';
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: var(--black19);
+        padding: 0px 6px 0px 4px;
+        span{
+             margin-left: 4px;
+        }
+        img.icon24 {
+            width: 24px;
+            height: 24px;
+            margin: 0px 4px 0px 2px;
+        }
+        // &::after {
+        //     content: '';
+        //     position: absolute;
+        //     right: -14px;
+        //     top: 0px;
+        //     bottom: 0px;
+        //     margin: auto;
+        //     height: 40px;
+        //     width: 1px;
+        //     background-color: var(--graydf);
+        // }
+    }
+    .setting-icon {
+        margin-right: 15px;
+        position: relative;
+    }
+    .icon24 {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+    #afterLoginMenu {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        font-size: 16px;
+        color: var(--black19);
+        font-weight: 400;
+        padding-right: 16px;
+        .icon36round {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 2px;
+        }
+        &::after {
+            content: url('../images/structure/menu-arrow.png');
+            width: 16px;
+            height: 16px;
+            border: none;
+            position: absolute;
+            bottom: 0;
+            top: -6px;
+            margin: auto;
+            right: 0px;
+        }
+    }
+    ul.dropdown-menu {
+        min-width: 210px;
+        left: 24px !important;
+    }
+    @media (min-width: 300px) and (max-width: 767px) {
+        padding: 0px 15px 0px 15px;
+        .reward-box {
+            margin-right: 7px;
+            font-size: 12px;
+            span{
+                font-size: 12px;
+                &.rewardstext{
+                    display: none;
+                }
+            }
+        }
+        .setting-icon {
+            margin-right: 7px;
+        }
+        #afterLoginMenu .icon36round {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+header {
+    .setting-icon, .notifications-icon {
+        width: 36px;
+        height: 36px;
+        background: #DFEDE4;
+        text-align: center;
+        padding: 4px 0;
+        border-radius: 100px;
+    }
+    .notifications-icon{
+        position: relative;
+        margin-right: 26px;
+        &::after {
+            content: '';
+            position: absolute;
+            right: -14px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            height: 40px;
+            width: 1px;
+            background-color: var(--graydf);
+        }
+        .notificationsCounter {
+            background: #015AC3;
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        @media (min-width: 300px) and (max-width: 767px){
+            margin-right: 15px;
+            &::after{
+                right: -12px;
+            }
+        }
+    }
+}
+img.logo-w {
+    width: 220px !important;
+}
+img.logo-b {
+    width: 220px !important;
+}
+.logo{
+    width: 220px !important;
+}

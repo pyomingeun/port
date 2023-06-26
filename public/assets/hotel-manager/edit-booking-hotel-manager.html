@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="setting-notification-hotel-manager.html" class="setting-icon">
+                <img src="../images/structure/setting-icon.svg" alt=".." class="icon24" />
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="dashboard-hotel-manager.html">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="dashboard-hotel-manager.html" class="nav-link"> <img src="../images/structure/dashboard.svg" alt="" class="sidebarIcon" /> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-management.html" class="nav-link"> <img src="../images/structure/hotel-management.svg" alt="" class="sidebarIcon" /> Hotel Management</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="my-bookings-hotel-manager.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> Booking Management</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> Room Management</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="room-management-hotel-manager.html">
+                                    Rooms
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="room-calendar.html">
+                                    Room Calendar
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat-hotel-manager.html" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="coupon-codes-hotel-manager.html" class="nav-link"> <img src="../images/structure/coupon-codes.svg" alt="" class="sidebarIcon" /> Coupon Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notification-hotell-manager.html" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="earnings-payouts-hotel-manager.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> Earnings & Payouts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right hotel-management-sec add-room-sec">
+            <div class="container-fluid">
+                <div class="hotel-management-row d-flex flex-wrap">
+                    <div class="hotel-management-left-col">
+                        <div class="hotel-tabs-rw">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link tab1 active" id="tab-id1" role="tab" aria-controls="step1" aria-selected="true" data-bs-step="1" data-bs-toggle="tab" href="#step1">
+                                        <span class="stepcircle">1 <img src="../images/structure/tick-square.svg" class="setepCeckIcon"></span>
+                                        <div class="tabCnt">
+                                            <p class="p3">Step 1</p>
+                                            <p class="p1">Booking</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tab2" id="tab-id2" role="tab" aria-controls="step2" aria-selected="true" data-bs-step="2" data-bs-toggle="tab" href="#step2">
+                                        <span class="stepcircle">2 <img src="../images/structure/tick-square.svg" class="setepCeckIcon"></span>
+                                        <div class="tabCnt">
+                                            <p class="p3">Step 2</p>
+                                            <p class="p1">Guest</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tab3" id="tab-id3" role="tab" aria-controls="step3" aria-selected="true" data-bs-step="3" data-bs-toggle="tab" href="#step3">
+                                        <span class="stepcircle">3 <img src="../images/structure/tick-square.svg" class="setepCeckIcon"></span>
+                                        <div class="tabCnt">
+                                            <p class="p3">Step 3</p>
+                                            <p class="p1">Notes</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tab4" id="tab-id4" role="tab" aria-controls="step4" aria-selected="true" data-bs-step="4" data-bs-toggle="tab" href="#step4">
+                                        <span class="stepcircle">4 <img src="../images/structure/tick-square.svg" class="setepCeckIcon"></span>
+                                        <div class="tabCnt">
+                                            <p class="p3">Step 4</p>
+                                            <p class="p1">Extra Services</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hotel-management-right-col">
+                        <div class="tab-content stepsContent">
+                            <div class="tab-pane active" id="step1" aria-labelledby="tab-id1">
+                                <form>
+                                    <div class="roomsManageform-Content">
+                                        <div class="grayBox-w">
+                                            <div class="hotemmanageFormInrcnt">
+                                                <h5 class="hd5 h5">Booking Info</h5>
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-floating disabledInput disabledInput">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="Booking Reference Number" value="774649879877">
+                                                            <label for="floatingInput">Booking Reference Number</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating datepickerField disabledInput">
+                                                            <img src="../images/structure/calendar1.svg" alt="" class="calendarIcon" />
+                                                            <input class="form-control datepicker" id="floatingInput" autocomplete="off" value="2022/09/09" placeholder="Check In">
+                                                            <label for="floatingInput">Check In<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating datepickerField disabledInput">
+                                                            <img src="../images/structure/calendar1.svg" alt="" class="calendarIcon" />
+                                                            <input class="form-control datepicker" id="floatingInput" autocomplete="off" value="2022/09/11" placeholder="Check Out">
+                                                            <label for="floatingInput">Check Out<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="form-floating disabledInput disabledInput">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="Room" value="Twin Deluxe Room Garden View">
+                                                            <label for="floatingInput">Room</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grayBox-w">
+                                            <div class="hotemmanageFormInrcnt StandardOccupancyBox">
+                                                <h5 class="hd5 h5">Guest</h5>
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="quantity-row row">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 d-flex align-items-center">
+                                                                <p class="p2 mb-0">Adult</p>
+                                                            </div>
+                                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                                                <div class="quantity-box d-flex align-items-center ml-auto">
+                                                                    <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    <input type="text" value="5" />
+                                                                    <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="quantity-row row">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 d-flex align-items-center">
+                                                                <p class="p2 mb-0">Child</p>
+                                                            </div>
+                                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                                                <div class="quantity-box d-flex align-items-center ml-auto">
+                                                                    <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    <input type="text" value="5" />
+                                                                    <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                                        <p class="p2 mb-1">Child 1 Age</p>
+                                                        <div class="form-floating h-40 mb-3">
+                                                            <button id="selectAge1" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"> Select</button>
+                                                            <ul class="dropdown-menu dropdown-menu-start">
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage1" name="childage" value="" />
+                                                                    <label for="childage1">01</label>
+                                                                </li>
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage2" name="childage" value="" />
+                                                                    <label for="childage2">02</label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                                        <p class="p2 mb-1">Child 2 Age</p>
+                                                        <div class="form-floating h-40 mb-3">
+                                                            <button id="selectage2" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"> Select</button>
+                                                            <ul class="dropdown-menu dropdown-menu-start">
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage11" name="child" value="" />
+                                                                    <label for="childage11">01</label>
+                                                                </li>
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage22" name="child" value="" />
+                                                                    <label for="childage22">02</label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                                        <p class="p2 mb-1">Child 3 Age</p>
+                                                        <div class="form-floating h-40 mb-3">
+                                                            <button id="selectage3" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"> Select</button>
+                                                            <ul class="dropdown-menu dropdown-menu-start">
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage111" name="child" value="" />
+                                                                    <label for="childage1111">01</label>
+                                                                </li>
+                                                                <li class="radiobox-image">
+                                                                    <input type="radio" id="childage222" name="child" value="" />
+                                                                    <label for="childage222">02</label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="res-sub-btn-rw d-flex justify-content-end">
+                                        <div class="res-sub-btn-rw d-flex justify-content-end">
+                                            <button class="btn bg-gray1">Cancel</button>
+                                            <button class="btn outline-blue">Save</button>
+                                            <a class="btn btnNext tab1">Next</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="step2" aria-labelledby="tab-id2">
+                                <div class="roomsManageform-Content">
+                                    <div class="grayBox-w">
+                                        <div class="hotemmanageFormInrcnt">
+                                            <h5 class="hd5 h5">Primary Guest Details</h5>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating disabledInput">
+                                                        <input type="text" class="form-control" id="floatingInput" placeholder="Fullname" value="Allex Carry">
+                                                        <label for="floatingInput">Fullname<span class="required-star">*</span></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating disabledInput">
+                                                        <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" value="010-1111-1111">
+                                                        <label for="floatingInput">Phone Number<span class="required-star">*</span></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating disabledInput">
+                                                        <input type="text" class="form-control" id="floatingInput" placeholder="Email" value="allex_carry@gmail.com">
+                                                        <label for="floatingInput">Email<span class="required-star">*</span></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="form-floating datepickerField disabledInput">
+                                                        <img src="../images/structure/calendar1.svg" alt="" class="calendarIcon" />
+                                                        <input class="form-control datepicker" id="floatingInput" placeholder="D.O.B." value="1996/11/12">
+                                                        <label for="floatingInput">D.O.B.<span class="required-star">*</span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="res-sub-btn-rw d-flex justify-content-end">
+                                    <button class="btn bg-gray1">Cancel</button>
+                                    <button class="btn outline-blue">Save</button>
+                                    <a class="btn btnNext tab2">Next</a>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="step3" aria-labelledby="tab-id3">
+                                <div class="roomsManageform-Content">
+                                    <div class="grayBox-w">
+                                        <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <h5 class="hd5 h5">Guest Notes</h5>
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="form-floating">
+                                                        <textarea itemid="txtarea" class="form-control" id="floatingInput" placeholder="Notes" style="min-height:106px;"></textarea>
+                                                        <label for="floatingInput">Notes</label>
+                                                        <p class="mb-0 max-char-limit">max 400 characters</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grayBox-w">
+                                        <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <h5 class="hd5 h5">Host Notes</h5>
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="form-floating">
+                                                        <textarea itemid="txtarea" class="form-control" id="floatingInput" placeholder="Notes" style="min-height:106px;"></textarea>
+                                                        <label for="floatingInput">Notes</label>
+                                                        <p class="mb-0 max-char-limit">max 400 characters</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="res-sub-btn-rw d-flex justify-content-end">
+                                    <button class="btn bg-gray1">Cancel</button>
+                                    <button class="btn outline-blue">Save</button>
+                                    <a class="btn btnNext tab3">Next</a>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="step4" aria-labelledby="tab-id4">
+                                <div class="roomsManageform-Content">
+                                    <div class="grayBox-w">
+                                        <div class="bookingextarServices">
+                                            <h5 class="hd5 h5 mb-4">Extra Services</h5>
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Bike Rental</p>
+                                                                <p class="p3 mb-0">₩ 300/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="2" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 600</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Mattresses</p>
+                                                                <p class="p3 mb-0">₩ 300/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="1" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 00</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Blanket</p>
+                                                                <p class="p3 mb-0">₩ 50/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="0" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 250</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Airport Taxi</p>
+                                                                <p class="p3 mb-0">₩ 40/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="4" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 00</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Pillows</p>
+                                                                <p class="p3 mb-0">₩ 15/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="3" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 00</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="serviceCheck1">
+                                                        <label class="form-check-label " for="serviceCheck1">
+                                                        <div class="row bookingServicesCheckbox">
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <p class="p1">Towels</p>
+                                                                <p class="p3 mb-0">₩ 20/unit</p>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                                                <div class="quantity-row">
+                                                                    <div class="quantity-box d-flex align-items-center justify-content-center">
+                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                        <input type="text" value="5" />
+                                                                        <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 txtRight">
+                                                                <p class="p2 mb-0">₩ 00</p>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="res-sub-btn-rw d-flex justify-content-end">
+                                    <button class="btn bg-gray1">Cancel</button>
+                                    <button class="btn outline-blue">Save</button>
+                                    <a class="btn btnNext tab4">Next</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Thank you Modal -->
+    <div class="modal fade thankyouDialog successDialog" tabindex="-1" aria-labelledby="thankyouDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <div class="text-center">
+                            <img src="../images/structure/checked-thankyou.svg" alt="" class="">
+                            <h3 class="h3 mt-2">Thank You!</h3>
+                            <p class="p2 mb-4">Your new booking has been created successfully. For further information visit booking management.</p>
+                        </div>
+                        <a href="room-management-hotel-manager.html" class="btn w-100">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Change password Modal -->
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js "></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript ">
+        $('.btnNext').click(function() {
+            const nextTabLinkEl = $('.nav-tabs .active').closest('li').next('li').find('a')[0];
+            const nextTab = new bootstrap.Tab(nextTabLinkEl);
+            nextTab.show();
+        });
+
+        $('.btnPrevious').click(function() {
+            const prevTabLinkEl = $('.nav-tabs .active').closest('li').prev('li').find('a')[0];
+            const prevTab = new bootstrap.Tab(prevTabLinkEl);
+            prevTab.show();
+        });
+
+        // Steps ja
+        $(document).ready(function() {
+            $('.tab1').click(function() {
+                $('.tab1').addClass('activep');
+                $('.tab2').removeClass('activep');
+                $('.tab3').removeClass('activep');
+                $('.tab4').removeClass('activep');
+                $('.tab5').removeClass('activep');
+            });
+
+        });
+        $(document).ready(function() {
+            $('.tab2').click(function() {
+                $('.tab1').addClass('activep');
+                $('.tab2').addClass('activep');
+                $('.tab3').removeClass('activep');
+                $('.tab4').removeClass('activep');
+                $('.tab5').removeClass('activep');
+            });
+        });
+        $(document).ready(function() {
+            $('.tab3').click(function() {
+                $('.tab1').addClass('activep');
+                $('.tab2').addClass('activep');
+                $('.tab3').addClass('activep');
+                $('.tab4').removeClass('activep');
+                $('.tab5').removeClass('activep');
+            });
+        });
+        $(document).ready(function() {
+            $('.tab4').click(function() {
+                $('.tab1').addClass('activep');
+                $('.tab2').addClass('activep');
+                $('.tab3').addClass('activep');
+                $('.tab4').addClass('activep');
+                $('.tab5').removeClass('activep');
+            });
+        });
+        $(document).ready(function() {
+            $('.tab5').click(function() {
+                $('.tab1').addClass('activep');
+                $('.tab2').addClass('activep');
+                $('.tab3').addClass('activep');
+                $('.tab4').addClass('activep');
+                $('.tab5').addClass('activep');
+            });
+        });
+
+        // Tooltip
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+            // Add service
+        $(document).ready(function() {
+            $(".addCouponCode").click(function() {
+                $(".couponCodApplyeBox").show();
+                $(".removeCouponCode").show();
+                $(".addCouponCode").hide();
+            });
+            $(".removeCouponCode").click(function() {
+                $(".couponCodApplyeBox").hide();
+                $(".removeCouponCode").hide();
+                $(".addCouponCode").show();
+            });
+        });
+    </script>
+</body>
+
+</html>

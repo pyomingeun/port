@@ -1,0 +1,14 @@
+dev
+stage
+phpmyadmin
+hotel_images
+hotel_logo
+profile_pic
+
+
+dev/*
+stage/*
+phpmyadmin/*
+hotel_images/*
+hotel_logo/*
+profile_pic/*

@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logoNavbar">
+            <div class="logoNavbar">
+<!--
+                <a href="index.html" class="logo-a">
+                    <img src="../images/logo/Logo.png" alt=".." class="logo" />
+                </a>
+-->
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="onboardingMenu" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../images/structure/user-icon.svg" alt=".." class="icon28round" />
+        <img src="../images/structure/menu-icon.svg" alt=".." class="icon16" />
+      </button>
+            <ul class="dropdown-menu" aria-labelledby="onboardingMenu">
+                <li><a class="dropdown-item" href="register.html">Sign Up</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">Log In</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Manager/ Staff</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Help</a></li>
+                <li><a class="dropdown-item" href="#">Policies</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="main-wrapper">
+        <img class="dotted-img-bd" src="../images/structure/dotted-img.png" alt="">
+        <section class="checkout-sec1">
+            <div class="container">
+                <nav aria-label="breadcrumb" class="breadcrumbNave">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Hotel in Goa</a></li>
+                        <li class="breadcrumb-item"><a href="hotel-detail-customer.html">Radisson Blu Hotels & Resorts</a></li>
+                        <li class="breadcrumb-item"><a href="checkout-customer.html">Checkout</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Payment</li>
+                    </ol>
+                </nav>
+
+                <div class="row">
+                    <div class="col-xl-8 col-ld-9 col-md-9 col-sm-12 col-12 checkoutLeftCol payment">
+                        <div class="checkout-left-box">
+                            <div class="checkoutHtlDtlBox">
+                                <div class="d-flex">
+                                    <div class="checkoutHtimgBox">
+                                        <img src="../images/product/img9.png" alt="" class="checkoutHtimg">
+                                    </div>
+                                    <div class="checkoutHtDesBox">
+                                        <h5 class="h5 mb-0">Radisson Blu Hotels & Resorts</h5>
+                                        <p class="p2 mb-0">2022/09/15 - 2022/09/20 <span class="dotgray"></span> 2 Adult, 1 Child</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form>
+                                <div class="paymentOptionBox mt-5">
+                                    <h5 class="h5 hd5">Payment Options</h5>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 paymenrRewardsCol">
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Rewards
+                                                </label>
+                                                <p class="p2 mb-0">Available Rewards: <span class="rewPriceblue">200 points</span> <span class="vertLine">|</span> <span class="rewPriceblack">₩ 100</span></p>
+                                                <div class="rewardAlert">
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="../images/structure/info-orange.svg" class="info-orange"> <p class="p3 mb-0">>1000 then only reward point can be used for booking payment.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="divider mt-4 mb-4"></div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 directBankTransferCol">
+                                            <div class="form-check radioCircl mb-0">
+                                                <input class="form-check-input paymenttypeCs" type="radio" name="paymentTypeRadio" checked value="type1" id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Direct Bank Transfer
+                                                </label>
+                                            </div>
+                                            <div class="directBankTransferBox mt-1">
+                                                <p class="p2 mb-4">Invoice will be send on your email regarding bank details.</p>
+                                                <button class="btn">Submit</button>
+                                            </div>
+                                            <div class="divider mt-4 mb-4"></div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 creditCardCol">
+                                            <div class="form-check radioCircl mb-0">
+                                                <input class="form-check-input paymenttypeCs" type="radio" name="paymentTypeRadio" value="type2" id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Credit Card
+                                                </label>
+                                            </div>
+                                            <div class="creditCardBox mt-1">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <p class="p2 mb-4">Invoice will be send on your email regarding bank details.</p>
+                                                    </div>
+                                                    <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="Card Number" value="">
+                                                            <label for="floatingInput">Card Number<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="Card Holder Name" value="">
+                                                            <label for="floatingInput">Card Holder Name<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="Expiry Date" value="">
+                                                            <label for="floatingInput">Expiry Date<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInput" placeholder="CVV" value="">
+                                                            <label for="floatingInput">CVV<span class="required-star">*</span></label>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target=".cardDetailDialog" class="btn pamentpayNow"><span class="PayNowspan">Pay Now</span> (₩ 1500)</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="divider mt-4 mb-4"></div>
+                                        </div>
+                                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="form-check mb-0 radioCircl">
+                                                <input class="form-check-input paymenttypeCs" type="radio" name="paymentTypeRadio" value="type3" id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Real Time Bank transfer
+                                                </label>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="paymentOptionFooter d-flex align-items-center">
+                                        <img src=" ../images/structure/verified-user.svg " alt=" " class="verified-user"> <span class="p3">100% Secure Payments Powered by Hankook</span>
+                                        <div class="ml-auto paymentCard d-flex">
+                                            <img src="../images/structure/amex.svg " alt=" " class="paymentCardIcon ">
+                                            <img src="../images/structure/mastercard.svg " alt=" " class="paymentCardIcon ">
+                                            <img src="../images/structure/visa.svg " alt=" " class="paymentCardIcon ">
+                                            <img src="../images/structure/rupay.svg " alt=" " class="paymentCardIcon ">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-ld-3 col-md-3 col-sm-12 col-12 checkoutRightCol ">
+                        <div class="checkout-right-box ">
+                            <div class="graybox-w price-statusbox-rgt ">
+                                <h6 class="h6 ">Price Breakup</h6>
+                                <div class="d-flex PriceBreakupRw ">
+                                    <p class="p2 flex-fill PriceBreakupCl-lft ">1 Room x 1 Night</p>
+                                    <p class="p2 flex-fill PriceBreakupCl-rgt ">₩ 1500</p>
+                                </div>
+                                <div class="d-flex PriceBreakupRw ">
+                                    <p class="p2 flex-fill PriceBreakupCl-lft ">Extra Guest x 1</p>
+                                    <p class="p2 flex-fill PriceBreakupCl-rgt ">₩ 500</p>
+                                </div>
+                                <div class="d-flex PriceBreakupRw ">
+                                    <p class="p2 flex-fill PriceBreakupCl-lft cursor-p" data-bs-toggle="modal" data-bs-target=".extraServicesDialog ">Extra Services <img src="../images/structure/arrow-down.svg " alt=" "></p>
+                                    <p class="p2 flex-fill PriceBreakupCl-rgt ">₩ 100</p>
+                                </div>
+                                <div class="d-flex PriceBreakupRw">
+                                    <p class="p2 flex-fill PriceBreakupCl-lft">Long Stay Discount </p>
+                                    <p class="p2 flex-fill PriceBreakupCl-rgt" style="color: #008952;">- ₩ 400</p>
+                                </div>
+                                <div class="d-flex PriceBreakupRw ">
+                                    <p class="p2 flex-fill PriceBreakupCl-lft ">Coupon Code<br>
+                                        <span class="dashed-chipt text-uppercase ">NEWBOOK1</span>
+                                        <!-- <img src="../images/structure/close.svg " alt=" " class="cur closeIcon "> -->
+                                    </p>
+                                    <p class="p2 flex-fill PriceBreakupCl-rgt " style="color: #008952; ">- ₩ 200</p>
+                                </div>
+                                <div class="subtotalRow">
+                                    <div class="d-flex PriceBreakupRw flex-wrap mb-0">
+                                        <p class="p1 flex-fill PriceBreakupCl-lft">Subtotal</p>
+                                        <p class="p1 flex-fill PriceBreakupCl-rgt">₩ 1700</p>
+                                    </div>
+                                    <div class="d-flex PriceBreakupRw flex-wrap mb-0">
+                                        <p class="p2 flex-fill PriceBreakupCl-lft">Rewards Points | 200</p>
+                                        <p class="p2 flex-fill PriceBreakupCl-rgt" style="color: #008952;">- ₩ 75</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex PriceBreakupRw Total mb-0 ">
+                                    <p class="p1 flex-fill PriceBreakupCl-lft ">Total Price</p>
+                                    <p class="p1 flex-fill PriceBreakupCl-rgt ">₩ 1300</p>
+                                </div>
+                            </div>
+                            <div class="graybox-w rewardPointBox ">
+                                <p class="p2 mb-0"><img src="../images/structure/confetti.svg" alt="" class="confetti"> Yayy! You will earn <span class="rpPriceblue">400</span> Reward Points.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="subscribeNewsletter-section ">
+        <div class="container ">
+            <div class="subscribeNewsletterBox ">
+                <h2 class="Subscribe Our Newsletter ">Subscribe <br> Our Newsletter</h2>
+                <div class="subscribeNewsletterForm ">
+                    <input type="text " placeholder="Enter Email ">
+                    <button class="btn h-36 ">Subscribe</button>
+                </div>
+                <img src="../images/structure/subscribe-bg-img.png " class="subscribe-bg-img ">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footerRow1">
+                <div class="row">
+                    <div class="col-xl-4 col-ld-4 col-md-4 col-sm-12 col-12 footerLogobox">
+                        <a href="index.html">
+                            <img src="../images/logo/logo.png" alt="" class="footerLogo">
+                        </a>
+                        <p class="p2 mb-0 mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Company</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">What is the Travel@G</a></li>
+                            <li class="mb-2 footermenu-li"><a href="about-us.html" class="footermenu-a">About Us</a></li>
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">Partner Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Contact</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="faq.html" class="footermenu-a">FAQ</a></li>
+                            <li class="mb-2 footermenu-li"><a href="help.html" class="footermenu-a">Help/Inquiry</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-ld-2 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Policy</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="privacy-policy.html" class="footermenu-a">Privacy Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="cookie-policy.html" class="footermenu-a">Cookie Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="terms-of-use.html" class="footermenu-a">Terms of Use</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footerRow2">
+                <div class="row">
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12">
+                        <p class="p2 mb-0">©copyright 2022 HankookVillas.com. All rights reserved.</p>
+                    </div>
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12 d-flex align-items-center justify-content-end footer-socialIcons">
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/facebook.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/twitter.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/instagram.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/youtube.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade extraServicesDialog " tabindex="-1 " aria-labelledby="extraServicesDialogLabel " aria-hidden="flase ">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-body ">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads ">
+                        <h4 class="h4 mb-4 ">Extra Services</h4>
+                    </div>
+                    <div class="table-responsive table-view ">
+                        <table class="table align-middle ">
+                            <thead>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <th>₩ 300</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1 ">Bike Rental x 1</p>
+                                        <p class="p3 mb-0 ">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top ">
+                                        <p class="p1 mb-0 ">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1 ">King Bed x 1</p>
+                                        <p class="p3 mb-0 ">₩ 100</p>
+                                    </td>
+                                    <td class="verticle-top ">
+                                        <p class="p1 mb-0 ">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1 ">Blanket x 2</p>
+                                        <p class="p3 mb-0 ">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top ">
+                                        <p class="p1 mb-0 ">₩ 50</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login modeal -->
+    <div class="modal fade loginDialog " tabindex="-1 " aria-labelledby="loginDialogLabel " aria-hidden="true ">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-body ">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads ">
+                        <h3 class="h3 ">Log In</h3>
+                        <p class="p2 ">Log in by entering your account details.</p>
+                    </div>
+                    <form action="post ">
+                        <div class="form-floating ">
+                            <input type="email " class="form-control " id="floatingInput " placeholder="name@example.com " value="david_williamson@gmail.com ">
+                            <label for="floatingInput ">Email<span class="required-star ">*</span></label>
+                        </div>
+                        <div class="form-floating ">
+                            <input type="password " class="form-control " id="oldPassword " placeholder="Password ">
+                            <label for="oldPassword ">Old Password<span class="required-star ">*</span></label>
+                            <img src="../images/structure/eye-icon.svg " alt="eye-icon " class="eye-icon " />
+                        </div>
+                        <div class="form-floating ">
+                            <button type="button " class="btn w-100 ">Log In</button>
+                        </div>
+                        <p class="forgotPass-link text-center "><a href="# " data-bs-toggle="modal " data-bs-target=".forgotPassDialog " data-bs-dismiss="modal ">Forgot Password?</a></p>
+                        <div class="or d-flex align-items-center justify-content-center "><span>Or</span></div>
+                        <div class="lgn-wt-btns d-flex ">
+                            <button class="btn outline-gray w-50 "><img src="../images/structure/talk.svg " alt="talk " class=" "> Kakao</button>
+                            <button class="btn outline-gray w-50 "><img src="../images/structure/n.svg " alt="N " class=" "> Naver</button>
+                        </div>
+                        <p class="p2 haveAccout text-center mt-4 ">Don’t have an account? <a href="register.html ">Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot password -->
+    <div class="modal fade forgotPassDialog " tabindex="-1 " aria-labelledby="forgotPassDialogLabel " aria-hidden="true ">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-body ">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads ">
+                        <h3 class="h3 ">Forgot Password</h3>
+                        <p class="p2 ">Enter your email address and we will send you a link to reset your password</p>
+                    </div>
+                    <form action="post ">
+                        <div class="form-floating ">
+                            <input type="email " class="form-control " id="floatingInput " placeholder="name@example.com " value="david_williamson@gmail.com ">
+                            <label for="floatingInput ">Email<span class="required-star ">*</span></label>
+                        </div>
+                        <div class="form-floating d-flex align-items-center ">
+                            <a href="update-password.html " type="button " class="btn ">Send</a>
+                            <p class="p2 haveAccout text-center mt-0 mb-0 ml-auto ">Back to <a href="# " data-bs-toggle="modal " data-bs-target=".loginDialog " data-bs-dismiss="modal ">Log In</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- card detail modeal -->
+    <div class="modal fade cardDetailDialog " tabindex="-1 " aria-labelledby="cardDetailDialog " aria-hidden="true ">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-body ">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads ">
+                        <h3 class="h3 ">Card Details</h3>
+                        <p class="p2 ">Enter the below card details to make payment.</p>
+                    </div>
+                    <form action="post ">
+                        <div class="form-floating ">
+                            <input type="text " class="form-control " id="floatingInput " placeholder="Card Number*">
+                            <label for="floatingInput ">Card Number*<span class="required-star ">*</span></label>
+                        </div>
+                        <div class="form-floating ">
+                            <input type="text " class="form-control " id="floatingInput " placeholder="Card Holder Name">
+                            <label for="floatingInput ">Card Holder Name<span class="required-star ">*</span></label>
+                        </div>
+                        <div class="form-floating ">
+                            <input type="text " class="form-control " id="floatingInput " placeholder="Expiry Date">
+                            <label for="floatingInput ">Expiry Date<span class="required-star ">*</span></label>
+                        </div>
+                        <div class="form-floating ">
+                            <input type="text " class="form-control " id="floatingInput " placeholder="CVV">
+                            <label for="floatingInput ">CVV<span class="required-star ">*</span></label>
+                        </div>
+                        <p class="p2">By continuing to pay, I understand and agree with the privacy policy and terms of service of Hankook.</p>
+                        <div class="form-floating ">
+                            <a href="thank-you-customer.html" type="button " class="btn w-100 ">Pay Now (₩ 1600)</a>
+                        </div>
+                        <p class="text-center p2">100% Secure Payments Powered by Hankook.</p>
+                        <div class="ml-auto paymentCard d-flex justify-content-center">
+                            <img src="../images/structure/amex.svg " alt=" " class="paymentCardIcon ">
+                            <img src="../images/structure/mastercard.svg " alt=" " class="paymentCardIcon ">
+                            <img src="../images/structure/visa.svg " alt=" " class="paymentCardIcon ">
+                            <img src="../images/structure/rupay.svg " alt=" " class="paymentCardIcon ">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cancellation Policy -->
+    <div class="modal fade CancellationPolicyDialog " tabindex="-1 " aria-labelledby="CancellationPolicyLabel " aria-hidden="true ">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-body ">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads ">
+                        <h4 class="h4 mb-4 ">Cancellation Policy</h4>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">The day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">No Refund</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">0%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 1 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">10%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 2 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">20%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 3 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">30%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 4 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">40%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 5 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">50%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 6 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">60%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 7 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">70%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 8 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">80%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 9 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">90%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancellationPolicycnt-Row d-flex align-items-center ">
+                        <div class="circleBefor "></div>
+                        <div class="cancellationPolicycnt d-flex align-items-center ">
+                            <span class="bgpink "></span>
+                            <div class="cancellationPolicyCol1 ">
+                                <p class="p2 mb-0 ">Before 10 day</p>
+                            </div>
+                            <div class="cancellationPolicyCol2 d-flex align-items-center ">
+                                <p class="p2 mb-0 ">Fully Refundable</p>
+                                <p class="p3 mb-0 ">(You will get <span class="cpPercent ">100%</span> refund)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+    <script>
+        // $(".paymenttypeCs").on('change', function() {
+        //     var checkValue = $('input[name=paymentTypeRadio]:checked').val()
+        //     if (checkValue == "type3") {
+
+        //         $(".creditCardBox").hide();
+        //     } else {
+        //         $(".directBankTransferBox").show();
+        //         $(".creditCardBox").show();
+        //     }
+        // });
+
+        // $(".paymenttypeCs").on('change', function() {
+        //     var checkValue = $('input[name=paymentTypeRadio]:checked').val()
+        //     if (checkValue == "type2") {
+
+        //         $(".creditCardBox").show();
+        //     } else {
+        //         $(".directBankTransferBox").show();
+        //         $(".creditCardBox").hide();
+        //     }
+        // });
+    </script>
+</body>
+
+</html>

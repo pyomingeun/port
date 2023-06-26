@@ -1,0 +1,456 @@
+#loading_img{
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    width: 50px;
+    margin: auto;
+    z-index: 99999;
+    display:none;
+    }
+
+    .uploadInput {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-size: 0;
+        cursor: pointer;
+        border-radius: 16px;
+        opacity: 0;
+        }
+        .prNameText {
+        font-size: 44px;
+        color: #717972
+        ;
+        font-family: 'satoshi-bold';
+        }
+        .profileImageBlock {
+        background: #EEF5EE;
+    }
+
+  .text-capitalize{text-transform: capitalize;} 
+
+  .chips.chips-active {
+    background: #EEF5EE;
+    color: #008952;
+  }
+  
+  .chips.chips-inactive {
+    background: #FFEEE0;
+    color: #D17D00;
+  }
+
+  .cursor-pointer{cursor: pointer;}
+  .sortdata{cursor: pointer;}
+
+  .uploadInput{
+    height: calc(100% - 30px);
+    top: auto;
+    bottom: 0px;
+  }
+
+
+  .profile-sec .profile-left-col .profile-left-inner-col .h5 {
+    word-wrap: break-word;
+  }
+  
+  .profile-sec .profile-right-col .profile-right-inner-col .profile-dtl-row .p1 {
+  
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  
+  }
+
+
+
+  .sort-arrow-table i.hidesorticon {
+    opacity: 0.2;
+  }
+
+  .filter-dd-wt-sd-lable .btn{
+    padding: 0px 15px;
+  }
+
+  .pagination{
+    justify-content: center;
+  }
+  .alertmsinner-box{
+    position: relative;
+  }
+  .alertmsinner-box .delete-alert{
+    position: absolute;
+  right: 8px;
+  top: 12px;
+  }
+  .alertDialog::after {
+    display: none;
+  }
+  .reset-img{
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    position: relative;
+    bottom: -3px;
+    cursor: pointer;
+  }
+  .filter-dd-wt-sd-lable .form-select{
+    min-width: 80px;
+    text-align: center;
+  }
+  #afterLoginMenu{
+    max-width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .filter-header-col .datepickerField{
+    position: relative;
+    width: 155px;
+    
+  }
+  .filter-header-col .datepickerField .form-control{
+    padding-left: 15px;
+  }
+  .filter-header-col .datepickerField .calendarIcon{
+    top: 5px;
+  }
+  .main-wrapper-gray{
+    max-height: fit-content !important;
+  }
+  .quantity-row .quantity-box input[type=text]{
+    border-radius: 0px !important;
+  }
+  .text-ellips-v{
+    width: 175px;
+    max-width: 175px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .newtag{
+    background: url('../images/structure/new-tag.svg') no-repeat;
+    height: 32px;
+    width: 214px;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 223px;
+    right: 0px;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "satoshi-medium";
+  }
+  .newtag .icon20{
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 4px;
+  }
+  /* .multiselectDropdownField #selectFacilities[value="Select Facilities"]{    
+    color: #717972 !important;
+  } */
+
+  .gray-color-inputvalue{ color: #717972 !important;}
+
+  .logo, .logo-b, .logo-w, .footerLogo{ width: 220px !important; }
+  .productListDetail .p2.mb-3,
+  .productListDetail h5{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+  } 
+  .productListDetail .chips{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: auto;
+    max-width: 100px;
+  }
+  .favoritlsstbock.always-filed .heart-fill {display: block !important;}
+
+  .clockpicker-button.active,
+  .clockpicker-button:hover,
+  .clockpicker-button:focus{
+    background: #DFEDE4 !important;
+  }
+  .roomType-Slider .rootypeImage{
+    width: 100%;
+    height: 600px;
+    object-fit: contain;
+  }
+  .h-56 .form-select,
+  .h-56 .btn,
+  .h-56 .form-control{
+    height: 56px !important;
+    min-width: 140px;
+  }
+  .h-56 img.searchIcon{
+    top: 17px !important;
+    left: 30px !important;
+  }
+  
+  .points-credited{ color: #015AC3 !important; }
+  .points-debited{ color: #B3261E !important; }
+
+  .review-td-scroll{
+    max-width: 200px;
+    overflow: scroll;
+    line-height: 20px;
+    white-space: normal;
+    height: 40px;
+  }
+  .Credit_DebitRewardPointsDialog .modal-dialog{
+    min-width: 460px;
+  }
+  .minusMinZero{
+    background: #E7F2EA;
+    border: 1px solid #717972;
+    border-radius: 8px 0px 0px 8px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .plusEs , .minusEs{
+    height: 32px;
+    width: 13px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.chips.chips-on_hold {
+  background: #FFEEE0;
+  color: #D17D00;
+}
+
+.chips.chips-confirmed {
+  background: #EEF5EE;
+  color: #008952;
+}
+.chips.chips-completed {
+  background: #EEF5EE;
+  color: #008952;
+}
+
+.chips.chips-cancelled {
+  background: #FFDAD6;
+  color: #410002;
+}
+
+.chips.chips-waiting,.chips-pending,.chips-failed {
+  background: #FFEEE0;
+  color: #D17D00;
+}
+.chips.chips-paid {
+  background: #EEF5EE;
+  color: #008952;
+}
+.info-parent{
+  position: relative;
+}
+
+.info-parent .info-box-new{
+    background: white;
+    border-radius: 0.25rem;
+    padding: 10px;
+    position: absolute;
+    left: -20px;
+    bottom: 0px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0px);
+    transition: ease-in-out 300ms;
+    min-width: 150px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.info-parent:hover .info-box-new{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-20px);
+  transition: ease-in-out 300ms;
+}
+.p2.flex-fill.PriceBreakupCl-lft.width60{
+  max-width: 60px;
+
+}
+.info-parent .info-box-new .tltp-p{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.info-parent .info-box-new .tltp-p .normalfont{
+}
+.info-parent .info-box-new .tltp-p .normalfont .mediumfont{
+  min-width: 60px;
+  display: inline-block;
+}
+.markfeaturedhmimg{
+  padding: 5px 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.sold-out-btn{ background: #DCEBE2 !important; color:white !important;}
+.display-none{ display: none !important; }
+
+.chips.chips-refund_pending,.chips-no_refund{
+  background: #FFEEE0;
+  color: #D17D00;
+}
+.chips.chips-refunded {
+  background: #EEF5EE;
+  color: #008952;
+}
+.removeAD{
+  color: #B3261E;
+}
+
+.d-none{
+  display:none
+}
+.home-sec1.hotel-detail-sec1{
+  position: sticky;
+  top: 80px;
+  z-index: 5;
+}
+
+.chips.chips-yes {
+  background: #EEF5EE;
+  color: #008952;
+}
+
+.chips.chips-no {
+  background: #FFEEE0;
+  color: #D17D00;
+}
+
+.white-card-header .p3, .white-card-header small{
+  font-size: 14px !important;
+}
+.heading-sec .reward-box{
+  margin-left: 15px;
+  position: relative;
+  width: auto;
+  min-width: 70px;
+  height: 36px;
+  border-radius: 40px;
+  background: #5CFEA9;
+  border: 1px solid var(--gray71);
+  font-size: 16px;
+  font-family: "satoshi-medium";
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--black19);
+  padding: 0px 8px 0px 4px;
+}
+
+.heading-sec .reward-box img.icon24 {
+  width: 24px;
+  height: 24px;
+  margin: 0px 4px 0px 2px;
+}
+.heading-sec .reward-box span{
+  margin-left: 4px;
+}
+
+.chips.chips-paid {
+  background: #EEF5EE;
+  color: #008952;
+}
+
+.chips.chips-planned {
+  background: #FFEEE0;
+  color: #D17D00;
+}
+.overflow-ellips-custom{
+  width: 100%;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusCl.statusConfirmed {
+  background: #00CC7A;
+}
+.overflow-ellip-140{
+  white-space: nowrap;
+  max-width: 140px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.productListDetail{
+  display: block;
+}
+.favoritlsstbock .heart-fill{
+  opacity: 1;
+  display: block !important;
+}
+.editorPickslider.sliderArrow.slick-initialized.slick-slider .slick-list .slick-track{ 
+  margin-left: 0px;
+}
+
+.success-inp {
+  color: #6cc166;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.daterangepicker .range_inputs {
+  display: block !important;
+}
+.hotel-detail-sec2 .rat-review {
+    margin-bottom: 12px;        
+}
+.hotel-detail-sec2 .rat-review .rat-chips {
+  font-size: 10px;
+  background: #008952;
+  border-radius: 4px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 9px;
+  margin-right: 8px;
+  margin-left: 8px;
+  color: white;
+}
+.hotel-detail-sec2 .rat-review .exs-text{
+  font-size: 14px;
+  color: #000000;
+  font-family: "satoshi-bold";
+  margin-right: 8px;
+}
+.new-review-left{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.new-review-left h6{
+  min-width: 200px;
+  margin-bottom: 0px !important;
+}
+.new-review-left .p3{
+  min-width: 150px;
+  text-align: left !important;
+  font-size: 1rem;
+  font-family: "satoshi-medium";
+  margin-bottom: 0px !important;
+}
+.ratingRow.d-flex .ratingDes{
+  width: 100%;
+}
+.alertDialog{
+  z-index: 999999 !important;
+}

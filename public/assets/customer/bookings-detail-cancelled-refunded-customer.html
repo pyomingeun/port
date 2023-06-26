@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header-after-login gray-header">
+        <div class="logoNavbar">
+<!--
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+-->
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="JavaScript:Void(0);" class="reward-box">
+                <img src="../images/structure/stars-circle.svg" alt=".." class="icon24" />
+                <span>50</span>
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/account-icon.svg" alt=".." class="icon24" />
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item active">
+                        <a href="bookings-customer.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat-customer.html" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="favorites-customer.html" class="nav-link"> <img src="../images/structure/heart.svg" alt="" class="sidebarIcon" /> Favorite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-rewards-customer.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> My Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notification-customer.html" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right bookings-detail-sec">
+            <div class="container-fluid">
+                <div class="whitebox-w mb-3 bookings-htl-dtl-box-w">
+                    <div class="white-card-header d-flex align-items-center flex-wrap">
+                        <div>
+                            <p class="p2 mb-0 d-flex align-items-center dtl-wt-back-btn">
+                                <a href="bookings-customer.html"><img src="../images/structure/back-arrow.svg" alt="Back" class="backbtn cursor-p"></a> <small class="mb-0">Booking ID: <span>79878979789</span>  <span>|</span>  Booking Date: <span>2022/09/10</span></small> </p>
+                        </div>
+                        <div class="ml-auto">
+                            <span class="chips chips-red">Cancelled</span>
+                        </div>
+                    </div>
+                    <div class="white-card-body">
+                        <div class="booking-dtl-htl-dtl-mn-rw d-flex">
+                            <div class="bk-htl-img-block">
+                                <img src="../images/product/p2.png" class="bk-htl-img">
+                            </div>
+                            <div class="bk-htl-dtl-rgt-block">
+                                <div class="white-card-header">
+                                    <h5 class="h5">Radisson Blu Hotels & Resorts</h5>
+                                    <p class="p2 mb-0">010-9786-6541 <span class="dotgray"></span> 12, Ring Rd, Scheme No 171, Indore, Madhya Pradesh 452010 </p>
+                                </div>
+                                <div class="hotel-check-in-out d-flex align-items-end mt-3">
+                                    <div class="checkin">
+                                        <p class="p3 mb-1">Check-In</p>
+                                        <div class="checkIOdtl d-flex align-items-center">
+                                            <h3 class="blueDate mb-0">20</h3>
+                                            <div>
+                                                <p class="p3 mb-0">Aug 2022</p>
+                                                <p class="p3 mb-0">12:00 PM onwards</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nightsblock">
+                                        <span class="chips chips-gray1 h-24">2 Nights</span>
+                                    </div>
+                                    <div class="checkout">
+                                        <p class="p3 mb-1">Check-Out</p>
+                                        <div class="checkIOdtl d-flex align-items-center">
+                                            <h3 class="blueDate mb-0">21</h3>
+                                            <div>
+                                                <p class="p3 mb-0">Aug 2022</p>
+                                                <p class="p3 mb-0">Till 11:00 AM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div class="whitebox-w BookingDetails-box mb-3">
+                            <h6 class="h6">Booking Details</h6>
+                            <div class="bookingDetailCheck-in-out-row d-flex flex-wrap">
+                                <div class="bk-dtlCol1">
+                                    <span class="chips chips-gray"><img src="../images/structure/user-nights.svg" alt="" class=""> 2 Guests</span>
+                                </div>
+                                <div class="bk-dtlCol2 row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <p class="p3 mb-2">Total Guests</p>
+                                        <p class="p1 mb-1">1 Adult, 1 Child</p>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <p class="p3 mb-2">Primary Guest</p>
+                                        <p class="p1 mb-1">Allex Carry | 010-1111-1111</p>
+                                        <p class="p3 mb-0" style="color:#3B6470;">allex_carry@gmail.com</p>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 mt-4">
+                                        <p class="p3 mb-2">Child 1 Age</p>
+                                        <p class="p1 mb-1">2 yrs</p>
+                                    </div>
+                                    <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 mt-4">
+                                            <p class="p3 mb-2">Child 2 Age</p>
+                                            <p class="p1 mb-1">5 yrs</p>
+                                        </div> -->
+                                    <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 mt-4">
+                                            <p class="p3 mb-2">Child 2 Age</p>
+                                            <p class="p1 mb-1">5 yrs</p>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 mt-4">
+                                            <p class="p3 mb-2">Child 2 Age</p>
+                                            <p class="p1 mb-1">5 yrs</p>
+                                        </div> -->
+                                </div>
+                            </div>
+                            <div class="bookingDetailCheck-in-out-row d-flex flex-wrap">
+                                <div class="bk-dtlCol1">
+                                    <span class="chips chips-gray"><img src="../images/structure/door-front.svg" alt="" class=""> 1 Room</span>
+                                </div>
+                                <div class="bk-dtlCol2 row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <p class="p3 mb-2">Room Name</p>
+                                        <p class="p1 mb-1">Deluxe Room</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookingDetailCheck-in-out-row d-flex flex-wrap">
+                                <div class="bk-dtlCol1">
+                                    <span class="chips chips-gray"><img src="../images/structure/dashboard-customize.svg" alt="" class=""> 3 Extras</span>
+                                </div>
+                                <div class="bk-dtlCol2 row">
+                                    <div class="col-xl-12">
+                                        <p class="p3 mb-2">Service Name</p>
+                                        <p class="p1 mb-1">Bike Rental x 1, King Bed x 1, Blanket x 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="p2 guestNote mt-3">Guest Notes: <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span></p>
+                        </div>
+
+                        <div class="accordion" id="bookingDetail">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="bookingDetailTab1">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#bookingDetail1" aria-expanded="true" aria-controls="bookingDetail1">Cancellation Policies</button>
+                                </h2>
+                                <div id="bookingDetail1" class="accordion-collapse collapse show" aria-labelledby="bookingDetailTab1" data-bs-parent="#bookingDetail">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">The day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">No Refund</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">0%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 1 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">10%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 2 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">20%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 3 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">30%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 4 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">40%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 5 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">50%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 6 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">60%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 7 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">70%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 8 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">80%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 9 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">90%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                                    <div class="circleBefor"></div>
+                                                    <div class="cancellationPolicycnt d-flex align-items-center">
+                                                        <span class="bgpink"></span>
+                                                        <div class="cancellationPolicyCol1">
+                                                            <p class="p2 mb-0">Before 10 day</p>
+                                                        </div>
+                                                        <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                                            <p class="p2 mb-0">Fully Refundable</p>
+                                                            <p class="p3 mb-0">(You will get <span class="cpPercent">100%</span> refund)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="bookingDetailTab2">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#bookingDetail2" aria-expanded="false" aria-controls="bookingDetail2">
+                    Hotel Policies
+                  </button>
+                                </h2>
+                                <div id="bookingDetail2" class="accordion-collapse collapse" aria-labelledby="bookingDetailTab2" data-bs-parent="#bookingDetail">
+                                    <div class="accordion-body">
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Property staff is trained on hygiene guidelines
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Quarantine protocols are being followed as per local government authorities
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Guests below 18 years of age are not allowed at the property.
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Guests with fever are not allowed
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Non-Govt IDs and PAN Card are not accepted as ID proof(s)
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Quarantine protocols are being followed as per local government authorities
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Guests below 18 years of age are not allowed at the property.
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Guests with fever are not allowed
+                                        </div>
+                                        <div class="HotelPoliciesRw p2">
+                                            <img src="../images/structure/checkocircle-green.svg" alt="" class="CheckIcon"> Non-Govt IDs and PAN Card are not accepted as ID proof(s)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="whitebox-w price-statusbox-rgt mb-4">
+                            <h6 class="h6">Price Breakup</h6>
+                            <div class="d-flex PriceBreakupRw">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Subtotal</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">₩ 1400</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Rewards Points | 200</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt" style="color:#008952;">- ₩ 100</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw Total mb-0">
+                                <p class="p1 flex-fill PriceBreakupCl-lft">Total Price</p>
+                                <p class="p1 flex-fill PriceBreakupCl-rgt">₩ 1300</p>
+                            </div>
+                        </div>
+                        <div class="whitebox-w price-statusbox-rgt mb-4">
+                            <h6 class="h6">Refund Info</h6>
+                            <div class="d-flex PriceBreakupRw">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Payment Status</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">
+                                    <span class="chips chips-green">Refunded</span>
+                                </p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Payment Mode</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">Direct Transfer</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Refund Price</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ 0</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Refund Rewards Points | 200</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ 0</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Bank Name</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">Hanabank</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Account No.</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">4321546444</p>
+                            </div>
+                            <div class="d-flex PriceBreakupRw mt-2">
+                                <p class="p2 flex-fill PriceBreakupCl-lft">Account Holder</p>
+                                <p class="p2 flex-fill PriceBreakupCl-rgt">David Williamsosn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Change password Modal -->
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="row password-instruction">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2" data-bs-dismiss="modal">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade ExtraServicesDialog" tabindex="-1" aria-labelledby="ExtraServicesDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h4 class="h4 mb-4">Extra Services</h4>
+                    </div>
+                    <div class="table-responsive table-view">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <th>₩ 300</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">Bike Rental x 1</p>
+                                        <p class="p3 mb-0">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">King Bed x 1</p>
+                                        <p class="p3 mb-0">₩ 100</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">Blanket x 2</p>
+                                        <p class="p3 mb-0">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 50</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+
+</html>

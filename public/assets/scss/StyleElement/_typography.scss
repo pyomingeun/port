@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'satoshi-light';
+    src: url('../fonts/SATOSHI-LIGHT.OTF');
+}
+
+@font-face {
+    font-family: 'satoshi-regular';
+    src: url('../fonts/SATOSHI-REGULAR.OTF');
+}
+
+@font-face {
+    font-family: 'satoshi-medium';
+    src: url('../fonts/SATOSHI-MEDIUM.OTF');
+}
+
+@font-face {
+    font-family: 'satoshi-bold';
+    src: url('../fonts/SATOSHI-BOLD.OTF');
+}
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../fonts/SATOSHI-BLACK.OTF');
+}
+
+@font-face {
+    font-family: 'DMSerifDisplay-Regular';
+    src: url('../fonts/DMSerifDisplay-Regular.ttf');
+}
+
+a {
+    text-decoration: none;
+}
+
+// typografy
+.h1 {
+    font-size: 48px;
+    font-family: 'satoshi-black';
+    @media (max-width: 991px) {
+        font-size: 38px;
+    }
+}
+
+.h2 {
+    font-size: 36px;
+    font-family: 'satoshi-black';
+    @media (max-width: 991px) {
+        font-size: 30px;
+    }
+}
+
+.h3 {
+    font-size: 28px;
+    font-family: 'satoshi-bold';
+    @media (max-width: 991px) {
+        font-size: 24px;
+    }
+}
+
+.h4 {
+    font-size: 24px;
+    font-family: 'satoshi-bold';
+    @media (max-width: 991px) {
+        font-size: 20px;
+    }
+}
+
+.h5 {
+    font-size: 20px;
+    font-family: 'satoshi-bold';
+    @media (max-width: 991px) {
+        font-size: 18px;
+    }
+}
+
+.h6 {
+    font-size: 16px;
+    font-family: 'satoshi-regular';
+}
+
+.p1 {
+    font-size: 16px;
+    font-family: 'satoshi-regular';
+}
+
+.p2 {
+    font-size: 14px;
+    font-family: 'satoshi-regular';
+}
+
+.p3 {
+    font-size: 12px;
+    font-family: 'satoshi-regular';
+}

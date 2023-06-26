@@ -1,0 +1,59 @@
+footer {
+    padding-top: 80px;
+    .footerRow1 {
+        padding-bottom: 60px;
+        .h6 {
+            color: $black19;
+            font-family: 'satoshi-bold';
+        }
+        .p2 {
+            color: $gray71;
+        }
+        .footermenu {
+            ul.footermenu-ul {
+                padding-left: 0;
+                li.footermenu-li {
+                    list-style: none;
+                    a.footermenu-a {
+                        font-size: 14px;
+                        color: $gray71;
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+        .footerLogobox {
+            padding-right: 90px;
+        }
+    }
+    .footerRow2 {
+        border-top: 1px solid #DFEDE4;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        .p2 {
+            color: $black19;
+        }
+        .footer-socialIcons {
+            a.socialIcons-a {
+                display: inline-block;
+                margin-right: 24px;
+                .socialIcons {
+                    filter: grayscale(1) brightness(1);
+                    transition: all 300ms;
+                }
+                &:hover {
+                    .socialIcons {
+                        filter: grayscale(0) brightness(0);
+                        transition: all 300ms;
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+        }
+    }
+}
+img.footerLogo {
+    width: 150px;
+}

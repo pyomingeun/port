@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header homeHeader">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo-b" />
+            </a>
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/logo-w.png" alt=".." class="logo-w" />
+            </a>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="onboardingMenu" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../images/structure/user-icon.svg" alt=".." class="icon28round" />
+        <img src="../images/structure/menu-icon.svg" alt=".." class="icon16" />
+      </button>
+            <ul class="dropdown-menu" aria-labelledby="onboardingMenu">
+                <li><a class="dropdown-item" href="register.html">Sign Up</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">Log In</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Manager/ Staff</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Help</a></li>
+                <li><a class="dropdown-item" href="#">Policies</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="faq-sec1 top-banner-section">
+        <div class="banner-image-dv d-flex align-items-center justify-content-center" style="background-image: url(../images/structure/faq-bnr-img.png);">
+            <div class="overlay"></div>
+            <div class="bannerContent">
+                <nav aria-label="breadcrumb" class="breadcrumbNave on-banner-breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Faq</li>
+                    </ol>
+                </nav>
+                <h1 class="h1 mb-0">Frequently Asked Questions</h1>
+            </div>
+        </div>
+    </section>
+    <section class="faq-sec2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 col-ld-10 col-md-10 col-sm-10 col-12 mx-auto">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry?
+                            </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Lorem Ipsum is simply dummy text of the
+                            </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Lorem Ipsum is simply dummy text of the printing and
+                            </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Lorem Ipsum is simply dummy text
+                            </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    Lorem Ipsum is simply dummy text of the printing and
+                            </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                    Lorem Ipsum is simply dummy text
+                            </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                    LoreLorem Ipsum is simply dummy text
+                            </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribeNewsletter-section">
+        <div class="container">
+            <div class="subscribeNewsletterBox">
+                <h2 class="Subscribe Our Newsletter">Subscribe <br> Our Newsletter</h2>
+                <div class="subscribeNewsletterForm">
+                    <input type="text" placeholder="Enter Email">
+                    <button class="btn h-36">Subscribe</button>
+                </div>
+                <img src="../images/structure/subscribe-bg-img.png" class="subscribe-bg-img">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footerRow1">
+                <div class="row">
+                    <div class="col-xl-4 col-ld-4 col-md-4 col-sm-12 col-12 footerLogobox">
+                        <a href="index.html">
+                            <img src="../images/logo/logo.png" alt="" class="footerLogo">
+                        </a>
+                        <p class="p2 mb-0 mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Company</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">What is the Travel@G</a></li>
+                            <li class="mb-2 footermenu-li"><a href="about-us.html" class="footermenu-a">About Us</a></li>
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">Partner Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Contact</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="faq.html" class="footermenu-a">FAQ</a></li>
+                            <li class="mb-2 footermenu-li"><a href="help.html" class="footermenu-a">Help/Inquiry</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-ld-2 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Policy</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="privacy-policy.html" class="footermenu-a">Privacy Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="cookie-policy.html" class="footermenu-a">Cookie Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="terms-of-use.html" class="footermenu-a">Terms of Use</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footerRow2">
+                <div class="row">
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12">
+                        <p class="p2 mb-0">©copyright 2022 HankookVillas.com. All rights reserved.</p>
+                    </div>
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12 d-flex align-items-center justify-content-end footer-socialIcons">
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/facebook.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/twitter.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/instagram.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/youtube.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Filter modeal -->
+    <div class="modal fade sideFilterDialog" tabindex="-1" aria-labelledby="sideFilterDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Filter</h3>
+
+                    </div>
+                    <form action="post">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login modeal -->
+    <div class="modal fade loginDialog" tabindex="-1" aria-labelledby="loginDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Log In</h3>
+                        <p class="p2">Log in by entering your account details.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="david_williamson@gmail.com">
+                            <label for="floatingInput">Email<span class="required-star">*</span></label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <button type="button" class="btn w-100">Log In</button>
+                        </div>
+                        <p class="forgotPass-link text-center"><a href="#" data-bs-toggle="modal" data-bs-target=".forgotPassDialog" data-bs-dismiss="modal">Forgot Password?</a></p>
+                        <div class="or d-flex align-items-center justify-content-center"><span>Or</span></div>
+                        <div class="lgn-wt-btns d-flex">
+                            <button class="btn outline-gray w-50"><img src="../images/structure/talk.svg" alt="talk" class=""> Kakao</button>
+                            <button class="btn outline-gray w-50"><img src="../images/structure/n.svg" alt="N" class=""> Naver</button>
+                        </div>
+                        <p class="p2 haveAccout text-center mt-4">Don’t have an account? <a href="register.html">Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot password -->
+    <div class="modal fade forgotPassDialog" tabindex="-1" aria-labelledby="forgotPassDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Forgot Password</h3>
+                        <p class="p2">Enter your email address and we will send you a link to reset your password</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="david_williamson@gmail.com">
+                            <label for="floatingInput">Email<span class="required-star">*</span></label>
+                        </div>
+                        <div class="form-floating d-flex align-items-center">
+                            <a href="update-password.html" type="button" class="btn">Send</a>
+                            <p class="p2 haveAccout text-center mt-0 mb-0 ml-auto">Back to <a href="#" data-bs-toggle="modal" data-bs-target=".loginDialog" data-bs-dismiss="modal">Log In</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js "></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="../js/designer.js "></script>
+    <script src="../js/designer-dropdown.js "></script>
+</body>
+
+</html>

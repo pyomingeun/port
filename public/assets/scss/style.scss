@@ -1,0 +1,13 @@
+// font-family import;
+@import "StyleElement/colors";
+@import "StyleElement/typography";
+@import "StyleElement/layout";
+@import "StyleElement/header";
+@import "StyleElement/footer";
+@import "StyleElement/sliders";
+@import "StyleElement/same";
+@import "StyleElement/pages";
+body {
+    font-family: 'SATOSHI-REGULAR' !important;
+    color: $black19;
+}

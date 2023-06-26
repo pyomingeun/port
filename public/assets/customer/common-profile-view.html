@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="JavaScript:Void(0);" class="reward-box">
+                <img src="../images/structure/stars-circle.svg" alt=".." class="icon24" />
+                <span>50</span>
+            </a>
+
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/account-icon.svg" alt=".." class="icon24" />
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="bookings-customer.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat-customer.html" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="favorites-customer.html" class="nav-link"> <img src="../images/structure/heart.svg" alt="" class="sidebarIcon" /> Favorite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-rewards-customer.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> My Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notification-customer.html" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right profile-sec">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 profile-right-col mx-auto">
+                        <div class="profile-right-inner-col">
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <h6 class="h6">Personal Details</h6>
+                                <button class="deleteBtn d-flex align-items-center ml-auto" data-bs-toggle="modal" data-bs-target=".deleteDialog"><img src="../images/structure/delete.svg" alt="" class="deleteIcon"> Delete Account</button>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="profile-left-inner-col">
+                                    <div class="profileImageBlock">
+                                        <img src="../images/structure/profile-default-img.png" alt="" class="profileImage">
+                                    </div>
+                                    <h5 class="h5 mb-2 mt-3">David Williamson</h5>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row nameRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">First Name</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">David</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row nameRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Last Name</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">William</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row phoneRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Phone No.</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">010-9876-5432</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Email Address</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">david_william@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Date of Birth</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">01 Nov 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Address</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">121 Exhibition St, Melbourne VIC 3000, Australia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Country</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">Australia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">City</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">Melbourne</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Zip Code</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #717972;">3000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-dtl-row">
+                                <div class="row emailRow">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #191C1A;">Status</p>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center">
+                                        <p class="p1" style="color: #5CFEA9;">Active</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <div class="modal fade thankyouDialog successDialog" tabindex="-1" aria-labelledby="thankyouDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <div class="text-center">
+                            <img src="../images/structure/checked-thankyou.svg" alt="" class="">
+                            <h3 class="h3 mt-2">Thank You!</h3>
+                            <p class="p2 mb-4">Please click the link we have sent on <span>david_william@gmail.com</span> to update your email address.</p>
+                        </div>
+                        <a href="profile-customer.html" class="btn w-100">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Thank you Modal -->
+
+    <!--Delete Modal -->
+    <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3 mt-2">Delete Account</h3>
+                        <p class="p2 mb-4">Are you sure you want to delete your account?</p>
+                    </div>
+                    <div class="d-flex btns-rw">
+                        <a href="profile-customer.html" class="btn bg-gray flex-fill">Yes</a>
+                        <button class="btn flex-fill" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".editName").click(function() {
+                $(".editNameForm").show();
+                $(".nameRow").hide();
+            });
+            $(".cancelName").click(function() {
+                $(".editNameForm").hide();
+                $(".nameRow").show();
+            });
+
+            $(".editEmail").click(function() {
+                $(".editEmailForm").show();
+                $(".emailRow").hide();
+            });
+            $(".cancelEmail").click(function() {
+                $(".editEmailForm").hide();
+                $(".emailRow").show();
+            });
+
+            $(".editPhone").click(function() {
+                $(".editPhoneForm").show();
+                $(".phoneRow").hide();
+            });
+            $(".cancelPhone").click(function() {
+                $(".editPhoneForm").hide();
+                $(".phoneRow").show();
+            });
+        });
+    </script>
+</body>
+
+</html>

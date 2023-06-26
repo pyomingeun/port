@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="JavaScript:Void(0);" class="reward-box">
+                <img src="../images/structure/stars-circle.svg" alt=".." class="icon24" />
+                <span>50</span>
+            </a>
+
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/account-icon.svg" alt=".." class="icon24" />
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <img src="../images/structure/heart.svg" alt="" class="sidebarIcon" /> Favorite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> My Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right rate-and-review-sec">
+            <div class="container-fluid">
+                <div class="whitebox-w mb-3 bookings-htl-dtl-box-w">
+                    <div class="white-card-header d-flex align-items-center flex-wrap">
+                        <h6 class="h6">
+                            <a href="bookings-detail-completed-rate-review-customer.html"><img src="../images/structure/back-arrow.svg" alt="Back" class="backbtn cursor-p"></a> Rate and Review</h6>
+                    </div>
+                    <div class="white-card-body">
+                        <div class="rate-and-review-des-block d-flex flex-wrap align-items-center">
+                            <div class="rate-and-review-des-lft-cl">
+                                <img src="../images/product/p2.png" class="bk-htl-img">
+                            </div>
+                            <div class="rate-and-review-des-rgt-cl">
+                                <h5 class="h5 mb-2">Radisson Blu Hotels & Resorts</h5>
+                                <p class="p2 mb-0">010-9786-6541 <span class="dotgray"></span> 12, Ring Rd, Scheme No 171, Indore, Madhya Pradesh 452010 </p>
+                            </div>
+                        </div>
+                        <div class="divider mt-3 mb-3"></div>
+
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-8">
+                                <div class="rate-and-form">
+                                    <h4 class="mb-2">Rating<span class="required-star">*</span></h4>
+                                    <p class="p2">Provide below ratings for all points.</p>
+
+                                    <div>
+                                        <div class="rating-field-row d-flex align-items-center">
+                                            <span class="bgpink"></span>
+                                            <p class="p1 rtServicehd mb-0 d-flex align-items-center"><img src="../images/structure/cleaning-services.svg" alt="" class="ServicesIcon"> Cleanliness</p>
+                                            <fieldset class="rating">
+                                                <input type="radio" class="ratInput" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+                                                <input type="radio" class="ratInput" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half"></label>
+                                                <input type="radio" class="ratInput" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+                                                <input type="radio" class="ratInput" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half"></label>
+                                                <input type="radio" class="ratInput" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                                                <input type="radio" class="ratInput" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half"></label>
+                                                <input type="radio" class="ratInput" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+                                                <input type="radio" class="ratInput" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half"></label>
+                                                <input type="radio" class="ratInput" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+                                                <input type="radio" class="ratInput" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf"></label>
+                                                <input type="radio" class="reset-option" name="rating" value="reset" />
+                                            </fieldset>
+                                        </div>
+                                        <div class="rating-field-row d-flex align-items-center">
+                                            <span class="bgpink"></span>
+                                            <p class="p1 rtServicehd mb-0 d-flex align-items-center"><img src="../images/structure/cleaning-services.svg" alt="" class="ServicesIcon"> Facility</p>
+                                            <fieldset class="rating">
+                                                <input type="radio" class="ratInput" id="star55" name="rating2" value="5" /><label class="full" for="star55"></label>
+                                                <input type="radio" class="ratInput" id="star44half" name="rating2" value="4.5" /><label class="half" for="star44half"></label>
+                                                <input type="radio" class="ratInput" id="star44" name="rating2" value="4" /><label class="full" for="star44"></label>
+                                                <input type="radio" class="ratInput" id="star33half" name="rating2" value="3.5" /><label class="half" for="star33half"></label>
+                                                <input type="radio" class="ratInput" id="star33" name="rating2" value="3" /><label class="full" for="star33"></label>
+                                                <input type="radio" class="ratInput" id="star22half" name="rating2" value="2.5" /><label class="half" for="star22half"></label>
+                                                <input type="radio" class="ratInput" id="star22" name="rating2" value="2" /><label class="full" for="star22"></label>
+                                                <input type="radio" class="ratInput" id="star11half" name="rating2" value="1.5" /><label class="half" for="star11half"></label>
+                                                <input type="radio" class="ratInput" id="star11" name="rating2" value="1" /><label class="full" for="star11"></label>
+                                                <input type="radio" class="ratInput" id="starhalf0" name="rating2" value="0.5" /><label class="half" for="starhalf0"></label>
+                                                <input type="radio" class="reset-option" name="rating2" value="reset2" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="rating-field-row d-flex align-items-center">
+                                            <span class="bgpink"></span>
+                                            <p class="p1 rtServicehd mb-0 d-flex align-items-center"><img src="../images/structure/cleaning-services.svg" alt="" class="ServicesIcon"> Service</p>
+                                            <fieldset class="rating">
+                                                <input type="radio" class="ratInput" id="star555" name="rating3" value="555" /><label class="full" for="star555"></label>
+                                                <input type="radio" class="ratInput" id="star444half" name="rating3" value="444.5" /><label class="half" for="star444half"></label>
+                                                <input type="radio" class="ratInput" id="star444" name="rating3" value="444" /><label class="full" for="star444"></label>
+                                                <input type="radio" class="ratInput" id="star333half" name="rating3" value="333.5" /><label class="half" for="star333half"></label>
+                                                <input type="radio" class="ratInput" id="star333" name="rating3" value="333" /><label class="full" for="star333"></label>
+                                                <input type="radio" class="ratInput" id="star222half" name="rating3" value="222.5" /><label class="half" for="star222half"></label>
+                                                <input type="radio" class="ratInput" id="star222" name="rating3" value="222" /><label class="full" for="star222"></label>
+                                                <input type="radio" class="ratInput" id="star111half" name="rating3" value="111.5" /><label class="half" for="star111half"></label>
+                                                <input type="radio" class="ratInput" id="star111" name="rating3" value="111" /><label class="full" for="star111"></label>
+                                                <input type="radio" class="ratInput" id="starhalf00" name="rating3" value="00.5" /><label class="half" for="starhalf00"></label>
+                                                <input type="radio" class="reset-option" name="rating3" value="reset3" />
+                                            </fieldset>
+                                        </div>
+                                        <div class="rating-field-row d-flex align-items-center">
+                                            <span class="bgpink"></span>
+                                            <p class="p1 rtServicehd mb-0 d-flex align-items-center"><img src="../images/structure/cleaning-services.svg" alt="" class="ServicesIcon"> Value for Money</p>
+                                            <fieldset class="rating">
+                                                <input type="radio" class="ratInput" id="star5555" name="rating4" value="5555" /><label class="full" for="star5555"></label>
+                                                <input type="radio" class="ratInput" id="star4444half" name="rating4" value="4444.5" /><label class="half" for="star4444half"></label>
+                                                <input type="radio" class="ratInput" id="star4444" name="rating4" value="4444" /><label class="full" for="star4444"></label>
+                                                <input type="radio" class="ratInput" id="star3333half" name="rating4" value="3333.5" /><label class="half" for="star3333half"></label>
+                                                <input type="radio" class="ratInput" id="star3333" name="rating4" value="3333" /><label class="full" for="star3333"></label>
+                                                <input type="radio" class="ratInput" id="star2222half" name="rating4" value="2222.5" /><label class="half" for="star2222half"></label>
+                                                <input type="radio" class="ratInput" id="star2222" name="rating4" value="2222" /><label class="full" for="star2222"></label>
+                                                <input type="radio" class="ratInput" id="star1111half" name="rating4" value="1111.5" /><label class="half" for="star1111half"></label>
+                                                <input type="radio" class="ratInput" id="star1111" name="rating4" value="1111" /><label class="full" for="star1111"></label>
+                                                <input type="radio" class="ratInput" id="starhalf0000" name="rating4" value="0000.5" /><label class="half" for="starhalf0000"></label>
+                                                <input type="radio" class="reset-option" name="rating4" value="reset4" />
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <h4 class="mb-2">Review<span class="required-star">*</span></h4>
+                                    <p class="p2">Write your experience for this booking.</p>
+                                    <div class="form-floating">
+                                        <textarea itemid="txtarea" class="form-control" id="floatingInput" placeholder="Write review here..." style="min-height: 90px;"></textarea>
+                                        <label for="floatingInput">Write review here...</label>
+                                        <p class="mb-0 max-char-limit">max 500 characters</p>
+                                    </div>
+                                    <button class="btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="alertDialog">
+        <p class="mb-0 alertmsinner-box alertSuccess"><img src="../images/structure/check-circle-green.svg" class="alertIcn"> Rate and Review added successfully.</p>
+    </div> -->
+    <!--Change password Modal -->
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="row password-instruction">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade ExtraServicesDialog" tabindex="-1" aria-labelledby="ExtraServicesDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h4 class="h4 mb-4">Extra Services</h4>
+                    </div>
+                    <div class="table-responsive table-view">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <th>₩ 300</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">Bike Rental x 1</p>
+                                        <p class="p3 mb-0">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">King Bed x 1</p>
+                                        <p class="p3 mb-0">₩ 100</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 150</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="p1 mb-1">Blanket x 2</p>
+                                        <p class="p3 mb-0">₩ 150</p>
+                                    </td>
+                                    <td class="verticle-top">
+                                        <p class="p1 mb-0">₩ 50</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $(".ratInput").click(function() {
+                var sim = $("input[type='radio']:checked").val();
+                if (sim < 3) {
+                    $('.myratings').css('color', 'red');
+                    $(".myratings").text(sim);
+                } else {
+                    $('.myratings').css('color', 'green');
+                    $(".myratings").text(sim);
+                }
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

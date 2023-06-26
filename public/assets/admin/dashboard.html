@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="setting-notification-hotel-manager.html" class="setting-icon">
+                <img src="../images/structure/setting-icon.svg" alt=".." class="icon24" />
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="dashboard.html">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link"> <img src="../images/structure/dashboard.svg" alt="" class="sidebarIcon" /> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-management-step1.html" class="nav-link"> <img src="../images/structure/hotel-management.svg" alt="" class="sidebarIcon" /> Hotel Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-staff.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> Hotel Staff</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> Post Management</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="magazine.html">
+                                    Magazine
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="events.html">
+                                    Events
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="coupon-codes.html" class="nav-link"> <img src="../images/structure/coupon-codes.svg" alt="" class="sidebarIcon" /> Coupon Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payouts.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> Payouts</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> System Settings</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="features.html">Features</a></li>
+                            <li><a class="dropdown-item" href="amenities.html">Amenities</a></li>
+                            <li><a class="dropdown-item" href="commission.html">Commission</a></li>
+                            <li><a class="dropdown-item" href="#"> Reward Point Actual Rate</a></li>
+                            <li><a class="dropdown-item" href="#">Editor’s Pick</a></li>
+                            <li><a class="dropdown-item" href="#">Images </a></li>
+                            <li><a class="dropdown-item" href="#">Advance Booking Restriction</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right dashboard-sec">
+            <div class="container-fluid">
+                <!-- <div class="heading-sec mb-4 d-flex align-items-center">
+                    <h3 class="h3  mb-0">Dashboard</h3>                    
+                </div> -->
+                <h5 class="h5  mb-4">Booking Summary</h5>
+                <div class="whitebox-w mb-5">
+                    <div id="piechart"class="BookingSummaryChart"></div>
+                    <!-- <img src="../images/product/chart2.png" class="cart"> -->
+                </div>
+                <div class="heading-sec mb-4 d-flex align-items-center">
+                    <h5 class="h5  mb-0">Room Utilization Rate</h5>
+                    <div class="filter-header-row ml-auto d-flex justify-content-end">
+                        <div class="filter-header-col filter-dd-wt-sd-lable">
+                            <div class="form-floating mb-0">
+                                <span class="ddLAble monthLable">Month:</span>
+                                <div class="monthDropdown">
+                                    <button id="child1" data-bs-toggle="dropdown" class="form-select">Select</button>
+                                    <ul class="dropdown-menu dropdown-menu-start">
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id1" name="month" value="1" />
+                                            <label for="id1">August</label>
+                                        </li>
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id2" name="month" value="2" />
+                                            <label for="id2">September</label>
+                                        </li>
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id3" name="month" value="3" />
+                                            <label for="id3">October</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-header-col filter-dd-wt-sd-lable">
+                            <div class="form-floating mb-0">
+                                <span class="ddLAble yearLable">Year:</span>
+                                <div class="yearDropdown">
+                                    <button id="child1" data-bs-toggle="dropdown" class="form-select">Select</button>
+                                    <ul class="dropdown-menu dropdown-menu-start guestAgeDropdownMenu">
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id11" name="year" value="1" />
+                                            <label for="id11">2020</label>
+                                        </li>
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id22" name="year" value="2" />
+                                            <label for="id22">2021</label>
+                                        </li>
+                                        <li class="radiobox-image">
+                                            <input type="radio" id="id33" name="year" value="3" />
+                                            <label for="id33">2022</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="whitebox-w">
+                    <!-- <img src="../images/product/chart1.png" class="cart"> -->
+                    <div id="top_x_div" class="roomUtilizationChart"></div>
+                </div>
+                <h5 class="h5  mb-4">YOY monthly comparison </h5>
+                <div class="whitebox-w mb-0">
+                    <div id="columnchart_material" class="revenueCahrt"></div>
+                    <!-- <img src="../images/product/chart2.png" class="cart"> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Change password modal -->
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="row password-instruction">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.../js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/../js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/../js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['', '2020', '2021', '2022'],
+                ['Jan', 1000, 400, 200],
+                ['Feb', 1170, 460, 250],
+                ['Mar', 660, 1120, 300],
+                ['Apr', 1030, 540, 350],
+                ['May', 1030, 540, 350],
+                ['Jun', 1030, 540, 350],
+                ['Jul', 1030, 540, 350],
+                ['Aug', 1030, 540, 350],
+                ['Sep', 1030, 540, 350],
+                ['Oct', 1030, 540, 350],
+                ['Nov', 1030, 540, 350],
+                ['Dec', 1030, 540, 350],
+            ]);
+
+            var options = {
+                legend: {
+                    position: 'left top'
+                },
+                width: "100%",
+                bar: {
+                    groupWidth: "35px"
+                }
+            };
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+
+
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Date', 'Confirmed', 'On hold'],
+                ["01/07/2022", 44, 30],
+                ["02/07/2022)", 31, 35],
+                ["03/07/2022", 12, 50],
+                ["04/07/2022", 10, 20],
+                ['05/07/2022', 3, 10],
+                ["06/07/2022", 44, 15],
+                ["07/07/2022)", 31, 20],
+                ["08/07/2022", 12, 15],
+                ["09/07/2022", 10, 20],
+                ['10/07/2022', 3, 25],
+            ]);
+
+            var options = {
+                width: 1000,
+                legend: {
+                    position: 'bottom'
+                },
+                axes: {
+                    x: {
+                        0: {
+                            side: 'bottom',
+                            label: ''
+                        } // Top x-axis.
+                    }
+                },
+                bar: {
+                    groupWidth: "35px"
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+
+    </script>
+<script>
+    // Booking Chart
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Completed', 2],
+          ['Canceled',      2],
+          ['On hold',  2],
+          
+          
+        ]);
+
+        var options = {
+          legend: {
+            position: 'bottom'
+        },
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+</script>
+</body>
+
+</html>

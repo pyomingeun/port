@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header homeHeader">
+        <div class="logoNavbar">
+            <a href="javaScript:Void(0);" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo-b" />
+            </a>
+            <a href="javaScript:Void(0);" class="logo-a">
+                <img src="../images/logo/logo-w.png" alt=".." class="logo-w" />
+            </a>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="onboardingMenu" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../images/structure/user-icon.svg" alt=".." class="icon28round" />
+        <img src="../images/structure/menu-icon.svg" alt=".." class="icon16" />
+      </button>
+            <ul class="dropdown-menu" aria-labelledby="onboardingMenu">
+                <li><a class="dropdown-item" href="#">Sign Up</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">Log In</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Manager/ Staff</a></li>
+                <li>
+                    <hr class="dropdown-divider my-1">
+                </li>
+                <li><a class="dropdown-item" href="#">Help</a></li>
+                <li><a class="dropdown-item" href="#">Policies</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="home-sec1">
+        <div style="position: relative;">
+            <div class="overlay "></div>
+            <div class=" homebannerslider ">
+                <div class="banner-slide ">
+                    <img src="../images/structure/home-slide-img1.png " class="bannerImage " alt=" ">
+                </div>
+                <div class="banner-slide ">
+                    <img src="../images/product/event-detail-banner-img.png " class="bannerImage " alt=" ">
+                </div>
+                <div class="banner-slide ">
+                    <img src="../images/product/events-banner-img.png " class="bannerImage " alt=" ">
+                </div>
+                <div class="banner-slide ">
+                    <img src="../images/product/hotelimg1.png " class="bannerImage " alt=" ">
+                </div>
+                <div class="banner-slide ">
+                    <img src="../images/structure/home-slide-img1.png " class="bannerImage " alt=" ">
+                </div>
+                <div class="banner-slide ">
+                    <img src="../images/product/hotelimg1.png " class="bannerImage " alt=" ">
+                </div>
+            </div>
+            <div class="home-banner-cont">
+                <h1 class="h1 mb-3">Discover & Book the best hotel</h1>
+                <p class="p1 mb-0">Choose from 1000+ best hotels across the world.</p>
+            </div>
+        </div>
+        <div class="container bannerSearchContainer">
+            <div class="row">
+                <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
+                    <div class="bannerSearchBox bannerSearchBox-nw d-flex align-items-center">
+                        <div class="bannerSearchCol">
+                            <img src="../images/structure/location.svg" alt="" class="searchFielsIcns" />
+                            <div class="bannerSearchCol-rgt-text">
+                                <p class="p3 mb-0">Location</p>
+                                <input type="text" class="form-control" placeholder="Location" value="Hwaseong">
+                            </div>
+                        </div>
+                        <div class="bannerSearchCol">
+                            <img src="../images/structure/calendar-green.svg" alt="" class="searchFielsIcns" />
+                            <div class="checkinoutBox bannerSearchCol-rgt-text">
+                                <input type="text" class="form-control checjincheckout" autocomplete="off" placeholder="Check-In / Check-Out">
+                                <div class="d-flex bnrcheckincheoutbox-nw">
+                                    <div class="chkIn">
+                                        <p class="p3 mb-0">Check-In</p>
+                                        <div class="customeDateBox">22 <span class="dtSpan">Sep,2022</span></div>
+                                    </div>
+                                    <div class="chkOut">
+                                        <p class="p3 mb-0">Check-Out</p>
+                                        <div class="customeDateBox">22 <span class="dtSpan">Sep,2022</span></div>
+                                    </div>
+                                    <input type="text" class="form-control checjincheckout" id="floatingInput" autocomplete="off" placeholder="Check-In / Check-Out">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bannerSearchCol">
+                            <img src="../images/structure/user-green.svg" alt="" class="searchFielsIcns" />
+                            <div class="form-floating bannerSearchCol-rgt-text">
+                                <p class="p3 mb-0">Guests</p>
+                                <button class="form-select guestdropdownBtn" id="guestdd"> <span class="guestNo">2</span> <span class="guestTxt">Adults</span> <span class="guestNo">1</span> <span class="guestTxt">Child</span> </button>
+                                <ul class="dropdown-menu guestdropdown">
+                                    <li class="">
+                                        <div class="">
+                                            <div class="quantity-row d-flex align-items-center mb-3">
+                                                <p class="p2 mb-0">Adult</p>
+                                                <div class="quantity-box d-flex align-items-center ml-auto">
+                                                    <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                    <input type="text" value="1" />
+                                                    <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                </div>
+                                            </div>
+                                            <div class="quantity-row d-flex align-items-center mb-3">
+                                                <p class="p2 mb-0">Child</p>
+                                                <div class="quantity-box d-flex align-items-center ml-auto">
+                                                    <span class="minus d-flex align-items-center justify-content-center"><img src="../images/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                    <input type="text" value="1" />
+                                                    <span class="plus d-flex align-items-center justify-content-center"><img src="../images/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <p class="p3 mb-1">Child 1 Age</p>
+                                                    <div class="guestAgeDropdown">
+                                                        <button id="child1" data-bs-toggle="dropdown" class="form-select guestAgeBtn">Select</button>
+                                                        <ul class="dropdown-menu dropdown-menu-start guestAgeDropdownMenu">
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id1" name="guest" value="1" />
+                                                                <label for="id1">01</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id2" name="guest" value="2" />
+                                                                <label for="id2">02</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id3" name="guest" value="3" />
+                                                                <label for="id3">03</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id4" name="guest" value="4" />
+                                                                <label for="id4">04</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id5" name="guest" value="5" />
+                                                                <label for="id5">05</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id6" name="guest" value="6" />
+                                                                <label for="id6">06</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id7" name="guest" value="7" />
+                                                                <label for="id7">07</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id8" name="guest" value="8" />
+                                                                <label for="id8">03</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id9" name="guest" value="9" />
+                                                                <label for="id9">09</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id10" name="guest" value="10" />
+                                                                <label for="id10">10</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id11" name="guest" value="11" />
+                                                                <label for="id11">11</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id12" name="guest" value="12" />
+                                                                <label for="id12">12</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <p class="p3 mb-1">Child 2 Age</p>
+                                                    <div class="guestAgeDropdown">
+                                                        <button id="child2" data-bs-toggle="dropdown" class="form-select guestAgeBtn">Select</button>
+                                                        <ul class="dropdown-menu dropdown-menu-start guestAgeDropdownMenu">
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id11" name="guest1" value="1" />
+                                                                <label for="id11">01</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id22" name="guest1" value="2" />
+                                                                <label for="id22">02</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id33" name="guest1" value="3" />
+                                                                <label for="id33">03</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id44" name="guest1" value="4" />
+                                                                <label for="id44">04</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id55" name="guest1" value="5" />
+                                                                <label for="id55">05</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id66" name="guest1" value="6" />
+                                                                <label for="id66">06</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id77" name="guest1" value="7" />
+                                                                <label for="id77">07</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id88" name="guest1" value="8" />
+                                                                <label for="id88">08</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id99" name="guest1" value="9" />
+                                                                <label for="id99">09</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id100" name="guest1" value="100" />
+                                                                <label for="id100">10</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id111" name="guest1" value="111" />
+                                                                <label for="id111">11</label>
+                                                            </li>
+                                                            <li class="radiobox-image">
+                                                                <input type="radio" id="id222" name="guest1" value="222" />
+                                                                <label for="id222">12</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-4">
+                                                    <button class="btn w-100">Apply</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bannerSearchBtnBox SearchClForMob">
+                                <button class="btn"> <img src="../images/structure/search-w.svg"> </button>
+                            </div>
+                        </div>
+                        <div class="bannerSearchBtnBox SearchClForDesk">
+                            <button class="btn"> <img src="../images/structure/search-w.svg"> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home-sec2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-ld-9 col-md-9 col-sm-9 col-12">
+                    <div class="headingRw">
+                        <a href="#">
+                            <h1 class="h1 heading1 d-flex align-items-center"><img src="../images/structure/hd-icon1.svg" alt="" class="hd-icon"> Editor’s Pick</h1>
+                        </a>
+                        <p class="p1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-3 col-sm-3 col-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
+                    <div class="editorPickslider sliderArrow">
+                        <div class="editorPickslides">
+                            <div class="productListCard">
+                                <div class="productListImg-block">
+                                    <div class="overlay"></div>
+                                    <img src="../images/product/img6.png" alt="" class="productListImg">
+                                    <div class="onlist-rat-review d-flex align">
+                                        <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> 4.2</span>
+                                        <span class="p2 mb-0">120 Reviews</span>
+                                    </div>
+                                    <div class="favoritlsstbock">
+                                        <img src="../images/structure/heart-outline.svg" alt="" class="heart-outline">
+                                        <img src="../images/structure/heart-fill.svg" alt="" class="heart-fill">
+                                    </div>
+                                </div>
+                                <div class="productListDetail">
+                                    <h6 class="h6 mb-2">₩200 <small class="pelTm">/per night</small></h6>
+                                    <h5 class="mb-2">Radisson Blu Hotels & Resorts</h5>
+                                    <p class="p2 mb-3">12, Ring Rd, Scheme No 171, Indor...</p>
+                                    <div class="productLstFtr d-flex">
+                                        <span class="chips chips-gray h-24">Air Conditioning</span>
+                                        <span class="chips chips-gray h-24">Wifi</span>
+                                        <span class="chips chips-gray h-24">+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editorPickslides">
+                            <div class="productListCard">
+                                <div class="productListImg-block">
+                                    <div class="overlay"></div>
+                                    <img src="../images/product/img2.png" alt="" class="productListImg">
+                                    <div class="onlist-rat-review d-flex align">
+                                        <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> 4.2</span>
+                                        <span class="p2 mb-0">120 Reviews</span>
+                                    </div>
+                                    <div class="favoritlsstbock">
+                                        <img src="../images/structure/heart-outline.svg" alt="" class="heart-outline">
+                                        <img src="../images/structure/heart-fill.svg" alt="" class="heart-fill">
+                                    </div>
+                                </div>
+                                <div class="productListDetail">
+                                    <h6 class="h6 mb-2">₩200 <small class="pelTm">/per night</small></h6>
+                                    <h5 class="mb-2">Radisson Blu Hotels & Resorts</h5>
+                                    <p class="p2 mb-3">12, Ring Rd, Scheme No 171, Indor...</p>
+                                    <div class="productLstFtr d-flex">
+                                        <span class="chips chips-gray h-24">Air Conditioning</span>
+                                        <span class="chips chips-gray h-24">Wifi</span>
+                                        <span class="chips chips-gray h-24">+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editorPickslides">
+                            <div class="productListCard">
+                                <div class="productListImg-block">
+                                    <div class="overlay"></div>
+                                    <img src="../images/product/img3.png" alt="" class="productListImg">
+                                    <div class="onlist-rat-review d-flex align">
+                                        <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> 4.2</span>
+                                        <span class="p2 mb-0">120 Reviews</span>
+                                    </div>
+                                    <div class="favoritlsstbock">
+                                        <img src="../images/structure/heart-outline.svg" alt="" class="heart-outline">
+                                        <img src="../images/structure/heart-fill.svg" alt="" class="heart-fill">
+                                    </div>
+                                </div>
+                                <div class="productListDetail">
+                                    <h6 class="h6 mb-2">₩200 <small class="pelTm">/per night</small></h6>
+                                    <h5 class="mb-2">Radisson Blu Hotels & Resorts</h5>
+                                    <p class="p2 mb-3">12, Ring Rd, Scheme No 171, Indor...</p>
+                                    <div class="productLstFtr d-flex">
+                                        <span class="chips chips-gray h-24">Air Conditioning</span>
+                                        <span class="chips chips-gray h-24">Wifi</span>
+                                        <span class="chips chips-gray h-24">+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editorPickslides">
+                            <div class="productListCard">
+                                <div class="productListImg-block">
+                                    <div class="overlay"></div>
+                                    <img src="../images/product/img4.png" alt="" class="productListImg">
+                                    <div class="onlist-rat-review d-flex align">
+                                        <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> 4.2</span>
+                                        <span class="p2 mb-0">120 Reviews</span>
+                                    </div>
+                                    <div class="favoritlsstbock">
+                                        <img src="../images/structure/heart-outline.svg" alt="" class="heart-outline">
+                                        <img src="../images/structure/heart-fill.svg" alt="" class="heart-fill">
+                                    </div>
+                                </div>
+                                <div class="productListDetail">
+                                    <h6 class="h6 mb-2">₩200 <small class="pelTm">/per night</small></h6>
+                                    <h5 class="mb-2">Radisson Blu Hotels & Resorts</h5>
+                                    <p class="p2 mb-3">12, Ring Rd, Scheme No 171, Indor...</p>
+                                    <div class="productLstFtr d-flex">
+                                        <span class="chips chips-gray h-24">Air Conditioning</span>
+                                        <span class="chips chips-gray h-24">Wifi</span>
+                                        <span class="chips chips-gray h-24">+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home-sec3">
+        <div class="container">
+            <div class="text-center headingRw">
+                <h1 class="h1 heading1"><img src="../images/structure/hd-icon2.svg" alt="" class="hd-icon"> Explore <br> Top Rated Hotels</h1>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <a href="#">
+                        <div class="ratedHotelBox">
+                            <div class="ratedHotelImageBox">
+                                <img src="../images/product/img7.png" class="ratedHotelImage" alt="">
+                            </div>
+                            <div class="ratedHotelDeatilBox">
+                                <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                                <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img8.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img9.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img10.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img11.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img12.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img13.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
+                    <div class="ratedHotelBox">
+                        <div class="ratedHotelImageBox">
+                            <img src="../images/product/img14.png" class="ratedHotelImage" alt="">
+                        </div>
+                        <div class="ratedHotelDeatilBox">
+                            <h6 class="h6">Radisson Blu Hotels & Resorts</h6>
+                            <p class="p3 d-flex align-items-center"><i class="fa fa-star" aria-hidden="true"></i> <span class="rate-span">4</span> | <span class="review-span">120 Reviews</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home-sec4">
+        <img src="../images/structure/leave-bg-img.png" alt="" class="leave-bg-img-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-ld-9 col-md-9 col-sm-9 col-12">
+                    <div class="headingRw">
+                        <h1 class="h1 heading1 mb-3">Explore <br> Hotel Events </h1>
+                        <p class="p1 mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-ld-3 col-md-3 col-sm-3 col-12"></div>
+            </div>
+            <div class="hotelEventSlider sliderArrow">
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event1.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event2.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event3.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event4.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event2.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event3.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+                <diV class="hotelEventSlides">
+                    <a href="#">
+                        <div class="hotelEventBox">
+                            <img src="../images/product/htl-event4.png" alt="" class="hotelEventImage">
+                            <div class="hotelEventTxt">
+                                <p class="p1 mb-0">Radisson Blu Hotels and Resorts</p>
+                            </div>
+                        </div>
+                    </a>
+                </diV>
+            </div>
+        </div>
+        <img src="../images/structure/leave-bg-img1.png" alt="" class="leave-bg-img-left">
+    </section>
+    <section class="home-sec5">
+        <div class="container">
+            <div class="register-now-boxhome-sec5 text-center">
+                <div class="row">
+                    <div class="col-xl-8 col-ld-8 col-md-12 col-sm-12 col-12 mx-auto">
+                        <h1 class="h1">Don’t miss the 50% discount if you register today</h1>
+                        <p class="p1">Let’s spend your some money and remove your stress by going around there.</p>
+                        <button class="btn bg-blue">Register Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home-sec6">
+        <div class="container">
+            <div class="headingRw text-center">
+                <h1 class="h1 heading1 mb-3">Explore Magazine </h1>
+                <p class="p1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
+                    <div class="exploreMagazineSlider sliderArrow">
+                        <div class="exploreMagazineSlides">
+                            <a href="#">
+                                <div class="exploreMagazineBox">
+                                    <div class="exploreMagazineImageBox">
+                                        <img src="../images/product/exploreMagazine1.png" alt="" class="exploreMagazineImage">
+                                    </div>
+                                    <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                    <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="exploreMagazineSlides">
+                            <a href="#">
+                                <div class="exploreMagazineBox">
+                                    <div class="exploreMagazineImageBox">
+                                        <img src="../images/product/exploreMagazine2.png" alt="" class="exploreMagazineImage">
+                                    </div>
+                                    <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                    <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="exploreMagazineSlides">
+                            <a href="#">
+                                <div class="exploreMagazineBox">
+                                    <div class="exploreMagazineImageBox">
+                                        <img src="../images/product/exploreMagazine3.png" alt="" class="exploreMagazineImage">
+                                    </div>
+                                    <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                    <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="exploreMagazineSlides">
+                            <div class="exploreMagazineBox">
+                                <div class="exploreMagazineImageBox">
+                                    <img src="../images/product/exploreMagazine1.png" alt="" class="exploreMagazineImage">
+                                </div>
+                                <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                            </div>
+                        </div>
+                        <div class="exploreMagazineSlides">
+                            <div class="exploreMagazineBox">
+                                <div class="exploreMagazineImageBox">
+                                    <img src="../images/product/exploreMagazine2.png" alt="" class="exploreMagazineImage">
+                                </div>
+                                <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                            </div>
+                        </div>
+                        <div class="exploreMagazineSlides">
+                            <div class="exploreMagazineBox">
+                                <div class="exploreMagazineImageBox">
+                                    <img src="../images/product/exploreMagazine3.png" alt="" class="exploreMagazineImage">
+                                </div>
+                                <h5 class="h5">Lorem Ipsum is simply dummy</h5>
+                                <p class="p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text ever...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribeNewsletter-section">
+        <div class="container">
+            <div class="subscribeNewsletterBox">
+                <h2 class="Subscribe Our Newsletter">Subscribe <br> Our Newsletter</h2>
+                <div class="subscribeNewsletterForm">
+                    <input type="text" placeholder="Enter Email">
+                    <button class="btn h-36">Subscribe</button>
+                </div>
+                <img src="../images/structure/subscribe-bg-img.png" class="subscribe-bg-img">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footerRow1">
+                <div class="row">
+                    <div class="col-xl-4 col-ld-4 col-md-4 col-sm-12 col-12 footerLogobox">
+                        <a href="index.html">
+                            <img src="../images/logo/logo.png" alt="" class="footerLogo">
+                        </a>
+                        <p class="p2 mb-0 mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Company</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">What is the Travel@G</a></li>
+                            <li class="mb-2 footermenu-li"><a href="about-us.html" class="footermenu-a">About Us</a></li>
+                            <li class="mb-2 footermenu-li"><a href="#" class="footermenu-a">Partner Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-ld-3 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Contact</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="faq.html" class="footermenu-a">FAQ</a></li>
+                            <li class="mb-2 footermenu-li"><a href="help.html" class="footermenu-a">Help/Inquiry</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-ld-2 col-md-4 col-sm-12 col-12 footermenu">
+                        <h6 class="h6 mb-3">Policy</h6>
+                        <ul class="footermenu-ul">
+                            <li class="mb-2 footermenu-li"><a href="privacy-policy.html" class="footermenu-a">Privacy Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="cookie-policy.html" class="footermenu-a">Cookie Policy</a></li>
+                            <li class="mb-2 footermenu-li"><a href="terms-of-use.html" class="footermenu-a">Terms of Use</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footerRow2">
+                <div class="row">
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12">
+                        <p class="p2 mb-0">©copyright 2022 HankookVillas.com. All rights reserved.</p>
+                    </div>
+                    <div class="col-xl-6 col-ld-6 col-md-3 col-sm-6 col-12 d-flex align-items-center justify-content-end footer-socialIcons">
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/facebook.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/twitter.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/instagram.svg" alt=""></a>
+                        <a href="#" class="socialIcons-a"><img class="socialIcons" src="../images/structure/youtube.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Login modeal -->
+    <div class="modal fade loginDialog" tabindex="-1" aria-labelledby="loginDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Log In</h3>
+                        <p class="p2">Log in by entering your account details.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="david_williamson@gmail.com">
+                            <label for="floatingInput">Email<span class="required-star">*</span></label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <label for="password">Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <button type="button" class="btn w-100">Log In</button>
+                        </div>
+                        <p class="forgotPass-link text-center"><a href="#" data-bs-toggle="modal" data-bs-target=".forgotPassDialog" data-bs-dismiss="modal">Forgot Password?</a></p>
+                        <div class="or d-flex align-items-center justify-content-center"><span>Or</span></div>
+                        <div class="lgn-wt-btns d-flex">
+                            <button class="btn outline-gray w-50"><img src="../images/structure/talk.svg" alt="talk" class=""> Kakao</button>
+                            <button class="btn outline-gray w-50"><img src="../images/structure/n.svg" alt="N" class=""> Naver</button>
+                        </div>
+                        <p class="p2 haveAccout text-center mt-4">Don’t have an account? <a href="#">Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot password -->
+    <div class="modal fade forgotPassDialog" tabindex="-1" aria-labelledby="forgotPassDialogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Forgot Password</h3>
+                        <p class="p2">Enter your email address and we will send you a link to reset your password</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="david_williamson@gmail.com">
+                            <label for="floatingInput">Email<span class="required-star">*</span></label>
+                        </div>
+                        <div class="form-floating d-flex align-items-center">
+                            <a href="update-password.html" type="button" class="btn">Send</a>
+                            <p class="p2 haveAccout text-center mt-0 mb-0 ml-auto">Back to <a href="#" data-bs-toggle="modal" data-bs-target=".loginDialog" data-bs-dismiss="modal">Log In</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Change password Modal -->
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="row password-instruction">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2 checked-ins">
+                                    <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                </p>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <p class="p2 mb-2">
+                                    <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot password -->
+    <div class="cookiesPrivacyPlolicyModal" >
+        <div class="cookiesBox">
+            <div class="cookiesModalBody">
+                <h5 class="h5 mb-4" style="font-size: 18px;">This site is using cookies </h5>
+                <p class="p1">We use cookies to optimize the user experience and target the content on this website. By clicking ACCEPT you accept the use of cookies from us and from third parties on the website.</p>
+                <p class="p1 mb-4">Select SETTINGS to choose which cookies you wish to accept.</p>
+    
+                <div class="d-flex">
+                    <button class="btn outline-blue h-36 minimumAcceptBtn" style="margin-right: 15px;">Minimum Accept</button>
+                    <button class="btn h-36 acceptAllBtn">Accept All</button>
+                    <div class="ml-auto">
+                        <button class="btn h-36 outline-blue showSettings">Show Settings</button>
+                        <button class="btn h-36 outline-blue hideSettings">Hide Settings</button>
+                    </div>
+                </div>
+
+                <div class="settingTableBox">
+                    <div class="d-flex">
+                        <ul class="nav nav-pills flex-column" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#mandatory" type="button" role="tab">Mandatory</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#optional" type="button" role="tab">Optional</button>
+                          </ul>
+                          <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="mandatory" role="tabpanel">
+                                <table class="table mb-0">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Company</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Expires</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASP.NET_ SessionId</td>
+                                        <td>Denmark.dk</td>
+                                        <td>Functionality</td>
+                                        <td>At end of session</td>
+                                      </tr>
+                                      <tr>
+                                        <td>CookieCategory1, cookiesAccepted</td>
+                                        <td>Denmark.dk</td>
+                                        <td>Functionality</td>
+                                        <td>2 years</td>
+                                      </tr>
+                                      <tr>
+                                        <td>vuid</td>
+                                        <td>Denmark.dk</td>
+                                        <td>Functionality</td>
+                                        <td>2 years</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <div class="tab-pane fade" id="optional" role="tabpanel">
+                                <table class="table mb-0">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Company</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Expires</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASP.NET_ SessionId</td>
+                                        <td>Denmark.dk</td>
+                                        <td>Functionality</td>
+                                        <td>At end of session</td>
+                                      </tr>
+                                      <tr>
+                                        <td>CookieCategory1, cookiesAccepted</td>
+                                        <td>Denmark.dk</td>
+                                        <td>Functionality</td>
+                                        <td>2 years</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js "></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="../js/designer.js "></script>
+    <script src="../js/designer-dropdown.js "></script>
+<script>
+    // Cookies box js
+$('.showSettings').click(function() {
+    $(".hideSettings").show();
+    $(".settingTableBox").show();
+    $(".showSettings").hide();
+});
+$('.hideSettings').click(function() {
+    $(".hideSettings").hide();
+    $(".settingTableBox").hide();
+    $(".showSettings").show();
+});
+$('.minimumAcceptBtn').click(function() {
+    $(".cookiesPrivacyPlolicyModal").hide();
+});
+$('.acceptAllBtn').click(function() {
+    $(".cookiesPrivacyPlolicyModal").hide();
+});
+
+</script>
+
+    <script>
+        $(function() {
+            $('.checjincheckout').daterangepicker({
+                locale: {
+                    format: 'DD MMM,YYYY'
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

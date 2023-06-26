@@ -1,0 +1,101 @@
+.rangeslider {
+    .pmd-range-slider .noUi-background,
+    .pmd-range-slider.noUi-background {
+        box-shadow: none;
+        background: #dedede;
+    }
+    .pmd-range-slider.noUi-target {
+        box-shadow: none;
+        border: none;
+        height: 4px;
+        margin: 0px 0 6px;
+    }
+    .noUi-base,
+    .noUi-handle {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .noUi-base {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+    .noUi-target,
+    .noUi-target * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -ms-touch-action: none;
+        touch-action: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .noUi-origin {
+        border-radius: 2px;
+    }
+    .noUi-connect {
+        background: #015AC3;
+        box-shadow: inset 0 0 3px rgb(51 51 51 / 45%);
+    }
+    .noUi-origin {
+        position: absolute;
+        right: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+    .noUi-background {
+        background: #FAFAFA;
+        box-shadow: inset 0 1px 1px #f0f0f0;
+    }
+    .noUi-handle {
+        position: relative;
+        z-index: 1;
+    }
+    .noUi-handle {
+        border: none;
+        box-shadow: none;
+        border-radius: 50%;
+        background: 0 0;
+        width: 14px;
+        height: 14px;
+        left: -7px;
+        top: -6px;
+        cursor: pointer;
+        background: #015AC3;
+    }
+    .noUi-handle:before {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #4285f4;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+    }
+    .noUi-tooltip {
+        display: none;
+    }
+    .range-value {
+        font-size: 12px;
+        color: $gray71;
+        margin-top: 10px;
+        &.pricevalueright {
+            text-align: right;
+        }
+    }
+    .noUi-handle.noUi-handle-lower {
+        left: 0;
+    }
+    .noUi-handle.noUi-handle-upper {
+        left: -14px;
+    }
+}
+
+.rangesliderDropdown .dropdown-menu {
+    padding: 15px 0;
+}

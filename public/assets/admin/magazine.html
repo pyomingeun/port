@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="setting-notification-hotel-manager.html" class="setting-icon">
+                <img src="../images/structure/setting-icon.svg" alt=".." class="icon24" />
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="dashboard.html">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link"> <img src="../images/structure/dashboard.svg" alt="" class="sidebarIcon" /> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-management-step1.html" class="nav-link"> <img src="../images/structure/hotel-management.svg" alt="" class="sidebarIcon" /> Hotel Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-staff.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> Hotel Staff</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> Post Management</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="magazine.html">
+                                    Magazine
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="events.html">
+                                    Events
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="coupon-codes.html" class="nav-link"> <img src="../images/structure/coupon-codes.svg" alt="" class="sidebarIcon" /> Coupon Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payouts.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> Payouts</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> System Settings</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="features.html">Features</a></li>
+                            <li><a class="dropdown-item" href="amenities.html">Amenities</a></li>
+                            <li><a class="dropdown-item" href="commission.html">Commission</a></li>
+                            <li><a class="dropdown-item" href="#"> Reward Point Actual Rate</a></li>
+                            <li><a class="dropdown-item" href="#">Editor’s Pick</a></li>
+                            <li><a class="dropdown-item" href="#">Images </a></li>
+                            <li><a class="dropdown-item" href="#">Advance Booking Restriction</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right admin-post-manage-sec1 admin-pages-sec">
+            <div class="container-fluid">
+                <form>
+                    <div class="">
+                        <div class="grayBox-w">
+                            <div class="row">
+                                <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12">
+                                    <div class="hotemmanageFormInrcnt">
+                                        <h5 class="hd5 h5">Magazine</h5>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInput" placeholder="Title">
+                                                    <label for="floatingInput">Title</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="form-floating editorField">
+                                                    <textarea id="editor" placeholder="Description"></textarea>
+                                                </div>
+                                            </div>                              
+                                        </div>
+                                        <div class="mt-3">
+                                            <h6 class="hd6 h6">Thumbnail image</h6>
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="hotelInfoRow d-flex align-items-center">
+                                                        <div class="uploadhotelimageBox">
+                                                            <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                            <input type="file" class="uploadinput">
+                                                            <!-- <img src="../images/structure/photo.png" alt="" class="uploadhotelimage"> -->
+                                                            <img src="../images/product/hotelLogo.png" alt="" class="uploadhotelimage">
+                                                        </div>
+                                                        <div class="hotelInfoDes">
+                                                            <p class="p2 mb-2">Upload image</p>
+                                                            <p class="p4 mb-0">Upload image here in JPG/PNG format</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <h6 class="hd6 h6">Other Images</h6>
+                                            <div class="uploadImageRow d-flex align-items-center">
+                                                <input type="file" class="uploadinput">
+                                                <img src="../images/structure/upload-icon.svg" alt="" class="uploadIcon">
+                                                <div class="uploadImageDes">
+                                                    <p class="p2 mb-2">Upload Images</p>
+                                                    <p class="p4 mb-0">Upload images here in JPG/PNG format</p>
+                                                </div>
+                                            </div>
+                                            <div class="hotelImgaesPreviewRow d-flex flex-wrap mt-4">
+                                                <div class="hotelImgaesPreviewCol">
+                                                    <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                    <i class="fa fa-star favStar favStar-fill" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"></i>
+                                                    <img src="../images/product/img1.png" alt="" class="hotelPreviewImgae">
+                                                </div>
+                                                <div class="hotelImgaesPreviewCol">
+                                                    <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                    <i class="fa fa-star-o favStar favStar-outline" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"></i>
+                                                    <img src="../images/product/img2.png" alt="" class="hotelPreviewImgae">
+                                                </div>
+                                                <div class="hotelImgaesPreviewCol">
+                                                    <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                    <i class="fa fa-star-o favStar favStar-outline" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"></i>
+                                                    <img src="../images/product/img3.png" alt="" class="hotelPreviewImgae">
+                                                </div>
+                                                <div class="hotelImgaesPreviewCol">
+                                                    <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                    <i class="fa fa-star-o favStar favStar-outline" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"></i>
+                                                    <img src="../images/product/img4.png" alt="" class="hotelPreviewImgae">
+                                                </div>
+                                                <div class="hotelImgaesPreviewCol">
+                                                    <img src="../images/structure/delete-circle-red.svg" alt="" class="deteteImageIcon">
+                                                    <i class="fa fa-star-o favStar favStar-outline" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"></i>
+                                                    <img src="../images/product/img5.png" alt="" class="hotelPreviewImgae">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="res-sub-btn-rw d-flex justify-content-end">
+                        <a href="coupon-codes-hotel-manager.html" class="btn bg-gray1">Cancel</a>
+                        <a class="btn" data-bs-toggle="modal" data-bs-target=".thankyouDialog">Send</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-heads">
+                        <h3 class="h3">Change Password</h3>
+                        <p class="p2">Set your new password with enter your old password.</p>
+                    </div>
+                    <form action="post">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                            <label for="newPassword">New Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                            <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                        </div>
+                        <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js "></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+    <script src="../js/designer.js"></script>
+    <script src="../js/designer-dropdown.js"></script>
+</body>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+</html>

@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../scss/style.css" />
+
+    <title>Hankook</title>
+</head>
+
+<body>
+    <header class="header header-after-login gray-header">
+        <div class="logoNavbar">
+            <a href="index.html" class="logo-a">
+                <img src="../images/logo/Logo.png" alt=".." class="logo" />
+            </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+            <a href="setting-notification-hotel-manager.html" class="setting-icon">
+                <img src="../images/structure/setting-icon.svg" alt=".." class="icon24" />
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="afterLoginMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/product/user-img1.png" alt=".." class="icon36round" />
+            <span>Jacob</span>
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
+                    <li>
+                        <a class="dropdown-item" href="dashboard-hotel-manager.html">
+                            <img src="../images/structure/dashboard-icon.svg" alt=".." class="icon24" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
+                            <img src="../images/structure/lock-icon.svg" alt=".." class="icon24" />
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            <img src="../images/structure/logout-icon.svg" alt=".." class="icon24" />
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper-gray">
+        <button class="openSidebar-btn"></button>
+        <div class="left-sidebar-main">
+            <button class="closeSidebar-btn">×</button>
+            <div class="sidebar-menu">
+                <ul class="sidebar-menu-ul">
+                    <li class="nav-item">
+                        <a href="dashboard-hotel-manager.html" class="nav-link"> <img src="../images/structure/dashboard.svg" alt="" class="sidebarIcon" /> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hotel-management.html" class="nav-link"> <img src="../images/structure/hotel-management.svg" alt="" class="sidebarIcon" /> Hotel Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-bookings-hotel-manager.html" class="nav-link"> <img src="../images/structure/my-bookings.svg" alt="" class="sidebarIcon" /> Booking Management</a>
+                    </li>
+                    <li class="nav-item dropdown sidebarDropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../images/structure/room-management.svg" alt="" class="sidebarIcon" /> Room Management</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="room-management-hotel-manager.html">
+                                    Rooms
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="room-calendar.html">
+                                    Room Calendar
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat-hotel-manager.html" class="nav-link"> <img src="../images/structure/chat.svg" alt="" class="sidebarIcon" /> Chat
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="coupon-codes-hotel-manager.html" class="nav-link"> <img src="../images/structure/coupon-codes.svg" alt="" class="sidebarIcon" /> Coupon Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notification-hotell-manager.html" class="nav-link"> <img src="../images/structure/notifications.svg" alt="" class="sidebarIcon" /> Notifications
+                            <div class="number-counter">12</div>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="earnings-payouts-hotel-manager.html" class="nav-link"> <img src="../images/structure/earnings-payouts.svg" alt="" class="sidebarIcon" /> Earnings & Payouts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-box-right earnings-payouts-deatil-sec">
+            <div class="container-fluid">
+
+                <div class="whitebox-w mb-5 bookings-htl-dtl-box-w">
+                    <div class="white-card-header d-flex align-items-center flex-wrap">
+                        <div>
+                            <p class="p1 mb-0 d-flex align-items-center dtl-wt-back-btn">
+                                <a href="earnings-payouts-hotel-manager.html" class="back-a"><img src="../images/structure/back-arrow.svg" alt="Back" class="backbtn cursor-p"></a> Payout Details </p>
+                        </div>
+                        <div class="ml-auto">
+                            <span class="chips chips-green">Paid</span>
+                        </div>
+                    </div>
+                    <div class="white-card-body">
+                        <div class="payoutDetailRow d-flex flex-wrap">
+                            <div class="payoutDetailCol">
+                                <p class="p3 mb-2">Sales Period</p>
+                                <h6 class="h6 mb-0">2022/08/22 - 2022/08/28</h6>
+                            </div>
+                            <div class="payoutDetailCol">
+                                <p class="p3 mb-2">Payout Date</p>
+                                <h6 class="h6 mb-0">2022/08/29</h6>
+                            </div>
+                            <div class="payoutDetailCol">
+                                <p class="p3 mb-2">Total Bookings</p>
+                                <h6 class="h6 mb-0">40</h6>
+                            </div>
+                            <div class="payoutDetailCol">
+                                <p class="p3 mb-2">Sales Amount</p>
+                                <h6 class="h6 mb-0">₩ 5500</h6>
+                            </div>
+                            <div class="payoutDetailCol">
+                                <p class="p3 mb-2">Payout Amount</p>
+                                <h6 class="h6 mb-0 text-green">₩ 5000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="h5 hd5">Payout History</h5>
+                <div class="tableboxpadding0">
+                    <!-- <div class="row">
+                        <div class="col-xl-8 col-lg-8 col-md-9 col-sm-12 col-12 mx-auto empty-list-box text-center">
+                            <img src="../images/structure/wallet-green.svg" alt="" class="empty-list-image">
+                            <h6>Currently Running</h6>
+                            <p class="p3">Currently this is running payout cycle. Payout history will shown after completion of cycle.</p>
+                        </div>
+                    </div> -->
+                    <div class="table-responsive table-view tableciew1">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <p>
+                                            Booking No.
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Room
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Guest Name
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Sales Date
+                                            <span class="sort-arrow-table">
+                                            <i class="fa fa-caret-up arrow-up"></i>
+                                            <i class="fa fa-caret-up arrow-down"></i>
+                                        </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Cancel Date
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Check In- <br>Check Out
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Sales Amount
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Coupon
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Discount
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Gateway<br>Type
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Commission Rate
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Commission
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Payout Amount
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p>
+                                            Booking Status
+                                            <span class="sort-arrow-table">
+                                                <i class="fa fa-caret-up arrow-up"></i>
+                                                <i class="fa fa-caret-up arrow-down"></i>
+                                            </span>
+                                        </p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>101</td>
+                                    <td>David William</td>
+                                    <td>2022/08/28</td>
+                                    <td>-</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 5500</td>
+                                    <td>₩ 100</td>
+                                    <td>-</td>
+                                    <td>Credit Card</td>
+                                    <td>10</td>
+                                    <td>₩ 500</td>
+                                    <td>₩ 5000</td>
+                                    <td><span class="chips chips-green">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>102</td>
+                                    <td>Ellias Andrew</td>
+                                    <td>2022/08/28</td>
+                                    <td>-</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 7000</td>
+                                    <td>₩ 150</td>
+                                    <td>₩ 100</td>
+                                    <td>Credit Card</td>
+                                    <td>9</td>
+                                    <td>₩ 700</td>
+                                    <td>₩ 6500</td>
+                                    <td><span class="chips chips-green">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>103</td>
+                                    <td>Johnson Smith</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 4500</td>
+                                    <td>₩ 110</td>
+                                    <td>₩ 160</td>
+                                    <td>Direct Bank Transfer</td>
+                                    <td>10</td>
+                                    <td>₩ 450</td>
+                                    <td>₩ 4000</td>
+                                    <td><span class="chips chips-red">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>104</td>
+                                    <td>Steve Johnson</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 4800</td>
+                                    <td>₩ 200</td>
+                                    <td>-</td>
+                                    <td>Credit Card</td>
+                                    <td>5</td>
+                                    <td>₩ 450</td>
+                                    <td>₩ 4200</td>
+                                    <td><span class="chips chips-green">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>105</td>
+                                    <td>Allex Carry</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 5500</td>
+                                    <td>₩ 120</td>
+                                    <td>-</td>
+                                    <td>Direct Bank Transfer</td>
+                                    <td>12</td>
+                                    <td>₩ 550</td>
+                                    <td>₩ 4200</td>
+                                    <td><span class="chips chips-red">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>104</td>
+                                    <td>Steve Johnson</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 4800</td>
+                                    <td>₩ 200</td>
+                                    <td>-</td>
+                                    <td>Direct Bank Transfer</td>
+                                    <td>5</td>
+                                    <td>₩ 450</td>
+                                    <td>₩ 5000</td>
+                                    <td><span class="chips chips-green">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>77987979879</td>
+                                    <td>105</td>
+                                    <td>Allex Carry</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/28</td>
+                                    <td>2022/08/26- 2022/08/28</td>
+                                    <td>₩ 5500</td>
+                                    <td>₩ 120</td>
+                                    <td>-</td>
+                                    <td>Direct Bank Transfer</td>
+                                    <td>12</td>
+                                    <td>₩ 550</td>
+                                    <td>₩ 5000</td>
+                                    <td><span class="chips chips-green">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="JavaScript:Void(0);" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="JavaScript:Void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">4</a></li>
+                    <li class="page-item"><a class="page-link" href="JavaScript:Void(0);">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="JavaScript:Void(0);">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Change password modal -->
+        <div class="modal fade changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-heads">
+                            <h3 class="h3">Change Password</h3>
+                            <p class="p2">Set your new password with enter your old password.</p>
+                        </div>
+                        <form action="post">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                                <label for="oldPassword">Old Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                                <label for="newPassword">New Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                                <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                                <img src="../images/structure/eye-icon-hide.svg" alt="eye-icon" class="eye-icon" />
+                            </div>
+                            <div class="row password-instruction">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2 checked-ins">
+                                        <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One lowercase character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2 checked-ins">
+                                        <img src="../images/structure/check-circle-green.svg" alt="Check" class="passInsIcon" />One special character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />One uppercase character
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />8 characters minimum
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <p class="p2 mb-2">
+                                        <img src="../images/structure/check-circle-gray.svg" alt="Check" class="passInsIcon" />Passwords match
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn w-100 mt-3 mb-2">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="../js/designer.js"></script>
+        <script src="../js/designer-dropdown.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['bar']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Year', 'Sales', 'Expenses', 'Profit'],
+                    ['2014', 1000, 400, 200],
+                    ['2015', 1170, 460, 250],
+                    ['2016', 660, 1120, 300],
+                    ['2017', 1030, 540, 350]
+                ]);
+
+                var options = {
+                    chart: {
+                        title: 'Company Performance',
+                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                    }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+
+</body>
+
+</html>
