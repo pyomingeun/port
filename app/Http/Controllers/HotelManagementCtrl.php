@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\HotelInfo;
-use App\Models\HotleImages;
+use App\Models\HotelImages;
 use App\Models\HotelFacilities;
 use App\Models\HotelFeatures;
 use App\Models\Facilities;
@@ -23,13 +23,13 @@ use DB;
 
 class HotelManagementCtrl extends Controller
 {
-    
+
     public function index()
     {
         //
     }
 
-    // upload hotel logo    
+    // upload hotel logo
     public function uploadHotelLogo(Request $request)
     {
         $whereHotel =array('hotel_id'=>$request->id);
@@ -44,7 +44,7 @@ class HotelManagementCtrl extends Controller
             $image_base64 = base64_decode($image_parts[1]);
             $logo = uniqid() . '.png';
             $file = $folderPath . $logo;
-    
+
             file_put_contents($file, $image_base64);
             $hotel->templogo = $logo;
             $hotel->save();
@@ -56,7 +56,7 @@ class HotelManagementCtrl extends Controller
         }
     }
 
-    // delete hotel logo     
+    // delete hotel logo
     public function delHotelLogo(Request $request)
     {
         $whereHotel =array('hotel_id'=>$request->id);
@@ -71,36 +71,36 @@ class HotelManagementCtrl extends Controller
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }                          
+        }
     }
 
-    // delete hotel other image      
+    // delete hotel other image
     public function delHotelOtherImg(Request $request)
     {
         $whereImage =array('hotel_id'=>$request->h,'id'=>$request->i);
-        $image = HotleImages::where($whereImage)->first();
+        $image = HotelImages::where($whereImage)->first();
         if($image)
         {
             if($image->is_featured ==0)
             {
                 $image->status = 'deleted';
                 $image->save();
-                // $image->delete();  
+                // $image->delete();
                 return response()->json(['status'=>1,'message'=>'Deleted successfully']);
             }
             else
             {
-                return response()->json(['status'=>0,'message'=>'Featured image can not delete.']);    
+                return response()->json(['status'=>0,'message'=>'Featured image can not delete.']);
             }
 
         }
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }                          
+        }
     }
 
-    // mark as featured iamge        
+    // mark as featured iamge
     public function markFeaturedHotelImg(Request $request)
     {
         $access = auth()->user()->access;
@@ -110,21 +110,21 @@ class HotelManagementCtrl extends Controller
             $hotel = HotelInfo::where($whereHotel)->first();
 
             $whereImage =array('hotel_id'=>$request->h,'id'=>$request->i);
-            $image = HotleImages::where($whereImage)->first();
+            $image = HotelImages::where($whereImage)->first();
             if($image)
             {
-                // update multiple rows make all existing images non-featured 
-                $res = HotleImages::where("hotel_id", $request->h)->update(["is_featured" => "0"]);
+                // update multiple rows make all existing images non-featured
+                $res = HotelImages::where("hotel_id", $request->h)->update(["is_featured" => "0"]);
                 // make featured
                 $image->is_featured = 1;
                 $image->save();
-                
+
                 if($hotel)
                 {
                     $hotel->featured_img = $image->image;
                     $hotel->save();
                 }
-                // $image->delete();  
+                // $image->delete();
                 return response()->json(['status'=>1,'message'=>'Marked as featured successfully']);
             }
             else
@@ -135,11 +135,11 @@ class HotelManagementCtrl extends Controller
         else
         {
             return response()->json(['status'=>0,'message'=>'Not authorized.']);
-        }                          
+        }
     }
 
 
-    // upload hotel other iamges        
+    // upload hotel other iamges
     public function uploadHotelOtherImages(Request $request)
     {
         $access = auth()->user()->access;
@@ -147,8 +147,8 @@ class HotelManagementCtrl extends Controller
         {
             $whereHotel =array('hotel_id'=>$request->h);
             $hotel = HotelInfo::where($whereHotel)->first();
-            $HotleImages = HotleImages::where('hotel_id','=',$request->h)->where('status','!=','deleted')->count(); //->select(['count(id)'])->first();
-            // dd($HotleImages);
+            $HotelImages = HotelImages::where('hotel_id','=',$request->h)->where('status','!=','deleted')->count(); //->select(['count(id)'])->first();
+            // dd($HotelImages);
             if($hotel)
             {
                 // $folderPath = public_path('hotel_images/');
@@ -159,12 +159,12 @@ class HotelManagementCtrl extends Controller
                 $image_base64 = base64_decode($image_parts[1]);
                 $img = uniqid() .uniqid() . '.png';
                 $file = $folderPath . $img;
-        
+
                 file_put_contents($file, $image_base64);
                 // $hotel->tempimg = $img;
                 // $hotel->save();
-                $is_featured = ($HotleImages == 0 )?1:0;
-                $newImg= HotleImages::create([
+                $is_featured = ($HotelImages == 0 )?1:0;
+                $newImg= HotelImages::create([
                     'hotel_id' => $request->h,
                     'image' => $img,
                     'is_featured' => $is_featured,
@@ -173,14 +173,14 @@ class HotelManagementCtrl extends Controller
                     'updated_by' => auth()->user()->id,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
-                ]); 
+                ]);
 
                 $delurl = asset("/assets/images/").'/structure/delete-circle-red.svg';
                 $imgurl = asset("/hotel_images/".$newImg->image);
                 $is_featured_cls = ($is_featured==1)?"fa fa-star favStar favStar-fill":"fa fa-star-o favStar favStar-outline";
-                $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"; 
+                $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>";
                 $imgRes ='<div class="hotelImgaesPreviewCol" id="hotel_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delHotelOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="hotelPreviewImgae"></div>';
-               
+
                 if($is_featured==1)
                 {
                     $hotel->featured_img = $img;
@@ -199,9 +199,9 @@ class HotelManagementCtrl extends Controller
             return response()->json(['status'=>0,'message'=>'Not authorized.']);
         }
     }
-    // close 
+    // close
 
-    // delete Nearest-Tourist-Attractions     
+    // delete Nearest-Tourist-Attractions
     public function delNTA(Request $request)
     {
         $whereNta =array('hotel_id'=>$request->h,'id'=>$request->i);
@@ -210,13 +210,13 @@ class HotelManagementCtrl extends Controller
         {
             $nta->status = 'deleted';
             $nta->save();
-            // $image->delete();  
+            // $image->delete();
             return response()->json(['status'=>1,'message'=>'Deleted successfully']);
         }
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }   
+        }
     }
 
     // delete extra service
@@ -237,10 +237,10 @@ class HotelManagementCtrl extends Controller
                     'status' => 1,
                     'message' => 'Deleted successfully.'
                 ];
-                return response()->json($data); 
+                return response()->json($data);
             }
             else
-            {   
+            {
                 $data = [
                     'status' => 0,
                     'message'=>'You are not authorized.'
@@ -276,10 +276,10 @@ class HotelManagementCtrl extends Controller
                     'status' => 1,
                     'message' => 'Deleted successfully.'
                 ];
-                return response()->json($data); 
+                return response()->json($data);
             }
             else
-            {   
+            {
                 $data = [
                     'status' => 0,
                     'message'=>'You are not authorized.'
@@ -315,10 +315,10 @@ class HotelManagementCtrl extends Controller
                     'status' => 1,
                     'message' => 'Deleted successfully.'
                 ];
-                return response()->json($data); 
+                return response()->json($data);
             }
             else
-            {   
+            {
                 $data = [
                     'status' => 0,
                     'message'=>'You are not authorized.'

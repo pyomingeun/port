@@ -522,6 +522,10 @@
                             }, 3000);
                         }
                     $modal.modal('hide');
+                    },
+                    error: function(xhr, status, error) {
+                    // Handle the error here
+                    console.log("AJAX Error:", error);
                     }
                 });
             }
