@@ -19,12 +19,12 @@
                                 <form action="javaScript:Void(0);" method="post" id="room_fnf_form">
                                 <div class="roomsManageform-Content">
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
-                                            <h5 class="hd5 h5">{{ __('home.room') }} {{ __('home.Amenities') }}</h5>
+                                        <div class="hotelmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <h5 class="hd5 h5">{{ __('home.Room') }} {{ __('home.Amenities') }}</h5>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3 multiselectDropdownField">
-                                                        <input id="selectFeatures" type="text" name="select_features"  value=""  data-bs-toggle="dropdown" class="form-select" placeholder="Select Amenities" autocomplete="off" readonly />
+                                                        <input id="selectFeatures" type="text" name="select_features"  value=""  data-bs-toggle="dropdown" class="form-select" placeholder="{{ __('home.SelectAmenity') }}" autocomplete="off" readonly />
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($hotel_features as $feature)
                                                             <li class="radiobox-image">
@@ -48,8 +48,8 @@
                                         </div>
                                     </div>
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
-                                            <h5 class="hd5 h5">{{ __('home.room') }} {{ __('home.Facilities') }}</h5>
+                                        <div class="hotelmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <h5 class="hd5 h5">{{ __('home.Room') }} {{ __('home.Facility') }}</h5>
                                             <div class="row">
                                                 <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3">
@@ -73,7 +73,7 @@
                                                 </div> -->
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3 multiselectDropdownField">
-                                                        <input id="selectFacilities" type="text" name="select_facilities" value="" data-bs-toggle="dropdown" class="form-select gray-color-inputvalue" placeholder="Select Facilities" autocomplete="off" readonly />
+                                                        <input id="selectFacilities" type="text" name="select_facilities" value="" data-bs-toggle="dropdown" class="form-select gray-color-inputvalue" placeholder="{{ __('home.SelectFacility') }}" autocomplete="off" readonly />
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($hotel_facilities as $facilitie)
                                                             <li class="radiobox-image">

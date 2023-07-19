@@ -46,7 +46,7 @@
                           <p class="error-inp" id="thumbimage_err_msg"></p>
                         </div>
                       </div>
-                      <div class="hotemmanageFormInrcnt">
+                      <div class="hotelmanageFormInrcnt">
                         <h5 class="hd5 h5">Post Title</h5>
                         <div class="row">
                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -60,7 +60,7 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          <div class="hotemmanageFormInrcnt">
+                          <div class="hotelmanageFormInrcnt">
                             <h5 class="hd5 h5">Post Type</h5>
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -84,7 +84,7 @@
                           </div>
                         </div>
                         <div class="col-sm-6">
-                          <div class="hotemmanageFormInrcnt">
+                          <div class="hotelmanageFormInrcnt">
                             <h5 class="hd5 h5">Post Status</h5>
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -113,7 +113,7 @@
                         </div>
                       </div>
 
-                      <div class="hotemmanageFormInrcnt">
+                      <div class="hotelmanageFormInrcnt">
                         <h5 class="hd5 h5">Upload Other Images</h5>
                         <div class="uploadImageRow d-flex align-items-center">
                           <input type="file" class="uploadinput otherimageinput" id="otherimageinput">
@@ -126,7 +126,7 @@
                         <span id="otherImagePreview"></span>
                       </div>
 
-											<div class="hotemmanageFormInrcnt" id="PostContentBox">
+											<div class="hotelmanageFormInrcnt" id="PostContentBox">
                         <h5 class="hd5 h5">Post Content</h5>
                         <div class="row">
                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -358,7 +358,7 @@
     let images = '';
     otherimages.forEach(element => {
       images += `
-      <div class="hotelImgaesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
+      <div class="hotelImagesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
         <div class="hotelImgaesPreviewCol">
           <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon"
             onclick="removeImage(${i})"
@@ -370,7 +370,7 @@
             title="<div class='tooltipbox centerArrowTT'>
             <small class='mediumfont'>${element.isFeatured === 1 ? 'Unmark as Featured': 'Mark as Featured'}</small> </div>">
           </i>
-          <img src="${element.image}" alt="" class="hotelPreviewImgae">
+          <img src="${element.image}" alt="" class="hotelPreviewImage">
         </div>
       </div>`;
       i++;
@@ -386,7 +386,7 @@
     let images = '';
     otherimages.forEach(element => {
       images += `
-      <div class="hotelImgaesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
+      <div class="hotelImagesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
         <div class="hotelImgaesPreviewCol">
           <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon"
             onclick="removeImage(${i})"
@@ -398,7 +398,7 @@
             title="<div class='tooltipbox centerArrowTT'>
             <small class='mediumfont'>${element.isFeatured === 1 ? 'Unmark as Featured': 'Mark as Featured'}</small> </div>">
           </i>
-          <img src="${element.image}" alt="" class="hotelPreviewImgae">
+          <img src="${element.image}" alt="" class="hotelPreviewImage">
         </div>
       </div>`;
       i++;
@@ -416,7 +416,7 @@
         image = "{{asset('/')}}/"+element.image;
       }
       images += `
-      <div class="hotelImgaesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
+      <div class="hotelImagesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection${i}">
         <div class="hotelImgaesPreviewCol">
           <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon"
             onclick="removeImage(${i})"
@@ -428,7 +428,7 @@
             title="<div class='tooltipbox centerArrowTT'>
             <small class='mediumfont'>${element.isFeatured === 1 ? 'Unmark as Featured': 'Mark as Featured'}</small> </div>">
           </i>
-          <img src="${image}" alt="" class="hotelPreviewImgae">
+          <img src="${image}" alt="" class="hotelPreviewImage">
         </div>
       </div>`;
       i++;

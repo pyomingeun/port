@@ -1,95 +1,71 @@
 @extends('frontend.layout.head')
 @section('body-content')
-  @include('frontend.layout.header')
+@include('frontend.layout.header')
+<script>
+    const currentPage = 'home'; // Set the current page to 'home'
+</script>
+
   <section class="home-sec1">
     <div style="position: relative;">
       <div class="overlay "></div>
       <div class=" homebannerslider ">
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img2.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
-        <div class="banner-slide ">
-          <img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image">
-        </div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
+        <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
       </div>
       <div class="home-banner-cont">
-        <h1 class="h1 mb-3">{{ __('home.DiscoverBook') }}</h1>
-        <p class="p1 mb-0">{{ __('home.DiscoverBookTextBelow') }}</p>
+        <h1 class="h1 mb-3">{{ __('home.AtTraveledge') }}</h1>
+        <p class="p1 mb-0">{{ __('home.UnforgetableExperience') }}</p>
       </div>
     </div>
     <div class="container bannerSearchContainer">
       <div class="row">
-        <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12 mx-auto">
-          <x-search-hotel-form />
+        <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12 mx-auto">          
+          @php
+            $hotelName = null;                        
+          @endphp
+          <x-search-hotel-form :hotelName="$hotelName" />
         </div>
       </div>
     </div>
   </section>
   <section class="home-sec2">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-9 col-ld-9 col-md-9 col-sm-9 col-12">
-          <div class="headingRw">
-            <h1 class="h1 heading1 d-flex align-items-center">
-              <img src="{{ asset('/assets/images/structure/hd-icon1.svg') }}" alt="Editor Pick" class="hd-icon">
-              {{ __('home.editorPick') }}
-            </h1>
-            <p class="p1"> {{ __('home.EditorPicktextBelow') }}</p>
-          </div>
-        </div>
-        <div class="col-xl-3 col-ld-3 col-md-3 col-sm-3 col-12"></div>
+      <div class="headingRw">
+        <h1 class="h1 heading1 d-flex align-items-center"> {{ __('home.EditorPick') }} </h1>
       </div>
       <div class="row">
-        <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
+        <div class="col-xl-11 col-ld-11 col-md-11 col-sm-12 col-12">
           <div class="editorPickslider sliderArrow">
             @foreach ($editorsHotels as $hotel)
             <div class="editorPickslides">
               <div class="productListCard">
                 <div class="productListImg-block">
-                  <div class="overlay"></div>
-                  <a href="{{route('hotel-detail', $hotel->slug)}}" class="d-block">
-                  <img src="{{asset('/hotel_images/')}}/{{ $hotel->featured_img }}"
-                    onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
-                    alt="" class="productListImg">
-                  <div class="onlist-rat-review d-flex align">
-                    <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ $hotel->rating; }}</span>
-                    <span class="p2 mb-0">{{ $hotel->reviews; }} {{ __('home.Reviews') }}</span>
-                  </div>
-                  </a>
-                  <a href="#2" class="favoritlsstbock">
-                    @if(isset($hotel->is_marked_hotel) && $hotel->is_marked_hotel > 0)
-                    <img src="{{ asset('/assets/images/structure/heart-fill.svg') }}" alt="" class="heart-fill">
-                    @else
-                    <img src="{{ asset('/assets/images/structure/heart-outline.svg') }}" alt=""
-                      class="heart-outline">
-                    @endif
+                  <a href="{{route('hotel-detail', ['slug' => $hotel->slug, 'identifier' => 'recommended']) }}" class="d-block">
+                    <img src="{{asset('/hotel_images/')}}/{{ $hotel->featured_img }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';" alt="" class="productListImg">
+                    <div class="onlist-rat-review d-flex align">
+                      @if ($hotel->reviews > 0)
+                        <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ $hotel->rating }}</span>
+                        <span class="p2 mb-0">{{ $hotel->reviews }} {{ __('home.Reviews') }}</span>
+                      @else
+                        <span class="p2 mb-0">아직 등록된 리뷰가 없습니다.</span>
+                      @endif
+                    </div>
                   </a>
                 </div>
-                <a href="{{route('hotel-detail', $hotel->slug)}}" class="productListDetail">
-                  <h6 class="h6 mb-2">₩ {{($hotel->room_price !='')?$hotel->room_price:0;}} <small class="pelTm">/{{ __('home.perNight') }}</small></h6>
-                  <h5 class="mb-2">{{ $hotel->hotel_name; }}</h5>
-                  <p class="p2 mb-3">{{ $hotel->street }}{{ ($hotel->city !='' && $hotel->street !='')?', ':''; }} {{ $hotel->city }}{{ ($hotel->city !='' && $hotel->subrub !='')?', ':''; }}{{ $hotel->subrub  }} {{ ($hotel->pincode !='')?' - ':''; }}{{ $hotel->pincode }}</p>
+                <a href="{{route('hotel-detail', ['slug' => $hotel->slug, 'identifier' => 'recommended']) }}" class="productListDetail">
+                  <h6 class="h6 mb-2">₩ {{($hotel->room_price !='')?number_format($hotel->room_price):0;}} <small class="pelTm">/{{ __('home.perNight') }}</small></h6>
+                  <h5 class="mb-2">{{ $hotel->hotel_name; }}</h5> 
+                  <p class="p2 mb-3">{{ $hotel->sido }}, {{ $hotel->sigungu }} </p>
                  <div class="productLstFtr flex-wrap d-flex">
-                    @if(isset($hotel->facilities[0]->facilities_name) )
-                    <span class="chips chips-gray h-24">{{ $hotel->facilities[0]->facilities_name }}</span>
-                    @endif
                     @if(isset($hotel->features[0]->features_name) )
                     <span class="chips chips-gray h-24">{{ $hotel->features[0]->features_name }}</span>
                     @endif
-                    @if((count($hotel->facilities)+ count($hotel->features)) > 2)
-                    <span class="chips chips-gray h-24">+ {{ (count($hotel->facilities) + count($hotel->features)) - 2   }} </span>
+                    @if((count($hotel->features)) > 3)
+                    <span class="chips chips-gray h-24">+ {{ (count($hotel->facilities) + count($hotel->features)) - 3   }} </span>
                     @endif
                 </div>
               </a>
@@ -103,28 +79,27 @@
   </section>
   <section class="home-sec3">
     <div class="container">
-      <div class="text-center headingRw">
-        <h1 class="h1 heading1">
-          <img src="{{ asset('/assets/images/structure/hd-icon2.svg') }}" alt="" class="hd-icon">
-            {{ __('home.Explore') }} <br> {{ __('home.TopRatedHotels') }}
-          </h1>
+      <div class="headingRw">
+        <h1 class="h1 heading1"> {{ __('home.TopRatedHotels') }}</h1>
       </div>
       <div class="row">
         @foreach($topRatedHotels as $topRatedHotel)
         <div class="col-xl-3 col-ld-3 col-md-4 col-sm-4 col-12">
-          <a href="{{route('hotel-detail', $topRatedHotel->slug)}}">
+          <a href="{{route('hotel-detail', ['slug' => $topRatedHotel->slug, 'identifier' => 'top-rated']) }}">
             <div class="ratedHotelBox">
               <div class="ratedHotelImageBox">
-                <img src="{{ asset('/hotel_images/'.$topRatedHotel->featured_img); }}"
-                onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
-                class="ratedHotelImage" alt=""/>
+                <img src="{{ asset('/hotel_images/'.$topRatedHotel->featured_img); }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';" class="ratedHotelImage" alt=""/>
               </div>
               <div class="ratedHotelDeatilBox">
                 <h6 class="h6">{{ $topRatedHotel->hotel_name }}</h6>
                 <p class="p3 d-flex align-items-center">
-                  <i class="fa fa-star" aria-hidden="true"></i> 
-                  <span class="rate-span"> {{ $topRatedHotel->rating }} </span> |
-                  <span class="review-span"> {{ $topRatedHotel->reviews }} {{ __('home.Reviews') }} </span>
+                  @if ($topRatedHotel->reviews > 0)
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <span class="rate-span"> {{ $topRatedHotel->rating }} </span> |
+                    <span class="review-span"> {{ $topRatedHotel->reviews }} {{ __('home.Reviews') }} </span>
+                  @else
+                    <span class="p2 mb-0">아직 등록된 리뷰가 없습니다.</span>
+                  @endif
                 </p>
               </div>
             </div>

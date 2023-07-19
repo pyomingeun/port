@@ -3,18 +3,14 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\Rooms;
 
 class SearchHotelForm extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $hotelName;
+    
+    public function __construct($hotelName)
     {
-        //
+        $this->hotelName = $hotelName;
     }
 
     /**

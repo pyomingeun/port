@@ -17,7 +17,7 @@
                                 <form id="admin_hotel_setup" method="post">
                                     <div class="hotelManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">Hotel Info</h5>
                                                 <div class="row">
                                                    

@@ -63,12 +63,10 @@ class HotelController extends Controller
     // step 1 submit basic info 
     public function hm_basic_info_submit(Request $request)
     {
-        // dd($request->all());
-        // dd($request->hotel_description);
         $access = auth()->user()->access;
         if(auth()->user()->access == 'admin' || (auth()->user()->id == $request->h))
         {
-            $credentials =array('hotel_id'=>$request->h);//  ,$request->field=>$request->val
+            $credentials =array('hotel_id'=>$request->h);
             $hotel = HotelInfo::where($credentials)->first();
 
             if($hotel)
@@ -79,7 +77,7 @@ class HotelController extends Controller
                 if($hotel->basic_info_status == 0)
                 {
                     $hotel->basic_info_status = 1;
-                    $hotel->completed_percentage = $hotel->completed_percentage +15;
+                    $hotel->completed_percentage = $hotel->completed_percentage +20;
                 }
                 
                 $hotel->save();
@@ -93,7 +91,6 @@ class HotelController extends Controller
                     $user->save();
                 }
 
-                // $nextpageurl = route('forgot_password_success');
                 if($request->savetype == 'save_n_exit' && $access =='admin')
                     $nextpageurl = route('hotel_managment');
                 else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
@@ -158,10 +155,9 @@ class HotelController extends Controller
             {
                 $hotel->latitude = ($request->latitude !='')?$request->latitude:'';
                 $hotel->longitude = ($request->longitude !='')?$request->longitude:'';
-                $hotel->street = $request->street;
-                $hotel->city = $request->city;
-                $hotel->pincode = $request->province;
-                $hotel->subrub = $request->suburb;
+                $hotel->formatted_address = $request->address;
+                $hotel->sido = $request->sido;
+                $hotel->sigungu = $request->sigungu;
                 $hotel->areacode = $request->areacode;
                 $hotel->phone = $request->phone;
                 if($hotel->address_status == 0)
@@ -213,7 +209,6 @@ class HotelController extends Controller
                     }                                            
                 }
                 
-                // $nextpageurl = route('forgot_password_success');
                 if($request->savetype == 'save_n_exit' && $access =='admin')
                     $nextpageurl = route('hotel_managment');
                 else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
@@ -252,7 +247,6 @@ class HotelController extends Controller
     // step 3
     public function hm_policies($id)
     {
-        // $hotel = HotelInfo::with('hasCancellationCharges')->where('hotel_id', '=', $id)->first();
         $hotel = HotelInfo::where('hotel_id', '=', $id)->first();
         if($hotel)
         {
@@ -265,11 +259,10 @@ class HotelController extends Controller
     // setp 3 submit
     public function hm_policies_submit(Request $request)
     {
-        // dd($request->all());
         $access = auth()->user()->access;
         if(auth()->user()->access == 'admin' || (auth()->user()->id == $request->h))
         {
-            $credentials =array('hotel_id'=>$request->h);//  ,$request->field=>$request->val
+            $credentials =array('hotel_id'=>$request->h);
             $hotel = HotelInfo::where($credentials)->first();
 
             if($hotel)
@@ -294,11 +287,10 @@ class HotelController extends Controller
                 if($hotel->hpolicies_status == 0)
                 {
                     $hotel->hpolicies_status = 1;
-                    $hotel->completed_percentage = $hotel->completed_percentage +15;
+                    $hotel->completed_percentage = $hotel->completed_percentage +20;
                 }
                 $hotel->save();
 
-                // $nextpageurl = route('forgot_password_success');
                 if($request->savetype == 'save_n_exit' && $access =='admin')
                     $nextpageurl = route('hotel_managment');
                 else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
@@ -369,15 +361,9 @@ class HotelController extends Controller
             $facilities_ids = explode(",",$selected_facilities_ids[0]->ids);
         }  
                       
-        // print_r($features_ids);    
-        // print_r($selected_features_ids); die; 
-       
         $hotel = HotelInfo::where('hotel_id', '=', $id)->first();
         if($hotel)
         {
-            //  return view('hotel.hm_features_n_facilities',compact('hotel'),compact('facilities'),compact('features'));
-            //  return view('hotel.hm_features_n_facilities',compact('hotel','features','facilities','hotel_features','hotel_facilities'));
-
              return view('hotel.hm_features_n_facilities')->with(['hotel'=>$hotel,'features'=>$features,'facilities'=>$facilities,'hotel_features'=>$hotel_features,'hotel_facilities'=>$hotel_facilities,'features_ids'=>$features_ids,'facilities_ids'=>$facilities_ids]);
 
         }
@@ -781,11 +767,10 @@ class HotelController extends Controller
     // next of step 5
     public function hm_otherInfo_submit(Request $request)
     {
-        // dd($request->all());
         $access = auth()->user()->access;
         if(auth()->user()->access == 'admin' || (auth()->user()->id == $request->h))
         {
-            $credentials =array('hotel_id'=>$request->h);//  ,$request->field=>$request->val
+            $credentials =array('hotel_id'=>$request->h);
             $hotel = HotelInfo::where($credentials)->first();
 
             if($hotel)
@@ -930,14 +915,12 @@ class HotelController extends Controller
                 }
                 // close
 
-                // $nextpageurl = route('forgot_password_success');
                 if($request->savetype == 'save_n_exit' && $access =='admin')
                     $nextpageurl = route('hotel_managment');
                 else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
                     $nextpageurl = route('dashboard');
                 else    
-                    $nextpageurl = route('hm_summary', ['id' => $request->h]);
-
+                    $nextpageurl = route('hm_bankinfo', ['id' => $request->h]);
                 if($hotel->other_info_status == 0)
                 {
                     $hotel->other_info_status = 1;
@@ -1006,12 +989,11 @@ class HotelController extends Controller
         $access = auth()->user()->access;
         if(auth()->user()->access == 'admin' || (auth()->user()->id == $request->h))
         {
-            $credentials =array('hotel_id'=>$request->h);//  ,$request->field=>$request->val
+            $credentials =array('hotel_id'=>$request->h);
             $hotel = HotelInfo::where($credentials)->first();
 
             if($hotel)
             {
-                // $nextpageurl = route('forgot_password_success');
                 if($request->savetype == 'save_n_exit' && $access =='admin')
                     $nextpageurl = route('hotel_managment');
                 else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
@@ -1022,7 +1004,6 @@ class HotelController extends Controller
                 if($hotel->summary_status == 0)
                 {
                     $hotel->summary_status = 1;
-                    $hotel->completed_percentage = $hotel->completed_percentage +10;
                     $hotel->save();
                 }    
                 
@@ -1112,11 +1093,18 @@ class HotelController extends Controller
                     $hotel->completed_percentage = $hotel->completed_percentage +15;
                     $hotel->save();
                 }    
+
+                if($request->savetype == 'save_n_exit' && $access =='admin')
+                    $nextpageurl = route('hotel_managment');
+                else if($request->savetype == 'save_n_exit' && $access =='hotel_manager')  
+                    $nextpageurl = route('dashboard');
+                else    
+                    $nextpageurl = route('hm_summary', ['id' => $request->h]);
                 
                 $data = [
                     'status' => 1,
-                    // 'nextpageurl' => $nextpageurl,
-                    'message' => 'Saved successfully.'
+                    'nextpageurl' => $nextpageurl,
+                    'message' => 'saved successfully.'
                 ];
 
                 return response()->json($data);

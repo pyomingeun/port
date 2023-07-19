@@ -150,7 +150,7 @@ class BookinController extends Controller
         $query->where('bookings.booking_status', '!=', 'blocked');
         if(auth()->user()->access !='admin')
         $query->where('bookings.hotel_id', '=', $hotel_id);
-        $query->select(['hotel_info.hotel_name','hotel_info.featured_img','hotel_info.slug','hotel_info.street','hotel_info.city','hotel_info.pincode','hotel_info.subrub','hotel_info.rating','hotel_info.reviews','hotel_info.check_in','hotel_info.check_out','rooms.room_name', 'bookings.*']);
+        $query->select(['hotel_info.hotel_name','hotel_info.featured_img','hotel_info.slug','hotel_info.formatted_address','hotel_info.sido','hotel_info.sigungu', 'hotel_info.rating','hotel_info.reviews','hotel_info.check_in','hotel_info.check_out','rooms.room_name', 'bookings.*']);
         $query->orderBy('bookings.id','desc');
         $bookings = $query->get();
         if(auth()->user()->access =='admin')

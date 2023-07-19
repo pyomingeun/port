@@ -1,10 +1,10 @@
     <img src="{{ asset('/assets/images/structure/loading.gif') }}" id="loading_img">
     <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js "></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link repl="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
@@ -50,7 +50,7 @@
           }
         });
         //_________________________________________________
-        // login 
+        // login
         $(document).on('keyup', '.onpress_enter_login', function(e) {
           if (e.keyCode == 13)
             login_submit();
@@ -75,7 +75,7 @@
         $(document).on('click', '#login_submit', function() {
           $('#login_server_err_msg').text('');
           // var currentUrl = window.location.href;
-          // $("#nexturl").val(currentUrl); 
+          // $("#nexturl").val(currentUrl);
           login_submit();
         });
         function login_submit() {
@@ -107,8 +107,8 @@
             });
           }
         }
-        // login close 
-        // forgot password 
+        // login close
+        // forgot password
         $(document).on('keyup', '#forgot_email', function() {
           field_required('forgot_email', 'forgot_email', "Email is required");
           $('#forgot_server_err_msg').text('');
@@ -146,8 +146,8 @@
             });
           }
         }
-        // close forgot password 
-        // change password 
+        // close forgot password
+        // change password
         $(document).on('keyup', '.change_password_submit_cls', function(e) {
           if (e.keyCode == 13)
             changePasswordSubmit();
@@ -260,14 +260,14 @@
           // field_required('subscribe_email', 'subscribe_email', "Email is required");
           $('#subscribe_server_err_msg').text('');
           $('#subscribe_server_success_msg').text('');
-          
+
           if (field_required('subscribe_email', 'subscribe_email', "Email is required"))
             if (!isEmail($('#subscribe_email').val()))
               setErrorAndErrorBox('subscribe_email', 'Please enter a valid email.');
             else
               unsetErrorAndErrorBox('subscribe_email');
         });
-        
+
         function subsribe_submit() {
           $('#subscribe_server_err_msg').text('');
           $('#subscribe_server_success_msg').text('');
@@ -300,6 +300,6 @@
             });
           }
         }
-        
+
       });
     </script>

@@ -20,7 +20,7 @@
                                 <div class="hotelManageform-Content">
                                     <div class="grayBox-w">
                                         <div class="d-flex align-items-center textWtaddBtn flex-wrap">
-                                            <h5 class="h5">{{ __('home.extraService') }}</h5>
+                                            <h5 class="h5">{{ __('home.ExtraService') }}</h5>
                                             <p class="p2 mb-0 addAttBtn ml-auto cursor-p addServiceBtn addNewes"><img src="{{asset('/assets/images/')}}/structure/add-circle.svg" alt="" class="add-circle"> {{ __('home.addService') }}</p>
                                         </div>
                                         <div class="row mt-4" id="es_list">
@@ -29,22 +29,22 @@
                                                 <div class="extraServicefieldRow d-flex align-items-center">
                                                     <div class="extraServicefield1">
                                                         <div class="form-floating mb-0">
-                                                            <input type="text" class="form-control" id="es_name_db_{{$es->id}}" placeholder="{{ __('home.serviceName') }}" value="{{$es->es_name}}" name="es_name[]">
-                                                            <label for="es_name_db_{{$es->id}}">{{ __('home.serviceName') }}<span class="required-star">*</span></label>
+                                                            <input type="text" class="form-control" id="es_name_db_{{$es->id}}" value="{{$es->es_name}}" name="es_name[]">
+                                                            <label for="es_name_db_{{$es->id}}">{{ __('home.ServiceName') }}<span class="required-star">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="extraServicefield2">
                                                         <div class="inpWtTextRt d-flex">
                                                             <div class="form-floating mb-0">
-                                                                <input type="text" class="form-control" id="es_price_db_{{$es->id}}" placeholder="{{ __('home.unitPrice') }}" value="{{$es->es_price}}" name="es_price[]">
-                                                                <label for="es_price_db_{{$es->id}}">{{ __('home.unitPrice') }}<span class="required-star">*</span></label>
+                                                                <input type="text" class="form-control" id="es_price_db_{{$es->id}}" value="{{$es->es_price}}" name="es_price[]">
+                                                                <label for="es_price_db_{{$es->id}}">{{ __('home.UnitPrice') }}<span class="required-star">*</span></label>
                                                             </div>
                                                             <span class="inpTextRt">₩</span>
                                                         </div>
                                                     </div>
                                                     <div class="extraServicefield3">
                                                         <div class="quantity-row d-flex align-items-center">
-                                                            <p class="p2 mb-0">{{ __('home.maxQty') }}<span class="required-star">*</span></p>
+                                                            <p class="p2 mb-0">{{ __('home.MaxQty') }}<span class="required-star">*</span></p>
                                                             <div class="quantity-box d-flex align-items-center ml-auto">
                                                                 <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
                                                                 <input type="text" value="{{$es->es_max_qty}}" class="only_integer rightClickDisabled" name="es_max_qty[]" />
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="grayBox-w">
                                         <div class="d-flex align-items-center textWtaddBtn flex-wrap">
-                                            <h5 class="h5 mb-0">{{ __('home.longStayDiscount') }} <span class="p2">({{ __('home.optional') }})</span></h5>
+                                            <h5 class="h5 mb-0">{{ __('home.LongStayDiscount') }} <span class="p2">({{ __('home.Optional') }})</span></h5>
                                             <p class="p2 mb-0 addAttBtn ml-auto cursor-p addDiscountBtn addNewLSD"><img src="{{asset('/assets/images/')}}/structure/add-circle.svg" alt="" class="add-circle"> {{ __('home.addDiscount') }}</p>
                                         </div>
                                         <div class="mt-4" id="lsd_list">
@@ -69,7 +69,7 @@
                                             <div class="LongStayDiscountRow mb-4 d-flex align-items-center" id="lsdrowdb_{{$lsd->id}}">
                                                 <div class="LongStayDiscountCol1">
                                                     <div class="quantity-row d-flex align-items-center">
-                                                        <p class="p2 mb-0">{{ __('home.minDaysStays') }} <br><small class="p3">({{ __('home.Nights') }})</small></p>
+                                                        <p class="p2 mb-0">{{ __('home.MinDayStay') }} <br><small class="p3">({{ __('home.Night') }})</small></p>
                                                         <div class="quantity-box d-flex align-items-center ml-auto">
                                                             <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
                                                             <input type="text" value="{{$lsd->lsd_min_days}}" name="lsd_min_days[]" class="only_integer rightClickDisabled"/>
@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="LongStayDiscountCol1">
                                                     <div class="quantity-row d-flex align-items-center">
-                                                        <p class="p2 mb-0">{{ __('home.maxDaysStays') }} <br><small class="p3">({{ __('home.Nights') }} )</small></p>
+                                                        <p class="p2 mb-0">{{ __('home.MaxDayStay') }} <br><small class="p3">({{ __('home.Night') }} )</small></p>
                                                         <div class="quantity-box d-flex align-items-center ml-auto">
                                                             <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
                                                             <input type="text" value="{{$lsd->lsd_max_days}}" name="lsd_max_days[]" class="only_integer rightClickDisabled"/>
@@ -89,9 +89,9 @@
                                                 </div>
                                                 <div class="LongStayDiscountCol2">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control only_integer rightClickDisabled" name="lsd_discount_amount[]" value="{{$lsd->lsd_discount_amount}}" >
+                                                    <input type="text" class="form-control only_integer rightClickDisabled" id="lsd_discount_amount[]" name="lsd_discount_amount[]" value="{{$lsd->lsd_discount_amount}}" >
                                                         <div class="form-floating mb-0 capDropdown">
-                                                            <button data-bs-toggle="dropdown" class="form-select">{{($lsd->lsd_discount_type == 'percentage')?'%':'Flat';}}</button>
+                                                            <button data-bs-toggle="dropdown" class="form-select">{{($lsd->lsd_discount_type == 'percentage')?'%':'정액';}}</button>
                                                             <ul class="dropdown-menu">
                                                                 <li class="radiobox-image">
                                                                     <input type="radio" id="lsd_dicount_optionp{{$lsd->id}}"  name="lsd_discount_type{{$lsd->id}}[]" value="percentage"  class="lsd_select_dtype" {{ ($lsd->lsd_discount_type == 'percentage')?'checked':''; }}  />
@@ -99,7 +99,7 @@
                                                                 </li>
                                                                 <li class="radiobox-image">
                                                                     <input type="radio" id="lsd_dicount_optionf{{$lsd->id}}"  name="lsd_discount_type{{$lsd->id}}[]" value="flat"  class="lsd_select_dtype" {{ ($lsd->lsd_discount_type == 'flat')?'checked':''; }}  />
-                                                                    <label for="lsd_dicount_optionf{{$lsd->id}}">Flat</label>
+                                                                    <label for="lsd_dicount_optionf{{$lsd->id}}">정액</label>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -116,8 +116,7 @@
                                     <div class="grayBox-w">
                                         <div class="d-flex align-items-center textWtaddBtn flex-wrap">
                                             <div>
-                                                <h5 class="h5 mb-1">{{ __('home.peakSAeason') }} <span class="p2">({{ __('home.optional') }})</span></h5>
-                                                <p class="p3 mb-0" style="color: #717972;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                <h5 class="h5 mb-1">{{ __('home.PeakSeason') }} <span class="p2">({{ __('home.Optional') }})</span></h5>
                                             </div>
                                             <p class="p2 mb-0 addAttBtn ml-auto cursor-p addSeasonBtn addNewSeason addNewPS"><img src="{{asset('/assets/images/')}}/structure/add-circle.svg" alt="" class="add-circle"> {{ __('home.addSeason') }}</p>
                                         </div>
@@ -130,22 +129,22 @@
                                             <div class="row PeakSeasonRow" id="peakseasondb_{{$ps->id}}">
                                                 <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="form-floating datepickerField">
-                                                        <input type="text" class="form-control" id="season_name{{$ps->id}}" name="season_name[]" value="{{$ps->season_name}}"  autocomplete="off" placeholder="seasonName">
-                                                        <label for="floatingInput"> {{ __('home.seasonName') }}</label>
+                                                        <input type="text" class="form-control" id="season_name{{$ps->id}}" name="season_name[]" value="{{$ps->season_name}}"  autocomplete="off">
+                                                        <label for="season_name{{$ps->id}}">{{ __('home.SeasonName') }}<span class="required-star">*</span></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="form-floating datepickerField">
                                                         <img src="{{asset('/assets/images/')}}/structure/calendar1.svg" alt="" class="calendarIcon" />
-                                                        <input type="text" class="form-control datepicker"  id="start_date{{$ps->id}}" name="start_date[]" value="{{ date_format($sdate,'Y-m-d') }}" autocomplete="off" placeholder="{{ __('home.startDate') }}">
-                                                        <label for="floatingInput">{{ __('home.startDate') }}</label>
+                                                        <input type="text" class="form-control datepicker"  id="start_date{{$ps->id}}" name="start_date[]" value="{{ date_format($sdate,'Y-m-d') }}" autocomplete="off" >
+                                                        <label for="start_date{{$ps->id}}">{{ __('home.StartDate') }}<span class="required-star">*</span></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="form-floating datepickerField">
                                                         <img src="{{asset('/assets/images/')}}/structure/calendar1.svg" alt="" class="calendarIcon" />
-                                                        <input type="text" class="form-control datepicker" autocomplete="off"  id="end_date{{$ps->id}}" name="end_date[]" value="{{ date_format($edate,'Y-m-d') }}"  placeholder="{{ __('home.endDate') }}">
-                                                        <label for="floatingInput">{{ __('home.endDate') }}</label>
+                                                        <input type="text" class="form-control datepicker" autocomplete="off"  id="end_date{{$ps->id}}" name="end_date[]" value="{{ date_format($edate,'Y-m-d') }}" >
+                                                        <label for="end_date{{$ps->id}}">{{ __('home.EndDate') }}<span class="required-star">*</span></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-2">
@@ -157,20 +156,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="res-sub-btn-rw d-flex">
-                                    <a href="hotel-management-step4.html" class="btn-back btnPrevious">{{ __('home.Back') }}</a>
-                                    <!-- <button class="btn bg-gray1">Cancel</button> -->
-                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.cancel') }}</a>
-                                    <a href="hotel-management-step6.html" class="btn btnNext tab5">{{ __('home.Next') }}</a>
-                                </div>
+
                                 <div class="res-sub-btn-rw d-flex justify-content-end align-items-center pl-2">
                                    <a href="{{route('hm_FeaturesNFacilities',$hotel->hotel_id)}}" class="btn-back btnPrevious">Back</a>
                                     <input type="hidden" value="{{ csrf_token() }}" name="_token" id="tk">
                                     <input type="hidden" value="next" name="savetype" id="savetype">
                                     <input type="hidden" value="{{$hotel->hotel_id}}" name="h" id="h">
-                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.cancel') }}</a>
+                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.Cancel') }}</a>
                                     <button type="button" class="btn outline-blue form_submit" data-btntype="save_n_exit" >{{ __('home.SaveExit') }}</button>
-                                    <button type="button" class="btn btnNext tab3 form_submit" data-btntype="next">{{ __('home.Next') }} & {{ __('home.continue') }}</button>
+                                    <button type="button" class="btn btnNext tab3 form_submit" data-btntype="next">{{ __('home.Next') }} </button>
                                 </div>
                                 </form>
                             </div>
@@ -213,6 +207,10 @@ $(document).ready(function() {
                 }).on('circle-animation-progress', function(event, progress, stepValue) {
                     $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
                 }).stop();
+                         
+                if (percent == 100) {
+                   $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
+                }
             }
         });
     }
@@ -256,7 +254,7 @@ $(document).ready(function() {
         var es =1;
         $(document).on('click','.addNewes',function(){
             // console.log('addNewes');
-            $('#es_list').prepend('<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="esItemBox_'+es+'"><div class="extraServicefieldRow d-flex align-items-center"><div class="extraServicefield1"><div class="form-floating mb-0"><input type="text" class="form-control" id="es_name_'+es+'" placeholder="Service Name" value="" name="es_name[]"><label for="es_name_'+es+'">Service Name<span class="required-star">*</span></label></div></div><div class="extraServicefield2"><div class="inpWtTextRt d-flex"><div class="form-floating mb-0"><input type="text" class="form-control" id="es_price_'+es+'" placeholder="Unit Price" value="" name="es_price[]"><label for="es_price_'+es+'">Unit Price<span class="required-star">*</span></label></div><span class="inpTextRt">₩</span></div></div><div class="extraServicefield3"><div class="quantity-row d-flex align-items-center"><p class="p2 mb-0">Max Qty<span class="required-star">*</span></p><div class="quantity-box d-flex align-items-center ml-auto"><span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span><input type="text" value="1" class="only_integer rightClickDisabled" name="es_max_qty[]" /><span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span></div><img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto delesrow" id="delesrow_'+es+'" data-i="'+es+'"></div></div><input type="hidden" name="esid[]" value="0"></div></div>');  
+            $('#es_list').prepend('<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="esItemBox_'+es+'"><div class="extraServicefieldRow d-flex align-items-center"><div class="extraServicefield1"><div class="form-floating mb-0"><input type="text" class="form-control" id="es_name_'+es+'" value="" name="es_name[]"><label for="es_name_'+es+'">{{ __('home.servicename') }}<span class="required-star">*</span></label></div></div><div class="extraServicefield2"><div class="inpWtTextRt d-flex"><div class="form-floating mb-0"><input type="text" class="form-control" id="es_price_'+es+'" value="" name="es_price[]"><label for="es_price_'+es+'">{{ __('home.unitprice') }}<span class="required-star">*</span></label></div><span class="inpTextRt">₩</span></div></div><div class="extraServicefield3"><div class="quantity-row d-flex align-items-center"><p class="p2 mb-0">{{ __('home.maxqty') }}</p><div class="quantity-box d-flex align-items-center ml-auto"><span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span><input type="text" value="1" class="only_integer rightClickDisabled" name="es_max_qty[]" /><span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span></div><img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto delesrow" id="delesrow_'+es+'" data-i="'+es+'"></div></div><input type="hidden" name="esid[]" value="0"></div></div>');  
             es++;
         });
         // close 
@@ -297,7 +295,7 @@ $(document).ready(function() {
         var lsd =1;
         $(document).on('click','.addNewLSD',function(){
             // console.log('addNewes');
-            $('#lsd_list').prepend('<div class="LongStayDiscountRow mb-4 d-flex align-items-center" id="lsdrow_'+lsd+'"> <div class="LongStayDiscountCol1"> <div class="quantity-row d-flex align-items-center"> <p class="p2 mb-0">Min Days Stays <br><small class="p3">(Nights)</small></p> <div class="quantity-box d-flex align-items-center ml-auto"> <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span> <input type="text" value="1" name="lsd_min_days[]" class="only_integer rightClickDisabled"/> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span> </div> </div> </div> <div class="LongStayDiscountCol1"> <div class="quantity-row d-flex align-items-center"> <p class="p2 mb-0">Max Days Stays <br><small class="p3">(Nights)</small></p> <div class="quantity-box d-flex align-items-center ml-auto"> <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span> <input type="text" value="1" name="lsd_max_days[]" class="only_integer rightClickDisabled"/> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span> </div> </div> </div> <div class="LongStayDiscountCol2"> <div class="input-group"> <input type="text" class="form-control only_integer rightClickDisabled" name="lsd_discount_amount[]" value="" > <div class="form-floating mb-0 capDropdown"> <button data-bs-toggle="dropdown" class="form-select">%</button> <ul class="dropdown-menu"> <li class="radiobox-image"> <input type="radio" id="lsd_dicount_optionnewp'+lsd+'" name="lsd_discount_typenew'+lsd+'[]" value="percentage" class="lsd_select_dtype" checked/> <label for="lsd_dicount_optionnewp'+lsd+'">%</label> </li> <li class="radiobox-image"> <input type="radio" id="lsd_dicount_optionnewf'+lsd+'" name="lsd_discount_typenew'+lsd+'[]" value="flat" class="lsd_select_dtype" /> <label for="lsd_dicount_optionnewf'+lsd+'">Flat</label> </li> </ul> </div> </div> </div> <div class="LongStayDiscountCol3 d-flex justify-content-end"> <img id="dellsdrow_'+lsd+'"src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto dellsdrow" data-i="'+lsd+'"> </div><input type="hidden" name="lsdid[]" value="0"><input type="hidden" name="newrow[]" value="'+lsd+'"> </div>');  
+            $('#lsd_list').prepend('<div class="LongStayDiscountRow mb-4 d-flex align-items-center" id="lsdrow_'+lsd+'"> <div class="LongStayDiscountCol1"> <div class="quantity-row d-flex align-items-center"> <p class="p2 mb-0">{{ __('home.mindaystay') }} <small class="p3">({{ __('home.night') }})</small></p> <div class="quantity-box d-flex align-items-center ml-auto"> <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span> <input type="text" value="1" name="lsd_min_days[]" class="only_integer rightClickDisabled"/> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span> </div> </div> </div> <div class="LongStayDiscountCol1"> <div class="quantity-row d-flex align-items-center"> <p class="p2 mb-0">{{ __('home.maxdaystay') }} <small class="p3">({{ __('home.night') }})</small></p> <div class="quantity-box d-flex align-items-center ml-auto"> <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span> <input type="text" value="1" name="lsd_max_days[]" class="only_integer rightClickDisabled"/> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span> </div> </div> </div> <div class="LongStayDiscountCol2"> <div class="input-group"> <input type="text" class="form-control only_integer rightClickDisabled" name="lsd_discount_amount[]" value="" > <div class="form-floating mb-0 capDropdown"> <button data-bs-toggle="dropdown" class="form-select">%</button> <ul class="dropdown-menu"> <li class="radiobox-image"> <input type="radio" id="lsd_dicount_optionnewp'+lsd+'" name="lsd_discount_typenew'+lsd+'[]" value="percentage" class="lsd_select_dtype" checked/> <label for="lsd_dicount_optionnewp'+lsd+'">%</label> </li> <li class="radiobox-image"> <input type="radio" id="lsd_dicount_optionnewf'+lsd+'" name="lsd_discount_typenew'+lsd+'[]" value="flat" class="lsd_select_dtype" /> <label for="lsd_dicount_optionnewf'+lsd+'">정액</label> </li> </ul> </div> </div> </div> <div class="LongStayDiscountCol3 d-flex justify-content-end"> <img id="dellsdrow_'+lsd+'"src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto dellsdrow" data-i="'+lsd+'"> </div><input type="hidden" name="lsdid[]" value="0"><input type="hidden" name="newrow[]" value="'+lsd+'"> </div>');  
             lsd++;
         });
         // close 
@@ -338,7 +336,7 @@ $(document).ready(function() {
         var ps =1;
         $(document).on('click','.addNewPS',function(){
             console.log('addNewPS');
-            $('#ps_list').prepend('<div class="row PeakSeasonRow"  id="peakseason_'+ps+'"> <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12"> <div class="form-floating datepickerField"> <input type="text" class="form-control" id="season_name'+ps+'" name="season_name[]" value="" autocomplete="off" placeholder="Season Name"> <label for="floatingInput">Season Name</label> </div> </div> <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"> <div class="form-floating datepickerField"> <img src="{{asset("/assets/images/")}}/structure/calendar1.svg" alt="" class="calendarIcon" /> <input type="text" class="form-control datepicker" id="start_date'+ps+'" name="start_date[]" value="" autocomplete="off" placeholder="Start Date"> <label for="floatingInput">Start Date</label> </div> </div> <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"> <div class="form-floating datepickerField"> <img src="{{asset("/assets/images/")}}/structure/calendar1.svg" alt="" class="calendarIcon" /> <input type="text" class="form-control datepicker" autocomplete="off" id="end_date'+ps+'" name="end_date[]" value="" placeholder="End Date"> <label for="floatingInput">End Date</label> </div> </div> <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-2"> <img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p mt-3 d-block m-auto delPsrow" data-i="'+ps+'"> </div><input type="hidden" name="psid[]" value="0"> </div>');  
+            $('#ps_list').prepend('<div class="row PeakSeasonRow"  id="peakseason_'+ps+'"> <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12"> <div class="form-floating datepickerField"> <input type="text" class="form-control" id="season_name'+ps+'" name="season_name[]" value="" autocomplete="off" placeholder="Season Name"> <label for="floatingInput">{{ __('home.seasonname') }}<span class="required-star">*</span></label> </div> </div> <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"> <div class="form-floating datepickerField"> <img src="{{asset("/assets/images/")}}/structure/calendar1.svg" alt="" class="calendarIcon" /> <input type="text" class="form-control datepicker" id="start_date'+ps+'" name="start_date[]" value="" autocomplete="off" placeholder="Start Date"> <label for="floatingInput">{{ __('home.startdate') }}<span class="required-star">*</span></label> </div> </div> <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"> <div class="form-floating datepickerField"> <img src="{{asset("/assets/images/")}}/structure/calendar1.svg" alt="" class="calendarIcon" /> <input type="text" class="form-control datepicker" autocomplete="off" id="end_date'+ps+'" name="end_date[]" value="" placeholder="End Date"> <label for="floatingInput">{{ __('home.enddate') }}<span class="required-star">*</span></label> </div> </div> <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-2"> <img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p mt-3 d-block m-auto delPsrow" data-i="'+ps+'"> </div><input type="hidden" name="psid[]" value="0"> </div>');  
             ps++;
             // $(document).find('.datepicker').datepicker({
             //     format: 'yyyy-mm-dd'
@@ -346,8 +344,17 @@ $(document).ready(function() {
         });
         // close 
         $(document).on('focus',".datepicker", function(){
-            $(this).datepicker({format: 'yyyy-mm-dd'});
-        });
+            var datePicker = $(this);
+            datePicker.datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'ko',
+                autoclose: true,
+            todayHighlight: true
+            }).on('changeDate', function() {
+                datePicker.datepicker('hide');
+            });
+        }); 
+
         // del LSD from db    
         $(document).on('click','.delPsrowdb',function(){
             // delNTA

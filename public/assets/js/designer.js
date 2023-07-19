@@ -60,7 +60,7 @@ $(function() {
 $('.homebannerslider').slick({
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 200,
     fade: true,
     arrows: false,
     autoplay: true,
@@ -238,7 +238,7 @@ function expandTextarea(id) {
 }
 
 expandTextarea('txtarea');
-*/ 
+*/
 
 // $(document).click(function(e) {
 //     if (!$(e.target).hasClass("guestdropdownBtn") &&

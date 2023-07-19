@@ -1,87 +1,120 @@
 @extends('frontend.layout.head')
 @section('body-content')
 @include('hotel.header')
-    <div class="main-wrapper-gray">
-    @if(auth()->user()->access == 'admin')
-             @include('admin.leftbar')        
-         @else
-             @include('hotel.leftbar')
-         @endif
-        <div class="content-box-right setting-notification-sec">
-            <div class="container-fluid">
-                <div class="setting-nottification-row d-flex flex-wrap">
-                    <div class="setting-nottification-left-col">
-                        <ul class="nav nav-pills flex-column" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a href="{{route('notification-setting'); }}" class="nav-link {{ (Request::segment(1) =='notification-setting')?'active':'' }}"><img src="{{asset('/assets/images/')}}/structure/notification-circle.svg" alt="" class="settingicon"> {{ __('home.notifications') }} {{ __('home.Settings') }}</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a href="{{route('hm_bankinfo',$hotel->hotel_id); }}" class="nav-link {{ (Request::segment(1) =='hm_bankinfo')?'active':'' }}"><img src="{{asset('/assets/images/')}}/structure/bank-circle.svg" alt="" class="settingicon">  {{ __('home.bankDetails') }}</a>
-                            </li>
-                        </ul> 
-                        <!-- <div class="informBox">
-                            <p class="p3 mb-0"><img src="{{asset('/assets/images/')}}/structure/info-orange.svg" alt="" class="informicon"> Your listing will not be published unless bank details is provided.</p>
-                        </div> -->
-                    </div>
-                    <div class="setting-nottification-right-col">
-                        <div class="tab-content">
-                            <div class="" >
-                                <div class="set-not-booking-detail-Box">
-                                    <h5 class="h5 md5">{{ __('home.bankDetails') }}</h5>
-                                    <form id="hotel_bankinfo" method="post" action="javaScript:Void(0);">
-                                        <div class="row">
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="form-floating" id="ac_validate">
-                                                    <input type="text" class="form-control  onpress_enter_bnsb only_integer" id="ac" placeholder="{{ __('home.accountNo') }}" name="ac" value="{{ isset($hotel->hasHotelBankAcDetails->account_num)?$hotel->hasHotelBankAcDetails->account_num:''; }}">
-                                                    <label for="ac">{{ __('home.accountNo') }}<span class="required-star">*</span></label>
-                                                    <p class="error-inp" id="ac_err_msg"></p>
-                                                </div> 
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="form-floating" id="cac_validate">
-                                                    <input type="text" class="form-control  onpress_enter_bnsb only_integer" id="cac" placeholder="{{ __('home.confirmAccountNumber') }}" name="cac" value="{{ isset($hotel->hasHotelBankAcDetails->account_num)?$hotel->hasHotelBankAcDetails->account_num:''; }}">
-                                                    <label for="cac"> {{ __('home.confirmAccountNumber') }}<span class="required-star">*</span></label>
-                                                    <p class="error-inp" id="cac_err_msg"></p>
+<!-- include left bar here -->
+<div class="main-wrapper-gray">
+     @if(auth()->user()->access == 'admin')
+         @include('admin.leftbar')        
+     @else
+         @include('hotel.leftbar')
+     @endif
+    <div class="content-box-right hotel-management-sec">
+        @include('hotel.complete_percentage')
+        <div class="container-fluid">
+            <div class="hotel-management-row d-flex flex-wrap">
+                @include('hotel.hotel_manage_stepbar')
+                <div class="hotel-management-right-col">
+                    <div class="tab-content stepsContent">
+                        <div class="">
+                            <form id="hm_bankinfo_form" method="post" action="javaScript:Void(0);">
+                                <div class="hotelManageform-Content">
+                                    <div class="grayBox-w">
+                                        <div class="hotelmanageFormInrcnt">
+                                            <h5 class="hd5 h5">{{ __('home.BankDetails') }} </h5>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating" id="ac_validate">
+                                                        <input type="text" class="form-control  onpress_enter_bnsb only_integer" id="ac" placeholder="{{ __('home.AccountNo') }}" name="ac" value="{{ isset($hotel->hasHotelBankAcDetails->account_num)?$hotel->hasHotelBankAcDetails->account_num:''; }}">
+                                                        <label for="ac">{{ __('home.AccountNo') }}<span class="required-star">*</span></label>
+                                                        <p class="error-inp" id="ac_err_msg"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="form-floating" id="bn_validate">
-                                                    <input type="text" class="form-control onpress_enter_bnsb" id="bn" placeholder=" {{ __('home.bankName') }}" name="bn" value="{{ isset($hotel->hasHotelBankAcDetails->bank_name)?$hotel->hasHotelBankAcDetails->bank_name:''; }}">
-                                                    <label for="bn"> {{ __('home.bankName') }}<span class="required-star">*</span></label>
-                                                    <p class="error-inp" id="bn_err_msg"></p>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating" id="cac_validate">
+                                                        <input type="text" class="form-control  onpress_enter_bnsb only_integer" id="cac" placeholder="{{ __('home.ConfirmAccountNo') }}" name="cac" value="{{ isset($hotel->hasHotelBankAcDetails->account_num)?$hotel->hasHotelBankAcDetails->account_num:''; }}">
+                                                        <label for="cac"> {{ __('home.ConfirmAccountNo') }}<span class="required-star">*</span></label>
+                                                        <p class="error-inp" id="cac_err_msg"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="form-floating" id="achn_validate">
-                                                    <input type="text" class="form-control onpress_enter_bnsb" id="achn" placeholder="{{ __('home.accountHolderName') }}"  name="achn" value="{{ isset($hotel->hasHotelBankAcDetails->ac_holder_name)?$hotel->hasHotelBankAcDetails->ac_holder_name:''; }}">
-                                                    <label for="achn">{{ __('home.accountHolderName') }}<span class="required-star">*</span></label>
-                                                    <p class="error-inp" id="achn_err_msg"></p>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating" id="bn_validate">
+                                                        <input type="text" class="form-control onpress_enter_bnsb" id="bn" placeholder=" {{ __('home.BankName') }}" name="bn" value="{{ isset($hotel->hasHotelBankAcDetails->bank_name)?$hotel->hasHotelBankAcDetails->bank_name:''; }}">
+                                                        <label for="bn"> {{ __('home.BankName') }}<span class="required-star">*</span></label>
+                                                        <p class="error-inp" id="bn_err_msg"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <input type="hidden" value="{{ csrf_token() }}" name="_token" id="tk">
-                                            <input type="hidden" value="{{ (isset($hotel->hotel_id))?$hotel->hotel_id:''; }}" name="h" id="h">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                                                <button class="btn form_submit" type="button">{{ __('home.Save') }}</button>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="form-floating" id="achn_validate">
+                                                        <input type="text" class="form-control onpress_enter_bnsb" id="achn" placeholder="{{ __('home.AccountHolder') }}"  name="achn" value="{{ isset($hotel->hasHotelBankAcDetails->ac_holder_name)?$hotel->hasHotelBankAcDetails->ac_holder_name:''; }}">
+                                                        <label for="achn">{{ __('home.AccountHolder') }}<span class="required-star">*</span></label>
+                                                        <p class="error-inp" id="achn_err_msg"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="res-sub-btn-rw d-flex justify-content-end align-items-center pl-2">
+                                                   <a href="{{route('hm_otherInfo',$hotel->hotel_id)}}" class="btn-back btnPrevious">Back</a>
+                                                    <input type="hidden" value="{{ csrf_token() }}" name="_token" id="tk">
+                                                    <input type="hidden" value="next" name="savetype" id="savetype">
+                                                    <input type="hidden" value="{{$hotel->hotel_id}}" name="h" id="h">
+                                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.Cancel') }}</a>
+                                                    <button type="button" class="btn outline-blue form_submit" data-btntype="save_n_exit" >{{ __('home.SaveExit') }}</button>
+                                                    <button type="button" class="btn btnNext tab3 form_submit" data-btntype="next">{{ __('home.Next') }} </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- <div class="alertDialog">
-            <p class="mb-0 alertmsinner-box alertDanger"><img src="{{asset('/assets/images/')}}/structure/warning.svg" class="alertIcn"> Something went wrong please try again.</p>
-        </div> -->
-        <!-- <div class="alertDialog">
-        <p class="mb-0 alertmsinner-box alertSuccess"><img src="{{asset('/assets/images/')}}/structure/check-circle-green.svg" class="alertIcn"> Bank details updated successfully.</p>
-    </div> -->
+        </div> 
+    </div>
+</div>                                          
+                                            
 @include('frontend.layout.footer_script')
 @endsection
-<!-- JS section  -->   
+<!-- JS section  -->
 @section('js-script')
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+<script>
+$(document).ready(function() {
+    //editor
+    // $(document).ready(function () { $('.ckeditor').ckeditor(); });
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    function animateElements() {
+        $('.progressbar').each(function() {
+            var elementPos = $(this).offset().top;
+            var topOfWindow = $(window).scrollTop();
+            var percent = $(this).find('.circle').attr('data-percent');
+            var animate = $(this).data('animate');
+            if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
+                $(this).data('animate', true);
+                $(this).find('.circle').circleProgress({
+                    startAngle: -Math.PI / 2,
+                    value: percent / 100,
+                    size: 55,
+                    thickness: 5,
+                    fill: {
+                        color: '#015AC3'
+                    }
+                }).on('circle-animation-progress', function(event, progress, stepValue) {
+                    $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
+                }).stop();
+             
+                if (percent == 100) {
+                   $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
+                }
+            }
+        });
+    }
+    animateElements();
+    $(window).scroll(animateElements);
+})
+</script>
 <script>
 $(document).ready(function() {
     $(document).on('keyup','.onpress_enter_bnsb',function(e){
@@ -93,8 +126,8 @@ $(document).ready(function() {
     $(document).on('keyup','#ac',function(){
         // $("#hm_server_err_msg").text('');
         if(field_required('ac','ac',"Account number is required"))
-        if(!checkMaxLength($('#ac').val(),20 )) 
-            setErrorAndErrorBox('ac','Account number be less than 20 letters.'); 
+        if(!checkMaxLength($('#ac').val(),20 ))
+            setErrorAndErrorBox('ac','Account number be less than 20 letters.');
         else
             unsetErrorAndErrorBox('ac');
     });
@@ -103,27 +136,27 @@ $(document).ready(function() {
         if(field_required('cac','cac',"Confirm Account number is required"))
         {
             if(!checkIsEqual($('#ac').val(),$('#cac').val()))
-                setErrorAndErrorBox('cac','A/c number & confirm A/c should be same.'); 
+                setErrorAndErrorBox('cac','A/c number & confirm A/c should be same.');
             else
-                unsetErrorAndErrorBox('cac');        
+                unsetErrorAndErrorBox('cac');
         }
     });
     $(document).on('keyup','#bn',function(){
         // $("#hm_server_err_msg").text('');
         if(field_required('bn','bn',"Bank Name is required"))
-        if(!checkMaxLength($('#bn').val(),200 )) 
-            setErrorAndErrorBox('bn','Bank Name be less than 200 letters.'); 
+        if(!checkMaxLength($('#bn').val(),200 ))
+            setErrorAndErrorBox('bn','Bank Name be less than 200 letters.');
         else
             unsetErrorAndErrorBox('bn');
     });
     $(document).on('keyup','#achn',function(){
         // $("#hm_server_err_msg").text('');
         if(field_required('achn','achn',"Bank Name is required"))
-        if(!checkMaxLength($('#achn').val(),200 )) 
-            setErrorAndErrorBox('achn','Bank Name be less than 200 letters.'); 
+        if(!checkMaxLength($('#achn').val(),200 ))
+            setErrorAndErrorBox('achn','Bank Name be less than 200 letters.');
         else
             unsetErrorAndErrorBox('achn');
-    });    
+    });
     $(document).on('click','.form_submit',function(){
         // $('#hm_hm_server_err_msg').text('');
         // alert('dfsf');
@@ -131,64 +164,64 @@ $(document).ready(function() {
         form_submit();
     });
     function form_submit()
-    { 
-        var token=true; 
+    {
+        var token=true;
         if(!field_required('ac','ac',"Account number is required"))
             token = false;
-        else if(!checkMaxLength($('#ac').val(),20 )) 
+        else if(!checkMaxLength($('#ac').val(),20 ))
         {
             setErrorAndErrorBox('ac','Account number be less than 20 letters.');
             token = false;
         }
         if(!field_required('cac','cac',"Confirm Account Number is required"))
             token = false;
-        else if(!checkIsEqual($('#ac').val(),$('#cac').val())) 
-        {   
+        else if(!checkIsEqual($('#ac').val(),$('#cac').val()))
+        {
             setErrorAndErrorBox('cac','A/c number & confirm A/c should be same.');
             token = false;
         }
         if(!field_required('bn','bn',"Bank Name is required"))
             token = false;
-        else if(!checkMaxLength($('#bn').val(),200 )) 
+        else if(!checkMaxLength($('#bn').val(),200 ))
         {
             setErrorAndErrorBox('bn','Bank Name be less than 200 letters.');
             token = false;
         }
         if(!field_required('achn','achn',"Account holder name is required"))
             token = false;
-        else if(!checkMaxLength($('#achn').val(),200 )) 
+        else if(!checkMaxLength($('#achn').val(),200 ))
         {
             setErrorAndErrorBox('achn','Account holder name be less than 200 letters.');
             token = false;
-        }        
+        }
         if(token)
         {
-            $(".form_submit").prop("disabled",true); 
+            let formdata = $( "#hm_bankinfo_form ").serialize();
+            $(".form_submit").prop("disabled",true);
             loading();
-            $.post("{{ route('hm_bankinfo_submit') }}",  $( "#hotel_bankinfo" ).serialize(), function( data ) {
-                        // console.log(data);
+            $.post("{{ route('hm_bankinfo_submit') }}",  formdata, function( data ) {
                         if(data.status==1){
-                            // window.location.href = data.nextpageurl; 
+                            window.location.href = data.nextpageurl; 
                             $("#commonSuccessMsg").text(data.message);
                             $("#commonSuccessBox").css('display','block');
-                            $(".form_submit").prop("disabled",false); 
+                            $(".form_submit").prop("disabled",false);
                             unloading();
                             setTimeout(function() {
                                 $("#commonSuccessBox").hide();
                             }, 3000);
-                        } 
+                        }
                         else
                         {
                             $("#commonErrorMsg").text(data.message);
                             $("#commonErrorBox").css('display','block');
-                            $(".form_submit").prop("disabled",false); 
+                            $(".form_submit").prop("disabled",false);
                             unloading();
                             setTimeout(function() {
                                 $("#commonSuccessBox").hide();
                             }, 3000);
-                        }                           
+                        }
                         // unloading();
-            });             
+            });
         }
     }
     // close

@@ -179,7 +179,7 @@ class HotelManagementCtrl extends Controller
                 $imgurl = asset("/hotel_images/".$newImg->image);
                 $is_featured_cls = ($is_featured==1)?"fa fa-star favStar favStar-fill":"fa fa-star-o favStar favStar-outline";
                 $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>";
-                $imgRes ='<div class="hotelImgaesPreviewCol" id="hotel_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delHotelOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="hotelPreviewImgae"></div>';
+                $imgRes ='<div class="hotelImgaesPreviewCol" id="hotel_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delHotelOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="img-thumbnail"></div>';
 
                 if($is_featured==1)
                 {

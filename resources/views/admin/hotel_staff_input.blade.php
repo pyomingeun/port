@@ -17,7 +17,7 @@
                                 <form id="hotel_staff" method="post">
                                     <div class="hotelManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">Hotel Staff Info</h5>
                                                 <div class="row">
                                                    

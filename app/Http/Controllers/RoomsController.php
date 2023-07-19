@@ -8,7 +8,7 @@ use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use DB;
-// 
+//
 use App\Models\Rooms;
 use App\Models\RoomBeds;
 use App\Models\RoomFacilities;
@@ -16,8 +16,8 @@ use App\Models\RoomFeatures;
 use App\Models\RoomImages;
 use App\Models\HotelFacilities;
 use App\Models\HotelFeatures;
-use App\Models\HotelPeakSeason;    
-use App\Models\Booking;    
+use App\Models\HotelPeakSeason;
+use App\Models\Booking;
 
 class RoomsController extends Controller
 {
@@ -36,13 +36,13 @@ class RoomsController extends Controller
 
         if($request->q !='')
         {
-            $query->where('rooms.room_name',  'like', '%' . $request->q . '%'); //->where('rooms.email',  'like', '%' . $request->q . '%');
+            $query->where('rooms.room_name',  'like', '%' . $request->q . '%');
         }
-        
+
         if($request->status !='')
         {
             $query->where('status', '=', $request->status);
-        } 
+        }
 
         $c = (isset($request->c) && $request->c !='')?$request->c:'id';
         $o = (isset($request->o) && $request->o !='')?$request->o:'desc';
@@ -51,12 +51,12 @@ class RoomsController extends Controller
         // $dates = (isset($request->dates) && $request->dates !='')?$request->dates:'';
         $query->orderBy($c,$o);
         $rooms = $query->paginate(8);
-        
+
         return view('hotel.rooms_list')->with(['rooms'=>$rooms,'o'=>$request->o,'c'=>$request->c,'q'=>$q,'status'=>$status]);
     }
 
-    // Step 1 secton 
-    // Room basic info 
+    // Step 1 secton
+    // Room basic info
     public function rm_basic_info($slug)
     {
         // $id = //base64_decode($id); //encrypt($id);
@@ -72,93 +72,7 @@ class RoomsController extends Controller
             return view('hotel.room_basic_info')->with(['slug'=>'new']);
     }
 
-    // 
-    public function rm_basic_info_submit(Request $request)
-    {
-        $access = auth()->user()->access;
-        $hotel_id = auth()->user()->id;
-
-        $room = Rooms::where('slug', '=', $request->slug)->where('hotel_id', '=', $hotel_id)->where('status', '!=', 'deleted')->first();
-        
-        if($room)
-        {
-            $room->room_name = $request->room_name;
-            $room->room_size = $request->room_size;
-            $room->room_description = $request->room_description;
-            $room->basic_info_status = 1;
-            // if($room->beds_status  == 1 && $room->roomfnf_status  == 1  && $room->pricing_status  == 1)
-            // {
-            //     $room->status = 'active';
-            // }
-            
-            $room->save();
-            $res = RoomImages::where("hotel_id", $hotel_id)->where("room_id", $room->id)->where("status", 'draft')->update(["status" => 'active']);
-    
-            if($request->savetype == 'save_n_exit') //  && $access =='admin'
-                $nextpageurl = route('rooms');
-            else
-                $nextpageurl = route('room_beds_info', ['slug' => $room->slug]);
-
-            $data = [
-                'status'=>1,
-                'message' => 'Saved successfully',
-                'nextpageurl'=>$nextpageurl
-            ];
-
-            return response()->json($data);
-        }
-        else
-        {
-            $randomId  = rand(1000,9999);
-            $timestamp = Carbon::now()->timestamp;
-            $slug = $timestamp."".$randomId;
-            
-            $newRoom = Rooms::create([
-                'room_name' => $request->room_name,
-                'room_size' => $request->room_size,
-                'room_description' => $request->room_description,
-                'basic_info_status' => 1,
-                'hotel_id'=> $hotel_id,
-                'slug'=>$slug,
-                'status'=>'draft',
-                'created_by' => auth()->user()->id,
-                'updated_by' => auth()->user()->id,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]);
-            
-            if($newRoom)
-            {
-                // $roomImagesCount = RoomImages::where('room_id','=',$newRoom->id)->where('hotel_id','=',$hotel_id)->where('status','!=','deleted')->count();
-
-                $res = RoomImages::where("hotel_id", $hotel_id)->where("room_id", 0)->where("status", 'draft')->update(["status" => 'active',"room_id" => $newRoom->id]);
-
-                if($request->savetype == 'save_n_exit') //  && $access =='admin'
-                    $nextpageurl = route('rooms');
-                else
-                    $nextpageurl = route('room_beds_info', ['slug' => $newRoom->slug]);
-
-                $data = [
-                    'status'=>1,
-                    'message' => 'Saved successfully',
-                    'nextpageurl'=>$nextpageurl
-                ];
-
-                return response()->json($data);
-            }
-            else
-            {
-                $data = [
-                    'status' => 0,
-                    'message'=>'Something is wrong please try again.'
-                ];
-                return response()->json($data);
-            }
-                
-        }
-    }
-
-    // delete Room other image      
+    // delete Room other image
     public function delRoomOtherImg(Request $request)
     {
         $whereImage =array('room_id'=>$request->r,'id'=>$request->i);
@@ -169,52 +83,52 @@ class RoomsController extends Controller
             {
                 $image->status = 'deleted';
                 $image->save();
-                // $image->delete();  
+                // $image->delete();
                 return response()->json(['status'=>1,'message'=>'Deleted successfully']);
             }
             else
             {
-                return response()->json(['status'=>0,'message'=>'Featured image can not delete.']);    
+                return response()->json(['status'=>0,'message'=>'Featured image can not delete.']);
             }
 
         }
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }                          
+        }
     }
 
-    // mark as featured iamge        
+    // mark as featured iamge
     public function markFeaturedRoomImg(Request $request)
     {
         $whereImage =array('room_id'=>$request->r,'id'=>$request->i);
         $image = RoomImages::where($whereImage)->first();
         if($image)
         {
-            // update multiple rows make all existing images non-featured 
+            // update multiple rows make all existing images non-featured
             $res = RoomImages::where("room_id", $request->r)->update(["is_featured" => "0"]);
             // make featured
             $image->is_featured = 1;
             $image->save();
-            // $image->delete();  
+            // $image->delete();
             return response()->json(['status'=>1,'message'=>'Marked as featured successfully']);
         }
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }                          
+        }
     }
 
 
-    // upload Room other iamges        
+    // upload Room other iamges
     public function uploadRoomOtherImages(Request $request)
     {
         $access = auth()->user()->access;
         $hotel_id = auth()->user()->id;
         $whereRoom =array('id'=>$request->r,'hotel_id'=>$hotel_id);
         $room = Rooms::where($whereRoom)->first();
-        $RoomImages = RoomImages::where('room_id','=',$request->r)->where('hotel_id','=',$hotel_id)->where('status','!=','deleted')->count(); 
-        
+        $RoomImages = RoomImages::where('room_id','=',$request->r)->where('hotel_id','=',$hotel_id)->where('status','!=','deleted')->count();
+
         // $folderPath = public_path('Room_images/');
         $folderPath = 'room_images/';
         $image_parts = explode(";base64,", $request->image);
@@ -237,20 +151,20 @@ class RoomsController extends Controller
             'updated_by' => auth()->user()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]); 
+        ]);
 
         $delurl = asset("/assets/images/").'/structure/delete-circle-red.svg';
         $imgurl = asset("/room_images/".$newImg->room_image);
         $is_featured_cls = ($is_featured==1)?"fa fa-star favStar favStar-fill":"fa fa-star-o favStar favStar-outline";
-        $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>"; 
-        $imgRes ='<div class="hotelImgaesPreviewCol" id="room_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delRoomOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="hotelPreviewImgae"></div>';
+        $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>";
+        $imgRes ='<div class="hotelImgaesPreviewCol" id="room_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delRoomOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="hotelPreviewImage"></div>';
         return response()->json(['status'=>1,'message'=>'upload successfully','img'=>$imgRes]);
     }
     // close
-    // close step-1 section 
+    // close step-1 section
 
-    // step-2 section open 
-    // Room beds info view 
+    // step-2 section open
+    // Room beds info view
     public function rm_beds_info($slug)
     {
         // $id = //base64_decode($id); //encrypt($id);
@@ -264,23 +178,24 @@ class RoomsController extends Controller
             return view('hotel.room_beds_info')->with(['slug'=>'new']);
     }
 
-    // Room beds info submit 
-    public function rm_beds_info_submit(Request $request)
+    // Room beds info submit
+    public function rm_basic_info_submit(Request $request)
     {
         $access = auth()->user()->access;
         $hotel_id = auth()->user()->id;
 
         $room = Rooms::where('slug', '=', $request->slug)->where('hotel_id', '=', $hotel_id)->where('status', '!=', 'deleted')->first();
-        
+
         if($room)
         {
-            $room->no_of_bathrooms = $request->no_of_bathrooms;
+            $room->room_name = $request->room_name;
+            $room->room_size = $request->room_size;
+            $room->room_description = $request->room_description;
+            $room->basic_info_status = 1;
+
+	        $room->no_of_bathrooms = $request->no_of_bathrooms;
             $room->beds_status = 1;
-            // if($room->basic_info_status == 1 && $room->roomfnf_status  == 1  && $room->pricing_status  == 1)
-            // {
-            //     $room->status = 'active';
-            // }
-            
+
             $room->save();
 
             $counter = (isset($request->bed_type) && count($request->bed_type) >0)?count($request->bed_type):0;
@@ -295,6 +210,7 @@ class RoomsController extends Controller
                             $newBed = RoomBeds::create([
                                 'hotel_id' => $hotel_id,
                                 'room_id' => $room->id,
+                                'no_of_bathrooms' => $request->no_of_bathrooms,
                                 'bed_type' => $request->bed_type[$i],
                                 'bed_qty' => $request->bed_qty[$i],
                                 'status' =>'active',
@@ -302,15 +218,15 @@ class RoomsController extends Controller
                                 'updated_by' => $hotel_id,
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()
-                            ]);   
-                        }                        
+                            ]);
+                        }
                     }
                     else
                     {
                         if($request->bed_type[$i] !='' && $request->bed_qty[$i] >0)
                         {
                             $whereRow =array('hotel_id'=>$hotel_id,'room_id'=>$room->id,'id'=>$request->rid[$i]);
-                            $row = RoomBeds::where($whereRow)->first(); 
+                            $row = RoomBeds::where($whereRow)->first();
                             if($row)
                             {
                                 $row->updated_by = auth()->user()->id;
@@ -318,13 +234,13 @@ class RoomsController extends Controller
                                 $row->bed_type  = $request->bed_type[$i];
                                 $row->bed_qty = $request->bed_qty[$i];
                                 $row->status = 'active';
-                                $row->save();  
+                                $row->save();
                             }
                         }
-                        
+
                     }
-                    
-                }                                            
+
+                }
             }
 
             if($request->savetype == 'save_n_exit') //  && $access =='admin'
@@ -345,11 +261,11 @@ class RoomsController extends Controller
             $randomId  = rand(1000,9999);
             $timestamp = Carbon::now()->timestamp;
             $slug = $timestamp."".$randomId;
-            
+
             $newRoom = Rooms::create([
-                'room_name' => '',
-                'room_size' => '',
-                'room_description' => '',
+                'room_name' => $request->room_name,
+                'room_size' => $request->room_size,
+                'room_description' => $request->room_description,
                 'hotel_id'=> $hotel_id,
                 'slug'=>$slug,
                 'status'=>'draft',
@@ -358,9 +274,9 @@ class RoomsController extends Controller
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'no_of_bathrooms'=>$request->no_of_bathrooms,
-                'beds_status'=>1 
+                'beds_status'=>1
             ]);
-            
+
             if($newRoom)
             {
                 $counter = (isset($request->bed_type) && count($request->bed_type) >0)?count($request->bed_type):0;
@@ -381,10 +297,10 @@ class RoomsController extends Controller
                                 'updated_by' => $hotel_id,
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()
-                            ]);   
-                        }                        
-                        
-                    }                                            
+                            ]);
+                        }
+
+                    }
                 }
                 if($request->savetype == 'save_n_exit') //  && $access =='admin'
                     $nextpageurl = route('rooms');
@@ -398,11 +314,20 @@ class RoomsController extends Controller
                 ];
 
                 return response()->json($data);
-            }   
+            }
+
+            else
+            {
+                $data = [
+                    'status' => 0,
+                    'message'=>'Something is wrong please try again.'
+                ];
+                return response()->json($data);
+            }
         }
     }
-    
-    // delete Bed     
+
+    // delete Bed
     public function delBed(Request $request)
     {
         $hotel_id = auth()->user()->id;
@@ -412,18 +337,18 @@ class RoomsController extends Controller
         {
             $bed->status = 'deleted';
             $bed->save();
-            // $image->delete();  
+            // $image->delete();
             return response()->json(['status'=>1,'message'=>'Deleted successfully']);
         }
         else
         {
             return response()->json(['status'=>0,'message'=>'Something went wrong']);
-        }   
+        }
     }
     // step-2 section close
-    
-    // step-3 section open 
-    // Room beds info 
+
+    // step-3 section open
+    // Room beds info
     public function rm_features_n_facilities($slug)
     {
         // $id = //base64_decode($id); //encrypt($id);
@@ -444,7 +369,7 @@ class RoomsController extends Controller
         $query2->where('hotel_features.hotel_id', '=', $hotel_id);
         $query2->select(['features.features_name', 'hotel_features.*']);
         $hotel_features = $query2->get();
-        
+
         $features_ids = array();
         $facilities_ids = array();
         \Artisan::call('cache:clear');
@@ -457,7 +382,7 @@ class RoomsController extends Controller
             if($selected_features_ids !='' && $selected_features_ids !=null && $selected_features_ids !=false)
             {
                 $features_ids = explode(",",$selected_features_ids[0]->ids);
-            } 
+            }
             if($selected_facilities_ids !='' && $selected_facilities_ids !=null && $selected_facilities_ids !=false)
             {
                 $facilities_ids = explode(",",$selected_facilities_ids[0]->ids);
@@ -470,7 +395,7 @@ class RoomsController extends Controller
             $query->where('room_facilities.room_id', '=', $room->id);
             $query->select(['facilities.facilities_name', 'room_facilities.*']);
             $room_facilities = $query->get();
-    
+
             $query2 = RoomFeatures::join('features', 'features.id', '=', 'room_features.features_id');
             $query2->where('features.status', '!=', 'deleted');
             $query2->where('room_features.status', '!=', 'deleted');
@@ -478,21 +403,21 @@ class RoomsController extends Controller
             $query2->where('room_features.room_id', '=', $room->id);
             $query2->select(['features.features_name', 'room_features.*']);
             $room_features = $query2->get();
-            
+
             return view('hotel.room_feature_n_facilities')->with(['room'=>$room,'slug'=>$room->slug,'features_ids'=>$features_ids,'facilities_ids'=>$facilities_ids,'room_facilities'=>$room_facilities,'room_features'=>$room_features,'hotel_facilities'=>$hotel_facilities,'hotel_features'=>$hotel_features,'empty_val'=>'']);
         }
         else
             return view('hotel.room_feature_n_facilities')->with(['slug'=>'new','hotel_facilities'=>$hotel_facilities,'hotel_features'=>$hotel_features,'features_ids'=>$features_ids,'facilities_ids'=>$facilities_ids,'empty_val'=>'']);
     }
 
-    // Room feature & facilities  submit 
+    // Room feature & facilities  submit
     public function rm_features_n_facilities_submit(Request $request)
     {
         $access = auth()->user()->access;
         $hotel_id = auth()->user()->id;
 
         $room = Rooms::where('slug', '=', $request->slug)->where('hotel_id', '=', $hotel_id)->where('status', '!=', 'deleted')->first();
-        
+
         if($room)
         {
             $room->roomfnf_status = 1;
@@ -500,20 +425,20 @@ class RoomsController extends Controller
             // {
             //     $room->status = 'active';
             // }
-            
+
             $room->save();
 
-            // delete and insert features 
+            // delete and insert features
             $res = RoomFeatures::where("hotel_id", $hotel_id)->where("room_id", $room->id)->update(["status" => "deleted"]);
-                    
+
             $counter = (isset($request->features) && count($request->features) >0)?count($request->features):0;
             if($counter >0 )
             {
                 for($i=0; $i<$counter; $i++)
                 {
                     $whereRoomFeature =array('features_id'=>$request->features[$i],'room_id'=>$room->id);
-                    $is_feature_exist = RoomFeatures::where($whereRoomFeature)->first(); 
-                    
+                    $is_feature_exist = RoomFeatures::where($whereRoomFeature)->first();
+
                     if($is_feature_exist)
                     {
                         $is_feature_exist->status = 'active';
@@ -530,22 +455,22 @@ class RoomsController extends Controller
                             'updated_by' => auth()->user()->id,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now()
-                        ]);                                   
+                        ]);
                     }
-                }    
+                }
             }
-            
-            // delete and insert facilities 
+
+            // delete and insert facilities
             $res = RoomFacilities::where("hotel_id", $hotel_id)->where("room_id", $room->id)->update(["status" => "deleted"]);
-                
+
             $counter = (isset($request->facilities) && count($request->facilities) >0)?count($request->facilities):0;
             if($counter >0 )
             {
                 for($i=0; $i<$counter; $i++)
                 {
                     $whereRoomFacilitie =array('facilities_id'=>$request->facilities[$i],'room_id'=>$room->id);
-                    $is_facilitie_exist = RoomFacilities::where($whereRoomFacilitie)->first(); 
-                    
+                    $is_facilitie_exist = RoomFacilities::where($whereRoomFacilitie)->first();
+
                     if($is_facilitie_exist)
                     {
                         $is_facilitie_exist->status = 'active';
@@ -562,9 +487,9 @@ class RoomsController extends Controller
                             'updated_by' => auth()->user()->id,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now()
-                        ]);                                   
+                        ]);
                     }
-                }    
+                }
             }
 
             if($request->savetype == 'save_n_exit') //  && $access =='admin'
@@ -585,7 +510,7 @@ class RoomsController extends Controller
             $randomId  = rand(1000,9999);
             $timestamp = Carbon::now()->timestamp;
             $slug = $timestamp."".$randomId;
-            
+
             $newRoom = Rooms::create([
                 'room_name' => '',
                 'room_size' => '',
@@ -597,9 +522,9 @@ class RoomsController extends Controller
                 'updated_by' => auth()->user()->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'roomfnf_status'=>1 
+                'roomfnf_status'=>1
             ]);
-            
+
             if($newRoom)
             {
                 if($request->savetype == 'save_n_exit') //  && $access =='admin'
@@ -614,13 +539,13 @@ class RoomsController extends Controller
                 ];
 
                 return response()->json($data);
-            }   
+            }
         }
-    }    
-    // step-3 section close    
+    }
+    // step-3 section close
 
-     // step-4 section open 
-    // Room beds info 
+     // step-4 section open
+    // Room beds info
     public function rm_occupancy_n_pricing($slug)
     {
         // $id = //base64_decode($id); //encrypt($id);
@@ -628,19 +553,19 @@ class RoomsController extends Controller
         $room = Rooms::where('slug', '=', $slug)->where('status', '!=', 'deleted')->first();
         $season_names = HotelPeakSeason::where('hotel_id', '=', $hotel_id)->where('status', '=', 'active')->select('season_name')->get();
         $hotel_peak_season ='';
-        $seaonCounter = count($season_names); 
+        $seaonCounter = count($season_names);
         if($seaonCounter >0 )
         {
             $hotel_peak_season = "<div class='tooltipbox'> <p class='mb-0'>";
             for($i=0; $i<$seaonCounter; $i++)
-            { 
+            {
                 $comma = ($seaonCounter > 1  && $seaonCounter != ($i+1) )?',':'';
-                $hotel_peak_season .="<span class='normalfont'>".$season_names[$i]->season_name."</span>".$comma."</p>";                   
+                $hotel_peak_season .="<span class='normalfont'>".$season_names[$i]->season_name."</span>".$comma."</p>";
             }
             $hotel_peak_season .="</div>";
         }
-        
-        
+
+
         if($room)
         {
             return view('hotel.room_occupancy_n_pricing')->with(['room'=>$room,'slug'=>$room->slug,'hotel_peak_season'=>$hotel_peak_season]);
@@ -649,14 +574,14 @@ class RoomsController extends Controller
             return view('hotel.room_occupancy_n_pricing')->with(['slug'=>'new','hotel_peak_season'=>$hotel_peak_season]);
     }
 
-    // Room feature & facilities  submit 
+    // Room feature & facilities  submit
     public function rm_occupancy_n_pricing_submit(Request $request)
     {
         $access = auth()->user()->access;
         $hotel_id = auth()->user()->id;
 
         $room = Rooms::where('slug', '=', $request->slug)->where('hotel_id', '=', $hotel_id)->where('status', '!=', 'deleted')->first();
-        
+
         if($room)
         {
             $room->pricing_status = 1;
@@ -668,11 +593,11 @@ class RoomsController extends Controller
             $room->standard_price_weekend = $request->standard_price_weekend;
             $room->standard_price_peakseason = $request->standard_price_peakseason;
             $room->extra_guest_fee = $request->extra_guest_fee;
-            // if($room->basic_info_status == 1 && $room->beds_status  == 1  && $room->roomfnf_status  == 1)
-            // {
-            //     $room->status = 'active';
-            // }
-            
+            if($room->basic_info_status == 1 && $room->beds_status  == 1  && $room->roomfnf_status  == 1)
+            {
+                 $room->status = 'active';
+            }
+
             $room->save();
 
             if($request->savetype == 'save_n_exit') //  && $access =='admin'
@@ -693,7 +618,7 @@ class RoomsController extends Controller
             $randomId  = rand(1000,9999);
             $timestamp = Carbon::now()->timestamp;
             $slug = $timestamp."".$randomId;
-            
+
             $newRoom = Rooms::create([
                 'room_name' => '',
                 'room_size' => '',
@@ -705,9 +630,9 @@ class RoomsController extends Controller
                 'updated_by' => auth()->user()->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'pricing_status'=>1 
+                'pricing_status'=>1
             ]);
-            
+
             if($newRoom)
             {
                 if($request->savetype == 'save_n_exit') //  && $access =='admin'
@@ -722,13 +647,13 @@ class RoomsController extends Controller
                 ];
 
                 return response()->json($data);
-            }   
+            }
         }
     }
-    // step-4 section close    
+    // step-4 section close
 
-    // step-5 section open 
-    // Room summary view 
+    // step-5 section open
+    // Room summary view
     public function rm_summary($slug)
     {
         // $id = //base64_decode($id); //encrypt($id);
@@ -746,7 +671,7 @@ class RoomsController extends Controller
             $query->where('room_facilities.room_id', '=', $room->id);
             $query->select(['facilities.facilities_name', 'room_facilities.*']);
             $room_facilities = $query->get();
-    
+
             $query2 = RoomFeatures::join('features', 'features.id', '=', 'room_features.features_id');
             $query2->where('features.status', '!=', 'deleted');
             $query2->where('room_features.status', '!=', 'deleted');
@@ -754,21 +679,21 @@ class RoomsController extends Controller
             $query2->where('room_features.room_id', '=', $room->id);
             $query2->select(['features.features_name', 'room_features.*']);
             $room_features = $query2->get();
-            
+
             return view('hotel.room_summary')->with(['room'=>$room,'slug'=>$room->slug,'room_facilities'=>$room_facilities,'room_features'=>$room_features]);
         }
         else
            return redirect()->route('room_summary', ['slug' => $slug]);
     }
 
-    // Room summary submit 
+    // Room summary submit
     public function rm_summary_save(Request $request)
     {
         $access = auth()->user()->access;
         $hotel_id = auth()->user()->id;
 
         $room = Rooms::where('slug', '=', $request->slug)->where('hotel_id', '=', $hotel_id)->where('status', '!=', 'deleted')->first();
-        
+
         if($room)
         {
             if($room->basic_info_status == 1 && $room->beds_status  == 1  && $room->roomfnf_status  == 1  && $room->pricing_status  == 1)
@@ -789,7 +714,7 @@ class RoomsController extends Controller
                 ];
                 return response()->json($data);
             }
-            
+
 
         }
         else
@@ -797,15 +722,15 @@ class RoomsController extends Controller
             $data = [
                 'status'=>0,
                 'message' => 'Invalid room'
-            ];  
+            ];
         }
     }
-    // step-5 section close    
-   
-    // update room status like delete 
+    // step-5 section close
+
+    // update room status like delete
     public function room_status($slug,$status)
     {
-        // dd($id,$status);    
+        // dd($id,$status);
         $room = Rooms::where('slug', '=', $slug)->where('hotel_id', '=', auth()->user()->id)->where('status', '!=', 'deleted')->first();
 
         if($room)
@@ -818,7 +743,7 @@ class RoomsController extends Controller
             }
             elseif($status =='active' || $status =='inactive')
             {
-                $status = ($status =='active')?'inactive':'active'; 
+                $status = ($status =='active')?'inactive':'active';
                 $room->status = $status;
                 $room->save();
                 return redirect()->route('rooms')->with('success_msg','Room '.$status.' successfully');
@@ -843,15 +768,15 @@ class RoomsController extends Controller
         }
         else
             $block_unblock_success_msg = '';
-            
+
         $hotel_id = auth()->user()->id;
         $query = Rooms::where('rooms.status', '=', 'active')->where('rooms.hotel_id', '=', $hotel_id);
         $query->select(['*']);
         $rooms = $query->get();
         $query->orderBy('id','asc');
-        return view('hotel.room_calendar')->with(['rooms'=>$rooms,'block_unblock_success_msg'=>$block_unblock_success_msg]);  
+        return view('hotel.room_calendar')->with(['rooms'=>$rooms,'block_unblock_success_msg'=>$block_unblock_success_msg]);
      }
-   
+
      // Room Calendar
      public function getCalendarData(Request $request)
      {
@@ -864,12 +789,12 @@ class RoomsController extends Controller
         $enddateReq= date("Y-m-d", strtotime($request->enddate));
         $startdate = Carbon::createFromFormat('Y-m-d', $startdateReq);
         $enddate = Carbon::createFromFormat('Y-m-d', $enddateReq);
-        
+
         $period = CarbonPeriod::create($startdate, $enddate);
         // Iterate over the period
         // $i=1;
-        $events = []; 
-        $counter =0; 
+        $events = [];
+        $counter =0;
         $no_of_rooms = count($rooms);
         foreach ($period as $date) {
             $theday =  $date->format('Y-m-d');
@@ -881,15 +806,15 @@ class RoomsController extends Controller
                     $url = route('booking-detail', ['slug' => $roomStatus[0]->slug]);
                     if($roomStatus[0]->booking_status == 'on_hold')
                         $color = '#D17D00';
-                    else if($roomStatus[0]->booking_status == 'confirmed')   
+                    else if($roomStatus[0]->booking_status == 'confirmed')
                         $color = '#00CC7A';
-                    else if($roomStatus[0]->booking_status == 'completed')   
-                        $color = '#008952';    
+                    else if($roomStatus[0]->booking_status == 'completed')
+                        $color = '#008952';
                     else if($roomStatus[0]->booking_status == 'blocked')
-                    { 
+                    {
                         $color = '#B3261E';
                         $url = '';
-                    }else    
+                    }else
                         $color = '#D17D00';
                 }
                 else
@@ -900,14 +825,14 @@ class RoomsController extends Controller
                 $price='₩ '.$rooms[$i]->standard_price_weekday;
                 $arr = array('title'=>$rooms[$i]->room_name.'--'.$price,'start'=>$theday,'url'=>$url,'color'=>$color);
                 $obj = (object) $arr;
-                $events[$counter] = $obj; 
+                $events[$counter] = $obj;
                 $counter++;
             }
 
         }
-        // return $events; 
+        // return $events;
         return response()->json($events);
-        // echo "<pre>"; print_r($events); 
+        // echo "<pre>"; print_r($events);
      }
 
      public function roomBlockUnBlock(Request $request)
@@ -929,14 +854,14 @@ class RoomsController extends Controller
                                 if($roomDetails)
                                 {
                                     $isRoomBooked =  checkIsRoomBooked($roomDetails->id, $request->start_date, $request->end_date);
-                                
+
                                     if(count($isRoomBooked))
                                     {
                                         $data = [
                                             'status'=>0,
                                             'message' => 'The '.$roomDetails->room_name.' is already Blocked/Booked on given date preiod.'
                                         ];
-                                        return response()->json($data);      
+                                        return response()->json($data);
                                     }
                                 }
                                 else
@@ -946,44 +871,44 @@ class RoomsController extends Controller
                                         'message' => 'Invalid room please select room-again.'
                                     ];
                                     return response()->json($data);
-                                }    
+                                }
                             }
                         }
-                        
+
                         $unblockCounter =0;
                         for($i=0; $i<count($request->room); $i++)
                         {
                             $roomInfo = Rooms::where('slug', '=', $request->room[$i])->where('status', '!=', 'deleted')->first();
                             if($roomInfo)
-                            {   
+                            {
                                 $startdateReq= date("Y-m-d", strtotime($request->start_date));
                                 $enddateReq= date("Y-m-d", strtotime($request->end_date));
                                 $startdate = Carbon::createFromFormat('Y-m-d', $startdateReq);
                                 $enddate = Carbon::createFromFormat('Y-m-d', $enddateReq);
-                                
+
                                 $period = CarbonPeriod::create($startdate, $enddate);
                                 if($request->type =='block')
                                 {
-                                    
+
                                     /* $isRoomBooked =  checkIsRoomBooked($room->id, $request->start_date, $request->end_date);
-                                    
+
                                     if(count($isRoomBooked))
                                     {
                                         $data = [
                                             'status'=>0,
                                             'message' => 'This room is already Blocked/Booked on given date preiod.'
                                         ];
-                                        return response()->json($data);      
+                                        return response()->json($data);
                                     }
                                     else
                                     { */
                                         foreach ($period as $date) {
                                             $theday =  $date->format('Y-m-d');
-                                            
+
                                             $randomId  = rand(1000,9999);
                                             $timestamp = Carbon::now()->timestamp;
                                             $slug = $timestamp."".$randomId;
-                                            
+
                                             $newBlocked = Booking::create([
                                                 'slug' => $slug,
                                                 'hotel_id' => $hotel_id,
@@ -1028,16 +953,16 @@ class RoomsController extends Controller
                                             'message' => 'Blocked successfully'
                                         ];
                                         $request->session()->put('block_unblock_success_msg', 'Blocked successfully');
-                                        // return response()->json($data);    
+                                        // return response()->json($data);
                                     // }
-                                    
+
                                 }
                                 else if($request->type =='unblock')
                                 {
                                     foreach ($period as $date) {
                                         $theday =  $date->format('Y-m-d');
                                         $blockedInfo = checkRoomBlocked($roomInfo->id, $theday);
-                                        // var_dump($blockedInfo);    
+                                        // var_dump($blockedInfo);
                                         if($blockedInfo)
                                         {
                                             $booking_id = $blockedInfo[0]->id;
@@ -1045,11 +970,11 @@ class RoomsController extends Controller
                                             //var_dump($booking_id);
                                             if($booking){
                                                 $booking->delete();
-                                                $unblockCounter++; 
-                                            }    
+                                                $unblockCounter++;
+                                            }
                                         }
-                                    }    
-                                    
+                                    }
+
                                 }
                                 else
                                 {
@@ -1057,7 +982,7 @@ class RoomsController extends Controller
                                         'status'=>0,
                                         'message' => 'Invalid function type.'
                                     ];
-                                    return response()->json($data);                                   
+                                    return response()->json($data);
                                 }
 
                             }
@@ -1069,8 +994,8 @@ class RoomsController extends Controller
                                 ];
                                 return response()->json($data);
                             }
-                        } 
-                        // After loop finish 
+                        }
+                        // After loop finish
                         if($request->type =='unblock')
                         {
                             if($unblockCounter >0)
@@ -1088,11 +1013,11 @@ class RoomsController extends Controller
                                     'status'=>0,
                                     'message' => 'There is no blocked room on given date period.'
                                 ];
-                                // return response()->json($data);                                   
+                                // return response()->json($data);
                             }
-                        } 
-                                               
-                        return response()->json($data); 
+                        }
+
+                        return response()->json($data);
                     }
                     else
                     {
@@ -1100,9 +1025,9 @@ class RoomsController extends Controller
                             'status'=>0,
                             'message' => 'Please select function block/unblock.'
                         ];
-                        return response()->json($data);   
+                        return response()->json($data);
                     }
-                    
+
                 }
                 else
                 {
@@ -1112,7 +1037,7 @@ class RoomsController extends Controller
                     ];
                     return response()->json($data);
                 }
-                    
+
             }
             else
             {
@@ -1122,7 +1047,7 @@ class RoomsController extends Controller
                 ];
                 return response()->json($data);
             }
-            
+
 
         }
         else
@@ -1133,8 +1058,8 @@ class RoomsController extends Controller
             ];
             return response()->json($data);
         }
-        
-        
-        
+
+
+
      }
 }

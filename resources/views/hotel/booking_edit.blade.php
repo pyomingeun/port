@@ -62,7 +62,7 @@
                                 <div class="tab-pane active" id="step1" aria-labelledby="tab-id1">
                                     <div class="roomsManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">{{ __('home.bookingInfo') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -95,7 +95,7 @@
                                             </div>
                                         </div>
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt StandardOccupancyBox">
+                                            <div class="hotelmanageFormInrcnt StandardOccupancyBox">
                                                 <h5 class="hd5 h5">{{ __('home.guest') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
@@ -173,7 +173,7 @@
                                 <div class="tab-pane fade" id="step2" aria-labelledby="tab-id2">
                                     <div class="roomsManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">{{ __('home.primaryGuestDetails') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -219,7 +219,7 @@
                                 <div class="tab-pane fade" id="step3" aria-labelledby="tab-id3">
                                     <div class="roomsManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <div class="hotelmanageFormInrcnt RoomFeaturesFacilitiesBox">
                                                 <h5 class="hd5 h5">{{ __('home.guestNotes') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -233,7 +233,7 @@
                                             </div>
                                         </div>
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt RoomFeaturesFacilitiesBox">
+                                            <div class="hotelmanageFormInrcnt RoomFeaturesFacilitiesBox">
                                                 <h5 class="hd5 h5">{{ __('home.hostNotes') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

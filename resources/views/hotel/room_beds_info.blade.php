@@ -19,7 +19,7 @@
                                 <form action="javaScript:Void(0);" method="post" id="room_bedsinfo_form">
                                 <div class="roomsManageform-Content">
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt NoofBathroomsBox">
+                                        <div class="hotelmanageFormInrcnt NoofBathroomsBox">
                                             <h5 class="hd5 h5">{{ __('home.noOfBathrooms') }}</h5>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-8 col-md-12 col-sm-6 col-12">

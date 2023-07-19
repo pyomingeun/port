@@ -19,8 +19,9 @@
                             <form id="hm_basic_info_form" method="post">
                                 <div class="hotelManageform-Content">
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt">
-                                            <h5 class="hd5 h5">{{ __('home.hotelInfo') }} </h5>
+                                        <div class="hotelmanageFormInrcnt">
+                                        <h5 class="hd5 h5 mb-2">{{ __('home.HotelBasicInfo') }} </h5>
+                                        <br></br>
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="hotelInfoRow d-flex align-items-center">
@@ -31,22 +32,23 @@
                                                             <input type="file" class="uploadinput image"  name="logo" id="logo" accept="image/png, image/jpeg">                                                            
                                                         </div>
                                                         <div class="hotelInfoDes">
-                                                            <p class="p2 mb-2">{{ __('home.uploadLogo') }}<span class="required-star">*</span></p>
-                                                            <p class="p4 mb-0">{{ __('home.uploadHotelLogoHereInFormat') }}</p>
+                                                            <p class="p2 mb-2">{{ __('home.UploadLogo') }}<span class="required-star">*</span></p>
+                                                            <p class="p4 mb-0">{{ __('home.UploadHotelLogoInstruction') }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="form-floating" id="hotel_name_validate">
-                                                        <input type="text" class="form-control" id="hotel_name" placeholder="{{ __('home.hotelName') }}" name="hotel_name" value="{{$hotel->hotel_name}}">
-                                                        <label for="hotel_name">{{ __('home.hotelName') }}<span class="required-star">*</span></label>
+                                                        <input type="text" class="form-control" id="hotel_name" placeholder="{{ __('home.HotelName') }}" name="hotel_name" value="{{$hotel->hotel_name}}">
+                                                        <label for="hotel_name">{{ __('home.HotelName') }}<span class="required-star">*</span></label>
                                                         <p class="error-inp" id="hotel_name_err_msg"></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <p class="p2 mb-2">{{ __('home.HotelDescription') }}</p>
                                                     <div class="form-floating editorField"  id="hotel_description_validate">
-                                                        <textarea  placeholder="{{ __('home.hotelDescription') }}" name="hotel_description" id="hotel_description" value="{{$hotel->description}}">{{$hotel->description}}</textarea>
-                                                        <p class="mb-0 max-char-limit" id="hotel_description_max_char">max 2000 characters</p>
+                                                        <textarea  placeholder="{{ __('home.HotelDescription') }}" name="hotel_description" id="hotel_description" value="{{$hotel->description}}">{{$hotel->description}}</textarea>
+                                                        <p class="mb-0 max-char-limit" id="hotel_description_max_char"></p>
                                                         <p class="error-inp" id="hotel_description_err_msg"></p>
                                                         <p class="error-inp" id="hm_server_err_msg"></p>
                                                     </div>
@@ -55,24 +57,23 @@
                                         </div>
                                     </div>
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt">
-                                            <h5 class="hd5 h5">{{ __('home.uploadHotelImages') }}</h5>
+                                    <h5 class="hd5 h5 mb-2">{{ __('home.UploadHotelImage') }}</h5>
+                                    <br></br>
+                                        <div class="hotelmanageFormInrcnt">
                                             <div class="uploadImageRow d-flex align-items-center">
                                                 <input type="file" class="uploadinput otherimageinput" id="otherimageinput">
                                                 <img src="{{asset('/assets/images/')}}/structure/upload-icon.svg" alt="" class="uploadIcon">
                                                 <div class="uploadImageDes">
-                                                    <p class="p2 mb-2">{{ __('home.uploadHotelImages') }}</p>
-                                                    <p class="p4 mb-0">{{ __('home.uploadHotelImagesHereInFormat') }}</p>
+                                                    <p class="p2 mb-2">{{ __('home.UploadHotelImageInstruction') }}</p>
                                                 </div>
                                             </div>
-                                            <div class="hotelImgaesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection">
+                                            <div class="hotelImagesPreviewRow d-flex flex-wrap mt-4"  id="otherimagessection">
                                                 @foreach ($hotel->hasImage as $image)
-                                                <div class="hotelImgaesPreviewCol" id="hotel_img_{{$image->id}}">
-                                                <div class="htlImageOverlay"></div>
-                                                    <img src="{{ asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon delHotelOtherImg" data-i="{{$image->id}}">
-                                                    <i class="markfeaturedhmimg {{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} " data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>" id="featured_icon_{{$image->id}}"></i>
-                                                    <img src="{{ asset('/hotel_images/'.$image->image); }}" alt="N.A." class="hotelPreviewImgae">
-                                                </div>
+                                                    <div class="hotelImgaesPreviewCol" id="hotel_img_{{$image->id}}">
+                                                        <img src="{{ asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon delHotelOtherImg" data-i="{{$image->id}}">
+                                                        <i class="markfeaturedhmimg {{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} " data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>" id="featured_icon_{{$image->id}}"></i>
+                                                        <img src="{{ asset('/hotel_images/'.$image->image); }}" alt="N.A." class="img-thumbnail">
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -82,9 +83,9 @@
                                 <input type="hidden" value="next" name="savetype" id="savetype">
                                 <input type="hidden" value="{{$hotel->hotel_id}}" name="h" id="h">
                                 <div class="res-sub-btn-rw d-flex justify-content-end">
-                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.cancel') }}</a>
+                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.Cancel') }}</a>
                                     <button type="button" class="btn outline-blue form_submit" data-btntype="save_n_exit" >{{ __('home.SaveExit') }}</button>
-                                    <button type="button" class="btn btnNext tab1 form_submit" data-btntype="next">{{ __('home.NextContinue') }}</button>
+                                    <button type="button" class="btn btnNext tab1 form_submit" data-btntype="next">{{ __('home.Next') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -116,7 +117,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('home.cancel') }}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('home.Cancel') }}</button>
         <button type="button" class="btn btn-primary" id="crop">{{ __('home.Crop') }}</button>
       </div>
     </div>
@@ -144,7 +145,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('home.cancel') }}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('home.Cancel') }}</button>
         <button type="button" class="btn btn-primary" id="cropother">{{ __('home.Crop') }}</button>
       </div>
     </div>
@@ -153,16 +154,7 @@
 
 <!-- common models -->
 @include('common_models')
-<style>
-    .sidebar-menu-ul .nav-item .nav-link {
-        opacity: 0.7;
-        pointer-events: none;
-    }
-    .sidebar-menu-ul .nav-item.active .nav-link {
-        opacity: 1;
-        pointer-events: unset;
-    }
-</style>    
+
 @include('frontend.layout.footer_script')
 @endsection
 <style type="text/css">
@@ -195,16 +187,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-    CKEDITOR.replace( 'hotel_description', {});
-    CKEDITOR.config.removePlugins = 'Save,Print,Preview,image, Find,About,Maximize,ShowBlocks';
+    CKEDITOR.replace( 'hotel_description', {
+        allowedContent: false,
+        removePlugins: 'save,print,preview,image,find,about,maximize,showblocks, sourcearea',
+        removeButtons: 'Maximize, Code'
+        });
 </script>
-
 <script>
     $(document).ready(function() {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+
+        var editor = CKEDITOR.instances.hotel_description;
+        var maxCharacterCount = 1000;
+        var content = editor.getData();
+        var characterCount = getCharacterCount(content);
+        
+        $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+
         function animateElements() {
             $('.progressbar').each(function() {
                 var elementPos = $(this).offset().top;
@@ -224,6 +226,10 @@
                     }).on('circle-animation-progress', function(event, progress, stepValue) {
                         $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
                     }).stop();
+                             
+                    if (percent == 100) {
+                    $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
+                    }
                 }
             });
         }
@@ -234,24 +240,19 @@
 
         $(document).on('keyup','#hotel_name',function(){
             $("#hm_server_err_msg").text('');
-            if(field_required('hotel_name','hotel_name',"Hotel name is required"))
-            if(!checkMaxLength($('#hotel_name').val(),100 )) 
-                setErrorAndErrorBox('hotel_name','Hotel name should be less than 100 letters.'); 
+
+            var maxNameCount = 50;
+            var hotelName = $('#hotel_name').val();
+            var NameCount = getCharacterCount(hotelName);
+
+            if(field_required('hotel_name','hotel_name','숙박시설 이름은 필수 입력항목 입니다.'))
+
+            if(NameCount > maxNameCount) 
+                setErrorAndErrorBox('hotel_name','숙박시설이름은 50자를 넘을 수 없습니다.'); 
              else
                 unsetErrorAndErrorBox('hotel_name');
         });
-        $(document).on('keyup','#hotel_description',function(){
-            $("#hm_server_err_msg").text('');
-            if(CKEDITOR.instances.hotel_description.getData() === '') {
-                setErrorAndErrorBox('hotel_description','Hotel Description is required.');
-            }
-            else if(!checkMaxLength(CKEDITOR.instances.hotel_description.getData(),1000 )) 
-            {
-                setErrorAndErrorBox('hotel_description','Hotel Description should be less than 1000 letters.');
-            }
-            else
-               unsetErrorAndErrorBox('hotel_description');
-        }); 
+
 
         $(document).on('click','.form_submit',function(){
             $('#hm_hm_server_err_msg').text('');
@@ -259,46 +260,64 @@
             form_submit();
         });
 
-        CKEDITOR.instances.hotel_description.on('change', function() { 
+
+        editor.on('change', function() { 
             $("#hm_server_err_msg").text('');
-            let texlen = CKEDITOR.instances.hotel_description.getData().length; 
-            $("#hotel_description_max_char").text(texlen+'/2000');
-            if(CKEDITOR.instances.hotel_description.getData() === '') {
-                setErrorAndErrorBox('hotel_description','Hotel Description is required.');
+            content = editor.getData(); 
+            characterCount = getCharacterCount(content);
+
+            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+
+            if(characterCount === 0) {
+                setErrorAndErrorBox('hotel_description','숙박시설 설명은 필수 입력항목 입니다.');
             }
-            else if(texlen >1000) 
+            else if(characterCount > 1000) 
             {
-                setErrorAndErrorBox('hotel_description','Hotel Description should be less than 1000 letters.');
+                setErrorAndErrorBox('hotel_description','숙박시설 설명은 1000자를 넘을 수 없습니다.');
             }
             else
                unsetErrorAndErrorBox('hotel_description');
         });
 
+        function getCharacterCount(content) {
+            var normalizedText = content.normalize('NFC');
+            var plainText = normalizedText.replace(/(<([^>]+)>)/gi, '');
+  
+            return plainText.length;
+        }
+
         //form submit
         function form_submit()
         { 
             var token=true; 
-            if(!field_required('hotel_name','hotel_name',"Hotel name is required"))
+            content = editor.getData(); 
+            characterCount = getCharacterCount(content);
+            hotelName = $('#hotel_name').val();
+            NameCount = getCharacterCount(hotelName);
+
+            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+
+            if(!field_required('hotel_name','hotel_name','숙박시설이름은 필수 입력항목 입니다.'))
                 token = false;
-            else if(!checkMaxLength($('#hotel_name').val(),100 )) 
+            else if(NameCount > 50 )
             {
-                setErrorAndErrorBox('hotel_name','Hotel name should be less than 100 letters.');
+                setErrorAndErrorBox('hotel_name','숙박시설이름은 50자를 넘을 수 없습니다.');
                 token = false;
             }
-            if(CKEDITOR.instances.hotel_description.getData() === '') {
-                setErrorAndErrorBox('hotel_description','Hotel Description is required.');
+            if(characterCount === 0) {
+                setErrorAndErrorBox('hotel_description','숙박시설 설명은 필수 입력항목 입니다.');
                 token = false;
             }
-            else if(!checkMaxLength(CKEDITOR.instances.hotel_description.getData(),2000 )) 
+            else if(characterCount > 1000 ) 
             {
-                setErrorAndErrorBox('hotel_description','Hotel Description should be less than 2000 letters.');
+                setErrorAndErrorBox('hotel_description','숙박시설 설명은 1000자를 넘을 수 없습니다.');
                 token = false;
             }   
             if(token)
             {
                 $(".form_submit").prop("disabled",true); 
                 loading();
-                let senddata = {hotel_name:$('#hotel_name').val(),hotel_description:CKEDITOR.instances.hotel_description.getData(),h:$('#h').val(),_token:$('#tk').val(),savetype:$('#savetype').val()};
+                let senddata = {hotel_name:$('#hotel_name').val(),hotel_description:editor.getData(),h:$('#h').val(),_token:$('#tk').val(),savetype:$('#savetype').val()};
                 $.post("{{ route('hm_basic_info_submit') }}",  senddata, function( data ) {
                     if(data.status==1){
                         window.location.href = data.nextpageurl; 
@@ -504,9 +523,9 @@
                     data: {'_token': "{{ csrf_token() }}", 'image': base64data,h:"{{ $hotel->hotel_id}}"},
                     success: function(data){
                         if(data.status==1) {
-                            $('#otherimagessection').append(data.img);
-                            $("#commonSuccessMsg").text(data.message);
-                            $("#commonSuccessBox").css('display','block');
+                                $('#otherimagessection').append(data.img);
+                                $("#commonSuccessMsg").text(data.message);
+                                $("#commonSuccessBox").css('display','block');
                             setTimeout(function() {
                                 $("#commonSuccessBox").hide();
                             }, 3000);

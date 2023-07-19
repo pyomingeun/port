@@ -17,7 +17,7 @@
                                 <form id="facilities_input" method="post" action="javascript:void(0)">
                                     <div class="hotelManageform-Content">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">Facilities Manage</h5>
                                                 <div class="row">
                                                    

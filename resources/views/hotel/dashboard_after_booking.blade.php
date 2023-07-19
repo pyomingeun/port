@@ -9,110 +9,60 @@
         @endif
         <div class="content-box-right dashboard-sec">
             <div class="container-fluid">
-                <!-- <div class="heading-sec mb-4 d-flex align-items-center">
-                    <h5 class="h5  mb-0">Dashboard</h5>
-                    <div class="filter-header-row ml-auto">
-                        <div class="filter-header-col">
-                            <div class="date-picker">
-                                <img src="{{asset('/assets/images/')}}/structure/calendar.svg" alt="" class="calendarIcon" />
-                                <input type="text" class="form-control datepicker" placeholder="" value="2022/11/24 " />
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div class="dshboard-booking-blocks-rw d-flex flex-wrap">
                     <a href="{{ route('bookings'); }}" class="dshboard-booking-blocks-cl">
                         <img src="{{asset('/assets/images/')}}/structure/beg-circle-orange.svg" alt="" class="bookingIcon" />
-                        <p class="p3">On Hold Bookings</p>
+                        <p class="p3">{{ __('home.OnHoldBooking') }}</p>
                         <h5 class="h5 mb-0">{{ $noOfOnHoldBookings; }}</h5>
                     </a>
                     <a href="{{ route('bookings'); }}" class="dshboard-booking-blocks-cl">
                         <img src="{{asset('/assets/images/')}}/structure/beg-circle-green.svg" alt="" class="bookingIcon" />
-                        <p class="p3">Confirmed Bookings</p>
+                        <p class="p3">{{ __('home.ConfirmedBooking') }}</p>
                         <h5 class="h5 mb-0">{{ $noOfConfirmedBookings; }}</h5>
                     </a>
                     <a href="{{ route('bookings'); }}" class="dshboard-booking-blocks-cl">
                         <img src="{{asset('/assets/images/')}}/structure/beg-circle-red.svg" alt="" class="bookingIcon" />
-                        <p class="p3">Cancelled Bookings</p>
+                        <p class="p3">{{ __('home.CanceledBooking') }}</p>
                         <h5 class="h5 mb-0">{{ $noOfCancelledBookings; }}</h5>
                     </a>
                     <div class="ds-total-revenue-box">
                         <div class="d-flex">
                             <img src="{{asset('/assets/images/')}}/structure/wallet-account-balance_.svg" alt="" class="bookingIcon" />
-                            <!-- <div class="form-floating totalRevenceDropdown ml-auto">
-                                <button data-bs-toggle="dropdown" class="form-select">Select</button>
-                                <ul class="dropdown-menu dropdown-menu-start">
-                                    <li class="radiobox-image">
-                                        <input type="radio" id="yr1" name="year" value="1" />
-                                        <label for="yr1">August 2022</label>
-                                    </li>
-                                    <li class="radiobox-image">
-                                        <input type="radio" id="yr2" name="year" value="2" />
-                                        <label for="yr2">August 2020</label>
-                                    </li>
-                                    <li class="radiobox-image">
-                                        <input type="radio" id="yr3" name="year" value="3" />
-                                        <label for="yr3">August 2021</label>
-                                    </li>
-                                </ul>
-                            </div> -->
                         </div>
-                        <p class="p3">Total revenue</p>
+                        <p class="p3">{{ __('home.MonthlyRevenue') }}</p>
                         <h5 class="h5 mb-0">₩ {{ $total_revenue }}</h5>
                     </div>
                 </div>
 
-
                 <div class="whitebox-w">
-                    <h5 class="h5 mb-4">Today’s Check In</h5>
+                    <h5 class="h5 mb-4">{{ __('home.TodayCheckIn') }}</h5>
                     <div class="table-responsive table-view">
                         <table class="table align-middle">
                             <thead>
                                 <tr>
                                     <th>
                                         <p>
-                                            Guest
-                                            <!-- <span class="sort-arrow-table">
-                          <i class="fa fa-caret-up arrow-up"></i>
-                          <i class="fa fa-caret-up arrow-down"></i>
-                      </span> -->
+                                            {{ __('home.Guest') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Booking Reference Number
-                                            <!-- <span class="sort-arrow-table">
-                          <i class="fa fa-caret-up arrow-up"></i>
-                          <i class="fa fa-caret-up arrow-down"></i>
-                      </span> -->
+                                            {{ __('home.BookingReferenceNumber') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Mobile
-                                            <!-- <span class="sort-arrow-table">
-                          <i class="fa fa-caret-up arrow-up"></i>
-                          <i class="fa fa-caret-up arrow-down"></i>
-                      </span> -->
+                                            {{ __('home.Mobile') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Room Type
-                                            <!-- <span class="sort-arrow-table">
-                          <i class="fa fa-caret-up arrow-up"></i>
-                          <i class="fa fa-caret-up arrow-down"></i>
-                      </span> -->
+                                            {{ __('home.RoomName') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Guest Note
-                                            <!-- <span class="sort-arrow-table">
-                          <i class="fa fa-caret-up arrow-up"></i>
-                          <i class="fa fa-caret-up arrow-down"></i>
-                      </span> -->
+                                            {{ __('home.GuestNote') }}
                                         </p>
                                     </th>
                                 </tr>
@@ -131,59 +81,39 @@
                         </table>
                     </div>
                 </div>
-
                 
                 <div class="whitebox-w">
-                    <h5 class="h5 mb-4">Today’s Check Out</h5>
+                    <h5 class="h5 mb-4">{{ __('home.TodayCheckOut') }}</h5>
                     <div class="table-responsive table-view">
                         <table class="table align-middle">
                             <thead>
                                 <tr>
                                     <th>
                                         <p>
-                                            Guest
-                                            <span class="sort-arrow-table">
-                                            <i class="fa fa-caret-up arrow-up"></i>
-                                            <i class="fa fa-caret-up arrow-down"></i>
-                                        </span>
+                                            {{ __('home.Guest') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Booking Reference Number
-                                            <span class="sort-arrow-table">
-                                            <i class="fa fa-caret-up arrow-up"></i>
-                                            <i class="fa fa-caret-up arrow-down"></i>
-                                        </span>
+                                            {{ __('home.BookingReferenceNumber') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Mobile
-                                            <span class="sort-arrow-table">
-                                            <i class="fa fa-caret-up arrow-up"></i>
-                                            <i class="fa fa-caret-up arrow-down"></i>
-                                        </span>
+                                            {{ __('home.Mobile') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Room Type
-                                            <span class="sort-arrow-table">
-                                            <i class="fa fa-caret-up arrow-up"></i>
-                                            <i class="fa fa-caret-up arrow-down"></i>
-                                        </span>
+                                            {{ __('home.RoomName') }}
                                         </p>
                                     </th>
                                     <th>
                                         <p>
-                                            Note
-                                            <span class="sort-arrow-table">
-                                            <i class="fa fa-caret-up arrow-up"></i>
-                                            <i class="fa fa-caret-up arrow-down"></i>
-                                        </span>
+                                            {{ __('home.GuestNote') }}
                                         </p>
                                     </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -202,61 +132,61 @@
                 </div>
                 
                 <div class="heading-sec mb-4 d-flex align-items-center">
-                    <h5 class="h5  mb-0">Room Utilization Rate</h5>
+                    <h5 class="h5 mb-0" style="margin-left: 20px;"> {{ __('home.RoomUitlizationRate') }}</h5>
                     <div class="filter-header-row ml-auto d-flex justify-content-end">
                         <div class="filter-header-col filter-dd-wt-sd-lable">
                             <div class="form-floating mb-0">
-                                <span class="ddLAble monthLable">Month:</span>
+                                <span class="ddLAble monthLable">{{ __('home.Month') }}:</span>
                                 <div class="monthDropdown">
                                     <button id="child1" data-bs-toggle="dropdown" class="form-select">{{ $monthString }}</button>
                                     <ul class="dropdown-menu dropdown-menu-start">
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m1" name="month" value="1" {{ ($currentMonth ==1 )?'checked':''; }} />
-                                            <label for="m1">January</label>
+                                            <label for="m1"> {{ __('home.Jan') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m2" name="month" value="2" {{ ($currentMonth ==2 )?'checked':''; }} />
-                                            <label for="m2">February</label>
+                                            <label for="m2">{{ __('home.Feb') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m3" name="month" value="3" {{ ($currentMonth ==3 )?'checked':''; }} />
-                                            <label for="m3">March</label>
+                                            <label for="m3">{{ __('home.Mar') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m4" name="month" value="4" {{ ($currentMonth ==4 )?'checked':''; }} />
-                                            <label for="m4">April</label>
+                                            <label for="m4">{{ __('home.Apr') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m5" name="month" value="5" {{ ($currentMonth ==5 )?'checked':''; }} />
-                                            <label for="m5">May</label>
+                                            <label for="m5">{{ __('home.May') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m6" name="month" value="6" {{ ($currentMonth ==6 )?'checked':''; }} />
-                                            <label for="m6">June</label>
+                                            <label for="m6">{{ __('home.Jun') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m7" name="month" value="7" {{ ($currentMonth ==7 )?'checked':''; }} />
-                                            <label for="m7">July</label>
+                                            <label for="m7">{{ __('home.Jul') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m8" name="month" value="8" {{ ($currentMonth ==8 )?'checked':''; }} />
-                                            <label for="m8">August</label>
+                                            <label for="m8">{{ __('home.Aug') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m9" name="month" value="9" {{ ($currentMonth ==9 )?'checked':''; }} />
-                                            <label for="m9">September</label>
+                                            <label for="m9">{{ __('home.Sep') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m10" name="month" value="10" {{ ($currentMonth ==10 )?'checked':''; }} />
-                                            <label for="m10">October</label>
+                                            <label for="m10">{{ __('home.Oct') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m11" name="month" value="11" {{ ($currentMonth ==11 )?'checked':''; }} />
-                                            <label for="m11">November</label>
+                                            <label for="m11">{{ __('home.Nov') }}</label>
                                         </li>
                                         <li class="radiobox-image">
                                             <input class="rut_range" type="radio" id="m12" name="month" value="12" {{ ($currentMonth ==12 )?'checked':''; }} />
-                                            <label for="m12">December</label>
+                                            <label for="m12">{{ __('home.Dec') }}</label>
                                         </li>
                                     </ul>
                                 </div>
@@ -264,7 +194,7 @@
                         </div>
                         <div class="filter-header-col filter-dd-wt-sd-lable">
                             <div class="form-floating mb-0">
-                                <span class="ddLAble yearLable">Year:</span>
+                                <span class="ddLAble yearLable">{{ __('home.Year') }}:</span>
                                 <div class="yearDropdown">
                                     <button id="child2" data-bs-toggle="dropdown" class="form-select">{{ $currentYear }}</button>
                                     <ul class="dropdown-menu dropdown-menu-start guestAgeDropdownMenu">
@@ -292,7 +222,7 @@
                 </div>
                 
                 <div class="whitebox-w mb-0">
-                    <h5 class="h5  mb-4">YOY Sales Revenue Comparison </h5>
+                    <h5 class="h5  mb-4">{{ __('home.YOYRevenue') }} </h5>
                     <div id="columnchart_material" class="revenueCahrt"></div>
                     <!-- <img src="{{asset('/assets/images/')}}/product/chart2.png" class="cart"> -->
                 </div>
@@ -349,7 +279,7 @@
             var data = new google.visualization.arrayToDataTable(<?php echo json_encode($roomUtilizationRate); ?>);
 
             var options = {
-                width: 1300,
+                width: "100%",
                 legend: {
                     position: 'bottom'
                 },

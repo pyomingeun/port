@@ -19,28 +19,13 @@
                                 <form id="hm_feNfa_form" method="post">
                                 <div class="hotelManageform-Content">
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt">
-                                            <h5 class="hd5 h5">{{ __('home.Hotel') }}  {{ __('home.Amenities') }}<span class="p2">({{ __('home.optional') }})</span></h5>
+                                        <div class="hotelmanageFormInrcnt">
+                                            <h5 class="hd5 h5">{{ __('home.Feature') }}<span class="p2"> ({{ __('home.Optional') }})</span></h5>
                                             <div class="row">
-                                                <?php /*     
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="form-floating mb-3">
-                                                        <button id="selectFeatures" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"></button>
-                                                        <ul class="dropdown-menu dropdown-menu-start">
-                                                            @foreach ($features as $feature)
-                                                            <li class="radiobox-image ">
-                                                                <input type="radio" id="features_{{$feature->id}}" name="features" value="{{$feature->id}}"  data-t="{{ csrf_token() }}"  data-h="{{$hotel->hotel_id}}" class="select_features"/>
-                                                                <label for="features_{{$feature->id}}">{{$feature->features_name}}</label>
-                                                            </li>
-                                                            @endforeach
-                                                        </ul>
-                                                        <label for="selectFeatures" class="label">Select Features</label>
-                                                    </div>
-                                                </div>
-                                                */ ?>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3 multiselectDropdownField">
-                                                        <input id="selectFeatures" name="select_features"  value="" data-bs-toggle="dropdown" class="form-select" placeholder="Select Features" autocomplete="off" />
+                                                        <input id="selectFeatures" name="select_features"  value="" data-bs-toggle="dropdown" class="form-select" autocomplete="off" />
+                                                        <label for="selectFeatures">{{ __('home.SelectHotelFeature') }}</label>
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($features as $feature)
                                                             <li class="radiobox-image">
@@ -64,26 +49,13 @@
                                         </div>
                                     </div>
                                     <div class="grayBox-w">
-                                        <div class="hotemmanageFormInrcnt">
-                                            <h5 class="hd5 h5">{{ __('home.hotelFacilities') }}  <span class="p2">({{ __('home.optional') }})</span></h5>
+                                        <div class="hotelmanageFormInrcnt">
+                                            <h5 class="hd5 h5">{{ __('home.HotelFacility') }}  <span class="p2">({{ __('home.Optional') }})</span></h5>
                                             <div class="row">
-                                                <?php /*  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="form-floating mb-3">
-                                                        <button id="selectFacilities" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"></button>
-                                                        <ul class="dropdown-menu dropdown-menu-start">
-                                                            @foreach ($facilities as $facilitie)
-                                                            <li class="radiobox-image">
-                                                                <input type="radio" id="facility_{{$facilitie->id}}" name="facilities" value="{{$facilitie->id}}" data-t="{{ csrf_token() }}" class="select_facilities" data-h="{{$hotel->hotel_id}}" />
-                                                                <label for="facility_{{$facilitie->id}}">{{$facilitie->facilities_name}}</label>
-                                                            </li>
-                                                            @endforeach
-                                                        </ul>
-                                                        <label for="selectFacilities" class="label">Select Facilities</label>
-                                                    </div>
-                                                </div> */ ?>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3 multiselectDropdownField">
-                                                        <input id="selectFacilities" name="select_facilities" value="" data-bs-toggle="dropdown" class="form-select" placeholder="Select Facilities" autocomplete="off" />
+                                                        <input id="selectFacilities" name="select_facilities" value="" data-bs-toggle="dropdown" class="form-select" autocomplete="off" />
+                                                        <label for="selectFacilities">{{ __('home.SelectHotelFacility') }}</label>
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($facilities as $facilitie)
                                                             <li class="radiobox-image">
@@ -110,9 +82,9 @@
                                     <input type="hidden" value="{{ csrf_token() }}" name="_token" id="tk">
                                     <input type="hidden" value="next" name="savetype" id="savetype">
                                     <input type="hidden" value="{{$hotel->hotel_id}}" name="h" id="h">
-                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.cancel') }}</a>
+                                    <a class="btn bg-gray1" href="{{ route('hm_cancel') }}" >{{ __('home.Cancel') }}</a>
                                     <button type="button" class="btn outline-blue form_submit" data-btntype="save_n_exit" >{{ __('home.SaveExit') }}</button>
-                                    <button type="button" class="btn btnNext tab3 form_submit" data-btntype="next">{{ __('home.Next') }} & {{ __('home.continue') }}</button>
+                                    <button type="button" class="btn btnNext tab3 form_submit" data-btntype="next">{{ __('home.Next') }}</button>
                                 </div>
                                 </form>
                             </div>
@@ -161,6 +133,10 @@ $(document).ready(function() {
                 }).on('circle-animation-progress', function(event, progress, stepValue) {
                     $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
                 }).stop();
+                             
+                if (percent == 100) {
+                   $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
+                }
             }
         });
     }

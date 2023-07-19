@@ -40,7 +40,7 @@
           <li>
             <a class="dropdown-item" href="{{ route('dashboard') }}">
               <img src="{{ asset('/assets/images/structure/dashboard-icon.svg') }}" alt=".." class="icon24" />
-              <span>{{ __('home.dashboard') }}</span>
+              <span>{{ __('home.Dashboard') }}</span>
             </a>
           </li>
         @endif
@@ -58,7 +58,7 @@
         <li>
           <a class="dropdown-item" href="{{ route('logout') }}">
             <img src="{{ asset('/assets/images/structure/logout-icon.svg') }}" alt=".." class="icon24" />
-            <span>{{ __('home.Logoust') }}</span>
+            <span>{{ __('home.LogOut') }}</span>
           </a>
         </li>
       </ul>

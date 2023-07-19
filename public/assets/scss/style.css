@@ -12,103 +12,52 @@
 }
 
 @font-face {
-  font-family: "satoshi-light";
-  src: url("../fonts/SATOSHI-LIGHT.OTF");
+  font-family: "Pretendard-thin";
+  src: url("../fonts/Pretendard-Thin.OTF");
+}
+
+@font-face {
+    font-family: "Pretendard-extralight";
+    src: url("../fonts/Pretendard-ExtraLight.OTF");
 }
 @font-face {
-  font-family: "satoshi-regular";
-  src: url("../fonts/SATOSHI-REGULAR.OTF");
+    font-family: "Pretendard-light";
+    src: url("../fonts/Pretendard-Light.OTF");
 }
+
 @font-face {
-  font-family: "satoshi-medium";
-  src: url("../fonts/SATOSHI-MEDIUM.OTF");
+    font-family: "Pretendard-regular";
+    src: url("../fonts/Pretendard-Regular.OTF");
 }
+
 @font-face {
-  font-family: "satoshi-bold";
-  src: url("../fonts/SATOSHI-BOLD.OTF");
+    font-family: "Pretendard-medium";
+    src: url("../fonts/Pretendard-Medium.OTF");
 }
+
 @font-face {
-  font-family: "satoshi-black";
-  src: url("../fonts/SATOSHI-BLACK.OTF");
+    font-family: "Pretendard-semibold";
+    src: url("../fonts/Pretendard-SemiBold.OTF");
 }
+
 @font-face {
-  font-family: "DMSerifDisplay-Regular";
-  src: url("../fonts/DMSerifDisplay-Regular.ttf");
+    font-family: "Pretendard-bold";
+    src: url("../fonts/Pretendard-Bold.OTF");
 }
+
+@font-face {
+    font-family: "Pretendard-extrabold";
+    src: url("../fonts/Pretendard-ExtraBold.OTF");
+}
+
+@font-face {
+    font-family: "Pretendard-black";
+    src: url("../fonts/Pretendard-black.OTF");
+}
+
 a {
   text-decoration: none;
 }
-
-.h1 {
-  font-size: 48px;
-  font-family: "satoshi-black";
-}
-@media (max-width: 991px) {
-  .h1 {
-    font-size: 38px;
-  }
-}
-
-.h2 {
-  font-size: 36px;
-  font-family: "satoshi-black";
-}
-@media (max-width: 991px) {
-  .h2 {
-    font-size: 30px;
-  }
-}
-
-.h3 {
-  font-size: 28px;
-  font-family: "satoshi-bold";
-}
-@media (max-width: 991px) {
-  .h3 {
-    font-size: 24px;
-  }
-}
-
-.h4 {
-  font-size: 24px;
-  font-family: "satoshi-bold";
-}
-@media (max-width: 991px) {
-  .h4 {
-    font-size: 20px;
-  }
-}
-
-.h5 {
-  font-size: 20px;
-  font-family: "satoshi-bold";
-}
-@media (max-width: 991px) {
-  .h5 {
-    font-size: 18px;
-  }
-}
-
-.h6 {
-  font-size: 16px;
-  font-family: "satoshi-regular";
-}
-
-.p1 {
-  font-size: 16px;
-  font-family: "satoshi-regular";
-}
-
-.p2 {
-  font-size: 14px;
-  font-family: "satoshi-regular";
-}
-
-.p3 {
-  font-size: 12px;
-  font-family: "satoshi-regular";
-}
-
 .btn {
   height: 48px;
   line-height: 48px;
@@ -119,7 +68,7 @@ a {
   box-shadow: none;
   border: none;
   border-radius: 0.5rem;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   background: linear-gradient(99.08deg, #00CDFF -2.24%, #27D400 139.49%);
   color: var(--white);
   position: relative;
@@ -234,7 +183,7 @@ a {
 }
 .modal .modal-dialog .modal-content .modal-body .modal-heads .h3 {
   color: var(--black19);
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 .modal .modal-dialog .modal-content .modal-body .modal-heads .p2 {
   color: var(--gray71);
@@ -245,7 +194,7 @@ a {
 }
 .modal.successDialog .p2 span {
   color: #191C1A !important;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 /* For radio */
@@ -257,7 +206,7 @@ a {
 .dropdown-menu .dropdown-item {
   font-size: 14px;
   color: var(--black19);
-  font-family: "satoshi-medium" !important;
+  font-family: "Pretendard-medium" !important;
   padding: 8px 15px;
 }
 .dropdown-menu .dropdown-item.active, .dropdown-menu .dropdown-item:hover {
@@ -278,7 +227,7 @@ a {
   height: calc(3.5rem + 0px);
   text-align: left;
   font-size: 14px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: var(--black19);
 }
 .form-floating .form-control:focus,
@@ -444,7 +393,7 @@ a {
 .breadcrumb .breadcrumb-item,
 .breadcrumb .breadcrumb-item a {
   font-size: 14px;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Pretendard-regular", sans-serif;
   color: var(--gray) 66;
 }
 @media (max-width: 767px) {
@@ -476,7 +425,7 @@ a {
   color: #717972;
   background-color: #DFEDE4;
   padding: 16px 20px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 12px;
   white-space: nowrap;
   vertical-align: middle;
@@ -493,7 +442,7 @@ a {
 .table-view .table th {
   color: var(--gray66);
   font-size: 16px;
-  font-family: "Libre Franklin", sans-serif;
+  font-family: "Pretendard-regular", sans-serif;
   font-weight: 500;
 }
 .table-view .table th p {
@@ -523,7 +472,7 @@ a {
 .table-view .table td {
   color: #191C1A;
   font-size: 14px;
-  font-family: "satoshi-light";
+  font-family: "Pretendard-light";
   padding: 13px 20px;
   font-size: 14px;
   white-space: nowrap;
@@ -576,7 +525,7 @@ a {
   position: relative;
   background: transparent;
   transition: all 200ms;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .pagination .page-item .page-link::after {
   content: "";
@@ -605,7 +554,7 @@ a {
 }
 .pagination .page-item.active .page-link {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .pagination .page-item.active .page-link:after {
   width: 100%;
@@ -692,7 +641,7 @@ a {
 }
 
 .header {
-  height: 80px;
+  height: 60px;
   width: 100%;
   padding: 0px 50px;
   display: flex;
@@ -800,7 +749,7 @@ a {
   background: #5CFEA9;
   border: 1px solid var(--gray71);
   font-size: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -944,7 +893,7 @@ footer .footerRow1 {
 }
 footer .footerRow1 .h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 footer .footerRow1 .p2 {
   color: #717972;
@@ -1179,14 +1128,14 @@ a {
   height: 32px;
   line-height: 32px;
   padding: 0 12px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   text-align: center;
 }
 .chips.h-24 {
   height: 24px;
   line-height: 24px;
   font-size: 12px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   border-radius: 4px;
 }
 .chips.chips-orange {
@@ -1208,7 +1157,7 @@ a {
 .chips.chips-gray1 {
   background: #DFEDE4;
   color: #191C1A;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 
 .whitebox-w .white-card-header {
@@ -1245,7 +1194,7 @@ a {
 }
 .whitebox-w .white-card-header .p2 span {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin: 0 7px;
 }
 @media (min-width: 300px) and (max-width: 767px) {
@@ -1269,15 +1218,15 @@ a {
 }
 .whitebox-w .white-card-body .bk-dtlRow .bk-dtlCol .p2 {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .whitebox-w .white-card-body .bk-dtlRow .bk-dtlCol .p2 .priceBlue {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .whitebox-w .white-card-body .rate-review-txt {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .whitebox-w .white-card-body .rate-review-txt img {
   margin-right: 6px;
@@ -1314,7 +1263,7 @@ a {
   border: 0 !important;
   box-shadow: none;
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   font-size: 16px;
   padding: 20px;
 }
@@ -1344,7 +1293,7 @@ a {
 }
 .price-statusbox-rgt h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-bottom: 20px;
 }
 .price-statusbox-rgt .PriceBreakupRw {
@@ -1356,7 +1305,7 @@ a {
 }
 .price-statusbox-rgt .PriceBreakupRw .p1 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-bottom: 0;
 }
 .price-statusbox-rgt .PriceBreakupRw .PriceBreakupCl-rgt {
@@ -1397,15 +1346,15 @@ a {
 .ExtraServicesDialog .table-responsive th {
   font-size: 16px !important;
   color: #191C1A !important;
-  font-family: "satoshi-medium" !important;
+  font-family: "Pretendard-medium" !important;
 }
 .ExtraServicesDialog .table-responsive th:last-child {
   text-align: right;
-  font-family: "satoshi-bold" !important;
+  font-family: "Pretendard-bold" !important;
 }
 .ExtraServicesDialog .table-responsive td .p1 {
   font-size: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .ExtraServicesDialog .table-responsive td .p3 {
@@ -1436,7 +1385,7 @@ a {
 }
 .rate-and-form h4 {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .rate-and-form .p2 {
   color: #717972;
@@ -1486,7 +1435,7 @@ a {
 }
 .rate-and-form .rating-field-row .p1 {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   padding-right: 12px;
   margin-bottom: 0;
 }
@@ -1674,7 +1623,7 @@ a {
 }
 .empty-list-box h6 {
   font-size: 20px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1707,7 +1656,7 @@ a {
   bottom: 16px;
   color: #FFFFFF;
   left: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .productListCard .productListImg-block .onlist-rat-review .rat-chips {
   font-size: 10px;
@@ -1718,36 +1667,7 @@ a {
   padding: 0 9px;
   margin-right: 8px;
 }
-.productListCard .productListImg-block .favoritlsstbock {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  top: 15px;
-  right: 15px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  cursor: pointer;
-}
-.productListCard .productListImg-block .favoritlsstbock .heart-fill {
-  display: none;
-}
-.productListCard .productListImg-block .favoritlsstbock:hover .heart-fill {
-  display: block;
-}
-.productListCard .productListImg-block .favoritlsstbock:hover .heart-outline {
-  display: none;
-}
-.productListCard .productListImg-block .overlay {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 100%);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
+
 .productListCard .productListImg-block:hover .productListImg {
   transform: scale(1.1) rotate(0deg);
 }
@@ -1757,25 +1677,27 @@ a {
 .productListCard .productListDetail .h6 {
   color: #015AC3;
   font-size: 20px;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .productListCard .productListDetail .h6 .pelTm {
   color: #717972;
   font-size: 14px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .productListCard .productListDetail .h6 del {
   color: #717972;
   font-size: 14px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .productListCard .productListDetail h5 {
   color: #191C1A;
   font-size: 20px;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .productListCard .productListDetail .p2 {
   color: #717972;
+  font-size: 16px;
+  font-family: "Pretendard-regular";
 }
 .productListCard .productListDetail .productLstFtr {
   border-top: 1px solid #DFEDE4;
@@ -1820,7 +1742,7 @@ a {
 .productListCard .discountBadge .onbadgeText {
   font-size: 8px;
   color: #D8E2FF;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   transform: rotate(-43deg) !important;
   display: block;
   position: relative;
@@ -1829,7 +1751,6 @@ a {
 }
 
 .heading1 {
-  font-family: "DMSerifDisplay-Regular";
   color: #191C1A;
 }
 .heading1 .hd-icon {
@@ -1893,6 +1814,9 @@ a {
 
 .headingRw .heading1 {
   position: relative;
+  font-family: Pretendard-bold;
+  font-size: 30px;
+  margin-bottom: 50px;
 }
 .headingRw .p1 {
   color: #717972;
@@ -1911,11 +1835,11 @@ a {
 .breadcrumbNave .breadcrumb .breadcrumb-item {
   font-size: 12px;
   color: #717972;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .breadcrumbNave .breadcrumb .breadcrumb-item.active {
   color: #008952;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .breadcrumbNave.on-banner-breadcrumb .breadcrumb {
   margin-bottom: 15px;
@@ -1934,7 +1858,7 @@ a {
   padding-top: 40px;
 }
 .event-detail-content .h1 {
-  font-family: "DMSerifDisplay-Regular";
+  font-family: "Pretendard-Regular";
   color: #191C1A;
   margin-bottom: 20px;
 }
@@ -2006,12 +1930,12 @@ a {
 
 .viewmore-a {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 12px;
 }
 
 .ratprogress .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .ratprogress .progress {
   height: 4px;
@@ -2022,12 +1946,12 @@ a {
 }
 
 .normalfont {
-  font-family: "satoshi-regular" !important;
+  font-family: "Pretendard-regular" !important;
   font-size: 14px !important;
 }
 
 .mediumfont {
-  font-family: "satoshi-medium" !important;
+  font-family: "Pretendard-medium" !important;
   font-size: 14px !important;
 }
 
@@ -2190,7 +2114,7 @@ a {
   position: relative;
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .cancellationPolicyCol1 .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .cancellationPolicyCol2 {
   min-width: 60%;
@@ -2198,14 +2122,14 @@ a {
   position: relative;
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .cancellationPolicyCol2 .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin-right: 10px;
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .cancellationPolicyCol2 .p3 {
   color: #717972;
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .cancellationPolicyCol2 .p3 .cpPercent {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .cancellationPolicycnt-Row .cancellationPolicycnt .bgpink {
@@ -2394,13 +2318,13 @@ a {
   line-height: normal;
   font-size: 10px;
   color: #191C1A;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 
 .profile-progress-box .circle strong i {
   font-style: normal;
   font-size: 10px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 
 .profile-progress-box {
@@ -2423,7 +2347,7 @@ a {
   padding-left: 16px;
 }
 .profile-progress-box .prog-des .p3 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-bottom: 5px;
   font-size: 12px;
 }
@@ -2460,7 +2384,7 @@ a {
 
 .addAttBtn {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .uploadinput {
@@ -2540,7 +2464,8 @@ a {
   text-align: center;
 }
 .quantity-row .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-regular";
+  font-size: 14px;
 }
 .quantity-row .p2 .required-star {
   color: #15D282;
@@ -2568,7 +2493,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .inpWtTextRtbg.h-40 .inpTextRtbg {
   height: 40px !important;
@@ -2616,7 +2541,7 @@ a {
   top: 6px;
   right: 25px;
   color: #008952;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .sidebarDropdown .dropdown-toggle:after {
@@ -2636,13 +2561,13 @@ a {
 .sidebarDropdown .dropdown-menu .dropdown-item:hover {
   background-color: transparent;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .sidebarDropdown.active .dropdown-item.active {
   background-color: transparent;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .norSelect-56 .form-select {
@@ -2667,7 +2592,7 @@ a {
   padding: 30px 0 84px 0;
 }
 .sideFilterDialog .modal-dialog.modal-dialog-centered .modal-content .modal-body .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .sideFilterDialog .modal-dialog.modal-dialog-centered .modal-content .modal-body .h6 .form-floating {
   margin-bottom: 30px;
@@ -2706,7 +2631,7 @@ a {
 }
 .sideFilterDialog .linkgray {
   color: #717972;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .sideFilterDialog .side-filterFooter {
   position: absolute;
@@ -2857,7 +2782,7 @@ a {
   border: 1px solid #015AC3;
   color: #015AC3;
   transition: all 400ms;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .daterangepicker {
@@ -2868,7 +2793,7 @@ a {
   font-size: 14px;
   border: 0;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .daterangepicker input.input-mini.form-control:focus {
   outline: none;
@@ -2880,7 +2805,7 @@ a {
 .daterangepicker th.month {
   font-size: 16px;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .daterangepicker .calendar-table tr td {
   width: 42px !important;
@@ -2899,7 +2824,7 @@ a {
 }
 .daterangepicker .calendar-table tr th {
   font-size: 14px !important;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-weight: 500 !important;
 }
 .daterangepicker .calendar-table thead tr:first-child th {
@@ -2907,7 +2832,7 @@ a {
   padding-top: 10px;
 }
 .daterangepicker .calendar-table thead tr:first-child th:first-child th.month {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .daterangepicker .calendar-table thead tr:last-child th {
   color: #717972 !important;
@@ -3265,14 +3190,14 @@ body.bodyscroll {
 .register-main-wrapper .registerForm-col .h3 {
   margin-bottom: 8px;
   color: var(--black19);
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 .register-main-wrapper .registerForm-col .p2 {
   margin-bottom: 25px;
   color: var(--gray71);
 }
 .register-main-wrapper .registerForm-col .p2.sb-hdname {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 @media (min-width: 300px) and (max-width: 767px) {
@@ -3327,7 +3252,7 @@ body.bodyscroll {
   position: absolute;
   border-radius: 8px;
   overflow: hidden;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   line-height: 18px;
   z-index: 1;
@@ -3458,7 +3383,7 @@ body.bodyscroll {
 .register-main-wrapper.register-verification-sec .col-xl-5 .h3 {
   margin-bottom: 8px;
   color: var(--black19);
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 .register-main-wrapper .password-instruction {
   display: flex;
@@ -3489,7 +3414,7 @@ body.bodyscroll {
 .register-main-wrapper.update-password-sec .col-xl-5 .h3 {
   margin-bottom: 8px;
   color: var(--black19);
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 .register-main-wrapper.registerPage .registerRight-col {
   align-items: start !important;
@@ -3922,11 +3847,11 @@ body.bodyscroll {
 }
 .profile-sec .profile-right-col .profile-right-inner-col .profile-dtl-row .p1 {
   margin-bottom: 0;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   line-height: 21px;
 }
 .profile-sec .profile-right-col .profile-right-inner-col .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #191C1A;
 }
 .profile-sec .profile-right-col .profile-right-inner-col .text-right {
@@ -3936,7 +3861,7 @@ body.bodyscroll {
   padding-top: 25px;
 }
 .profile-sec .profile-right-col .profile-edit-form-rw .h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .profile-sec .profile-right-col .profile-edit-form-rw .p2 {
@@ -3948,7 +3873,7 @@ body.bodyscroll {
 }
 .profile-sec .profile-right-col .profile-edit-form-rw a {
   color: #717972;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 14px;
 }
 .profile-sec .profile-right-col .profile-edit-form-rw .form-floating .form-control,
@@ -3995,7 +3920,7 @@ body.bodyscroll {
   padding-left: 15px;
 }
 .notification-msg-rw .p2 span {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .notification-msg-rw .p3 {
@@ -4160,7 +4085,7 @@ body.bodyscroll {
 
 .BookingDetails-box .h6 {
   color: #191C1A;
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 .BookingDetails-box .bookingDetailCheck-in-out-row {
   border-bottom: 1px solid #DFEDE4;
@@ -4168,13 +4093,13 @@ body.bodyscroll {
 }
 .BookingDetails-box .bookingDetailCheck-in-out-row .h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .BookingDetails-box .bookingDetailCheck-in-out-row .p3 {
   color: #717972;
 }
 .BookingDetails-box .bookingDetailCheck-in-out-row .p1 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #191C1A;
 }
 .BookingDetails-box .bookingDetailCheck-in-out-row .bk-dtlCol1 {
@@ -4237,16 +4162,16 @@ body.bodyscroll {
   color: #717972;
 }
 .BookingDetails-box .guestNote span {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 
 .boking-deatil-rating-review-box .h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .boking-deatil-rating-review-box .rt-sub-h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   margin-bottom: 20px;
 }
@@ -4254,7 +4179,7 @@ body.bodyscroll {
   margin-right: 5px;
 }
 .boking-deatil-rating-review-box .rtServicehd {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A !important;
 }
 .boking-deatil-rating-review-box .rtServicehd .ServicesIcon {
@@ -4331,13 +4256,13 @@ body.bodyscroll {
 }
 .my-rewards-sec .grab-rewards-hotel-booking .grab-rewards-hotel-booking-inner-box h6 {
   font-size: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   margin-bottom: 10px;
 }
 .my-rewards-sec .grab-rewards-hotel-booking .grab-rewards-hotel-booking-inner-box h3 {
   font-size: 32px;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #015AC3;
 }
 .my-rewards-sec .grab-rewards-hotel-booking .grab-rewards-hotel-booking-inner-box .p3 {
@@ -4422,7 +4347,7 @@ body.bodyscroll {
 
 .rewardHistorybox-w .h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .rewardHistorybox-w .rewardHistorybox {
   border-bottom: 1px solid #DFEDE4;
@@ -4431,17 +4356,17 @@ body.bodyscroll {
 }
 .rewardHistorybox-w .rewardHistorybox .h6 {
   color: #191C1A;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .rewardHistorybox-w .rewardHistorybox .p3 {
   color: #717972;
 }
 .rewardHistorybox-w .rewardHistorybox .p3 span {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .rewardHistorybox-w .rewardHistorybox .p1 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .rewardHistorybox-w .rewardHistorybox .col-xl-3 {
   text-align: right;
@@ -4520,7 +4445,7 @@ body.bodyscroll {
 }
 .chat-sec .chat-left-sidebar .chat-left-content-box .chatdtlrow .ctrMsgDtl h6 {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
@@ -4542,7 +4467,7 @@ body.bodyscroll {
   right: 0;
   font-size: 12px;
   color: #717972;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   top: 0;
 }
 .chat-sec .chat-left-sidebar .chat-left-content-box .chatdtlrow .ctrMsgDtl .chetdelteDropdown {
@@ -4750,7 +4675,7 @@ body.bodyscroll {
   top: 0;
 }
 .home-sec1 .homebannerslider .banner-slide {
-  height: 420px;
+  height: 400px;
 }
 .home-sec1 .homebannerslider .banner-slide .bannerImage {
   width: 100%;
@@ -4794,17 +4719,20 @@ body.bodyscroll {
   left: 0;
   right: 0;
   text-align: center;
-  padding-top: 205px;
+  padding-top: 110px;
   z-index: 1;
 }
 .home-sec1 .home-banner-cont .h1 {
-  font-family: "DMSerifDisplay-Regular";
+  font-family: "Pretendard-medium";
   color: #FFFFFF;
-  font-size: 64px;
+  font-size: 60px;
+  margin-left: -200px;
 }
 .home-sec1 .home-banner-cont .p1 {
-  font-size: 20px;
+  font-family: "Pretendard-medium";
   color: #FFFFFF;
+  font-size: 30px;
+  margin-left: 200px;
 }
 .home-sec1 .bannerSearchContainer {
   margin-top: -54px;
@@ -4816,8 +4744,8 @@ body.bodyscroll {
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox {
   background-color: #EEF5EE;
-  border-radius: 12px;
-  padding: 17px 20px;
+  border-radius: 10px;
+  padding: 5px 5px;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol {
   min-width: 32.4%;
@@ -4861,17 +4789,17 @@ body.bodyscroll {
   position: absolute;
   bottom: 8px;
   left: 54px;
-  font-size: 24px;
-  font-family: "satoshi-bold";
+  font-size: 16px;
+  font-family: "Pretendard-regular";
 }
 @media (min-width: 300px) and (max-width: 576px) {
   .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .checkinoutBox .customeDateBox {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .checkinoutBox .customeDateBox .dtSpan {
   font-size: 12px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   color: #717972;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .checkinoutBox .form-floating {
@@ -4920,8 +4848,8 @@ body.bodyscroll {
   padding-left: 56px !important;
   border: 0;
   border-radius: 8px;
-  font-size: 24px;
-  font-family: "satoshi-bold";
+  font-size: 18px;
+  font-family: "Pretendard-medium";
   color: #191C1A;
   height: 72px !important;
   white-space: nowrap;
@@ -4963,7 +4891,7 @@ body.bodyscroll {
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .p2 {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box {
   text-align: center;
@@ -4972,14 +4900,14 @@ body.bodyscroll {
   background: #E7F2EA;
   border: 1px solid #717972;
   border-radius: 8px 0px 0px 8px;
-  min-width: 40px;
-  max-width: 40px;
-  height: 40px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box .plus {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: #E7F2EA;
   border: 1px solid #717972;
   border-radius: 0px 8px 8px 0px;
@@ -4987,11 +4915,11 @@ body.bodyscroll {
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box input[type=text] {
   border: 1px solid #717972;
-  height: 40px;
+  height: 30px;
   border-left: 0;
   border-right: 0;
-  width: 60px;
-  max-width: 60px;
+  width: 40px;
+  max-width: 40px;
   text-align: center;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box input[type=text]:focus {
@@ -5034,8 +4962,8 @@ body.bodyscroll {
   background-image: none;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .guestdropdownBtn .guestNo {
-  font-size: 24px;
-  font-family: "satoshi-bold";
+  font-size: 18px;
+  font-family: "Pretendard-regular";
 }
 @media (min-width: 300px) and (max-width: 576px) {
   .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .guestdropdownBtn .guestNo {
@@ -5045,7 +4973,7 @@ body.bodyscroll {
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .guestdropdownBtn .guestTxt {
   font-size: 12px;
   color: #717972 !important;
-  font-family: "satoshi-regular" !important;
+  font-family: "Pretendard-regular" !important;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol:nth-child(3) {
   min-width: 24.1%;
@@ -5188,7 +5116,7 @@ body.bodyscroll {
   background-image: url(../images/structure/gray-dotted-img.png);
   background-size: cover;
   background-repeat: no-repeat;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
 }
 .home-sec3 .heading1 {
   position: relative;
@@ -5242,7 +5170,7 @@ body.bodyscroll {
   right: 0;
 }
 .ratedHotelBox .ratedHotelDeatilBox .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #191C1A;
   margin-bottom: 13px;
 }
@@ -5345,7 +5273,7 @@ body.bodyscroll {
 .home-sec5 .register-now-boxhome-sec5 .h1 {
   color: #FFFFFF;
   margin-bottom: 20px;
-  font-family: "DMSerifDisplay-Regular";
+  font-family: "Pretendard-Regular";
 }
 .home-sec5 .register-now-boxhome-sec5 .p1 {
   color: #FFFFFF;
@@ -5421,7 +5349,7 @@ body.bodyscroll {
 .subscribeNewsletter-section .subscribeNewsletterBox h2 {
   font-size: 34px;
   color: #191C1A;
-  font-family: "DMSerifDisplay-Regular";
+  font-family: "Pretendard-Regular";
   margin-bottom: 30px;
 }
 .subscribeNewsletter-section .subscribeNewsletterBox .subscribeNewsletterForm {
@@ -5510,7 +5438,7 @@ body.bodyscroll {
   height: 100%;
 }
 .hotelilisting-bnr-sec .hotelilistingBanner .h1 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .hotelilisting-bnr-sec .hotelilistingBanner .home-banner-cont {
   padding-top: 114px;
@@ -5551,7 +5479,8 @@ body.bodyscroll {
 
 .hotel-detail-sec1 {
   background-color: #EEF5EE;
-  padding-top: 0;
+  padding-top: 5px;
+  transform: translateY(-20px);
 }
 .hotel-detail-sec1 .bannerSearchContainer {
   margin-top: 0;
@@ -5576,7 +5505,7 @@ body.bodyscroll {
 }
 .sahreFavoriteBox .shareFropdown .dropdown-toggle {
   font-size: 14px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .sahreFavoriteBox .shareFropdown .dropdown-toggle::after {
@@ -5598,7 +5527,7 @@ body.bodyscroll {
 }
 .sahreFavoriteBox .favoriteItem {
   font-size: 14px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .sahreFavoriteBox .favoriteItem .favoriteItem {
@@ -5642,23 +5571,23 @@ body.bodyscroll {
   color: #FFFFFF;
 }
 .hotel-detail-des-box1 .checkin {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .hotel-detail-des-box1 .checkin span {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .hotel-detail-des-box1 .checkout {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .hotel-detail-des-box1 .checkout span {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .hotel-detail-des-box1 .vertLine {
   margin: 0 10px;
 }
 .hotel-detail-des-box1 .quickEnquiry {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .hotel-detail-des-box1 .detailMapBox {
   position: relative;
@@ -5732,7 +5661,7 @@ body.bodyscroll {
   padding-left: 20px;
 }
 .room-type-box .roomtype-row .roomtypeDescription .h5 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 .room-type-box .roomtype-row .roomtypeDescription .p2 {
@@ -5763,7 +5692,7 @@ body.bodyscroll {
 }
 .room-type-box .roomtype-row .roomtypeDescription .viewmore-a {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 12px;
 }
 .room-type-box .roomtype-row .roomtypeDescription .col-xl-4 .btn {
@@ -5771,7 +5700,7 @@ body.bodyscroll {
 }
 .room-type-box .roomtype-row .roomtypeDescription .col-xl-4 .h6 {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-top: 50px;
 }
 .room-type-box .roomtype-row .roomtypeDescription .col-xl-4 .p3 {
@@ -5832,7 +5761,7 @@ body.bodyscroll {
   font-size: 14px;
 }
 .FeaturesAndFacilitiesRow h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   margin-bottom: 22px;
   margin-top: 15px;
@@ -5840,10 +5769,10 @@ body.bodyscroll {
 .FeaturesAndFacilitiesRow .checkinout .h6 {
   color: #191C1A;
   margin-right: 40px;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .FeaturesAndFacilitiesRow .checkinout .h6 span {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 
 .TouristAttractionsBlock .TouristAttractionsMap .TouristAttractionsMapmage {
@@ -5870,7 +5799,7 @@ body.bodyscroll {
      object-fit: cover;
 }
 .TouristAttractionsRef .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .TouristAttractionsRef .w-100 {
   max-width: 79% !important;
@@ -5889,7 +5818,7 @@ body.bodyscroll {
 }
 .hotel-dtl-reviewRow .hotel-dtl-reviewBlock h3 {
   font-size: 36px !important;
-  font-family: "satoshi-medium" !important;
+  font-family: "Pretendard-medium" !important;
 }
 .hotel-dtl-reviewRow .hotel-dtl-reviewBlock .rStargreen {
   color: #008952;
@@ -5902,7 +5831,7 @@ body.bodyscroll {
   font-size: 24px;
 }
 .hotel-dtl-reviewRow .hotel-dtl-reviewBlock .p1 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .hotel-dtl-reviewRow .hotel-dtl-progressratbolck {
   min-width: 75%;
@@ -5946,7 +5875,7 @@ body.bodyscroll {
   min-width: 40px;
 }
 .ratingRow .ratingDes h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin-bottom: 10px;
 }
 .ratingRow .ratingDes .p2 {
@@ -6043,7 +5972,7 @@ body.bodyscroll {
 }
 .hotel-check-in-out .checkIOdtl .blueDate {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-right: 5px;
   font-size: 34px;
 }
@@ -6057,7 +5986,7 @@ body.bodyscroll {
 }
 .hotel-check-in-out .guest .Gtsadlt-h3 {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-right: 5px;
   font-size: 34px;
   margin-right: 8px;
@@ -6130,13 +6059,13 @@ body.bodyscroll {
   margin-top: 20px;
 }
 .roombox h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .roombox .p3 {
   color: #717972;
 }
 .roombox .ViewCancellation-a {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #015AC3;
 }
 
@@ -6146,7 +6075,7 @@ body.bodyscroll {
   border-radius: 8px;
   padding: 6px 11px;
   height: 32px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -6255,7 +6184,7 @@ body.bodyscroll {
 .paymentOptionBox .form-check .form-check-label {
   font-size: 16px;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .paymentOptionBox .form-check .form-check-input {
   margin-left: -30px;
@@ -6265,11 +6194,11 @@ body.bodyscroll {
 }
 .paymentOptionBox .paymenrRewardsCol .form-check .p2 .rewPriceblue {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .paymentOptionBox .paymenrRewardsCol .form-check .p2 .vertLine {
   color: #717972;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin: 0 5px;
 }
 .paymentOptionBox .paymenrRewardsCol .form-check .p2 .rewPriceblack {
@@ -6310,7 +6239,7 @@ body.bodyscroll {
 }
 .rewardPointBox .p2 .rpPriceblue {
   color: #015AC3;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .rewardPointBox .p2 .confetti {
   margin-right: 8px;
@@ -6367,7 +6296,7 @@ body.bodyscroll {
 }
 .download-confirmation-box h5 {
   color: #008952;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .top-banner-section {
@@ -6394,7 +6323,7 @@ body.bodyscroll {
 }
 .top-banner-section .banner-image-dv .bannerContent .h1 {
   color: #FFFFFF;
-  font-family: "satoshi-black";
+  font-family: "Pretendard-black";
 }
 
 .faq-sec2 {
@@ -6409,7 +6338,7 @@ body.bodyscroll {
 .faq-sec2 .accordion .accordion-item .accordion-header .accordion-button {
   background: transparent;
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 20px;
   padding: 19px 20px;
   border-top: 1px solid #DFEDE4 !important;
@@ -6447,11 +6376,11 @@ body.bodyscroll {
   padding-bottom: 100px;
 }
 .staticpagesContent .h5 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin-bottom: 20px;
 }
 .staticpagesContent .p1 {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   color: #717972;
   margin-bottom: 30px;
 }
@@ -6477,7 +6406,7 @@ body.bodyscroll {
   color: #717972;
 }
 .payoutDetailRow .payoutDetailCol .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .payoutDetailRow .payoutDetailCol:nth-child(1) {
   border-left: 0;
@@ -6523,7 +6452,7 @@ body.bodyscroll {
   margin-bottom: 20px;
 }
 .earnings-payouts-deatil-sec .whitebox-w .white-card-header .p1 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .setting-notification-sec .setting-nottification-row .setting-nottification-left-col {
@@ -6539,7 +6468,7 @@ body.bodyscroll {
   border-radius: 12px;
   padding: 12px 10px;
   font-size: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   display: block;
   width: 100%;
@@ -6567,7 +6496,7 @@ body.bodyscroll {
   margin-right: 15px;
 }
 .setting-notification-sec .setting-nottification-row .setting-nottification-right-col .setting-notification-check-row .h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .setting-notification-sec .setting-nottification-row .setting-nottification-right-col .setting-notification-check-row .form-check .form-check-label {
   color: #717972;
@@ -6575,7 +6504,7 @@ body.bodyscroll {
 }
 .setting-notification-sec .setting-nottification-row .setting-nottification-right-col .setting-notification-check-row .form-check .form-check-input:checked ~ .form-check-label {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 @media (min-width: 300px) and (max-width: 767px) {
   .setting-notification-sec .setting-nottification-row .setting-nottification-right-col .setting-notification-check-row {
@@ -6662,7 +6591,7 @@ body.bodyscroll {
   color: #717972;
 }
 .hotel-management-sec .hotel-management-row .hotel-management-left-col .hotel-tabs-rw .nav-tabs .nav-item .nav-link .p1 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin-bottom: 0;
   color: #191C1A;
 }
@@ -6672,7 +6601,7 @@ body.bodyscroll {
   height: 40px;
   border-radius: 50px;
   font-size: 16px;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6766,7 +6695,7 @@ body.bodyscroll {
   padding-left: 20px;
 }
 .hotelInfoRow .hotelInfoDes .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .hotelInfoRow .hotelInfoDes .p2 .required-star {
   color: #15D282;
@@ -6786,7 +6715,7 @@ body.bodyscroll {
   padding-left: 20px;
 }
 .uploadImageRow .uploadImageDes .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .uploadImageRow .uploadImageDes .p2 .required-star {
   color: #15D282;
@@ -6807,51 +6736,37 @@ body.bodyscroll {
   }
 }
 
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol {
+.hotelImagesPreviewRow .hotelImgaesPreviewCol {
   min-width: 200px;
   max-width: 200px;
-  height: 112px;
+  height: 150px;
   border-radius: 8px;
   position: relative;
   margin-right: 12px;
   margin-bottom: 12px;
 }
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol .hotelPreviewImgae {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 8px;
-}
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol .overlay {
-  background: gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50.14%);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol .favStar {
+
+.hotelImagesPreviewRow .hotelImgaesPreviewCol .favStar {
   position: absolute;
   top: 7px;
   left: 7px;
   z-index: 3;
   cursor: pointer;
 }
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol .favStar.favStar-fill {
+.hotelImagesPreviewRow .hotelImgaesPreviewCol .favStar.favStar-fill {
   color: #D17D00;
 }
-.hotelImgaesPreviewRow .hotelImgaesPreviewCol .favStar.favStar-outline {
+.hotelImagesPreviewRow .hotelImgaesPreviewCol .favStar.favStar-outline {
   color: #FFFFFF;
 }
 @media (min-width: 300px) and (max-width: 767px) {
-  .hotelImgaesPreviewRow .hotelImgaesPreviewCol {
+  .hotelImagesPreviewRow .hotelImgaesPreviewCol {
     min-width: 120px !important;
     max-width: 120px !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .hotelImgaesPreviewRow .hotelImgaesPreviewCol {
+  .hotelImagesPreviewRow .hotelImgaesPreviewCol {
     min-width: 172px;
     max-width: 172px;
   }
@@ -6875,7 +6790,7 @@ body.bodyscroll {
   margin-left: 0;
   border: 0;
   color: #717972;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .res-sub-btn-rw .btn-back:before {
   content: "";
@@ -7028,10 +6943,10 @@ body.bodyscroll {
   max-width: 31%;
 }
 .extraServicefieldRow .extraServicefield1 .p2 {
-  font-family: "satoshi-medium" !important;
+  font-family: "Pretendard-medium" !important;
 }
 .extraServicefieldRow .extraServicefield1 .p2 .p3 {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
   color: #717972;
   font-size: 12px;
 }
@@ -7046,7 +6961,7 @@ body.bodyscroll {
   padding-left: 20px;
 }
 .extraServicefieldRow .extraServicefield3 .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   margin-right: 10px;
 }
 .extraServicefieldRow .extraServicefield3 .p2 .required-star {
@@ -7127,7 +7042,7 @@ body.bodyscroll {
   padding-right: 20px;
 }
 .LongStayDiscountRow .LongStayDiscountCol1 .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .LongStayDiscountRow .LongStayDiscountCol1 .p2 .p3 {
   color: #717972;
@@ -7166,7 +7081,7 @@ body.bodyscroll {
     flex-wrap: wrap;
   }
   .LongStayDiscountRow .LongStayDiscountCol1 .quantity-row .p2 {
-    font-family: "satoshi-medium";
+    font-family: "Pretendard-medium";
     min-width: 100%;
     margin-bottom: 15px !important;
   }
@@ -7271,7 +7186,7 @@ body.bodyscroll {
 }
 .hotelManageform-Content .whiteBox-w .hd6,
 .roomsManageform-Content .whiteBox-w .hd6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   margin-bottom: 20px;
 }
 
@@ -7297,7 +7212,7 @@ body.bodyscroll {
   padding-left: 20px;
 }
 .summeryattDetailRow .summeryDetailDes .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .summeryattDetailRow .summeryDetailDes .p2 .required-star {
   color: #15D282;
@@ -7507,7 +7422,7 @@ body.bodyscroll {
   min-height: 400px;
 }
 .create-coupon-code-sec .quantity-row .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 @media (min-width: 300px) and (max-width: 767px) {
   .create-coupon-code-sec .quantity-row {
@@ -7561,7 +7476,7 @@ body.bodyscroll {
   margin-bottom: 24px;
 }
 .roomsSummaryDetailBox .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 .roomsSummaryDetailBox .p2 {
   color: #717972;
@@ -7574,7 +7489,7 @@ body.bodyscroll {
 }
 
 .occupancyPricingDetailBox h6.p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 
@@ -7621,13 +7536,13 @@ body.bodyscroll {
 .detailTxtRow .detailTxtRight {
   min-width: 40%;
   max-width: 50%;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #191C1A;
   text-align: right;
 }
 .detailTxtRow .detailTxtRight.priceBlue {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .detailTxtRow .p3 {
   color: #717972;
@@ -7659,10 +7574,10 @@ body.bodyscroll {
 }
 
 .cancelBookingDialog .detailTxtRight {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .cancelBookingDialog .form-check-label {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
 }
 
@@ -7676,7 +7591,7 @@ body.bodyscroll {
   width: 100%;
 }
 .bookingextarServices .bookingServicesCheckbox .p1 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   margin-bottom: 4px;
 }
@@ -7727,7 +7642,7 @@ body.bodyscroll {
 
 .my-booking-hotel-manager .whitebox-w .white-card-body .bk-dtlRow .bk-dtlCol .p2.priceBlue {
   color: #015AC3;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .my-booking-hotel-manager .filter-header-col {
@@ -7816,7 +7731,7 @@ body.bodyscroll {
 }
 .roomCalenderBox .fc .fc-toolbar .fc-toolbar-chunk:nth-child(2) h2.fc-toolbar-title {
   font-size: 20px !important;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   color: #191C1A;
 }
 .roomCalenderBox .fc .fc-toolbar .fc-toolbar-chunk:nth-child(1) {
@@ -7855,12 +7770,12 @@ body.bodyscroll {
 }
 .roomCalenderBox .fc-daygrid-day-number {
   color: #191C1A;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 14px;
 }
 .roomCalenderBox .fc-daygrid-day-number {
   color: #717972;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   font-size: 14px;
 }
 .roomCalenderBox .fc .fc-daygrid-day-top {
@@ -7873,7 +7788,7 @@ body.bodyscroll {
   padding: 5px 5px 5px 10px;
   color: #191C1A;
   font-size: 12px;
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .roomCalenderBox a.fc-daygrid-event.fc-daygrid-dot-event .fc-daygrid-event-dot {
   height: 100% !important;
@@ -7951,7 +7866,7 @@ body.bodyscroll {
 }
 
 .dashboard1-col-left .h6 {
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
 }
 @media (min-width: 300px) and (max-width: 767px) {
   .dashboard1-col-left .whitebox-w .col-xl-4 {
@@ -7960,7 +7875,7 @@ body.bodyscroll {
 }
 
 .rate-and-review-sec .white-card-header .h6 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .bannerSearchBox-nw .bannerSearchCol {
@@ -7987,7 +7902,7 @@ body.bodyscroll {
   background: transparent;
   border: 0;
   font-size: 24px;
-  font-family: "satoshi-bold";
+  font-family: "Pretendard-bold";
   padding: 0 !important;
 }
 @media (min-width: 300px) and (max-width: 576px) {
@@ -8226,7 +8141,7 @@ body.no-scroll {
 }
 
 .standrdPriceCol .p2 {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 
 .subtotalRow {
@@ -8234,10 +8149,10 @@ body.no-scroll {
   padding-top: 10px;
 }
 .subtotalRow .PriceBreakupCl- {
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .subtotalRow .p2 {
-  font-family: "satoshi-regular";
+  font-family: "Pretendard-regular";
 }
 .subtotalRow .PriceBreakupRw {
   margin-bottom: 10px !important;
@@ -8320,7 +8235,7 @@ body.no-scroll {
 .btmLnTabBox ul.nav.nav-pills .nav-link.active {
   background-color: transparent !important;
   color: #015AC3 !important;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   border-bottom: 2px solid #015AC3 !important;
 }
 
@@ -8393,7 +8308,7 @@ body.no-scroll {
 .cookiesPrivacyPlolicyModal .settingTableBox ul.nav.nav-pills.flex-column .nav-item button.nav-link.active {
   background-color: transparent !important;
   color: #191C1A !important;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
 }
 .cookiesPrivacyPlolicyModal .settingTableBox ul.nav.nav-pills.flex-column .nav-item button.nav-link.active::after {
   background: linear-gradient(99.08deg, #00CDFF -2.24%, #27D400 139.49%);
@@ -8411,7 +8326,7 @@ body.no-scroll {
   font-weight: normal;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
-  font-family: "satoshi-medium";
+  font-family: "Pretendard-medium";
   color: #191C1A;
   border-left: 1px solid #ccc;
 }
@@ -8466,6 +8381,6 @@ body.no-scroll {
 }
 
 body {
-  font-family: "SATOSHI-REGULAR" !important;
+  font-family: "Pretendard-regular" !important;
   color: #191C1A;
 }/*# sourceMappingURL=style.css.map */

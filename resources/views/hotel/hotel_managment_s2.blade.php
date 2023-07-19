@@ -19,36 +19,33 @@
                 <form id="hm_addressNAttractions_form" method="post">
                   <div class="hotelManageform-Content">
                     <div class="grayBox-w">
-                      <div class="hotemmanageFormInrcnt">
+                      <div class="hotelmanageFormInrcnt">
                         <h5 class="hd5 h5">{{ __('home.HotelAddress') }}</h5>
                         <div class="row">
                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-floating withIconInp" id="address_validate">
                               <img src="{{ asset('/assets/images/') }}/structure/location-on-gray.svg" alt=""
                                 class="locationIcon">
-                              <input type="text" class="form-control" id="address" placeholder="{{ __('home.address') }}"
-                                name="address" value="{{ $hotel->formatted_address }}">
+                              <input type="text" class="form-control" id="address" name="address" value="{{ $hotel->formatted_address }}">
                               <label for="address">{{ __('home.address') }}<span class="required-star">*</span></label>
                               <p class="error-inp" id="address_err_msg"></p>
                             </div>
                           </div>
                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-floating" id="sido_validate">
-                              <input type="text" class="form-control" id="sido" placeholder="{{ __('home.sido') }}" 
-                              name="sido" value="{{ $hotel->sido }}">
-                              <label for="sido">{{ __('home.City') }}<span class="required-star">*</span></label>
+                              <input type="text" class="form-control" id="sido" name="sido" value="{{ $hotel->sido }}">
+                              <label for="sido">{{ __('home.Sido') }}</label>
                               <p class="error-inp" id="sido_err_msg"></p>
                             </div>
                           </div>
                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-floating" id="sigungu_validate">
-                              <input type="text" class="form-control" id="sigungu" placeholder="{{ __('home.sigun') }}" 
-                              name="sigungu" value="{{ $hotel->sigungu }}">
-                              <label for="sigungu">{{ __('home.sigun') }}<span class="required-star">*</span></label>
+                              <input type="text" class="form-control" id="sigungu" name="sigungu" value="{{ $hotel->sigungu }}">
+                              <label for="sigungu">{{ __('home.Sigungu') }}</label>
                               <p class="error-inp" id="sigungu_err_msg"></p>
                             </div>
                           </div>
-                          <h5 class="hd5 h5">{{ __('home.phone') }}</h5>
+                          <h5 class="hd5 h5">{{ __('home.contactdetail') }}</h5>
                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-floating mb-3" id="areacode_validate">
                                 <button id="selectAreacode" data-bs-toggle="dropdown" class="form-select text-capitalize" aria-expanded="false">{{ (isset($hotel->areacode) && $hotel->areacode !='')?$hotel->areacode:'';  }}</button>
@@ -122,15 +119,14 @@
                                           <label for="070">070</label>
                                       </li>
                                   </ul>
-                                  <label for="areaCode" class="label {{ (isset($hotel->areacode) && $hotel->areacode !='')?'label_add_top':'';  }}">Area code<span class="required-star">*</span></label>
+                                  <label for="areacode" class="label {{ (isset($hotel->areacode) && $hotel->areacode !='')?'label_add_top':'';  }}">{{ __('home.areacode') }}<span class="required-star">*</span></label>
                                   <p class="error-inp" id="areacode_err_msg"></p>
                               </div>
                           </div>
                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                              <div class="form-floating" id="phone_validate">
-                              <input type="text" class="form-control  phone_number_input rightClickDisabled"
-                                id="phone" placeholder="{{ __('home.phone') }}" name="phone" value="{{ $hotel->phone }}">
-                              <label for="phone">{{ __('home.phone') }}<span class="required-star">*</span></label>
+                              <input type="text" class="form-control  phone_number_input rightClickDisabled" id="phone" name="phone" value="{{ $hotel->phone }}">
+                              <label for="phone">{{ __('home.landline') }}<span class="required-star">*</span></label>
                               <p class="error-inp" id="phone_err_msg"></p>
                             </div>
                           </div>
@@ -144,33 +140,28 @@
                             src="{{ asset('/assets/images/') }}/structure/add-circle.svg" alt=""
                             class="add-circle"> {{ __('home.addAttraction') }}</p>
                       </div>
-                      <div class="hotemmanageFormInrcnt" id="nta_list">
+                      <div class="hotelmanageFormInrcnt" id="nta_list">
                         @foreach ($hotel->hasAttractions as $row)
                           <div class="attractionItemBox" id="attractionItemBoxdb_{{ $row->id }}">
                             <div class="row">
                               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-floating">
-                                  <input type="text" class="form-control" id="attraction_name_db_{{ $row->id }}"
-                                    placeholder="{{ __('home.attractionName') }}" value="{{ $row->attractions_name }}"
-                                    name="attraction_name[]">
-                                  <label for="attraction_name_db_{{ $row->id }}">{{ __('home.attractionName') }}<span
-                                      class="required-star">*</span></label>
+                                  <input type="text" class="form-control" id="attraction_name_db_{{ $row->id }}" value="{{ $row->attractions_name }}" name="attraction_name[]">
+                                  <label for="attraction_name_db_{{ $row->id }}">{{ __('home.attractionName') }}<span class="required-star">*</span></label>
                                 </div>
                               </div>
                               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-floating">
                                   <input type="text" class="form-control"
-                                    id="attraction_adres_db_{{ $row->id }}" placeholder="{{ __('home.address') }}"
-                                    name="attraction_adres[]" value="{{ $row->nta_address }}">
-                                  <label for="attraction_adres_db_{{ $row->id }}">{{ __('home.address') }}<span
-                                      class="required-star">*</span></label>
+                                    id="attraction_adres_db_{{ $row->id }}" name="attraction_adres[]" value="{{ $row->nta_address }}">
+                                  <label for="attraction_adres_db_{{ $row->id }}">{{ __('home.address') }}<span class="required-star">*</span></label>
                                 </div>
                               </div>
                               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-floating editorField">
-                                  <textarea id="attraction_desc_db_{{ $row->id }}" placeholder="{{ __('home.description') }}" class="form-control"
-                                    name="attraction_desc[]">{{ $row->nta_description }}</textarea>
-                                  <p class="mb-0 max-char-limit">{{ __('home.max200haracters') }}</p>
+                                  <textarea id="attraction_desc_db_{{ $row->id }}" class="form-control" name="attraction_desc[]">{{ $row->nta_description }}</textarea>
+                                  <label for="attraction_adres_db_{{ $row->id }}">{{ __('home.description') }}<span class="required-star">*</span></label>
+                                  <p class="mb-0 max-char-limit">{{ __('home.max') }} 200{{ __('home.character') }}</p>
                                 </div>
                               </div>
                             </div>
@@ -299,6 +290,10 @@
             }).on('circle-animation-progress', function(event, progress, stepValue) {
               $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
             }).stop();
+                         
+            if (percent == 100) {
+                   $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
+            }
           }
         });
       }

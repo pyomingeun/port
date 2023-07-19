@@ -14,7 +14,10 @@
             <div class="container bannerSearchContainer">
                 <div class="row">
                     <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
-                    <x-search-hotel-form />
+                        @php
+                            $hotelName = $hotel->hotel_name;
+                        @endphp
+                        <x-search-hotel-form :hotelName="$hotelName"/>
                     </div>
                 </div>
             </div>

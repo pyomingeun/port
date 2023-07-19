@@ -63,7 +63,7 @@ class HomeController extends Controller
         $min_price =", (SELECT min(standard_price_weekday) FROM `rooms` WHERE rooms.hotel_id = hotel_info.hotel_id AND status ='active') AS room_price";
 
         //$editorspickSQL = "SELECT hotel_info.id as hi_rid,hotel_info.hotel_id,hotel_info.slug,hotel_info.featured_img,hotel_info.hotel_name,hotel_info.rating,hotel_info.reviews,hotel_info.is_editors_pick,hotel_info.street,hotel_info.city,hotel_info.subrub,hotel_info.pincode $min_price $is_marked FROM `hotel_info` WHERE hotel_info.status = 'active' AND  hotel_info.completed_percentage = '100' AND hotel_info.is_editors_pick ='yes'LIMIT 12 ";
-        $editorspickSQL = "SELECT hotel_info.id as hi_rid,hotel_info.hotel_id,hotel_info.slug,hotel_info.featured_img,hotel_info.hotel_name,hotel_info.rating,hotel_info.reviews,hotel_info.is_editors_pick $min_price $is_marked FROM `hotel_info` WHERE hotel_info.status = 'active' AND  hotel_info.completed_percentage = '100' AND hotel_info.is_editors_pick ='yes'LIMIT 12 ";
+        $editorspickSQL = "SELECT hotel_info.id as hi_rid,hotel_info.hotel_id,hotel_info.slug,hotel_info.featured_img,hotel_info.hotel_name,hotel_info.rating,hotel_info.reviews,hotel_info.is_editors_pick, hotel_info.sido, hotel_info.sigungu $min_price $is_marked FROM `hotel_info` WHERE hotel_info.status = 'active' AND  hotel_info.completed_percentage = '100' AND hotel_info.is_editors_pick ='yes'LIMIT 12 ";
         $editorsHotels = DB::select($editorspickSQL);
           
         for($i=0; $i<count($editorsHotels); $i++)
@@ -108,11 +108,10 @@ class HomeController extends Controller
 
     public function hotelList(Request $request)
     {
-        if (isset($request->latitude) && isset($request->longitude)) {
-            $distance = "( '3959' * acos( cos( radians(" . $request->latitude . ") ) * cos( radians(`latitude`) ) * cos( radians(`longitude`) - radians(" . $request->longitude . ")) + sin(radians(" . $request->latitude . ")) * sin( radians(`latitude`))))* 1.609344";
-        }
+        // 부대시설 및 특징 가져오기
         $facilities = Facilities::withCount('hasHotels')->where('status', 'active')->get();
         $features = Features::withCount('hasHotels')->where('status', 'active')->get();
+        // 요일과 예약 기간 계산
         $dayofweek = (isset($request->checkin_dates))?
             Carbon::createFromFormat('Y-m-d', $request->checkin_dates)->format('w'):
             Carbon::createFromFormat('Y-m-d', date('Y-m-d'))->format('w');
@@ -122,6 +121,7 @@ class HomeController extends Controller
         $currentDate = Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
         $advanceDays = $currentDate->diff($startdate)->days;
 
+        // 호텔 목록 검색
         $hotelQuery = HotelInfo::with([
             'hasFeaturedImage',
             'hasFacilities' => function($query) use ($request) {
@@ -134,6 +134,7 @@ class HomeController extends Controller
                     $query->whereIn('features_id', explode(',', $request->features));
                 }
             },
+            // 호텔 방 필터링
             'hasActiveRooms' => function($query) use ($request, $dayofweek) {
                 if (isset($request->adult)) {$query->where('maximum_occupancy_adult', '>=', $request->adult);}
                 if ($request->child) {$query->where('maximum_occupancy_child', '>=', $request->child);}
@@ -150,21 +151,25 @@ class HomeController extends Controller
                     $query->orderBy('standard_price_weekday', 'ASC')->latest();
                 }
             },
+            // 장기 숙박 할인 필터링
             'hasLongStayDiscount' => function($query) use ($difference) {
                 $query->where('lsd_min_days', '<=', $difference)
                 ->where('lsd_max_days', '>=', $difference);
             }
         ])->withCount([
+            // 편의시설 필터링
             'hasFacilities' => function($query) use ($request) {
                 if (isset($request->facilities) && count(explode(',', $request->facilities)) > 0) {
                     $query->whereIn('facilities_id', explode(',', $request->facilities));
                 }
             },
+            // 숙소 특징 필터링
             'hasFeatures' => function($query) use ($request) {
                 if (isset($request->features) && count(explode(',', $request->features)) > 0) {
                     $query->whereIn('features_id', explode(',', $request->features));
                 }
             },
+            // 호텔 방 필터링 (카운트)
             'hasActiveRooms' => function($query) use ($request, $dayofweek) {
                 if (isset($request->adult)) {$query->where('maximum_occupancy_adult', '>=', $request->adult);}
                 if ($request->child) {$query->where('maximum_occupancy_child', '>=', $request->child);}
@@ -181,21 +186,21 @@ class HomeController extends Controller
                 }
             } 
         ]);
+        // 로그인한 사용자의 경우 위시리스트에 저장한 호텔 수 카운트
         if (auth()->user()) {
             $hotelQuery->withCount(['hasMarkedHotel' => function($query){
                 $query->where('created_by', auth()->user()->id);
             }]);
         }
-        if (isset($distance)) {
-            $hotelQuery->where(DB::raw($distance), '<', 50);
-        } else {
+//        if (isset($distance)) {
+//            $hotelQuery->where(DB::raw($distance), '<', 50);
+//        } else {
             $hotelQuery->where(function ($q) use ($request){
-                $q->where('hotel_name', 'like', '%'.$request->street.'%')
-                    ->orWhere('city', 'like', '%'.$request->street.'%')
-                    ->orWhere('pincode', 'like', '%'.$request->street.'%')
-                    ->orWhere('subrub', 'like', '%'.$request->street.'%');
+                $q->where('hotel_name', 'like', '%'.$request->hname.'%')
+                    ->orWhere('sido', 'like', '%'.$request->sido.'%')
+                    ->orWhere('sigungu', 'like', '%'.$request->sigungu.'%');
             });
-        }
+//        }
         $hotelQuery->where('completed_percentage', 100);
 
         $hotelQuery->where('min_advance_reservation', '<=', $advanceDays)
@@ -219,9 +224,9 @@ class HomeController extends Controller
             });
         }
         $hotelQuery
-            ->having('has_active_rooms_count', '>', 0)
-            ->having('has_features_count', '>', 0)
-            ->having('has_facilities_count', '>', 0);
+            ->having('has_active_rooms_count', '>', 0);
+            //->having('has_features_count', '>', 0)
+            //->having('has_facilities_count', '>', 0);
         if ($hotelQuery->count() > 0 && isset($request->sort)) {
             $orderByRaw = "";
             if ($dayofweek === 5 || $dayofweek === 6) {
@@ -247,7 +252,9 @@ class HomeController extends Controller
                 break;
             }
         }
+        // 호텔 페이지네이션 처리
         $hotels = $hotelQuery->paginate(25);
+        // 지도에 표시할 호텔 위치 정보 가져오기
         $hotel_locations = $hotelQuery->get();
         $locations = [];
         foreach ($hotel_locations as $data) {
@@ -261,7 +268,7 @@ class HomeController extends Controller
         }
         $jsonLocations = $locations;
         // dd($hotels);
-        return view('frontend.hotel_listing', compact('hotels', 'jsonLocations', 'facilities', 'features', 'dayofweek'));
+        return view('frontend.hotel_listing', compact('hotels', 'jsonLocations', 'facilities', 'features', 'dayofweek', 'request'));
     }
 
 
@@ -325,6 +332,13 @@ class HomeController extends Controller
             }
            
             $roomEffectivePrice = 'standard_price_weekday';
+
+            if ($request->query('identifier') == "top-rated" || $request->query('identifier') == "recommended" ) {
+                $request->checkin_dates = Carbon::today()->format('Y-m-d');
+                $request->checkout_dates = Carbon::tomorrow()->format('Y-m-d');
+                $request->adult = 2;
+                $request->child = 0;
+            }
 
             if(isset($request->checkout_dates)  && isset($request->adult) && isset($request->child) && $request->checkin_dates !='' && $request->checkout_dates !='' && $request->adult !='' && $request->child !='')
             {

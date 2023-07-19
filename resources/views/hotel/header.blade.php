@@ -23,19 +23,19 @@
                 <li>
                     <a class="dropdown-item" href="{{ route('dashboard') }}">
                         <img src="{{asset('/assets/images/structure/dashboard-icon.svg')}}" alt=".." class="icon24" />
-                        <span>{{ __('home.dashboard') }}</span>
+                        <span>{{ __('home.Dashboard') }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".changePassword">
                         <img src="{{asset('/assets/images/structure/lock-icon.svg')}}" alt=".." class="icon24" />
-                        <span>{{ __('home.changePassword') }}</span>
+                        <span>{{ __('home.ChangePassword') }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}">
                         <img src="{{asset('/assets/images/structure/logout-icon.svg')}}" alt=".." class="icon24" />
-                        <span>{{ __('home.logout') }}</span>
+                        <span>{{ __('home.LogOut') }}</span>
                     </a>
                 </li>
             </ul>

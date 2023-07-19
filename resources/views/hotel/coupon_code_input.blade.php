@@ -31,7 +31,7 @@
                                 <form id="coupon_input" action="javaScript:void(0);" method="post">
                                     <div class="create-coupon-code-sec">
                                         <div class="grayBox-w">
-                                            <div class="hotemmanageFormInrcnt">
+                                            <div class="hotelmanageFormInrcnt">
                                                 <h5 class="hd5 h5">{{ __('home.couponCodeInfo') }}</h5>
                                                 <div class="row">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

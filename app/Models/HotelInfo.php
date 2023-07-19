@@ -20,7 +20,7 @@ class HotelInfo extends Model
     protected $table = 'hotel_info';
     
     protected $fillable = [
-        'slug', 'hotel_id', 'hotel_name', 'logo', 'featured_img', 'description', 'latitude', 'longitude', 'formatted_address', 'administrative_leve_1', 'locality', 'sublocality', 'route', 'street', 'check_in', 'check_out', 'hotel_policy', 'terms_and_conditions','same_day_refund', 'b4_1day_refund', 'b4_2days_refund', 'b4_3days_refund', 'b4_4days_refund', 'b4_5days_refund', 'b4_6days_refund', 'b4_7days_refund', 'b4_8days_refund', 'b4_9days_refund', 'b4_10days_refund', 'rating', 'bank_detail_status','basic_info_status','address_status','hpolicies_status','fnf_status','other_info_status','summary_status','completed_percentage', 'created_by', 'updated_by', 'created_at', 'updated_at','is_editors_pick','min_advance_reservation','max_advance_reservation','total_payble_payout' 	 
+        'slug', 'hotel_id', 'hotel_name', 'logo', 'featured_img', 'description', 'latitude', 'longitude', 'formatted_address', 'sigun', 'sigungu', 'check_in', 'check_out', 'hotel_policy', 'terms_and_conditions','same_day_refund', 'b4_1day_refund', 'b4_2days_refund', 'b4_3days_refund', 'b4_4days_refund', 'b4_5days_refund', 'b4_6days_refund', 'b4_7days_refund', 'b4_8days_refund', 'b4_9days_refund', 'b4_10days_refund', 'rating', 'bank_detail_status','basic_info_status','address_status','hpolicies_status','fnf_status','other_info_status','summary_status','completed_percentage', 'created_by', 'updated_by', 'created_at', 'updated_at','is_editors_pick','min_advance_reservation','max_advance_reservation','total_payble_payout' 	 
     ];
 
     function hotel_user() { return $this->belongsTo(User::class, "hotel_id", "id"); }
