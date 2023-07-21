@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Billing\PaymentGateway;
 use App\Containers\SMS\SmsService;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+    // Inside the boot method
+        DB::listen(function ($query) {
+    // Log the SQL and bindings (if needed)
+        info($query->sql);
+        info($query->bindings);
+});
     }
 }

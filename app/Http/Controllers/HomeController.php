@@ -195,12 +195,41 @@ class HomeController extends Controller
 //        if (isset($distance)) {
 //            $hotelQuery->where(DB::raw($distance), '<', 50);
 //        } else {
-            $hotelQuery->where(function ($q) use ($request){
-                $q->where('hotel_name', 'like', '%'.$request->hname.'%')
-                    ->orWhere('sido', 'like', '%'.$request->sido.'%')
-                    ->orWhere('sigungu', 'like', '%'.$request->sigungu.'%');
+           
+
+        if (!isset($request->hname) && !isset($request->sido) && !isset($request->sigungu)){
+            $hotelQuery->where(function ($query) use ($request){
+                $query->Where('hotel_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('sido', 'like', '%' . $request->search . '%')
+                    ->orWhere('sigungu', 'like', '%' . $request->search . '%');
             });
-//        }
+        }
+        else {
+          // Handle the hname value to route to hotel-detail if it exists
+            if (isset($request->hname)) {
+                // Find the hotel with the matching hotel_name
+                $hotel = HotelInfo::where('hotel_name', '=', $request->hname)->first();
+                if ($hotel) {
+                    // If the hotel is found, get its slug and redirect to hotel-detail
+                    return redirect()->route('hotel-detail', array_merge(['slug' => $hotel->slug], $request->query()));
+                }
+            }
+            else {
+                if(isset($request->sido)){
+                    $hotelQuery->where(function ($query) use ($request){
+                        $query->Where('sido', '=', $request->sido);
+                    });
+                }
+                elseif(isset($request->sigungu)){
+                    $hotelQuery->where(function ($query) use ($request){
+                        $query->Where('sigungu', '=', $request->sigungu);
+                    });
+                }
+            }
+        }
+
+
+    //        }
         $hotelQuery->where('completed_percentage', 100);
 
         $hotelQuery->where('min_advance_reservation', '<=', $advanceDays)
@@ -252,6 +281,7 @@ class HomeController extends Controller
                 break;
             }
         }
+
         // 호텔 페이지네이션 처리
         $hotels = $hotelQuery->paginate(25);
         // 지도에 표시할 호텔 위치 정보 가져오기

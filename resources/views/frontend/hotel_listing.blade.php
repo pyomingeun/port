@@ -1,252 +1,244 @@
 @extends('frontend.layout.head')
 @section('body-content')
-  @include('frontend.layout.header')
+@include('frontend.layout.header')
+<script>
+    const currentPage = 'hotellist'; 
+</script>
 
-  <section class="home-sec1 hotelilisting-bnr-sec">
-    <div class="hotelilistingBanner" style="position: relative;">
-      <div class="overlay"></div>
-      <img src="{{ asset('assets/images/product/hotel-listing-banner.png') }}" class="bannerImage" alt=" ">
-      <div class="home-banner-cont">
-        <h1 class="h1 mb-3">{{ __('home.discoverBookTheBestHotel') }}</h1>
-        <p class="p1 mb-0">{{ __('home.chooseFrom') }} 1000+ {{ __('home.bestHotelsAcrossTheWorld') }}</p>
+<section class="home-sec1 hotellisting-bnr-sec">
+  <div class="container bannerSearchContainer">
+    <div class="row">
+      <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
+        @php
+          $hotelName = $request->has('hname') ? $request->input('hname') : null;                        
+        @endphp
+        <x-search-hotel-form :hotelName="$hotelName" />
       </div>
     </div>
-    <div class="container bannerSearchContainer">
-      <div class="row">
-        <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
-          @php
-            $hotelName = $request->has('hname') ? $request->input('hname') : null;                        
-          @endphp
-          <x-search-hotel-form :hotelName="$hotelName" />
+  </div>
+</section>
+<section class="hotel-listing-sec2">
+  <div class="container">
+    <div class="row filter-horizontal-row">
+      <div class="col-xl-6 col-ld-6 col-md-6 col-sm-6 col-12">
+        <button type="button" class="btn bg-gray" data-bs-toggle="modal" data-bs-target=".sideFilterDialog"><img src="{{ asset('assets/images/structure/filter-alt.svg') }}" alt="" class="filter-alt">{{ __('home.Filter') }}</button>
+      </div>
+      <div class="col-xl-6 col-ld-6 col-md-6 col-sm-6 col-12 d-flex flex-wrap justify-content-end align-items-center">
+        <div class="form-floating mb-0 filterSortDrop">
+          <img src="{{ asset('assets/images/structure/filter-sort.svg') }}" alt="" class="filter-alt">
+          <button type="button" data-bs-toggle="dropdown" class="btn bg-gray"> {{ __('home.Sort') }}</button>
+          <ul class="dropdown-menu dropdown-menu-start">
+            <li class="radiobox-image">
+              <a
+                href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'plth'])) }}">
+                <label for="srt1">{{ __('home.Pricelowtohigh') }}</label>
+              </a>
+              {{-- <input type="radio" class="sort_by" id="srt1" name="sort" value="plth" /> --}}
+            </li>
+            <li class="radiobox-image">
+              {{-- <input type="radio" class="sort_by" id="srt2" name="sort" value="phtl" /> --}}
+              <a
+                href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'phtl'])) }}">
+                <label for="srt2">{{ __('home.Pricehightolow') }}</label>
+              </a>
+            </li>
+            <li class="radiobox-image">
+              {{-- <input type="radio" class="sort_by" id="srt3" name="sort" value="rahtl" /> --}}
+              <a
+                href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'rahtl'])) }}">
+                <label for="srt3">{{ __('home.Ratinghightolow') }}</label>
+              </a>
+            </li>
+            <li class="radiobox-image">
+              {{-- <input type="radio" class="sort_by" id="srt4" name="sort" value="rvhtl" /> --}}
+              <a
+                href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'rvhtl'])) }}">
+                <label for="srt4">{{ __('home.Reviewshightolow') }}</label>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="filterTabsBox">
+          <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button type="button" class="nav-link active" id="tabl" data-bs-toggle="pill"
+                data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                <img src="{{ asset('assets/images/structure/filter-list-gray.svg') }}" alt=""
+                  class="filterTabIcon filterTabIconGray">
+                <img src="{{ asset('assets/images/structure/filter-list-green.svg') }}" alt=""
+                  class="filterTabIcon filterTabIconGreen">
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button type="button" class="nav-link" id="tab2" data-bs-toggle="pill"
+                data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                <img src="{{ asset('assets/images/structure/map-gray.svg') }}" alt=""
+                  class="filterTabIcon filterTabIconGray">
+                <img src="{{ asset('assets/images/structure/map-green.svg') }}" alt=""
+                  class="filterTabIcon filterTabIconGreen">
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+    <div class="row" id="listView">
+      <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="tabl">
+            {{ view('frontend.subview.hotellist', ['hotels' => $hotels, 'dayofweek' => $dayofweek]) }}
+            {{ $hotels->appends(Request::all())->links('pagination::bootstrap-4') }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-display" id="mapView">
+      <x-google-map-pins :locations="$jsonLocations" />
+    </div>
+</section>
 
-  <section class="hotel-listing-sec2">
-    <div class="container">
-      <div class="row filter-horizontal-row">
-        <div class="col-xl-6 col-ld-6 col-md-6 col-sm-6 col-12">
-          <button type="button" class="btn bg-gray" data-bs-toggle="modal" data-bs-target=".sideFilterDialog"><img
-              src="{{ asset('assets/images/structure/filter-alt.svg') }}" alt="" class="filter-alt">
-              {{ __('home.filter') }}</button>
+<div class="modal fade sideFilterDialog" tabindex="-1" aria-labelledby="sideFilterDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-heads">
+          <h4 class="h4 mb-3">{{ __('home.Filter') }}</h4>
         </div>
-        <div class="col-xl-6 col-ld-6 col-md-6 col-sm-6 col-12 d-flex flex-wrap justify-content-end align-items-center">
-          <div class="form-floating mb-0 filterSortDrop">
-            <img src="{{ asset('assets/images/structure/filter-sort.svg') }}" alt="" class="filter-alt">
-            <button type="button" data-bs-toggle="dropdown" class="btn bg-gray form-select"> {{ __('home.sortBy') }}</button>
-            <ul class="dropdown-menu dropdown-menu-start">
-              <li class="radiobox-image">
-                <a
-                  href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'plth'])) }}">
-                  <label for="srt1">{{ __('home.Pricelowtohigh') }}</label>
-                </a>
-                {{-- <input type="radio" class="sort_by" id="srt1" name="sort" value="plth" /> --}}
-              </li>
-              <li class="radiobox-image">
-                {{-- <input type="radio" class="sort_by" id="srt2" name="sort" value="phtl" /> --}}
-                <a
-                  href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'phtl'])) }}">
-                  <label for="srt2">{{ __('home.Pricehightolow') }}</label>
-                </a>
-              </li>
-              <li class="radiobox-image">
-                {{-- <input type="radio" class="sort_by" id="srt3" name="sort" value="rahtl" /> --}}
-                <a
-                  href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'rahtl'])) }}">
-                  <label for="srt3">{{ __('home.Ratinghightolow') }}</label>
-                </a>
-              </li>
-              <li class="radiobox-image">
-                {{-- <input type="radio" class="sort_by" id="srt4" name="sort" value="rvhtl" /> --}}
-                <a
-                  href="{{ route('hotel-list') . getQueryParams(array_merge(Request::except(['sort']), ['sort' => 'rvhtl'])) }}">
-                  <label for="srt4">{{ __('home.Reviewshightolow') }}</label>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="filterTabsBox">
-            <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button type="button" class="nav-link active" id="tabl" data-bs-toggle="pill"
-                  data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
-                  <img src="{{ asset('assets/images/structure/filter-list-gray.svg') }}" alt=""
-                    class="filterTabIcon filterTabIconGray">
-                  <img src="{{ asset('assets/images/structure/filter-list-green.svg') }}" alt=""
-                    class="filterTabIcon filterTabIconGreen">
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button type="button" class="nav-link" id="tab2" data-bs-toggle="pill"
-                  data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
-                  <img src="{{ asset('assets/images/structure/map-gray.svg') }}" alt=""
-                    class="filterTabIcon filterTabIconGray">
-                  <img src="{{ asset('assets/images/structure/map-green.svg') }}" alt=""
-                    class="filterTabIcon filterTabIconGreen">
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row" id="listView">
-        <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="tabl">
-              {{ view('frontend.subview.hotellist', ['hotels' => $hotels, 'dayofweek' => $dayofweek]) }}
-              {{ $hotels->appends(Request::all())->links('pagination::bootstrap-4') }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row no-display" id="mapView">
-        <x-google-map-pins :locations="$jsonLocations" />
-      </div>
-  </section>
-  
-  <div class="modal fade sideFilterDialog" tabindex="-1" aria-labelledby="sideFilterDialogLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <div class="modal-heads">
-            <h4 class="h4 mb-3">{{ __('home.filter') }}</h4>
-          </div>
-          <form action="{{ route('hotel-list') }}">
-            @foreach (Request::except(['min_price', 'max_price', 'rating', 'features', 'facilities']) as $key => $value)
-              <input type="hidden" name="{{ $key }}" value="{{ $value }}">
-            @endforeach
-            <div class="side-filterBody">
-              <div class="rangeslider">
-                <div class="row">
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="form-floating h-40">
-                      {{-- <button type="button" class="form-select"></button> --}}
-                      <div style="height: 40px !important; padding: 8px 12px !important; border: 1px solid #717972; border-radius: 8px; margin-bottom:20px">
-                        {{ __('home.price') }}
+        <form action="{{ route('hotel-list') }}">
+          @foreach (Request::except(['min_price', 'max_price', 'rating', 'features', 'facilities']) as $key => $value)
+            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+          @endforeach
+          <div class="side-filterBody">
+            <div class="rangeslider">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="form-floating h-40">
+                    {{-- <button type="button" class="form-select"></button> --}}
+                    <div style="height: 40px !important; padding: 8px 12px !important; margin-bottom:20px">
+                      {{ __('home.Price') }}
+                    </div>
+                    <div id="pmd-slider-value-range" class="pmd-range-slider"></div>
+                    <div class="row">
+                      <div class="range-value pricevalueleft col-sm-6">
+                        <span class="priceCurrency">₩</span><span id="value-min"></span>
+                        <input type="hidden" name="min_price" id="min_price"
+                          value="{{ Request::get('min_price') ? Request::get('min_price') : 0 }}">
                       </div>
-                      <div id="pmd-slider-value-range" class="pmd-range-slider"></div>
-                      <div class="row">
-                        <div class="range-value pricevalueleft col-sm-6">
-                          <span class="priceCurrency">₩</span><span id="value-min"></span>
-                          <input type="hidden" name="min_price" id="min_price"
-                            value="{{ Request::get('min_price') ? Request::get('min_price') : 0 }}">
-                        </div>
-                        <div class="range-value pricevalueright col-sm-6">
-                          <span class="priceCurrency">₩</span><span id="value-max"></span>
-                          <input type="hidden" name="max_price" id="max_price"
-                            value="{{ Request::get('max_price') ? Request::get('max_price') : 0 }}">
-                        </div>
+                      <div class="range-value pricevalueright col-sm-6">
+                        <span class="priceCurrency">₩</span><span id="value-max"></span>
+                        <input type="hidden" name="max_price" id="max_price"
+                          value="{{ Request::get('max_price') ? Request::get('max_price') : 0 }}">
                       </div>
                     </div>
                   </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="form-floating h-40 checkboxDropdown">
-                      <button type="button" data-bs-toggle="dropdown" class="form-select"
-                        data-bs-auto-close="false">{{ __('home.rating') }}</button>
-                      <input type="hidden" name="rating" id="rating"
-                        value="{{ Request::get('rating') ? Request::get('rating') : '' }}">
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="form-floating h-40 checkboxDropdown">
+                    <button type="button" data-bs-toggle="dropdown" class="form-select"
+                      data-bs-auto-close="false">{{ __('home.rating') }}</button>
+                    <input type="hidden" name="rating" id="rating"
+                      value="{{ Request::get('rating') ? Request::get('rating') : '' }}">
+                    @php
+                      $ratingSelected = Request::get('rating') ? explode(',', Request::get('rating')) : [];
+                    @endphp
+                    <ul class="dropdown-menu">
+                      <li class="radiobox-image">
+                        <input type="checkbox" class="rating" {{ in_array('4.5', $ratingSelected) ? 'checked' : '' }}
+                          value="4.5" />
+                        <label for="rating1">
+                          <p class="p2 mb-0">4.5 & {{ __('home.above') }} ({{ __('home.excellent') }} ) {{-- <span class="ml-auto">(20)</span> --}}</p>
+                        </label>
+                      </li>
+                      <li class="radiobox-image">
+                        <input type="checkbox" class="rating" {{ in_array('4', $ratingSelected) ? 'checked' : '' }}
+                          value="4" />
+                        <label for="rating2">
+                          <p class="p2 mb-0">4 & {{ __('home.above') }} ({{ __('home.veryGood') }}) {{-- <span class="ml-auto">(10)</span> --}}</p>
+                        </label>
+                      </li>
+                      <li class="radiobox-image">
+                        <input type="checkbox" class="rating" {{ in_array('3', $ratingSelected) ? 'checked' : '' }}
+                          value="3" />
+                        <label for="rating2">
+                          <p class="p2 mb-0">3 & {{ __('home.above') }} ({{ __('home.good') }}) {{-- <span class="ml-auto">(05)</span> --}}</p>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="form-floating h-40 checkboxDropdown">
+                    <button type="button" data-bs-toggle="dropdown" class="form-select"
+                      data-bs-auto-close="false">{{ __('home.HotelFeature') }}</button>
+                    <ul class="dropdown-menu">
+                      <input type="hidden" name="features" id="features"
+                        value="{{ Request::get('features') ? Request::get('features') : '' }}">
                       @php
-                        $ratingSelected = Request::get('rating') ? explode(',', Request::get('rating')) : [];
+                        $featureSelected = Request::get('features') ? explode(',', Request::get('features')) : [];
                       @endphp
-                      <ul class="dropdown-menu">
+                      @foreach ($features as $feature)
                         <li class="radiobox-image">
-                          <input type="checkbox" class="rating" {{ in_array('4.5', $ratingSelected) ? 'checked' : '' }}
-                            value="4.5" />
+                          <input type="checkbox" class="features"
+                            {{ in_array($feature->id, $featureSelected) ? 'checked' : '' }}
+                            value="{{ $feature->id }}" />
                           <label for="rating1">
-                            <p class="p2 mb-0">4.5 & {{ __('home.above') }} ({{ __('home.excellent') }} ) {{-- <span class="ml-auto">(20)</span> --}}</p>
+                            <p class="p2 mb-0">{{ $feature->features_name }} <span
+                                class="ml-auto">({{ $feature->has_hotels_count }})</span></p>
                           </label>
                         </li>
-                        <li class="radiobox-image">
-                          <input type="checkbox" class="rating" {{ in_array('4', $ratingSelected) ? 'checked' : '' }}
-                            value="4" />
-                          <label for="rating2">
-                            <p class="p2 mb-0">4 & {{ __('home.above') }} ({{ __('home.veryGood') }}) {{-- <span class="ml-auto">(10)</span> --}}</p>
-                          </label>
-                        </li>
-                        <li class="radiobox-image">
-                          <input type="checkbox" class="rating" {{ in_array('3', $ratingSelected) ? 'checked' : '' }}
-                            value="3" />
-                          <label for="rating2">
-                            <p class="p2 mb-0">3 & {{ __('home.above') }} ({{ __('home.good') }}) {{-- <span class="ml-auto">(05)</span> --}}</p>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
+                      @endforeach
+                    </ul>
                   </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="form-floating h-40 checkboxDropdown">
-                      <button type="button" data-bs-toggle="dropdown" class="form-select"
-                        data-bs-auto-close="false">{{ __('home.hotelFeatures') }}</button>
-                      <ul class="dropdown-menu">
-                        <input type="hidden" name="features" id="features"
-                          value="{{ Request::get('features') ? Request::get('features') : '' }}">
-                        @php
-                          $featureSelected = Request::get('features') ? explode(',', Request::get('features')) : [];
-                        @endphp
-                        @foreach ($features as $feature)
-                          <li class="radiobox-image">
-                            <input type="checkbox" class="features"
-                              {{ in_array($feature->id, $featureSelected) ? 'checked' : '' }}
-                              value="{{ $feature->id }}" />
-                            <label for="rating1">
-                              <p class="p2 mb-0">{{ $feature->features_name }} <span
-                                  class="ml-auto">({{ $feature->has_hotels_count }})</span></p>
-                            </label>
-                          </li>
-                        @endforeach
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="form-floating h-40 checkboxDropdown">
-                      <button type="button" data-bs-toggle="dropdown" class="form-select"
-                        data-bs-auto-close="false">{{ __('home.hotelFacilities') }}</button>
-                      <ul class="dropdown-menu">
-                        <input type="hidden" name="facilities" id="facilities"
-                          value="{{ Request::get('facilities') ? Request::get('facilities') : '' }}">
-                        @php
-                          $facilitySelected = Request::get('facilities') ? explode(',', Request::get('facilities')) : [];
-                        @endphp
-                        @foreach ($facilities as $facility)
-                          <li class="radiobox-image">
-                            <input type="checkbox" class="facilities"
-                              {{ in_array($facility->id, $facilitySelected) ? 'checked' : '' }}
-                              value="{{ $facility->id }}" />
-                            <label for="rating1">
-                              <p class="p2 mb-0">{{ $facility->facilities_name }} <span
-                                  class="ml-auto">({{ $facility->has_hotels_count }})</span></p>
-                            </label>
-                          </li>
-                        @endforeach
-                      </ul>
-                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="form-floating h-40 checkboxDropdown">
+                    <button type="button" data-bs-toggle="dropdown" class="form-select"
+                      data-bs-auto-close="false">{{ __('home.HotelFacility') }}</button>
+                    <ul class="dropdown-menu">
+                      <input type="hidden" name="facilities" id="facilities"
+                        value="{{ Request::get('facilities') ? Request::get('facilities') : '' }}">
+                      @php
+                        $facilitySelected = Request::get('facilities') ? explode(',', Request::get('facilities')) : [];
+                      @endphp
+                      @foreach ($facilities as $facility)
+                        <li class="radiobox-image">
+                          <input type="checkbox" class="facilities"
+                            {{ in_array($facility->id, $facilitySelected) ? 'checked' : '' }}
+                            value="{{ $facility->id }}" />
+                          <label for="rating1">
+                            <p class="p2 mb-0">{{ $facility->facilities_name }} <span
+                                class="ml-auto">({{ $facility->has_hotels_count }})</span></p>
+                          </label>
+                        </li>
+                      @endforeach
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="side-filterFooter d-flex align-items-center justify-content-between">
-              <a href="{{ route('hotel-list') .
-                  getQueryParams(Request::except(['sort', 'facilities', 'features', 'rating', 'max_price', 'min_price'])) }}"
-                class="linkgray">{{ __('home.reset') }}</a>
-              <button type="submit" class="btn">{{ __('home.apply') }}</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="side-filterFooter d-flex align-items-center justify-content-between">
+            <a href="{{ route('hotel-list') .
+                getQueryParams(Request::except(['sort', 'facilities', 'features', 'rating', 'max_price', 'min_price'])) }}"
+              class="linkgray">{{ __('home.reset') }}</a>
+            <button type="submit" class="btn">{{ __('home.apply') }}</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <!-- newsletter -->
-  {{-- @include('frontend.layout.newsletter') --}}
-  <!-- newsletter -->
-  <!-- footer -->
-  @include('frontend.layout.footer')
-  <!-- footer -->
-  <!-- common models -->
-  @include('common_models')
-  <!-- common models -->
-  @include('frontend.layout.footer_script')
+</div>
+<!-- newsletter -->
+{{-- @include('frontend.layout.newsletter') --}}
+<!-- newsletter -->
+<!-- footer -->
+@include('frontend.layout.footer')
+<!-- footer -->
+<!-- common models -->
+@include('common_models')
+<!-- common models -->
+@include('frontend.layout.footer_script')
 @endsection
 @section('page-js-include')
 @endsection

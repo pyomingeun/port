@@ -15,13 +15,14 @@
               onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
               alt="" class="productListImg">
           </a>
-          @if ($hotel->reviews > 0)
-            <div class="onlist-rat-review d-flex align">
-              <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i>
-                {{ $hotel->rating }}</span>
-              <span class="p2 mb-0">{{ $hotel->reviews }} {{ __('home.reviews') }}</span>
-            </div>
-          @endif
+          <div class="onlist-rat-review d-flex align">
+            @if ($hotel->reviews > 0)
+              <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ $hotel->rating }}</span>
+              <span class="p2 mb-0">{{ $hotel->reviews }} {{ __('home.Reviews') }}</span>
+            @else
+              <span class="p2 mb-0">{{ __('home.NoReview') }}</span>
+            @endif
+          </div>
           @auth
             <div class="favoritlsstbock markunmarkfavorite">
               <img src="{{ asset('assets/images/structure/heart-fill.svg') }}" alt=""
@@ -33,20 +34,17 @@
           @endauth
         </div>
         <div class="productListDetail">
-          <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams(Request::all()) }}">
-            <h6 class="h6 mb-2">
-              {!! getRoomPrice($dayofweek, $hotel->hasActiveRooms, $hotel->hasLongStayDiscount) !!}
-              <small class="pelTm">{{ __('home.perNight') }}</small>
-            </h6>
-            <h5 class="mb-2">{{ $hotel->hotel_name }}</h5>
-            <p class="p2 mb-3">{{ $hotel->street }}</p>
+          <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams(Request::all()) }}" class="productListDetail">
+            <h5 class="mb-2" >{{ $hotel->hotel_name }}</h5>  
+            <p class="p2 mb-3" >{{ $hotel->sido }}, {{ $hotel->sigungu }} </p>
+            <h6 class="h6 mb-2" style="text-align: right;">{!! getRoomPrice($dayofweek, $hotel->hasActiveRooms, $hotel->hasLongStayDiscount) !!}<small class="pelTm"> /{{ __('home.perNight') }}</small></h6>
+            <p class="p2 mb-3" style="text-align: right;">({{ __('home.IncludeTax') }}) </p>
             <div class="productLstFtr d-flex">
               @if (count($hotel->hasFeatures) > 0)
                 <span class="chips chips-gray h-24">{{ getFeaturename($hotel->hasFeatures[0]->features_id) }}</span>
               @endif
               @if (count($hotel->hasFacilities) > 0)
-                <span
-                  class="chips chips-gray h-24">{{ getFacilityname($hotel->hasFacilities[0]->facilities_id) }}</span>
+                <span class="chips chips-gray h-24">{{ getFacilityname($hotel->hasFacilities[0]->facilities_id) }}</span>
               @endif
               @php
                 $ftotal = count($hotel->hasFeatures) - 1 + (count($hotel->hasFacilities) - 1);
@@ -63,8 +61,7 @@
     <div class="row">
       <div class="col-xl-5 col-lg-5 col-md-9 col-sm-12 col-12 mx-auto empty-list-box text-center">
         <img src="../images/structure/favorite-empty-img.png" alt="" class="empty-list-image">
-        <h6>{{ __('home.NohotelfoundChangeyourdatesorFilters') }}</h6>
-        <p class="p3">{{ __('home.NohotelfoundChangeyourdatesorFilterstextbelow') }}</p>
+        <h6>{{ __('home.Nohotelfound') }}</h6>
       </div>
     </div>
   @endforelse

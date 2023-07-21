@@ -3,13 +3,15 @@
     <div class="bannerSearchCol">
       <div class="form-floating">
         <img src="{{ asset('/assets/images/structure/location.svg') }}" alt="" class="searchFielsIcns" />
-        <input type="text" class="form-control" id="search" name="search" placeholder="Location" value="{{ isset($hotelName) ? $hotelName : (Request::get('search') ? Request::get('search') : '') }}">
-        <label for="floatingInput">{{ __('home.Location') }}</label>
+        <input type="text" class="form-control" id="search" name="search" placeholder="Destination" value="{{ isset($hotelName) ? $hotelName : (Request::get('search') ? Request::get('search') : '') }}">
+        <label for="floatingInput">{{ __('home.Destination') }}</label>
         <span class="error-inp" id="localtionError"></span>
       </div>
-      <input type="hidden" name="sido" id="sido" value="">
-      <input type="hidden" name="sigungu" id="sigungu" value="">
-      <input type="hidden" name="hname" id="hname" value="">
+      <input type="hidden" name="latitude" id="latitude"value="{{ Request::get('latitude') ? Request::get('latitude') : '' }}">
+      <input type="hidden" name="longitude" id="longitude"value="{{ Request::get('longitude') ? Request::get('longitude') : '' }}">
+      <input type="hidden" name="sido" id="sido" value="{{ Request::get('sido') ? Request::get('sido') : '' }}">
+      <input type="hidden" name="sigungu" id="sigungu" value="{{ Request::get('sigungu') ? Request::get('sigungu') : '' }}">
+      <input type="hidden" name="hname" id="hname" value="{{ Request::get('hname') ? Request::get('hname') : '' }}">
       <input type="hidden" name="checkin_dates" id="checkInDate" value="{{ Request::get('checkin_dates') ? Request::get('checkin_dates') : date('Y-m-d') }}">
       <input type="hidden" name="checkout_dates" id="checkOutDate" value="{{ Request::get('checkout_dates') ? Request::get('checkout_dates') : date('Y-m-d', strtotime("+1 days")) }}">
       <input type="hidden" name="child" id="child" value="{{ Request::get('child') ? Request::get('child') : 0 }}">
@@ -94,6 +96,9 @@
 <script>
   $(document).ready(function() {
     $(function() {
+      $('#sido').val("");
+      $('#sigungu').val("");
+      $('#hname').val("");
       const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
       let startDate1 = new Date();
       let endDate1 = new Date();
@@ -143,17 +148,21 @@
         $('#child').val(totalChild);
       })
       $('#form-submit').submit(function() {
-        if ($('#street').val() === '') {
-          $('#localtionError').text('Enter hotel name or City');
+        if ($('#search').val() === '') {
+          $('#localtionError').text('{{ __('home.NoSearchData') }}');
           return false;
         }
         if ($('#latitude').val() === '' && $('#longitude').val() === '' && $('#search').val() === '') {
           return false;
         }
       })
+      
+      loadgoogle_map();
+
+
     });
 
-    if (currentPage === 'home'){
+    if (currentPage === 'home') {
       async function getlocations() {
         try {
           // Get user's geolocation
@@ -198,45 +207,45 @@
     }
   });
 
-  loadgoogle_map();
+  
   function loadgoogle_map(id = 'search') {
     var options = {};
     var places = new google.maps.places.Autocomplete(document.getElementById(id), options);
     google.maps.event.addListener(places, 'place_changed', function() {
       var place = places.getPlace();
-//      $('#latitude').val(place.geometry.location.lat())
-//      $('#longitude').val(place.geometry.location.lng())
-        var country = '';
-        var administrativeLevel1 = '';
-        var locality = '';
-        var hname = '';
+      $('#latitude').val(place.geometry.location.lat())
+      $('#longitude').val(place.geometry.location.lng())
+      var country = '';
+      var administrativeLevel1 = '';
+      var locality = '';
+      var hname = '';
 
-        if (place.types.includes("lodging")) {
-          hname = place.name;
+      if (place.types.includes("lodging")) {
+        hname = place.name;
+      }
+
+      for (var i = 0; i < place.address_components.length; i++) {
+        var component = place.address_components[i];
+        var componentType = component.types[0];
+
+        switch (componentType) {
+          case 'administrative_area_level_1':
+            administrativeLevel1 = component.long_name;
+          break;
+          case 'locality':
+            locality = component.long_name;
+          break;
+          case 'sublocality_level_1':
+            locality = component.long_name;
+          break;
+          case 'country':
+            country = component.long_name;
+          break;
         }
-
-        for (var i = 0; i < place.address_components.length; i++) {
-          var component = place.address_components[i];
-          var componentType = component.types[0];
-
-          switch (componentType) {
-            case 'administrative_area_level_1':
-              administrativeLevel1 = component.long_name;
-            break;
-            case 'locality':
-              locality = component.long_name;
-            break;
-            case 'sublocality_level_1':
-              locality = component.long_name;
-            break;
-            case 'country':
-              country = component.long_name;
-            break;
-          }
-        }
-        $('#sido').val(administrativeLevel1)
-        $('#sigungu').val(locality)
-        $('#hname').val(hname)
+      }
+      $('#sido').val(administrativeLevel1);
+      $('#sigungu').val(locality);
+      $('#hname').val(hname);
     });
   }
 </script>

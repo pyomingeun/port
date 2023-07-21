@@ -1,23 +1,6 @@
-<style>
-  .hotelMapBox {
-    position: relative;
-    margin-top: 20px
-  }
-
-  .productListCard.onmapHotelDetailList {
-    width: 360px;
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-  }
-
-  .no-display {
-    display: none;
-  }
-</style>
 <div class="hotelMapBox">
   {{-- map --}}
-  <div id="map" style='height:600px'></div>
+  <div id="map" style='height:800px'></div>
   {{-- hotel block --}}
   <div class="productListCard onmapHotelDetailList no-display" id="showHotelBox">
     <span id="product-pop-block"></span>
@@ -38,11 +21,18 @@
   @foreach (Request::all() as $key => $value)
     params.push("{{ $key }}={{ $value }}");
   @endforeach
+  
+  
+  function closeProductBlock() {
+    const productPopBlock = document.getElementById('product-pop-block');
+    productPopBlock.style.display = 'none';
+    productPopBlock.innerHTML = '';
+    }
 
   function initializeMap() {
     const locations = jsonparse;
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 20
+      zoom: 12,
     });
     var infowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
@@ -74,33 +64,44 @@
             </div>
             `;
           }
-          // <div class="favoritlsstbock">
-          //     <img src="../images/structure/heart-outline.svg" alt="" class="heart-outline">
-          //     <img src="../images/structure/heart-fill.svg" alt="" class="heart-fill">
-          //   </div>
-          document.getElementById('product-pop-block').innerHTML = `
-          <div class="productListImg-block">
-            <div class="overlay"></div>
-            <a href="${data.redirect_url}" >
-              <img src="${data.hotelImage}" alt="" class="productListImg">
-            </a>
-            ${reviews}
-          </div>
-          <div class="productListDetail">
-            <a href="${data.redirect_url}">
-              <h6 class="h6 mb-2">${data.price} <small class="pelTm">/per night</small></h6>
-              <h5 class="mb-2">${data.hotel.hotel_name}</h5>
-              <p class="p2 mb-3">${data.hotel.street}</p>
-              <div class="productLstFtr d-flex">
-                ${feature_facility}
+
+          function showProductBlock(data) {
+          const productPopBlock = document.getElementById('product-pop-block');
+          productPopBlock.innerHTML = `
+            <div class="productListImg-block">
+              <div class="close-btn-container">
+                <button type="button" class="close-btn" onclick="closeProductBlock()">&times;</button>
               </div>
-            </a>
-          </div>`;
+              <div class="overlay"></div>
+              <a href="${data.redirect_url}" >
+                <img src="${data.hotelImage}" alt="" class="productListImg">
+              </a>
+              ${reviews}
+            </div>
+            <div class="productListDetailinMap">
+              <a href="${data.redirect_url}">
+                <h5 class="mb-2">${data.hotel.hotel_name}</h5>  
+                <p class="p2 mb-3">${data.hotel.sido}, ${data.hotel.sigungu}</p>
+                <h6 class="h6 mb-2" style="text-align: right;">${data.price} <small class="pelTm">/{{ __('home.perNight') }}</small></h6>
+                <p class="p2 mb-3" style="text-align: right;">({{ __('home.IncludeTax') }}) </p>
+                <div class="productLstFtr d-flex">
+                  ${feature_facility}
+                </div>
+              </a>
+            </div>
+          `;
+          productPopBlock.style.display = 'block'; // Show the block
+          }
+          showProductBlock(data);
           document.getElementById('showHotelBox').classList.remove('no-display')
         }
       })(marker, location));
     }
     map.fitBounds(bounds);
+    const maxZoom = 12;
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      if (map.getZoom() > maxZoom) map.setZoom(maxZoom);
+    });
   }
   initializeMap();
 </script>

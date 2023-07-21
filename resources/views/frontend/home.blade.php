@@ -7,7 +7,7 @@
 
   <section class="home-sec1">
     <div style="position: relative;">
-      <div class="overlay "></div>
+      <div class="overlay"></div>
       <div class=" homebannerslider ">
         <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
         <div class="banner-slide "><img src="{{ asset('/assets/images/structure/home-slide-img1.png') }}" class="bannerImage" alt="Banner Image"></div>
@@ -51,7 +51,7 @@
                         <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ $hotel->rating }}</span>
                         <span class="p2 mb-0">{{ $hotel->reviews }} {{ __('home.Reviews') }}</span>
                       @else
-                        <span class="p2 mb-0">아직 등록된 리뷰가 없습니다.</span>
+                        <span class="p2 mb-0">{{ __('home.NoReview') }}</span>
                       @endif
                     </div>
                   </a>
@@ -60,15 +60,15 @@
                   <h6 class="h6 mb-2">₩ {{($hotel->room_price !='')?number_format($hotel->room_price):0;}} <small class="pelTm">/{{ __('home.perNight') }}</small></h6>
                   <h5 class="mb-2">{{ $hotel->hotel_name; }}</h5> 
                   <p class="p2 mb-3">{{ $hotel->sido }}, {{ $hotel->sigungu }} </p>
-                 <div class="productLstFtr flex-wrap d-flex">
+                  <div class="productLstFtr flex-wrap d-flex">
                     @if(isset($hotel->features[0]->features_name) )
-                    <span class="chips chips-gray h-24">{{ $hotel->features[0]->features_name }}</span>
+                      <span class="chips chips-gray h-24">{{ $hotel->features[0]->features_name }}</span>
                     @endif
                     @if((count($hotel->features)) > 3)
-                    <span class="chips chips-gray h-24">+ {{ (count($hotel->facilities) + count($hotel->features)) - 3   }} </span>
+                      <span class="chips chips-gray h-24">+ {{ (count($hotel->facilities) + count($hotel->features)) - 3   }} </span>
                     @endif
-                </div>
-              </a>
+                  </div>
+                </a>
               </div>
             </div>
             @endforeach            
