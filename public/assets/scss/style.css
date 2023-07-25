@@ -2478,7 +2478,7 @@ a {
 .quantity-row .quantity-box {
   text-align: center;
 }
-.quantity-row .quantity-box .minus, .quantity-row .quantity-box .minusch {
+.quantity-row .quantity-box .minus {
   background: #E7F2EA;
   border: 1px solid #717972;
   border-radius: 8px 0px 0px 8px;
@@ -4920,12 +4920,15 @@ body.bodyscroll {
   height: 72px;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown {
+  position: absolute;
   background: #FFFFFF;
   box-shadow: 0px 10px 41px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   min-width: 274px;
   max-width: 274px;
+  max-height: 500px;
   padding: 20px;
+  z-index: 999;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .p3 {
   color: #717972;
@@ -4937,7 +4940,7 @@ body.bodyscroll {
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box {
   text-align: center;
 }
-.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box .minus, .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box .minusch {
+.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .quantity-row .quantity-box .minus {
   background: #E7F2EA;
   border: 1px solid #717972;
   border-radius: 8px 0px 0px 8px;
@@ -4967,31 +4970,29 @@ body.bodyscroll {
   outline: none;
   box-shadow: none;
 }
-.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .guestAgeDropdown {
-  position: relative;
+
+.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .dropdown-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
 }
-.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .guestAgeDropdown .form-select {
-  padding-left: 8px !important;
-  border: 1px solid #717972 !important;
-  height: 36px !important;
-  color: #717972;
-  background-color: #fff;
-  background-position: right 7px top 11px;
-  background-size: 12px 12px;
-}
-.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .guestAgeDropdown .guestAgeDropdownMenu {
+.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .dropdown-container .dropdown {
   background: #fff;
   z-index: 1;
-  border: 0;
+  border: 1px solid #585858;
   padding: 0 !important;
   min-width: 100%;
   width: 100%;
   box-shadow: 0px 10px 41px rgba(0, 0, 0, 0.05);
 }
-.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .guestAgeDropdown .guestAgeDropdownMenu label {
+
+.home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown .dropdown-container .dropdown .label-container {
   left: 0px !important;
   padding: 0 10px !important;
   transform: unset !important;
+  display: flex;
+  align-items: center;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .form-floating ul.guestdropdown.active {
   display: block;
@@ -5003,7 +5004,7 @@ body.bodyscroll {
   background-image: none;
 }
 .home-sec1 .bannerSearchContainer .col-xl-11 .bannerSearchBox .bannerSearchCol .guestdropdownBtn .guestNo {
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Pretendard-regular";
 }
 @media (min-width: 300px) and (max-width: 576px) {

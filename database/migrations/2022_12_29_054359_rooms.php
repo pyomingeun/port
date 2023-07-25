@@ -17,15 +17,16 @@ return new class extends Migration
         // create rooms table 
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->default('');
             $table->integer('hotel_id')->default(0);
-            $table->string('room_name', 250)->default('');
-            $table->string('room_size', 250)->default('');
+            $table->string('room_name', 50)->default('');
+            $table->string('room_size', 10)->default('');
+            $table->integer('no_of_bathrooms')->default(0);
             $table->string('room_featured_img', 250)->default('');
             $table->longText('room_description')->default('');
-            $table->integer('standard_occupancy_adult')->default(0);
-            $table->integer('standard_occupancy_child')->default(0);
-            $table->integer('maximum_occupancy_adult')->default(0);
-            $table->integer('maximum_occupancy_child')->default(0);
+            $table->integer('standard_occupancy')->default(0);
+            $table->integer('maximum_occupancy')->default(0);
+            $table->integer('freechild_occupancy')->default(0);
             $table->double('standard_price_weekday', 10, 2)->default(0);
             $table->double('standard_price_weekend', 10, 2)->default(0);
             $table->double('standard_price_peakseason', 10, 2)->default(0);

@@ -9,7 +9,11 @@
         @endif
         <div class="productListImg-block">
           <div class="overlay"></div>
-          <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams(Request::all()) }}">
+          @php
+            $queryParams = Request::all();
+            $queryParams['hname'] = $hotel->hotel_name;
+          @endphp
+          <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams($queryParams) }}">
             <img
               src="{{ $hotel->hasFeaturedImage != null ? asset('hotel_images/' . $hotel->hasFeaturedImage->image) : asset('assets/images/product/img1.png') }}"
               onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"

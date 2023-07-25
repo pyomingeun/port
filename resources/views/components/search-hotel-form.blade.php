@@ -12,20 +12,17 @@
       <input type="hidden" name="sido" id="sido" value="{{ Request::get('sido') ? Request::get('sido') : '' }}">
       <input type="hidden" name="sigungu" id="sigungu" value="{{ Request::get('sigungu') ? Request::get('sigungu') : '' }}">
       <input type="hidden" name="hname" id="hname" value="{{ Request::get('hname') ? Request::get('hname') : '' }}">
-      <input type="hidden" name="checkin_dates" id="checkInDate" value="{{ Request::get('checkin_dates') ? Request::get('checkin_dates') : date('Y-m-d') }}">
-      <input type="hidden" name="checkout_dates" id="checkOutDate" value="{{ Request::get('checkout_dates') ? Request::get('checkout_dates') : date('Y-m-d', strtotime("+1 days")) }}">
-      <input type="hidden" name="child" id="child" value="{{ Request::get('child') ? Request::get('child') : 0 }}">
     </div>
     <div class="bannerSearchCol">
       <div class="checkinoutBox d-flex align-items-center date-picker">
         <div class="form-floating bnrCheckin">
           <img src="{{ asset('/assets/images/structure/calendar-green.svg') }}" alt="" class="searchFielsIcns" />
-          <input type="text" class="form-control doubledatepicker onenter_sumbit_hml" placeholder="Check-In / Check-Out" name="start_dates" />
+          <input type="text" class="form-control doubledatepicker" id="checkInDate" name="checkin_dates" />
           <label for="floatingInput">{{ __('home.CheckIn') }}</label>
           <div class="customeDateBox" id="checkInDateBlock"></div>
         </div>
         <div class="form-floating bnrCheckout">
-          <input type="text" class="form-control handleClick onenter_sumbit_hml" placeholder="Check-In / Check-Out" name="end_dates">
+          <input type="text" class="form-control handleClick" id="checkOutDate" name="checkout_dates">
           <label for="floatingInput">{{ __('home.CheckOut') }}</label>
           <div class="customeDateBox" id="checkOutDateBlock"></div>
         </div>
@@ -34,7 +31,7 @@
     <div class="bannerSearchCol">
       <div class="form-floating">
         <img src="{{ asset('/assets/images/structure/user-green.svg') }}" alt="" class="searchFielsIcns" />
-        <button type="button" class="form-select guestdropdownBtn" id="guestdd">
+        <button type="button" class="form-select guestdropdownBtn">
           <span class="guestNo" id="adultNo">{{ Request::get('adult') ? Request::get('adult') : '2' }}</span>
           <span class="guestTxt">{{ __('home.Adult') }}</span>
           <span class="guestNo" id="childNo">{{ Request::get('child') ? Request::get('child') : '0' }}</span>
@@ -42,48 +39,51 @@
         </button>
         <ul class="dropdown-menu guestdropdown" style="min-width: 180px">
           <li class="">
-            <div class="">
               <div class="quantity-row d-flex align-items-center mb-3">
                 <p class="p2 mb-0">{{ __('home.Adult') }}</p>
                 <div class="quantity-box d-flex align-items-center ml-auto">
-                  <span class="minus d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
-                  <input type="text" name="adult" id="adultChange" value="{{ Request::get('adult') ? Request::get('adult') : '2' }}" />
-                  <span class="plus d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
+                  <span class="minus aminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}"> </span>
+                  <input type="text" name="adult" id="noOfAdult" value="{{ Request::get('adult') ? Request::get('adult') : '2' }}" />
+                  <span class="plus aplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}"> </span>
                 </div>
               </div>
               <div class="quantity-row d-flex align-items-center mb-3">
-                <p class="p2 mb-0">{{ __('home.ChildBelow3') }}</p>
+                <p class="p2 mb-0">{{ __('home.Child') }}</p>
                 <div class="quantity-box d-flex align-items-center ml-auto">
-                  <span class="minus d-flex align-items-center justify-content-center changeChild">
-                    <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
-                  <input type="text" name="childs_below_nyear" id="childChange" value="{{ Request::get('childs_below_nyear') ? Request::get('childs_below_nyear') : '0' }}" />
-                  <span class="plus plusch d-flex align-items-center justify-content-center changeChild">
-                    <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
+                  <span class="minus cminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}"> </span>
+                  <input type="text" name="child" id="noOfChild" value="{{ Request::get('child') ? Request::get('child') : '0' }}" />
+                  <span class="plus cplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}"></span>
                 </div>
               </div>
-              <div class="quantity-row d-flex align-items-center mb-3">
-                <p class="p2 mb-0">{{ __('home.ChildAbove3') }}</p>
-                <div class="quantity-box d-flex align-items-center ml-auto">
-                  <span class="minus d-flex align-items-center justify-content-center changeChild">
-                    <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
-                  <input type="text" name="childs_plus_nyear" id="childChange2" value="{{ Request::get('childs_plus_nyear') ? Request::get('childs_plus_nyear') : '0' }}" />
-                  <span class="plus plusch d-flex align-items-center justify-content-center changeChild">
-                    <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}" class="plus-minus-icon" alt="">
-                  </span>
-                </div>
-              </div>
-            </div>
           </li>
+          <div class="dropdown-container" id="dropdownContainer"></>
+            @php
+              $childAgeCount = 0;
+              foreach (request()->all() as $key => $value) {
+                if (preg_match('/^childage\d+$/', $key)) {
+                  $childAgeCount++;
+                }
+            }
+            @endphp
+
+            @for ($i = 1; $i <= $childAgeCount; $i++)
+              <div> 
+                <label style="font-size: 18px; color: black; margin-bottom: 1px;">{{ __('home.Child') }} {{ $i }} :</label>
+                    <select class="dropdown" name="childage{{ $i }}">
+                      @php
+                        $selectedChildAge = Request::get('childage'.$i);
+                      @endphp
+                      @for ($j = 0; $j <= 17; $j++)
+                        <option value="{{ $j }}" @if ($j == $selectedChildAge) selected @endif>{{ $j }}</option>
+                      @endfor
+                    </select>
+              </div>
+            @endfor
+          </div>
+          <div class="button-container" style="display: flex;  justify-content: flex-end;">
+            <button type="button" class="btn btn-primary confirmDropdown" id="confirmDropdown">{{ __('home.Confirm') }}</button>
+          </div>
         </ul>
-        <label for="guestdd" class="label">{{ __('home.NoOfGuest') }}</label>
-        <span id="month_error" class="error"></span>
       </div>
     </div>
     <div class="bannerSearchBtnBox">
@@ -98,7 +98,8 @@
     $(function() {
       $('#sido').val("");
       $('#sigungu').val("");
-      $('#hname').val("");
+//      $('#hname').val("");
+
       const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
       let startDate1 = new Date();
       let endDate1 = new Date();
@@ -131,22 +132,132 @@
           firstDay: 0
         }
       }, (start, end) => {
-        $('#checkInDate').val(start.format('YYYY-MM-DD'));
-        $('#checkOutDate').val(end.format('YYYY-MM-DD'));
+        $('#checkInDateBlock').html(
+        `${start.format('YYYY년 MM월 DD일')}`
+        );
+        $('#checkOutDateBlock').html(
+        `${end.format('YYYY년 MM월 DD일')}`
+        );
       });
-      $('#adultChange').change(function() {
-        $('#adultNo').text($('#adultChange').val());
-      })
-      $('#childChange').change(function() {
-        const totalChild = parseInt($('#childChange').val()) + parseInt($('#childChange2').val());
-        $('#childNo').text(totalChild);
-        $('#child').val(totalChild);
-      })
-      $('#childChange2').change(function() {
-        const totalChild = parseInt($('#childChange').val()) + parseInt($('#childChange2').val());
-        $('#childNo').text(totalChild);
-        $('#child').val(totalChild);
-      })
+
+      function convertKoreanDateToYmd(koreanDate) {
+        const parts = koreanDate.match(/(\d+)/g);
+        if (parts.length === 3) {
+          const year = parts[0];
+          const month = parts[1];
+          const day = parts[2];
+          return year + '-' + month + '-' + day;
+          }
+        return null;
+      }
+
+      function updateCheckinInputValue() {
+        const checkinDateBlock = $('#checkInDateBlock').text().trim();
+        const checkoutDateBlock = $('#checkOutDateBlock').text().trim();
+        const checkinDate = convertKoreanDateToYmd(checkinDateBlock);
+        const checkoutDate = convertKoreanDateToYmd(checkoutDateBlock);
+        if (checkinDate) {
+          $('input[name="checkin_dates"]').val(checkinDate);
+        }
+        if (checkoutDate) {
+          $('input[name="checkout_dates"]').val(checkoutDate);
+        }
+      }
+
+      $('.aminus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 1 ? 1 : count;
+				$input.val(count);
+        $('#adultNo').text(count);
+				return false;
+			});
+
+			$('.aplus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) + 1;
+        $input.val(count); 
+        $('#adultNo').text(count);
+				return false;
+			});
+
+      let currentQuantity = parseInt($('#noOfChild').val());
+
+      function generateDropdowns() {
+        const input = document.getElementById("noOfChild");
+        const quantity = parseInt(input.value);
+
+        // Validate if the input is a valid positive integer
+        if (Number.isInteger(quantity) && quantity >= 0 && quantity <= 17) {
+          input.style.border = "1px solid #ced4da"; // Reset border to default
+          const dropdownContainer = document.getElementById("dropdownContainer");
+
+          while (currentQuantity < quantity) {
+            addDropdown();
+          }
+
+          while (currentQuantity > quantity) {
+            removeDropdown();
+          }
+        } else {
+          input.style.border = "1px solid red"; // Invalid input, show red border
+        }
+      }
+
+      function addDropdown() {
+        const dropdownContainer = document.getElementById("dropdownContainer");
+        const labelContainer = document.createElement("div");
+
+        const label = document.createElement("label");
+        const childIndex = currentQuantity + 1;
+        label.innerHTML = "{{ __('home.Child') }} " + childIndex + " :";
+        label.setAttribute("style", "font-size: 18px; color: black; margin-bottom: 1px;");
+        labelContainer.appendChild(label);
+
+        const dropdown = document.createElement("select");
+        dropdown.className = "dropdown";
+        dropdown.name = "childage" + childIndex;
+
+        for (let j = 0; j <= 17; j++) {
+          const option = document.createElement("option");
+          option.text = j;
+          option.value = j;
+          dropdown.appendChild(option);
+        }
+
+        labelContainer.appendChild(dropdown);
+        dropdownContainer.appendChild(labelContainer);
+
+        currentQuantity++;
+      }
+
+      function removeDropdown() {
+        const dropdownContainer = document.getElementById("dropdownContainer");
+        if (currentQuantity > 0) {
+          currentQuantity--;
+          dropdownContainer.removeChild(dropdownContainer.lastElementChild);
+        }
+      }
+
+      $('.cminus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 0 ? 0 : count;
+				$input.val(count);
+        $('#childNo').text(count);
+        generateDropdowns();
+				return false;
+			});
+
+      $('.cplus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) + 1;
+        $input.val(count); 
+        $('#childNo').text(count);
+        generateDropdowns();
+				return false;
+			});
+
       $('#form-submit').submit(function() {
         if ($('#search').val() === '') {
           $('#localtionError').text('{{ __('home.NoSearchData') }}');
@@ -155,11 +266,18 @@
         if ($('#latitude').val() === '' && $('#longitude').val() === '' && $('#search').val() === '') {
           return false;
         }
+        updateCheckinInputValue();
       })
       
+    $('#confirmDropdown').click(function() {
+      $('.guestdropdown').hide();
+    });
+    
+    $(".guestdropdownBtn").on("click", function(e) {
+      $('.guestdropdown').show();
+    });
+      
       loadgoogle_map();
-
-
     });
 
     if (currentPage === 'home') {
@@ -206,7 +324,6 @@
       getlocations();
     }
   });
-
   
   function loadgoogle_map(id = 'search') {
     var options = {};

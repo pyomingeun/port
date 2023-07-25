@@ -108,6 +108,9 @@ class HomeController extends Controller
 
     public function hotelList(Request $request)
     {
+/*        if (isset($request->latitude) && isset($request->longitude)) {
+            $distance = "( '3959' * acos( cos( radians(" . $request->latitude . ") ) * cos( radians(`latitude`) ) * cos( radians(`longitude`) - radians(" . $request->longitude . ")) + sin(radians(" . $request->latitude . ")) * sin( radians(`latitude`))))* 1.609344";
+        } */
         // 부대시설 및 특징 가져오기
         $facilities = Facilities::withCount('hasHotels')->where('status', 'active')->get();
         $features = Features::withCount('hasHotels')->where('status', 'active')->get();
@@ -122,6 +125,7 @@ class HomeController extends Controller
         $advanceDays = $currentDate->diff($startdate)->days;
 
         // 호텔 목록 검색
+        $totalGuest = $request->adult + $request->child;
         $hotelQuery = HotelInfo::with([
             'hasFeaturedImage',
             'hasFacilities' => function($query) use ($request) {
@@ -135,9 +139,10 @@ class HomeController extends Controller
                 }
             },
             // 호텔 방 필터링
-            'hasActiveRooms' => function($query) use ($request, $dayofweek) {
-                if (isset($request->adult)) {$query->where('maximum_occupancy_adult', '>=', $request->adult);}
-                if ($request->child) {$query->where('maximum_occupancy_child', '>=', $request->child);}
+            'hasActiveRooms' => function($query) use ($request, $dayofweek, $totalGuest) {
+                if (isset($request->adult) && isset($request->child)) {
+                    $query->where('maximum_occupancy', '>=', $totalGuest);
+                    }
                 
                 if ($dayofweek === 5 || $dayofweek === 6) {
                     if (isset($request->min_price)) {
@@ -171,8 +176,10 @@ class HomeController extends Controller
             },
             // 호텔 방 필터링 (카운트)
             'hasActiveRooms' => function($query) use ($request, $dayofweek) {
-                if (isset($request->adult)) {$query->where('maximum_occupancy_adult', '>=', $request->adult);}
-                if ($request->child) {$query->where('maximum_occupancy_child', '>=', $request->child);}
+                if (isset($request->adult) && isset($request->child)) {
+                    $total_guest = $request->adult + $request->child;
+                    $query->where('maximum_occupancy', '>=', $total_guest);
+                    }
                 if ($dayofweek === 5 || $dayofweek === 6) {
                     if (isset($request->min_price)) {
                         $query->whereBetween('standard_price_weekend', [$request->min_price, $request->max_price]);
@@ -186,16 +193,13 @@ class HomeController extends Controller
                 }
             } 
         ]);
+
         // 로그인한 사용자의 경우 위시리스트에 저장한 호텔 수 카운트
         if (auth()->user()) {
             $hotelQuery->withCount(['hasMarkedHotel' => function($query){
                 $query->where('created_by', auth()->user()->id);
             }]);
         }
-//        if (isset($distance)) {
-//            $hotelQuery->where(DB::raw($distance), '<', 50);
-//        } else {
-           
 
         if (!isset($request->hname) && !isset($request->sido) && !isset($request->sigungu)){
             $hotelQuery->where(function ($query) use ($request){
@@ -228,8 +232,6 @@ class HomeController extends Controller
             }
         }
 
-
-    //        }
         $hotelQuery->where('completed_percentage', 100);
 
         $hotelQuery->where('min_advance_reservation', '<=', $advanceDays)
@@ -297,7 +299,7 @@ class HomeController extends Controller
             array_push($locations, $returndata);
         }
         $jsonLocations = $locations;
-        // dd($hotels);
+
         return view('frontend.hotel_listing', compact('hotels', 'jsonLocations', 'facilities', 'features', 'dayofweek', 'request'));
     }
 
@@ -397,7 +399,7 @@ class HomeController extends Controller
                         $roomEffectivePrice = 'standard_price_weekend';   
                 
                     // get room list
-                    $rooms = Rooms::with('hasImagesActive')->with('hasBedsActive')->where('hotel_id', '=', $hotel->hotel_id)->where('status', '=', 'active')->where('maximum_occupancy_adult', '>=', $request->adult)->where('maximum_occupancy_child', '>=', $request->child)->orderBy($roomEffectivePrice,'asc')->get();
+                    $rooms = Rooms::with('hasImagesActive')->with('hasBedsActive')->where('hotel_id', '=', $hotel->hotel_id)->where('status', '=', 'active')->where('maximum_occupancy', '>=', $request->adult+$request->child)->orderBy($roomEffectivePrice,'asc')->get();
     
                     if($rooms)
                     {

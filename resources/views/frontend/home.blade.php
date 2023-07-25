@@ -44,7 +44,11 @@
             <div class="editorPickslides">
               <div class="productListCard">
                 <div class="productListImg-block">
-                  <a href="{{route('hotel-detail', ['slug' => $hotel->slug, 'identifier' => 'recommended']) }}" class="d-block">
+                  @php
+                    $queryParams = Request::all();
+                    $queryParams['hname'] = $hotel->hotel_name;
+                  @endphp
+                  <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams($queryParams) }}">
                     <img src="{{asset('/hotel_images/')}}/{{ $hotel->featured_img }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';" alt="" class="productListImg">
                     <div class="onlist-rat-review d-flex align">
                       @if ($hotel->reviews > 0)
