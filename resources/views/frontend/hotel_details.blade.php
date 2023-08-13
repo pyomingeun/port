@@ -1,35 +1,30 @@
 @extends('frontend.layout.head')
 @section('body-content')
-  @include('frontend.layout.header')
-  <style>
-    .tooltipbox {
-    max-height: 250px !important;
-    width: 300px !important;
-    overflow: auto;
-    }
-  </style>  
-    <div class="main-wrapper" style="padding-top: 0;">
-        <img class="dotted-img-bd" src="{{ asset('/assets/images/') }}/structure/dotted-img.png" alt="">
-        <section class="home-sec1 hotel-detail-sec1">
-            <div class="container bannerSearchContainer">
-                <div class="row">
-                    <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
-                        @php
-                            $hotelName = $hotel->hotel_name;
-                        @endphp
-                        <x-search-hotel-form :hotelName="$hotelName"/>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="hotel-detail-sec2">
-            @if(isset($lsd) && $lsd > 0)
-            <div class="newtag">
-                <img src="{{ asset('/assets/images/') }}/structure/correct-white-icon.svg" alt="" class="icon20" />
-                <span>Long stay discount applied</span>
-            </div>
-            @endif
-            <div class="container">
+@include('frontend.layout.header')
+<script>
+    const currentPage = 'hotel_detail'; // Set the current page to 'hotel_detail'
+</script>
+
+<section class="search-bar">
+  <div class="container bannerSearchContainer">
+    <div class="row">
+      @php
+        $hotelName = null;
+      @endphp
+      <x-search-hotel-form :hotelName="$hotelName" />
+    </div>
+  </div>
+</section>
+<section class="hotel-detail-sec2">
+    @if(isset($lsd) && $lsd > 0)
+        <div class="newtag">
+            <img src="{{ asset('/assets/images/') }}/structure/correct-white-icon.svg" alt="" class="icon20" />
+                <span>연박할인</span>
+        </div>
+    @endif
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 shareFavoriteBox d-flex align-items-center justify-content-start">
                 <nav aria-label="breadcrumb" class="breadcrumbNave">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home'); }}">{{ __('home.home') }}</a></li>
@@ -37,555 +32,527 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $hotel->hotel_name }}</li>
                     </ol>
                 </nav>
-                <div class="row">
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <h3 class="h3">{{ $hotel->hotel_name}} </h3>
-                            <div class="rat-review d-flex align-items-center">
-                                <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ number_format($hotel->rating,1); }}</span>
-                                @if($hotel->rating > 4 && $hotel->rating <= 5)
-                                <span class="exs-text">{{ __('home.excellent') }}</span>
-                                @elseif($hotel->rating <= 4 && $hotel->rating > 3)
-                                <span class="exs-text">{{ __('home.veryGood') }}</span>
-                                @elseif($hotel->rating <= 3 && $hotel->rating > 2)
-                                <span class="exs-text">{{ __('home.Average') }}</span>
-                                @elseif($hotel->rating <= 2 && $hotel->rating > 1)
-                                <span class="exs-text">{{ __('home.Poor') }}</span>
-                                @elseif($hotel->rating < 1)
-                                <span class="exs-text">{{ __('home.Terrible') }}</span>
-                                @endif
-                                <a href="#reviews" class="p2 mb-0 mt-0" style="color: #191C1A;">{{ $hotel->reviews; }} Reviews</a>
-                            </div>
-                        </div>
-                        <p class="p2">{{ $hotel->street }}{{ ($hotel->city !='' && $hotel->street !='')?', ':''; }} {{ $hotel->city }}{{ ($hotel->city !='' && $hotel->subrub !='')?', ':''; }}{{ $hotel->subrub  }} {{ ($hotel->pincode !='')?' - ':''; }}{{ $hotel->pincode }}</p>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 sahreFavoriteBox d-flex align-items-center justify-content-end">
-                        @php
-                        $twitter_params = 
-                        '?text=' . urlencode($hotel->hotel_name) . '+-' .
-                        '&amp;url=' . urlencode(route('hotel-detail', $hotel->slug)) . 
-                        '&amp;counturl=' . urlencode(route('hotel-detail', $hotel->slug)) .
-                        '';
-                        $twitterlink = "http://twitter.com/share" . $twitter_params . "";
-                        @endphp 
-                        <div class="shareFropdown dropdown">
-                            <a class="dropdown-toggle d-flex align-items-center" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown">
-                                <img src="{{ asset('/assets/images/') }}/structure/share.svg" alt="" class="shareIcon"> {{ __('home.Share') }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li>
-                                    <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u={{route('hotel-detail', $hotel->slug)}}&t={{ $hotel->hotel_name }}" style="color:#4267B2;"><img src="{{ asset('/assets/images/') }}/structure/facebook-blue.svg" alt="" class="facebook">Facebook</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ $twitterlink;  }}" style="color:#1DA1F2;"><img src="{{ asset('/assets/images/') }}/structure/twitter-blue.svg" alt="" class="twitter">Twitter</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="javaScript:void(0);" style="color:#191C1A;" data-link="{{route('hotel-detail', $hotel->slug)}}" onclick="copyLink()" id="copyLink"><img src="{{ asset('/assets/images/') }}/structure/copy-gray.svg" alt=""  class="copy"  >{{ __('home.CopyLink') }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        @if (auth()->user() && auth()->user()->id != '')
-                        <p class="p2 mb-0 cursor-p favoriteItem d-flex align-items-center "><img src="{{ asset('/assets/images/') }}/structure/{{ ($isMyFavorite >0 )?'heart-fill.svg':'heart-outline.svg'; }}" alt="" class="favoriteItem markunmarkfavorite cursor-pointer" data-h="{{ $hotel->hotel_id }}" id="markunmarkfavoriteicon" > {{ __('home.favorite') }}</p>
-                        @else
-                        <p class="p2 mb-0 cursor-p favoriteItem d-flex align-items-center "><img src="{{ asset('/assets/images/') }}/structure/{{ ($isMyFavorite >0 )?'heart-fill.svg':'heart-outline.svg'; }}" data-bs-toggle="modal" data-bs-target=".loginDialog" class="favoriteItem cursor-pointer" > {{ __('home.favorite') }}</p>
-                        @endif  
-                    </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 shareFavoriteBox d-flex align-items-center justify-content-end">
+                @php
+                    $twitter_params = '?text=' . urlencode($hotel->hotel_name) . '+-' .'&amp;url=' . urlencode(route('hotel-detail', $hotel->slug)) . '&amp;counturl=' . urlencode(route('hotel-detail', $hotel->slug)) .'';
+                    $twitterlink = "http://twitter.com/share" . $twitter_params . "";
+                @endphp
+                <div class="shareDropdown dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                        <img src="{{ asset('/assets/images/') }}/structure/share.svg" alt="" class="shareIcon"> {{ __('home.Share') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u={{route('hotel-detail', $hotel->slug)}}&t={{ $hotel->hotel_name }}" style="color:#4267B2;"><img src="{{ asset('/assets/images/') }}/structure/facebook-blue.svg" alt="" class="facebook">Facebook</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ $twitterlink;  }}" style="color:#1DA1F2;"><img src="{{ asset('/assets/images/') }}/structure/twitter-blue.svg" alt="" class="twitter">Twitter</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="javaScript:void(0);" style="color:#191C1A;" data-link="{{route('hotel-detail', $hotel->slug)}}" onclick="copyLink()" id="copyLink"><img src="{{ asset('/assets/images/') }}/structure/copy-gray.svg" alt=""  class="copy"  >{{ __('home.CopyLink') }}</a>
+                        </li>
+                    </ul>
                 </div>
-                @if(count($hotel->hasImageActive) >0)
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="hotelDetilSlider sliderArrow">
-                            @foreach ($hotel->hasImageActive as $hotelImg)
-                            <div class="hotelDetilSlides">
-                                <img
-                                    src="{{ asset('/hotel_images/'.$hotelImg->image); }}"
-                                    class="hotelimg" alt=""
-                                    onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
-                                >
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                @endif
-                <div class="row hotel-detail-des-box1">
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-                        @php /* 
-                        <div class="rat-review d-flex align-items-center">
-                            <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ number_format($hotel->rating,1); }} </span>
-                            <span class="p2 mb-0 mt-0" style="color: #191C1A;">{{ $hotel->reviews; }} Reviews</span>
-                        </div>
-                        */ @endphp
-                        {{-- <h3 class="h3 mb-3">About {{ $hotel->hotel_name}}</h3> --}}
-                        <div class="d-flex align-items-center">
-                            <p class="checkin mb-0">{{ __('home.checkIn') }} - <span>{{ $hotel->check_in; }}</span></p>
-                            <span class="vertLine">|</span>
-                            <p class="checkout mb-0">{{ __('home.checkOut') }} - <span>{{ $hotel->check_out; }}</span></p>
-                            @auth()
-                            <span class="vertLine">|</span>
-                            <a class="quickEnquiry cursor-p" href="#" data-bs-toggle="modal" data-bs-target=".quickEnquiryDialog">{{ __('home.quickEnquiry') }}</a>
-                            @endauth
-                        </div>
-                        <div class="p2">{!!  $hotel->description !!}</div>
-                    </div>
-                    <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <div class="detailMapBox">
-                            <img src="{{ asset('/assets/images/') }}/product/map-imageSm.png" alt="" class="htl-dtlmap-image">
-                            <div class="onmapCnt text-center">
-                                <img src="{{ asset('/assets/images/') }}/structure/map-marker-blue.svg" alt="" class="htl-dtlmap-Icon d-block m-auto">
-                                <button class="btn bg-blue h-36">Show Map</button>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-                @if(count($rooms) > 0)
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="room-type-box">
-                            <h5 class="50">{{ __('home.roomType') }}</h5>
-                            @foreach ($rooms as $room)
-                            @php
-                                $urlPara = array("h"=>$hotel->slug,"r"=>$room->slug);
-                            @endphp
-                            <div class="roomtype-row d-flex mb-3">
-                                <div class="roomtypeslidermainbox">
-                                    <div class="roomtypesliderbox sliderArrow">
-                                        @foreach ($room->hasImagesActive as $rimage)
-                                         @php
-                                            $rimageCounter =0;
-                                        @endphp
-                                        <div class="roomtypeslides" data-bs-toggle="modal" data-bs-target=".roomfullview{{$room->id}}">
-                                            <img
-                                                src="{{asset('/room_images/'.$rimage->room_image); }}"
-                                                alt="" class="rootypeImage" data-bs-target="#slider-slides"
-                                                onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
-                                                data-bs-slide-to="0">
-                                        </div>
-                                        @php
-                                            $rimageCounter++;
-                                        @endphp
-                                        @endforeach                                        
-                                    </div>
-                                </div>
-                                <div class="roomtypeDescription">
-                                    <div class="roomtypeDescriptionRow1">
-                                        <div class="row">
-                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                                <h5 class="h5">{{ $room->room_name }}  <span class="chips chips-orange h-24 {{ ($room->isRoomBooked)?'':'display-none'; }}">Sold Out</span></h5>
-                                                <div class="roomdtlrw1 d-flex flex-wrap align-items-center">
-                                                    <p class="p2 mb-0"><img src="{{ asset('/assets/images/') }}/structure/tracked.svg" alt="" class="rDtlIcon"> {{ $room->room_size }} sq m</p>
-                                                    @if(isset($room->hasBedsActive) && count($room->hasBedsActive) >0)
-                                                    <p class="p2 mb-0"><img src="{{ asset('/assets/images/') }}/structure/bouble-bed.svg" alt="" class="rDtlIcon">
-                                                    @php
-                                                        $bedCounter = 0;
-                                                    @endphp
-                                                    @foreach ($room->hasBedsActive as $bed)
-                                                        @if($bedCounter == 0)
-                                                            {{ $bed->bed_type }} x {{ $bed->bed_qty }}
-                                                        @else
-                                                            {{ $bed->bed_type }} x {{ $bed->bed_qty }}
-                                                        @endif
-                                                    @php
-                                                        $bedCounter++;
-                                                    @endphp
-                                                    @endforeach
-                                                    </p>
-                                                    @endif
-                                                </div>
-                                                <div class="roomdtlrw2 d-flex flex-wrap align-items-center">
-                                                    @if(isset($room->room_facilities[0]->facilities_name))
-                                                    <span class="dotgray"></span>
-                                                    <p class="p2 mb-0">{{$room->room_facilities[0]->facilities_name; }}</p>
-                                                    @endif
-                                                    @if(isset($room->room_facilities[1]->facilities_name))
-                                                    <span class="dotgray"></span>
-                                                    <p class="p2 mb-0">{{$room->room_facilities[1]->facilities_name; }}</p>
-                                                    @endif
-                                                    @if(isset($room->room_features[0]->features_name))
-                                                    <span class="dotgray"></span>
-                                                    <p class="p2 mb-0">{{$room->room_features[0]->features_name; }}</p>
-                                                    @endif
-                                                    @if(isset($room->room_features[1]->features_name))
-                                                    <span class="dotgray"></span>
-                                                    <p class="p2 mb-0">{{$room->room_features[1]->features_name; }}</p>
-                                                    @endif                                                   
-                                                </div>
-                                                @if(count($room->room_facilities) >2 || count($room->room_features) >2 )
-                                                <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target="#facilitiesFeaturesDialog{{ $room->id }}">View More</a>
-                                                @endif
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column align-items-end"> 
-                                                @if(($room->isRoomBooked) > 0)
-                                                <a  class="btn h-32 sold-out-btn">{{ __('home.select') }}</a>
-                                                @else
-                                                <a href="{{ route('room-checkout'). getQueryParams(array_merge(Request::all(),$urlPara)) }}" class="btn h-32 ">{{ __('home.select') }}</a>                                                
-                                                @endif
-                                                <div>
-                                                    <h6 class="h6 mb-0">₩ {{  siteNumberFormat($room->$roomEffectivePrice) }}</h6>
-                                                    <p class="p3 mb-0">{{ __('home.perNight') }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="roomtypeDescriptionRow2">
-                                        <div class="row">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="padding-left: 15px;">
-                                                <p class="p3 mb-1">{{ __('home.extraGuest') }}</p>
-                                                <p class="p2 d-flex align-items-center mb-0"><img src="{{ asset('/assets/images/') }}/structure/user-black.svg"> <span>x 1</span> <span>-</span> <span>₩ {{ $room->extra_guest_fee }}</span></p>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                                <p class="p3 mb-1">{{ __('home.standardOccupancy') }}</p>
-                                                <p class="p2 d-flex align-items-center mb-0"><img src="{{ asset('/assets/images/') }}/structure/user-black.svg"> <span>x {{ $room->standard_occupancy_adult + $room->standard_occupancy_child }}</span> <img src="{{ asset('/assets/images/') }}/structure/info-blue.svg" alt="" class="infoIcon" style="margin-bottom: 2px;" data-bs-toggle="tooltip" data-bs-html="true"
-                                                        title="<div class='tooltipbox'> <span class='normalfont'>Adult: <small class='mediumfont'>{{ $room->standard_occupancy_adult }}</small></span> , <span class='normalfont'>Children: <small class='mediumfont'>{{ $room->standard_occupancy_child}}</small></span> </div>"></p>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                                <p class="p3 mb-1">{{ __('home.maximumOccupancy') }}</p>
-                                                <p class="p2 d-flex align-items-center mb-0"><img src="{{ asset('/assets/images/') }}/structure/user-black.svg"> <span>x {{ $room->maximum_occupancy_adult + $room->maximum_occupancy_child }}</span> <img src="{{ asset('/assets/images/') }}/structure/info-blue.svg" alt="" class="infoIcon" style="margin-bottom: 2px;" data-bs-toggle="tooltip" data-bs-html="true"
-                                                        title="<div class='tooltipbox'> <span class='normalfont'>Adult: <small class='mediumfont'>{{ $room->maximum_occupancy_adult}}</small></span> , <span class='normalfont'>Children: <small class='mediumfont'>{{ $room->maximum_occupancy_child}}</small></span> </div>"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @if(count($hotel_features) >0)
-                <div class="row FeaturesAndFacilitiesRow mt-5">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5 mb-4">{{ __('home.HotelAmenities') }}</h5>
-                    </div>
-                    @foreach ($hotel_features as $hotel_feature)    
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <p class="p2 mb-3"><img src="{{ asset('/assets/images/') }}/structure/chck-circle-gary.svg" alt="" class="ffIcon">{{$hotel_feature->features_name}}</p>
-                    </div>
-                    @endforeach               
-                    <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target=".hotelRulesPolicyDialog">View More</a>
-                    </div> -->
-                </div>
-                @endif
-                @if(count($hotel_facilities) >0)
-                <div class="row FeaturesAndFacilitiesRow mt-5">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5 mb-4">{{ __('home.hotelFacilities') }}</h5>
-                    </div>
-                    @foreach ($hotel_facilities as $facilitie)
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <p class="p2 mb-3"><img src="{{ asset('/assets/images/') }}/structure/chck-circle-gary.svg" alt="" class="ffIcon">{{$facilitie->facilities_name}} </p>
-                    </div>
-                    @endforeach
-                    <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target=".hotelRulesPolicyDialog">View More</a>
-                    </div> -->
-                </div>
-                @endif
-                <div class="divider mt-5 mb-5"></div>
-                <div class="row FeaturesAndFacilitiesRow">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5 mb-4">{{ __('home.rulesAndPolicy') }}</h5>
-                        <!-- <div class="checkinout d-flex align-items-center mb-4">
-                            <h6 class="h6 mb-0 mt-0"><span>Check In -</span> 12:00 pm</h6>
-                            <h6 class="h6 mb-0 mt-0"><span>Check out -</span> 11:00 am</h6>
-                        </div> -->
-                    </div>
-                    {!!  $hotel->hotel_policy !!}
-                </div>
-                <div class="divider mt-4 mb-5"></div>
-                <div class="row">
-                    <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5 mb-3">{{ __('home.cancellationPolicies') }}</h5>
-                        <div class="accordion-body">
-                            <div class="row">
-                                <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.theDay') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->same_day_refund == "100")?'Fully ':''; }}{{ ($hotel->same_day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->same_day_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 1 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_1day_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_1day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_1day_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 2 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_2days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_2days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_2days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 3 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_3days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_3days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_3days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 4 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_4days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_4days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_4days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 5 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_5days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_5days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_5days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 6 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_6days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_6days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_6days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 7 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_7days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_7days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_7days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 8 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_8days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_8days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_8days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 9 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_9days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_9days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_9days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cancellationPolicycnt-Row d-flex align-items-center">
-                                        <div class="circleBefor"></div>
-                                        <div class="cancellationPolicycnt d-flex align-items-center">
-                                            <span class="bgpink"></span>
-                                            <div class="cancellationPolicyCol1">
-                                                <p class="p2 mb-0">{{ __('home.before') }} 10 {{ __('home.day') }}</p>
-                                            </div>
-                                            <div class="cancellationPolicyCol2 d-flex align-items-center">
-                                                <p class="p2 mb-0">{{ ($hotel->b4_10days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_10days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_10days_refund}}%</span> {{ __('home.refund') }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @if(count($attractions) >0)
-                <div class="divider mt-4 mb-5"></div>
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 TouristAttractionsBlock">
-                        <h5 class="h5 mb-4">{{ $hotel->touristAttractions }}</h5>
-                        <x-map-pins-attraction :locations="$jsonLocations"/>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    @foreach ($attractions as $nta)
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div class="TouristAttractionsRef d-flex align-items-center mb-3">
-                            <div class="tAttImgBox">
-                                <img src="{{ asset('/assets/images/') }}/structure/nta-icon.svg" alt="" class="tAttImgBox">
-                            </div>
-                            <div class="w-100">
-                                <p class="p2 mb-1 d-flex justify-content-between aling-items-start "> <span class="text-ellips-v">{{$nta->attractions_name}}</span> <img src="{{asset('/assets/images/')}}/structure/info-gray.svg" alt="" class="infoIcon" style="margin-bottom: 2px;" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox' >{!! $nta->nta_description !!} </div> "></p>
-                                <p class="p3 mb-0">{{ isset($nta->distance)?round($nta->distance,2)." Km":'';  }} </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="divider mt-4 mb-5"></div>
-                @endif
-                @php /*
-                <div class="row FeaturesAndFacilitiesRow">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5 mb-4">{{ $hotel->TermsandConditionsg }}</h5>
-                        <!-- <div class="checkinout d-flex align-items-center mb-4">
-                            <h6 class="h6 mb-0 mt-0"><span>Check In -</span> 12:00 pm</h6>
-                            <h6 class="h6 mb-0 mt-0"><span>Check out -</span> 11:00 am</h6>
-                        </div> -->
-                    </div>
-                     {!!  $hotel->terms_and_conditions !!} 
-                </div>                
-                <div class="divider mt-5 mb-5"></div>
-                */ @endphp
-                <div class="row" id="reviews">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h5 class="h5"> {{ __('home.review') }}</h5>
-                        <div class="hotel-dtl-reviewRow d-flex align-items-center">
-                            <div class="hotel-dtl-reviewBlock text-center">
-                                <h4 class="mb-2 " style="font-weight:bold; ">{{ number_format($hotel->rating,1); }}  @if($hotel->rating > 4 && $hotel->rating <= 5)
-                                <span class="exs-text">{{ __('home.excellent') }}</span>
-                                @elseif($hotel->rating <= 4 && $hotel->rating > 3)
-                                <span class="exs-text">{{ __('home.veryGood') }}</span>
-                                @elseif($hotel->rating <= 3 && $hotel->rating > 2)
-                                <span class="exs-text">{{ __('home.Average') }}</span>
-                                @elseif($hotel->rating <= 2 && $hotel->rating > 1)
-                                <span class="exs-text">{{ __('home.Poor') }}</span>
-                                @elseif($hotel->rating < 1)
-                                <span class="exs-text">{{ __('home.Terrible') }}</span>
-                                @endif</h4> 
-                                <div class="d-flex justify-content-center">
-                                    @for ($i = 1; $i <=5; $i++)
-                                        @if($hotel->rating < $i ) 
-                                            @if(is_float($hotel->rating) && ($i-$hotel->rating) < 1)
-                                                <i class="fa fa-star-half rStargreen"></i>
-                                            @else
-                                                <i class="fa fa-star rStarwhite"></i>
-                                            @endif
-                                        @else
-                                        <i class="fa fa-star rStargreen"></i>   
-                                         @endif    
-                                    @endfor
-                                </div>
-                                <p class="p1 mt-3 mb-0">{{ $hotel->reviews }} {{ __('home.reviews') }}</p>
-                            </div>
-                            <div class="hotel-dtl-progressratbolck">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="ratprogress mb-4">
-                                            <p class="p2 d-flex align-items-center mb-2">Cleanliness<span class="ml-auto">{{ $progressBarCleanliness  }}%</span></p>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ $progressBarCleanliness }}%" aria-valuenow="{{ $progressBarCleanliness }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="ratprogress mb-4">
-                                            <p class="p2 d-flex align-items-center mb-2">Facilities<span class="ml-auto">{{ $progressBarFacilities  }}%</span></p>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ $progressBarFacilities }}%" aria-valuenow="{{ $progressBarFacilities }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="ratprogress mb-4">
-                                            <p class="p2 d-flex align-items-center mb-2">Service<span class="ml-auto">{{ $progressBarService  }}%</span></p>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ $progressBarService }}%" aria-valuenow="{{ $progressBarService }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="ratprogress mb-4">
-                                            <p class="p2 d-flex align-items-center mb-2">Value for money<span class="ml-auto">{{ $progressBarValueformoney  }}%</span></p>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ $progressBarValueformoney }}%" aria-valuenow="{{ $progressBarValueformoney }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @if(count($rating_reviews) >0 )
-                
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                       
-                        @foreach ($rating_reviews as $rr)
-                        <div class="ratingRow d-flex">
-                            
-                            <div class="ratingDes">
-                                <div class="row">
-                                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
-                                        <div class="new-review-left">
-                                            <h6>{{ $rr->full_name}}</h6>
-                                            <p class="p3">{{ date_format($rr->created_at,"Y-m-d") }}</p>
-                                            <div class="ratingNoBox">{{ siteNumberFormat($rr->avg_rating,1); }}</div>       
-                                        </div>                                 
-                                    </div>
-                                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
-                                        <p class="p2">{{ $rr->review }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach                       
-                    </div>
-                    <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                        <a href="#" class="viewmore-a">View More</a>
-                    </div> -->
-                </div>
+
+                @if (auth()->user() && auth()->user()->id != '')
+                    <p class="p2 mb-0 cursor-p favoriteItem d-flex align-items-center ">
+                        <img src="{{ asset('/assets/images/') }}/structure/{{ ($isMyFavorite >0 )?'heart-fill.svg':'heart-outline.svg'; }}" alt="" class="favoriteItem markunmarkfavorite cursor-pointer" data-h="{{ $hotel->hotel_id }}" id="markunmarkfavoriteicon" > {{ __('home.favorite') }}
+                    </p>
+                @else
+                    <p class="p2 mb-0 cursor-p favoriteItem d-flex align-items-center ">
+                        <img src="{{ asset('/assets/images/') }}/structure/{{ ($isMyFavorite >0 )?'heart-fill.svg':'heart-outline.svg'; }}" data-bs-toggle="modal" data-bs-target=".loginDialog" class="favoriteItem cursor-pointer" > {{ __('home.favorite') }}
+                    </p>
                 @endif
             </div>
+        </div>
+        @if(count($hotel->hasImageActive) >0)
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="hotelDetilSlider sliderArrow">
+                        @foreach ($hotel->hasImageActive as $hotelImg)
+                        <div class="hotelDetilSlides">
+                            <img src="{{ asset('/hotel_images/'.$hotelImg->image); }}" class="hotelimg" alt="" onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';">
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+        <div class="divider mt-5 mb-5"></div>       
+        <div class="row hotel-detail-des-box1">
+            <div class="d-flex align-items-center justify-content-center">
+                <div>
+                    <h3 class="h3">{{ $hotel->hotel_name}} </h3>
+                </div>
+            </div>            
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="p2"  style="margin: 0 10%;">
+                    {!!  $hotel->description !!}
+                </div>
+            </div>
+        </div>
+        <div class="divider mt-5 mb-3"></div>   
+        <!--    <div class="rat-review d-flex align-items-center">
+                    <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> {{ number_format($hotel->rating,1); }} </span>
+                    <span class="p2 mb-0 mt-0" style="color: #191C1A;">{{ $hotel->reviews; }} Reviews</span>
+                </div>
+                {{-- <h3 class="h3 mb-3">About {{ $hotel->hotel_name}}</h3> --}}
+                <div class="d-flex align-items-center">
+                    @auth()
+                    <span class="vertLine">|</span>
+                    <a class="quickEnquiry cursor-p" href="#" data-bs-toggle="modal" data-bs-target=".quickEnquiryDialog">{{ __('home.quickEnquiry') }}</a>
+                    @endauth
+                <div> 
+
+                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div class="detailMapBox">
+                    <img src="{{ asset('/assets/images/') }}/product/map-imageSm.png" alt="" class="htl-dtlmap-image">
+                    <div class="onmapCnt text-center">
+                        <img src="{{ asset('/assets/images/') }}/structure/map-marker-blue.svg" alt="" class="htl-dtlmap-Icon d-block m-auto">
+                        <button class="btn bg-blue h-36">Show Map</button>
+                    </div>
+                </div>
+            </div> 
+        </div>-->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <!--<h3 class="h3">{{ __('home.Room') }}</h3>-->
+                <div class="room-type-box">
+                    @foreach ($rooms as $room)
+                    @php
+                        $urlPara = array("h"=>$hotel->slug,"r"=>$room->slug);
+                    @endphp
+                    <div class="roomtype-row d-flex mb-3">
+                        <div class="roomtypeslidermainbox">
+                            <div class="roomtypesliderbox sliderArrow">
+                                @foreach ($room->hasImagesActive as $rimage)
+                                 @php
+                                    $rimageCounter =0;
+                                @endphp
+                                <div class="roomtypeslides" data-bs-toggle="modal" data-bs-target=".roomfullview{{$room->id}}">
+                                    <img
+                                        src="{{asset('/room_images/'.$rimage->room_image); }}"
+                                        alt="" class="rootypeImage" data-bs-target="#slider-slides"
+                                        onerror="this.onerror=null;this.src='{{ asset('/assets/images/structure/hotel_default.png') }}';"
+                                        data-bs-slide-to="0">
+                                </div>
+                                @php
+                                    $rimageCounter++;
+                                @endphp
+                                @endforeach                                        
+                            </div>
+                        </div>
+                        <div class="roomtypeDescription">
+                            <div class="roomtypeDescriptionRow1">
+                                <div class="row">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                                        <h5 class="h5">{{ $room->room_name }}  <span class="chips chips-orange h-24 {{ ($room->isRoomBooked)?'':'display-none'; }}">Sold Out</span></h5>
+                                        <div class="roomdtlrw1 d-flex flex-wrap align-items-center">
+                                            <p class="p2 mb-0"><img src="{{ asset('/assets/images/') }}/structure/tracked.svg" alt="" class="rDtlIcon"> {{ $room->room_size }} sq m</p>
+                                            @if(isset($room->hasBeds) && count($room->hasBeds) >0)
+                                            <p class="p2 mb-0"><img src="{{ asset('/assets/images/') }}/structure/bouble-bed.svg" alt="" class="rDtlIcon">
+                                            @foreach ($room->hasBeds as $bed)
+                                                {{ $bed->bed_type }} x {{ $bed->bed_qty }}
+                                            @endforeach
+                                            </p>
+                                            @endif
+                                        </div>
+                                        <div class="roomdtlrw2 d-flex flex-wrap align-items-center">
+                                            @if(isset($room->room_facilities[0]->facilities_name))
+                                            <span class="dotgray"></span>
+                                            <p class="p2 mb-0">{{$room->room_facilities[0]->facilities_name; }}</p>
+                                            @endif
+                                            @if(isset($room->room_facilities[1]->facilities_name))
+                                            <span class="dotgray"></span>
+                                            <p class="p2 mb-0">{{$room->room_facilities[1]->facilities_name; }}</p>
+                                            @endif
+                                        </div>
+                                        @if(count($room->room_facilities) >2)
+                                        <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target="#facilitiesFeaturesDialog{{ $room->id }}">View More</a>
+                                        @endif
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column align-items-end"> 
+                                        @if(($room->isRoomBooked) > 0)
+                                        <a  class="btn h-32 sold-out-btn">{{ __('home.Select') }}</a>
+                                        @else
+                                        <a href="{{ route('room-checkout'). getQueryParams(array_merge(Request::all(),$urlPara)) }}" class="btn h-32 ">{{ __('home.Select') }}</a>                                                
+                                        @endif
+                                        <div>
+                                            <h6 class="h6 mb-0">₩ {{  siteNumberFormat($room->$roomEffectivePrice) }}</h6>
+                                            <p class="p3 mb-0">{{ __('home.PerNight') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roomtypeDescriptionRow2">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="padding-left: 15px;">
+                                        <div class="d-flex align-items-center">
+                                            <p class="p3 "> {{ __('home.StandardOccupancy') }}:</p>
+                                            <div style="margin-left: 10px;">
+                                                <p class="p2 d-flex align-items-center"> {{ $room->standard_occupancy}}명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="d-flex align-items-center">
+                                            <p class="p3">{{ __('home.MaxOccupancy') }}:</p>
+                                            <div style="margin-left: 10px;">
+                                                <p class="p2 d-flex align-items-center"> {{ $room->maximum_occupancy}}명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if(($room->standard_occupancy)<($room->maximum_occupancy))
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" >
+                                            <div class="d-flex align-items-center">
+                                                <p class="p3">{{ __('home.ExtraGuestFee') }}:</p>
+                                                <div style="margin-left: 10px;">
+                                                    <p class="p2 d-flex align-items-center"><span>₩ {{siteNumberFormat($room->extra_guest_fee)}}</span><span>/인당</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        @if(count($hotel_features) >0)
+        <div class="row FeaturesAndFacilitiesRow mt-5">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h5 class="h5 mb-4">{{ __('home.HotelAmenities') }}</h5>
+            </div>
+            @foreach ($hotel_features as $hotel_feature)    
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <p class="p2 mb-3"><img src="{{ asset('/assets/images/') }}/structure/chck-circle-gary.svg" alt="" class="ffIcon">{{$hotel_feature->features_name}}</p>
+            </div>
+            @endforeach               
+            <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target=".hotelRulesPolicyDialog">View More</a>
+            </div> -->
+        </div>
+        @endif
+        @if(count($hotel_facilities) >0)
+        <div class="row FeaturesAndFacilitiesRow mt-5">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h5 class="h5 mb-4">{{ __('home.hotelFacilities') }}</h5>
+            </div>
+            @foreach ($hotel_facilities as $facilitie)
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <p class="p2 mb-3"><img src="{{ asset('/assets/images/') }}/structure/chck-circle-gary.svg" alt="" class="ffIcon">{{$facilitie->facilities_name}} </p>
+            </div>
+            @endforeach
+            <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <a href="#" class="viewmore-a" data-bs-toggle="modal" data-bs-target=".hotelRulesPolicyDialog">View More</a>
+            </div> -->
+        </div>
+        @endif
+        <div class="divider mt-5 mb-5"></div>
+        <div class="row FeaturesAndFacilitiesRow">
+            <div style="width: 30%;float: left">
+                <h5 class="h5 mb-4">{{ __('home.Policy') }}</h5>
+                <!-- <div class="checkinout d-flex align-items-center mb-4">
+                    <h6 class="h6 mb-0 mt-0"><span>Check In -</span> 12:00 pm</h6>
+                    <h6 class="h6 mb-0 mt-0"><span>Check out -</span> 11:00 am</h6>
+                </div> -->
+            </div>
+            <div style="width: 70%;float: left">
+                <div class="d-flex align-items-center">
+                    <p class="checkin mb-0">{{ __('home.CheckIn') }} : <span style="margin-right:10px;">{{ $hotel->check_in; }}</span></p>
+                        <span class="vertLine" style="margin-right:10px;">|</span>
+                    <p class="checkout mb-0">{{ __('home.CheckOut') }} : <span>{{ $hotel->check_out; }}</span></p>
+                </div>
+
+
+                {!!  $hotel->hotel_policy !!}
+            </div>
+        </div>
+        <div class="divider mt-4 mb-5"></div>
+        <div class="row">
+            <div style="width: 30%;float: left">
+                <h5 class="h5 mb-3">{{ __('home.CancellationPolicy') }}</h5>
+            </div >
+            <div style="width: 70%;float: right">    
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">10 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_10day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">9 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_9day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">8 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_8day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">7 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_7day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">6 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_6day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">5 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_5day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">4 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_4day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">3 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_3day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">2 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_2day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">1 {{ __('home.Day') }} {{ __('home.Before') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_1day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancellationPolicycnt-Row d-flex align-items-center">
+                                <div class="circleBefor"></div>
+                                <div class="cancellationPolicycnt d-flex align-items-center">
+                                    <span class="bgpink"></span>
+                                    <div class="cancellationPolicyCol1">
+                                        <p class="p2 mb-0">{{ __('home.TheDay') }}</p>
+                                    </div>
+                                    <div class="cancellationPolicyCol2 d-flex align-items-center">
+                                        <p class="p3 mb-0"><span class="cpPercent">{{ $hotel->b4_0day_refund}}%</span> {{ __('home.Refund') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(count($attractions) >0)
+        <div class="divider mt-4 mb-5"></div>
+            <p class="p2">{{ __('home.Address') }}: {{ $hotel->formatted_address }}{{ ($hotel->formatted_address !='' && $hotel->formatted_address !='')?' ':''; }} </p>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 TouristAttractionsBlock">
+                <h5 class="h5 mb-4">{{ $hotel->touristAttractions }}</h5>
+                <x-map-pins-attraction :locations="$jsonLocations"/>
+            </div>
+        </div>
+        <div class="row mt-4">
+            @foreach ($attractions as $nta)
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="TouristAttractionsRef d-flex align-items-center mb-3">
+                    <div class="tAttImgBox">
+                        <img src="{{ asset('/assets/images/') }}/structure/nta-icon.svg" alt="" class="tAttImgBox">
+                    </div>
+                    <div class="w-100">
+                        <p class="p2 mb-1 d-flex justify-content-between aling-items-start "> <span class="text-ellips-v">{{$nta->attractions_name}}</span> <img src="{{asset('/assets/images/')}}/structure/info-gray.svg" alt="" class="infoIcon" style="margin-bottom: 2px;" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox' >{!! $nta->nta_description !!} </div> "></p>
+                        <p class="p3 mb-0">{{ isset($nta->distance)?round($nta->distance,2)." Km":'';  }} </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="divider mt-4 mb-5"></div>
+        @endif
+        @php /*
+        <div class="row FeaturesAndFacilitiesRow">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h5 class="h5 mb-4">{{ $hotel->TermsandConditionsg }}</h5>
+            </div>
+             {!!  $hotel->terms_and_conditions !!} 
+        </div>                
+        <div class="divider mt-5 mb-5"></div>
+        */ @endphp
+        <div class="row" id="reviews">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h5 class="h5"> {{ __('home.Review') }}</h5>
+                <div class="hotel-dtl-reviewRow d-flex align-items-center">
+                    <div class="hotel-dtl-reviewBlock text-center">
+                        <h4 class="mb-2 " style="font-weight:bold; ">{{ number_format($hotel->rating,1); }}  @if($hotel->rating > 4 && $hotel->rating <= 5)
+                        <span class="exs-text">{{ __('home.RatingLevel5') }}</span>
+                        @elseif($hotel->rating <= 4 && $hotel->rating > 3)
+                        <span class="exs-text">{{ __('home.RatingLevel4') }}</span>
+                        @elseif($hotel->rating <= 3 && $hotel->rating > 2)
+                        <span class="exs-text">{{ __('home.RatingLevel3') }}</span>
+                        @elseif($hotel->rating <= 2 && $hotel->rating > 1)
+                        <span class="exs-text">{{ __('home.RatingLevel2') }}</span>
+                        @elseif($hotel->rating < 1)
+                        <span class="exs-text">{{ __('home.RatingLevel1') }}</span>
+                        @endif</h4> 
+                        <div class="d-flex justify-content-center">
+                            @for ($i = 1; $i <=5; $i++)
+                                @if($hotel->rating < $i ) 
+                                    @if(is_float($hotel->rating) && ($i-$hotel->rating) < 1)
+                                        <i class="fa fa-star-half rStargreen"></i>
+                                    @else
+                                        <i class="fa fa-star rStarwhite"></i>
+                                    @endif
+                                @else
+                                <i class="fa fa-star rStargreen"></i>   
+                                 @endif    
+                            @endfor
+                        </div>
+                        <p class="p1 mt-3 mb-0">{{ $hotel->reviews }} {{ __('home.Review') }}</p>
+                    </div>
+                    <div class="hotel-dtl-progressratbolck">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="ratprogress mb-4">
+                                    <p class="p2 d-flex align-items-center mb-2">{{ __('home.Cleanliness') }}<span class="ml-auto">{{ $progressBarCleanliness  }}%</span></p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarCleanliness }}%" aria-valuenow="{{ $progressBarCleanliness }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="ratprogress mb-4">
+                                    <p class="p2 d-flex align-items-center mb-2">{{ __('home.Facility') }}<span class="ml-auto">{{ $progressBarFacilities  }}%</span></p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarFacilities }}%" aria-valuenow="{{ $progressBarFacilities }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="ratprogress mb-4">
+                                    <p class="p2 d-flex align-items-center mb-2">{{ __('home.Service') }}<span class="ml-auto">{{ $progressBarService  }}%</span></p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarService }}%" aria-valuenow="{{ $progressBarService }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="ratprogress mb-4">
+                                    <p class="p2 d-flex align-items-center mb-2">{{ __('home.ValueForMoney') }}<span class="ml-auto">{{ $progressBarValueformoney  }}%</span></p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarValueformoney }}%" aria-valuenow="{{ $progressBarValueformoney }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(count($rating_reviews) >0 )
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                       
+                @foreach ($rating_reviews as $rr)
+                <div class="ratingRow d-flex">
+                    
+                    <div class="ratingDes">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
+                                <div class="new-review-left">
+                                    <h6>{{ $rr->full_name}}</h6>
+                                    <p class="p3">{{ date_format($rr->created_at,"Y-m-d") }}</p>
+                                    <div class="ratingNoBox">{{ siteNumberFormat($rr->avg_rating,1); }}</div>       
+                                </div>                                 
+                            </div>
+                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+                                <p class="p2">{{ $rr->review }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+               
+            </div>
+            <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                <a href="#" class="viewmore-a">View More</a>
+            </div> -->
+        </div>
+        @endif
+    </div>
         </section>
     </div>
     <!-- Facilities and Features -->
@@ -736,18 +703,15 @@
             </div>
         </div>
     </div>
-    @endforeach
-<!-- newsletter -->
-@include('frontend.layout.newsletter')
-<!-- footer -->
+    @endforeach<!-- footer -->
 @include('frontend.layout.footer')
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 @section('page-js-include')
 @endsection
-<!-- JS section  -->   
+<!-- JS section  -->
 @section('js-script')
 <script>
     $(document).ready(function(){
@@ -757,8 +721,8 @@
         var h = $(this).attr('data-h');
         $.post("{{ route('markunmarkfavorite') }}",{_token:"{{ csrf_token() }}",h:h}, function(data){
           if(data.status==1) {
-            if(data.markstatus =='marked') { 
-              $("#markunmarkfavoriteicon").attr('src', "{{ asset('/assets/images/') }}/structure/heart-fill.svg"); 
+            if(data.markstatus =='marked') {
+              $("#markunmarkfavoriteicon").attr('src', "{{ asset('/assets/images/') }}/structure/heart-fill.svg");
             } else {
               $('#markunmarkfavoriteicon').attr('src', "{{ asset('/assets/images/') }}/structure/heart-outline.svg");
             }
@@ -803,6 +767,12 @@
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+</script>
+<script>
+    function previewImage(imageSrc) {
+    const previewImage = document.getElementById('previewImage');
+    previewImage.src = imageSrc;
+    }
 </script>
 <script>
 function copyLink() {

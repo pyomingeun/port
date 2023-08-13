@@ -40,7 +40,7 @@
                                     @endif
                                     @if($booking->booking_status =='cancelled' && $booking->payment_method =='direct_bank_transfer' && isset($BookingCancelDetail) && $BookingCancelDetail->refund_status == 'refund_pending' && auth()->user()->access != 'admin')
                                     <div class="ml-auto">
-                                        <button class="btn outline-blue h-36" data-bs-toggle="modal" data-bs-target=".refundtDialog"><img src="{{asset('/assets/images/')}}/structure/autopay.svg" alt="" class="btnCheckIcn">{{ __('home.refund') }}</button>
+                                        <button class="btn outline-blue h-36" data-bs-toggle="modal" data-bs-target=".refundtDialog"><img src="{{asset('/assets/images/')}}/structure/autopay.svg" alt="" class="btnCheckIcn">{{ __('home.Refund') }}</button>
                                     </div>
                                     @endif
                                 </div>
@@ -359,7 +359,7 @@
                             </div>
                             @if($BookingCancelDetail->refund_status =='no_refund' && $BookingCancelDetail->refund_points !=0)
                             <div class="d-flex PriceBreakupRw mt-2">
-                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
+                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.Refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_points}}</p>
                             </div>
                             @endif 
@@ -373,22 +373,22 @@
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_money}}</p>
                             </div>
                             <div class="d-flex PriceBreakupRw mt-2">
-                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
+                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.Refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_points}}</p>
                             </div>
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.bankName') }}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt text-capitalize">{{ ($BookingCancelDetail->bank_name !='')?$BookingCancelDetail->bank_name:'N.A.'; }}</p>
                             </div>
                             @endif
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.accountNo') }}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt">{{ ($BookingCancelDetail->account_number !='')?$BookingCancelDetail->account_number:'N.A.'; }}</p>
                             </div>
                             @endif
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.accountHolderName') }}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt text-capitalize">{{ ($BookingCancelDetail->account_holder_name !='')?$BookingCancelDetail->account_holder_name:'N.A.'; }}</p>
@@ -541,11 +541,11 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-heads">
-                    <h4 class="h4 mt-2">{{ __('home.refund') }} </h4>
+                    <h4 class="h4 mt-2">{{ __('home.Refund') }} </h4>
                 </div>
                 <div>
                     <div class="detailTxtRow d-flex mb-2">
-                        <p class="p2 mb-0 detailTxtLeft">{{ __('home.refund') }} {{ __('home.rewardPoints') }} | {{ $BookingCancelDetail->refund_points }}</p>
+                        <p class="p2 mb-0 detailTxtLeft">{{ __('home.Refund') }} {{ __('home.rewardPoints') }} | {{ $BookingCancelDetail->refund_points }}</p>
                         <p class="p2 detailTxtRight mb-0">₩ {{ $BookingCancelDetail->refund_amount_in_points }}</p>
                     </div>
                     <div class="detailTxtRow d-flex mb-2">
@@ -590,7 +590,7 @@
                    </div>
                     <div class="modelScrollBody">
                         <div class="detailTxtRow d-flex mb-2">
-                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.room') }}</p>
+                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.Room') }}</p>
                             <p class="p2 detailTxtRight mb-0">{{ $booking->room_name; }}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
@@ -598,11 +598,11 @@
                             <p class="p2 detailTxtRight mb-0">₩ {{ (((($booking->per_night_charges + $booking->extra_guest_charges)-$booking->long_stay_discount_amount)-$booking->coupon_discount_amount)-$booking->payment_by_points)+$booking->extra_services_charges }}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
-                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.cancellationFee') }}</p>
+                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.CancellationFee') }}</p>
                             <p class="p2 detailTxtRight mb-0">₩ {{ ((((($booking->per_night_charges + $booking->extra_guest_charges)-$booking->long_stay_discount_amount)-$booking->coupon_discount_amount)-$booking->payment_by_points)+$booking->extra_services_charges)-$refundDetails['total_refund_amount'] }}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
-                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.refund') }} {{ __('home.rewardsPoints') }} | {{$refundDetails['refund_points']}}</p>
+                            <p class="p2 mb-0 detailTxtLeft">{{ __('home.Refund') }} {{ __('home.RewardsPoints') }} | {{$refundDetails['refund_points']}}</p>
                             <p class="p2 detailTxtRight mb-0">₩ {{$refundDetails['refund_amount_in_points']}}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
@@ -638,7 +638,7 @@
                             </div>
                             <div class="InpCol">
                                 <div class="input-group inpWtCaption-Rt">
-                                    <input type="text" class="form-control only_integer rightClickDisabled setmaxval" value="" placeholder="{{ __('home.refund') }}" name="adjusted_refund_percentage" id="adjusted_refund_percentage" data-maxval="100" >
+                                    <input type="text" class="form-control only_integer rightClickDisabled setmaxval" value="" placeholder="{{ __('home.Refund') }}" name="adjusted_refund_percentage" id="adjusted_refund_percentage" data-maxval="100" >
                                     <span class="input-group-text" id="basic-addon2">%</span>
                                 </div>
                             </div>
@@ -663,7 +663,7 @@
     </div>
     @endif
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

@@ -22,10 +22,7 @@ return new class extends Migration
             $table->string('nta_latitude', 250)->default('');
             $table->string('nta_longitude', 250)->default('');
             $table->longText('nta_description')->default('');
-            $table->enum('status', array('draft','active','inactive', 'deleted'))->default('draft');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
-            $table->timestamps();
+            $table->timestamps(false);
         });
     }
 

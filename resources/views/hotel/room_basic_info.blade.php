@@ -40,47 +40,37 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="roomsManageform-Content">
-                                                <div class="grayBox-w">
-                                                    <div class="hotelmanageFormInrcnt NoofBathroomsBox">
-                                                        <div class="row">
-                                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                                <div class="quantity-row row">
-                                                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-6 col-12 d-flex align-items-center">
-                                                                        <p class="p2 mb-0">{{ __('home.NoOfBathRoom') }}<span class="required-star">*</span></p>
-                                                                    </div>
-                                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                                        <div class="quantity-box d-flex align-items-center ml-auto">
-                                                                            <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
-                                                                            <input type="text" class="form-control only_integer rightClickDisabled"  id="no_of_bathrooms"  name="no_of_bathrooms" value="{{ isset($room->no_of_bathrooms)?$room->no_of_bathrooms:'0'; }}" />
-                                                                            <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <p class="p2 mb-0">{{ __('home.NoOfBathRoom') }}</span></p>
+                                                        <div class="quantity-row">
+                                                            <div class="quantity-box d-flex align-items-center ml-auto">
+                                                                <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
+                                                                <input type="text" class="form-control only_integer rightClickDisabled"  id="no_of_bathrooms"  name="no_of_bathrooms" value="{{ isset($room->no_of_bathrooms)?$room->no_of_bathrooms:'0'; }}" />
+                                                                <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"></div>
                                             </div>
-                                            <div class="my-4"></div>
-                                            <div class="grayBox-w">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="p2 mb-0">{{ __('home.Bed') }}</h5>
-                                                    <p class="p2 mb-0 addAttBtn ml-auto cursor-p addBedBtn addNewBed"><img src="{{asset('/assets/images/')}}/structure/add-circle.svg" alt="" class="add-circle"> {{ __('home.AddBed') }}</p>
+                                            <div class="d-flex align-items-center mt-3">
+                                                <p class="p2 mb-0">{{ __('home.Bed') }}</p>
+                                                <p class="p2 mb-0 addAttBtn ml-auto cursor-p addBedBtn addNewBed"><img src="{{asset('/assets/images/')}}/structure/add-circle.svg" alt="" class="add-circle"> {{ __('home.AddBed') }}</p>
                                                 </div>
                                                 <div class="d-hide mt-4" id="beds_list">
                                                     @if(isset($room->hasBeds) && count($room->hasBeds) >0)
                                                         @foreach ($room->hasBeds as $bed)
                                                         <div class="row mb-4" id="beddb_{{ $bed->id}}">
-                                                            <div class="col-xl-7 col-lg-5 col-md-12 col-sm-12 col-12">
+                                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                                                                 <div class="form-floating mb-0">
                                                                     <input type="text" class="form-control" autocomplete="off"  placeholder="Bed Type" value="{{ $bed->bed_type}}" name="bed_type[]" id="bed_type_db_{{ $bed->id }}">
-                                                                    <label for="bed_type_db_{{ $bed->id }}">{{ __('home.BedType') }}<span class="required-star">*</span></label>
+                                                                    <label for="bed_type_db_{{ $bed->id }}">{{ __('home.BedType') }}</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-4 col-lg-5 col-md-10 col-sm-12 col-10 d-flex align-items-center">
+                                                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5 d-flex align-items-center justify-content-center">
                                                                 <div class="quantity-row d-flex align-items-center">
-                                                                    <p class="p2 mb-0">{{ __('home.Quantity') }}<span class="required-star">*</span> &nbsp;</p>
                                                                     <div class="quantity-box d-flex align-items-center ml-auto">
                                                                        <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset('/assets/images/')}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span>
                                                                         <input type="text" value="{{ $bed->bed_qty}}" name="bed_qty[]" />
@@ -88,7 +78,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-1 col-lg-2 col-md-2 col-sm-12 col-2 d-flex align-items-center justify-content-end">
+                                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex align-items-center justify-content-end">
                                                                 <img src="{{asset('/assets/images/')}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto delbeddb" data-i="{{ $bed->id}}">
                                                             </div>
                                                             <input type="hidden" name="rid[]" value="{{$bed->id}}">
@@ -96,7 +86,6 @@
                                                         @endforeach
                                                     @endif
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="grayBox-w">
@@ -110,6 +99,8 @@
                                         </div>
                                     </div>
                                     <div class="grayBox-w">
+                                        <h5 class="hd5 h5 mb-2">{{ __('home.UploadHotelImage') }}</h5>
+                                        <br></br>
                                         <div class="hotelmanageFormInrcnt RoomImagesBox">
                                             <div class="uploadImageRow d-flex align-items-center">
                                                 <input type="file" class="uploadinput otherimageinput" id="otherimageinput" >
@@ -123,8 +114,8 @@
                                                 @foreach ($room->hasImages as $image)
                                                 <div class="hotelImgaesPreviewCol" id="room_img_{{$image->id}}">
                                                     <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon delRoomOtherImg"  data-i="{{$image->id}}">
-                                                    <i class="{{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} markfeaturedhmimg" data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>" id="featured_icon_{{$image->id}}"></i>
-                                                    <img src="{{ asset('/room_images/'.$image->room_image); }}"  alt="N.A." class="hotelPreviewImage">
+                                                    <i class="markfeaturedhmimg {{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} " data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>대표 사진으로 설정되었습니다.</small> </div>" id="featured_icon_{{$image->id}}"></i>
+                                                    <img src="{{ asset('/room_images/'.$image->room_image); }}"  alt="N.A." class="img-thumbnail">
                                                 </div>
                                                 @endforeach
                                                 @endif
@@ -178,7 +169,7 @@
   </div>
 </div>    
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <style type="text/css">
@@ -263,9 +254,7 @@
         });
 
         $(document).on('click','.addNewBed',function(){
-            $('#beds_list').prepend('<div class="row mb-4" id="bednew_'+bedCounter+'"> <div class="col-xl-7 col-lg-5 col-md-12 col-sm-12 col-12"> <div class="form-floating mb-0"> <input type="text" class="form-control" autocomplete="off" placeholder="Bed Type" value="" name="bed_type[]" id="bed_type_db_'+bedCounter+'"> <label for="bed_type_db_'+bedCounter+'">{{ __('home.BedType') }}<span class="required-star">*</span></label> </div> </div> <div class="col-xl-4 col-lg-5 col-md-10 col-sm-12 col-10 d-flex align-items-center"> <div class="quantity-row d-flex align-items-center"> <p class="p2 mb-0">{{ __('home.Quantity') }}<span class="required-star">*</span>  </p> <div class="quantity-box d-flex align-items-center ml-auto"> <span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span> <input type="text" value="1" name="bed_qty[]" /> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span> </div> </div> </div> <div class="col-xl-1 col-lg-2 col-md-2 col-sm-12 col-2 d-flex align-items-center justify-content-end"> <img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto delbed" data-i="'+bedCounter+'"> </div> <input type="hidden" name="rid[]" value="0"></div></div>');
-            bedCounter++;
-        });
+            $('#beds_list').prepend('<div class="row mb-4" id="bednew_'+bedCounter+'"><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6"><div class="form-floating mb-0"><input type="text" class="form-control" autocomplete="off" placeholder="Bed Type" value="" name="bed_type[]" id="bed_type_db_'+bedCounter+'"><label for="bed_type_db_'+bedCounter+'">{{ __('home.BedType') }}</label></div></div><div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5 d-flex align-items-center justify-content-center"><div class="quantity-row d-flex align-items-center"><div class="quantity-box d-flex align-items-center ml-auto"><span class="minus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/minus-icon.svg" class="plus-minus-icon" alt=""></span><input type="text" value="1" name="bed_qty[]" /> <span class="plus d-flex align-items-center justify-content-center"><img src="{{asset("/assets/images/")}}/structure/plus-icon.svg" class="plus-minus-icon" alt=""></span></div></div></div><div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex align-items-center justify-content-end"><img src="{{asset("/assets/images/")}}/structure/trash-red.svg" alt="" class="rmoveExtraSerIcon cursor-p ml-auto delbed" data-i="'+bedCounter+'"></div><input type="hidden" name="rid[]" value="0"></div>')});
         // Remove bed new box
         $(document).on('click','.delbed',function(){
             // console.log('delete_nta');
@@ -458,7 +447,7 @@ $("body").on("change", ".otherimageinput", function(e) {
 });
 $modal.on('shown.bs.modal', function () {
     cropper = new Cropper(image, {
-    aspectRatio: 4 / 3,
+    aspectRatio: 16 / 9,
     viewMode: 3,
     preview: '.preview'
     });
@@ -470,8 +459,8 @@ $modal.on('shown.bs.modal', function () {
 $("#cropother").click(function(){
     loading();
     canvas = cropper.getCroppedCanvas({
-        width: 800,
-        height: 600,
+        width: 1600,
+        height: 900,
     });
     canvas.toBlob(function(blob) {
         url = URL.createObjectURL(blob);

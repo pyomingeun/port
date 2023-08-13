@@ -4,7 +4,7 @@
 <!-- include left bar here -->
 <div class="main-wrapper-gray">
      @if(auth()->user()->access == 'admin')
-         @include('admin.leftbar')        
+         @include('admin.leftbar')
      @else
          @include('hotel.leftbar')
      @endif
@@ -29,7 +29,7 @@
                                                             <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon cursor-p"  id="picDelcross" style="display:{{($hotel->logo !='' )?'block':'none'; }}">
                                                             <img src="{{asset('/hotel_logo/'.$hotel->logo); }}" alt="" class="uploadhotelimage " id="myprofilepic" style="display:{{($hotel->logo !='' )?'block':'none'; }}">
                                                             <img src="{{asset('/assets/images/')}}/structure/hotel_default.png" alt="" class="uploadhotelimage" id="defaultprofilepic" style="display:{{($hotel->logo =='' )?'block':'none'; }}">
-                                                            <input type="file" class="uploadinput image"  name="logo" id="logo" accept="image/png, image/jpeg">                                                            
+                                                            <input type="file" class="uploadinput image"  name="logo" id="logo" accept="image/png, image/jpeg">
                                                         </div>
                                                         <div class="hotelInfoDes">
                                                             <p class="p2 mb-2">{{ __('home.UploadLogo') }}<span class="required-star">*</span></p>
@@ -71,7 +71,7 @@
                                                 @foreach ($hotel->hasImage as $image)
                                                     <div class="hotelImgaesPreviewCol" id="hotel_img_{{$image->id}}">
                                                         <img src="{{ asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon delHotelOtherImg" data-i="{{$image->id}}">
-                                                        <i class="markfeaturedhmimg {{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} " data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>" id="featured_icon_{{$image->id}}"></i>
+                                                        <i class="markfeaturedhmimg {{ ($image->is_featured==1)?'fa fa-star favStar favStar-fill':'fa fa-star-o favStar favStar-outline'; }} " data-i="{{$image->id}}" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>대표 사진으로 설정되었습니다.</small> </div>" id="featured_icon_{{$image->id}}"></i>
                                                         <img src="{{ asset('/hotel_images/'.$image->image); }}" alt="N.A." class="img-thumbnail">
                                                     </div>
                                                 @endforeach
@@ -153,7 +153,7 @@
 </div>
 
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 
 @include('frontend.layout.footer_script')
 @endsection
@@ -164,22 +164,22 @@
     }
     .preview {
     overflow: hidden;
-    width: 200px; 
+    width: 200px;
     height: 200px;
     margin: 60px;
     border: 4px solid #008B8B;
     }
     .modal-lg{
     max-width: 1000px !important;
-    } 
+    }
     #hotelOtherImgMdl img
     {
     display: block;
     max-width: 100%;
-    } 
+    }
 </style>
 
-<!-- JS section  -->   
+<!-- JS section  -->
 @section('js-script')
 <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
 <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
@@ -204,8 +204,8 @@
         var maxCharacterCount = 1000;
         var content = editor.getData();
         var characterCount = getCharacterCount(content);
-        
-        $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+
+        $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자');
 
         function animateElements() {
             $('.progressbar').each(function() {
@@ -226,7 +226,7 @@
                     }).on('circle-animation-progress', function(event, progress, stepValue) {
                         $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
                     }).stop();
-                             
+
                     if (percent == 100) {
                     $(this).siblings('.prog-des').find('h6').text("{{ __('home.CompletedProfile') }}");
                     }
@@ -236,7 +236,7 @@
         animateElements();
         $(window).scroll(animateElements);
 
-    // form validation 
+    // form validation
 
         $(document).on('keyup','#hotel_name',function(){
             $("#hm_server_err_msg").text('');
@@ -247,8 +247,8 @@
 
             if(field_required('hotel_name','hotel_name','숙박시설 이름은 필수 입력항목 입니다.'))
 
-            if(NameCount > maxNameCount) 
-                setErrorAndErrorBox('hotel_name','숙박시설이름은 50자를 넘을 수 없습니다.'); 
+            if(NameCount > maxNameCount)
+                setErrorAndErrorBox('hotel_name','숙박시설이름은 50자를 넘을 수 없습니다.');
              else
                 unsetErrorAndErrorBox('hotel_name');
         });
@@ -261,17 +261,17 @@
         });
 
 
-        editor.on('change', function() { 
+        editor.on('change', function() {
             $("#hm_server_err_msg").text('');
-            content = editor.getData(); 
+            content = editor.getData();
             characterCount = getCharacterCount(content);
 
-            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자');
 
             if(characterCount === 0) {
                 setErrorAndErrorBox('hotel_description','숙박시설 설명은 필수 입력항목 입니다.');
             }
-            else if(characterCount > 1000) 
+            else if(characterCount > 1000)
             {
                 setErrorAndErrorBox('hotel_description','숙박시설 설명은 1000자를 넘을 수 없습니다.');
             }
@@ -282,20 +282,20 @@
         function getCharacterCount(content) {
             var normalizedText = content.normalize('NFC');
             var plainText = normalizedText.replace(/(<([^>]+)>)/gi, '');
-  
+
             return plainText.length;
         }
 
         //form submit
         function form_submit()
-        { 
-            var token=true; 
-            content = editor.getData(); 
+        {
+            var token=true;
+            content = editor.getData();
             characterCount = getCharacterCount(content);
             hotelName = $('#hotel_name').val();
             NameCount = getCharacterCount(hotelName);
 
-            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자'); 
+            $('#hotel_description_max_char').text(characterCount + '자 / 최대 ' + maxCharacterCount + '자');
 
             if(!field_required('hotel_name','hotel_name','숙박시설이름은 필수 입력항목 입니다.'))
                 token = false;
@@ -308,28 +308,28 @@
                 setErrorAndErrorBox('hotel_description','숙박시설 설명은 필수 입력항목 입니다.');
                 token = false;
             }
-            else if(characterCount > 1000 ) 
+            else if(characterCount > 1000 )
             {
                 setErrorAndErrorBox('hotel_description','숙박시설 설명은 1000자를 넘을 수 없습니다.');
                 token = false;
-            }   
+            }
             if(token)
             {
-                $(".form_submit").prop("disabled",true); 
+                $(".form_submit").prop("disabled",true);
                 loading();
                 let senddata = {hotel_name:$('#hotel_name').val(),hotel_description:editor.getData(),h:$('#h').val(),_token:$('#tk').val(),savetype:$('#savetype').val()};
                 $.post("{{ route('hm_basic_info_submit') }}",  senddata, function( data ) {
                     if(data.status==1){
-                        window.location.href = data.nextpageurl; 
+                        window.location.href = data.nextpageurl;
                         unloading();
-                    } 
+                    }
                     else
                     {
-                        $(".form_submit").prop("disabled",false); 
+                        $(".form_submit").prop("disabled",false);
                         $('#hm_hm_server_err_msg').text(data.message);
-                    }                           
+                    }
                     unloading();
-                });             
+                });
             }
         }
 
@@ -381,9 +381,9 @@
             canvas.toBlob(function(blob) {
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
-                reader.readAsDataURL(blob); 
+                reader.readAsDataURL(blob);
                 reader.onloadend = function() {
-                    var base64data = reader.result;	
+                    var base64data = reader.result;
                     $.ajax({
                         type: "POST",
                         dataType: "json",
@@ -398,10 +398,10 @@
                                 picurl = picurl+'/'+data.logo;
                                 $('#defaultprofilepic').css('display','none');
                                 $('#picDelcross').css('display','block');
-                                $('#myprofilepic').attr('src',picurl);   
+                                $('#myprofilepic').attr('src',picurl);
                                 // document.getElementById("myprofilepic").src=picurl;
                                 $('#myprofilepic').css('display','block');
-                                // 
+                                //
                                 $("#commonSuccessMsg").text(data.message);
                                 $("#commonSuccessBox").css('display','block');
                                 setTimeout(function() {
@@ -424,7 +424,7 @@
                     });
                 }
             });
-        });    
+        });
 
         // delete hotel logo
         $(document).on('click','#picDelcross',function(){
@@ -451,7 +451,7 @@
                         $("#commonErrorBox").hide();
                     }, 3000);
                 }
-            });               
+            });
         });
     })
 </script>
@@ -487,7 +487,7 @@
             } else if (FileReader) {
                 reader = new FileReader();
                 reader.onload = function (e) {
-                    done(reader.result); 
+                    done(reader.result);
                 };
                 reader.readAsDataURL(file);
             }
@@ -495,7 +495,7 @@
     });
     $modal.on('shown.bs.modal', function () {
         cropper = new Cropper(image, {
-        aspectRatio: 4 / 3,
+        aspectRatio: 16 / 9,
         viewMode: 3,
         preview: '.preview'
         });
@@ -507,15 +507,15 @@
     $("#cropother").click(function(){
         loading();
         canvas = cropper.getCroppedCanvas({
-            width: 800,
-            height: 600,
+            width: 1600,
+            height: 900,
         });
         canvas.toBlob(function(blob) {
             url = URL.createObjectURL(blob);
             var reader = new FileReader();
-            reader.readAsDataURL(blob); 
+            reader.readAsDataURL(blob);
             reader.onloadend = function() {
-                var base64data = reader.result;	
+                var base64data = reader.result;
                 $.ajax({
                     type: "POST",
                     dataType: "json",
@@ -557,7 +557,7 @@
         $.post("{{ route('delHotelOtherImg') }}",{_token:"{{ csrf_token() }}",h:"{{ $hotel->hotel_id}}",i:i}, function(data){
             if(data.status==1)
             {
-                $("#hotel_img_"+i).hide();    
+                $("#hotel_img_"+i).hide();
                 $("#commonSuccessMsg").text(data.message);
                 $("#commonSuccessBox").css('display','block');
                 setTimeout(function() {
@@ -574,7 +574,7 @@
                     $("#commonErrorBox").hide();
                 }, 3000);
             }
-        });               
+        });
     });
 
     // mark featured hotel image
@@ -587,7 +587,7 @@
                 $('#featured_icon_'+i).attr('class', 'markfeaturedhmimg fa fa-star favStar favStar-fill');
                 // $(".markfeaturedhmimg").removeClass("fa-star");
                 // $(".markfeaturedhmimg").removeClass("favStar-fill");
-                // $(".markfeaturedhmimg").addClass("fa-star-o favStar-outline");    
+                // $(".markfeaturedhmimg").addClass("fa-star-o favStar-outline");
                 // $(this).removeClass("fa-star-o favStar-outline")
                 // $(this).addClass("fa-star favStar-fill");
                 $("#commonSuccessMsg").text(data.message);
@@ -606,7 +606,7 @@
                     $("#commonErrorBox").hide();
                 }, 3000);
             }
-        });               
+        });
     });
 </script>
 @endsection

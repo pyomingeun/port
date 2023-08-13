@@ -604,7 +604,7 @@ class BookinController extends Controller
         $totay = date_format(Carbon::now(),"Y-m-d");
         $res = Booking::where("check_out_date",'<', $totay)->where("booking_status",'=', 'confirmed')->update(["booking_status" => "completed"]); 
 
-        $bookings = Booking::where('is_points_sent', '=', 0)->where("check_out_date",'<', $totay)->where("booking_status",'=', 'completed')->where('payment_by_currency', '!=', 0)->where('customer_id', '!=', 0)->get();
+        $bookings = Booking::where('is_points_sent', '=', 0)->where("check_out_date",'<', $totay)->where("booking_status",'=', 'completed')->where('payment_by_cash', '!=', 0)->where('customer_id', '!=', 0)->get();
     
         $points_earn_on_booking = AdminGlobalVariable::where('status', '=', 'active')->where('type','=','points_earn_on_booking')->first();
         $get_points =0;
@@ -615,10 +615,10 @@ class BookinController extends Controller
                 foreach($bookings as $booking)
                 {
                     $get_points = 0;
-                    $payment_by_currency = (float) $booking->payment_by_currency; 
+                    $payment_by_cash = (float) $booking->payment_by_cash; 
                     if($points_earn_on_booking->value_type =='percentage')
                     {
-                        $get_points =  round((($payment_by_currency/100)*$points_earn_on_booking->value));  
+                        $get_points =  round((($payment_by_cash/100)*$points_earn_on_booking->value));  
                     }   
                     else
                     {

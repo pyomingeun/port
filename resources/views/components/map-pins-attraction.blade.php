@@ -1,4 +1,4 @@
-<div id="map" style='height:400px'></div>
+<div id="map" style='height:600px'></div>
 <script type="text/javascript">
   const jsonparse = [];
   @foreach ($locations as $location)
@@ -11,7 +11,7 @@
   function initializeMap() {
     const locations = jsonparse;
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4
+      zoom: 12
     });
     var infowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
@@ -30,6 +30,10 @@
       })(marker, location));
     }
     map.fitBounds(bounds);
+    const maxZoom = 12;
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      if (map.getZoom() > maxZoom) map.setZoom(maxZoom);
+    });
   }
   initializeMap();
 </script>

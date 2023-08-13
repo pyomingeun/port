@@ -75,8 +75,8 @@
                                         <p>
                                             Amenities Icon 
                                             <span class="sort-arrow-table">
-                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='features_name' && $o=='desc')?'hidesorticon':''; }}" data-c="features_name" data-o="asc"></i>
-                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='features_name' && $o=='asc')?'hidesorticon':''; }}" data-c="features_name" data-o="desc"></i>
+                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='feature_name' && $o=='desc')?'hidesorticon':''; }}" data-c="feature_name" data-o="asc"></i>
+                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='feature_name' && $o=='asc')?'hidesorticon':''; }}" data-c="feature_name" data-o="desc"></i>
                                             </span>
                                         </p>
                                     </th>      
@@ -84,8 +84,8 @@
                                         <p>
                                             Amenities Name 
                                             <span class="sort-arrow-table">
-                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='features_name' && $o=='desc')?'hidesorticon':''; }}" data-c="features_name" data-o="asc"></i>
-                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='features_name' && $o=='asc')?'hidesorticon':''; }}" data-c="features_name" data-o="desc"></i>
+                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='feature_name' && $o=='desc')?'hidesorticon':''; }}" data-c="feature_name" data-o="asc"></i>
+                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='feature_name' && $o=='asc')?'hidesorticon':''; }}" data-c="feature_name" data-o="desc"></i>
                                             </span>
                                         </p>
                                     </th>                                    
@@ -110,10 +110,10 @@
                                 <tr>
                                     <!-- <td><a href="payout-detail-planned-hotel-manager.html">2022/08/29 - 2022/09/04</a></td> -->
                                     @php
-                                    $icon = $row->features_icon;
+                                    $icon = $row->feature_icon;
                                     if($icon !='')
                                     {
-                                        $icon = asset('/features_icon/').'/'.$icon;
+                                        $icon = asset('/feature_icon/').'/'.$icon;
                                         if(!@getimagesize($icon))
                                         {
                                             $icon = asset('/assets/images/').'/structure/features_default_icon.png';
@@ -126,7 +126,7 @@
                                     @endphp
                                     <td><img src="{{ $icon }}"></td>
                                   
-                                    <td>{{ $row->features_name; }}</td>
+                                    <td>{{ $row->feature_name; }}</td>
 
                                     <td class="text-capitalize"><a href="{{ route('amenities-status',['id'=>$row->id,'status'=>$row->status])}}"><span class="cursor-pointer chips chips-{{$row->status}}">{{$row->status}}</span></a></td>
                                     <td class="actionDropdown ">
@@ -170,7 +170,7 @@
 
         
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 <!--Delete Modal -->
 <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

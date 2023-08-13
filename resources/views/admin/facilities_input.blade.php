@@ -22,10 +22,10 @@
                                                 <div class="row">
                                                    
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                        <div class="form-floating" id="facilities_name_validate">
-                                                            <input type="text" class="form-control a-enter-submit" id="facilities_name" placeholder="Facilities Name" name="facilities_name" value="{{(isset($facilitie->facilities_name))?$facilitie->facilities_name:''; }}"  >
-                                                            <label for="facilities_name">Facilities Name<span class="required-star">*</span></label>
-                                                            <p class="error-inp" id="facilities_name_err_msg"></p>
+                                                        <div class="form-floating" id="facility_name_validate">
+                                                            <input type="text" class="form-control a-enter-submit" id="facility_name" placeholder="Facilities Name" name="facility_name" value="{{(isset($facilitie->facility_name))?$facilitie->facility_name:''; }}"  >
+                                                            <label for="facility_name">Facilities Name<span class="required-star">*</span></label>
+                                                            <p class="error-inp" id="facility_name_err_msg"></p>
                                                         </div>
                                                     </div>
 
@@ -51,7 +51,7 @@
     </div>
   
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 <!--Delete Modal -->
 <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -86,9 +86,9 @@
             });
 
 
-            $(document).on('keyup','#facilities_name',function(){
+            $(document).on('keyup','#facility_name',function(){
                 $('#hm_server_err_msg').text('');
-                field_required('facilities_name','facilities_name',"Amenitie name is required");
+                field_required('facility_name','facility_name',"Amenitie name is required");
             });
 
             $(document).on('click','.form_submit',function(){
@@ -102,11 +102,11 @@
                 $("#hm_server_err_msg").text('');
                 var token=true; 
           
-                if(!field_required('facilities_name','facilities_name',"Amenitie name is required"))
+                if(!field_required('facility_name','facility_name',"Amenitie name is required"))
                     token = false;
-                else if(!checkMaxLength($('#facilities_name').val(),200 )) 
+                else if(!checkMaxLength($('#facility_name').val(),200 )) 
                 {
-                    setErrorAndErrorBox('facilities_name','Amenitie name should be less than 200 letters.');
+                    setErrorAndErrorBox('facility_name','Amenitie name should be less than 200 letters.');
                     token = false;
                 }
                 

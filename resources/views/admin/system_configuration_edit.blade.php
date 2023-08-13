@@ -71,7 +71,7 @@
   </div>
 
   <!-- common models -->
-  @include('common_models')
+  @include('common_modal')
   <!--Delete Modal -->
   <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

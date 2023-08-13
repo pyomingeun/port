@@ -1713,7 +1713,7 @@
                             opacity: 0;
                         }
                     }
-                    .searchFielsIcns {
+                    .searchFieldIcon {
                         position: absolute;
                         left: 17px;
                         top: 22px;
@@ -1896,7 +1896,7 @@
                             max-width: 100%;
                             margin-right: 0px;
                         }
-                        .searchFielsIcns {
+                        .searchFieldIcon {
                             left: 10px;
                             width: 20px;
                         }
@@ -2406,8 +2406,8 @@
     }
 }
 
-.sahreFavoriteBox {
-    .shareFropdown {
+.shareFavoriteBox {
+    .shareDropdown {
         .dropdown-toggle {
             font-size: 14px;
             font-family: 'satoshi-medium';
@@ -4937,7 +4937,7 @@
         background-color: #FFFFFF;
         border-radius: 8px;
         padding: 10px 0;
-        .searchFielsIcns {
+        .searchFieldIcon {
             left: 0;
         }
         .bannerSearchCol-rgt-text {

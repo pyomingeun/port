@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('facilities')->default(0);
             $table->integer('service')->default(0);
             $table->integer('value_for_money')->default(0);
+            $table->double('avg_rating', 8, 1)->default(0);
             $table->text('review')->default('');
             $table->enum('status', array('active','inactive','deleted'))->default('active');
             $table->integer('created_by')->default(0);

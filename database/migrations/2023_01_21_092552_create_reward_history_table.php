@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('reward_history', function (Blueprint $table) {
             $table->id();
             $table->string('slug',250);
+            $table->integer('user_id')->default(0);
             $table->string('booking_slug')->default('');
             $table->string('title', 250);
             $table->string('message', 250);

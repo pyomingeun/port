@@ -16,11 +16,9 @@ return new class extends Migration
         // Admin Facilities
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
-            $table->string('facilities_name', 250);
-            $table->enum('status', array('active','inactive', 'deleted'))->default('active');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
-            $table->timestamps();
+            $table->string('facility_name', 50);
+            $table->string('facility_icon', 150)->default('');
+            $table->timestamps(false);
         });
     }
 

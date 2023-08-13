@@ -131,7 +131,7 @@
         <p class="mb-0 alertmsinner-box alertSuccess"><img src="{{asset('/assets/images/')}}/structure/check-circle-green.svg" class="alertIcn"> Bank details updated successfully.</p>
     </div> -->
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

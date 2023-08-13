@@ -21,10 +21,10 @@ class Rooms extends Model
 
     public function hasImages()    {   return $this->hasMany(RoomImages::class, "room_id",  "id")->where('status','!=','deleted')->orderBy('room_images.is_featured', 'desc');    }
 
-    public function hasBeds()    {   return $this->hasMany(RoomBeds::class, "room_id",  "id")->where('status','!=','deleted')->orderBy('room_beds.id', 'desc');    }
+    public function hasBeds()    {   return $this->hasMany(RoomBeds::class, "room_id",  "id")->orderBy('room_beds.id', 'desc');    }
 
     public function hasImagesActive()    {   return $this->hasMany(RoomImages::class, "room_id",  "id")->where('status','=','active')->orderBy('room_images.is_featured', 'desc');    }
 
-    public function hasBedsActive()    {   return $this->hasMany(RoomBeds::class, "room_id",  "id")->where('status','=','active')->orderBy('room_beds.id', 'desc');    }
+    public function hasBedsActive()    {   return $this->hasMany(RoomBeds::class, "room_id",  "id")->orderBy('room_beds.id', 'desc');    }
     
 }

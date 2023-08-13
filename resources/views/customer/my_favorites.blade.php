@@ -32,11 +32,11 @@
                                     <h5 class="mb-2 cursor-pointer">{{ $hotel->hotel_name; }}</h5>
                                     <p class="p2 mb-3">{{ $hotel->street }}{{ ($hotel->city !='' && $hotel->street !='')?', ':''; }} {{ $hotel->city }}{{ ($hotel->city !='' && $hotel->subrub !='')?', ':''; }}{{ $hotel->subrub  }} {{ ($hotel->pincode !='')?' - ':''; }}{{ $hotel->pincode }}</p>
                                     <div class="productLstFtr flex-wrap d-flex">
-                                        @if(isset($hotel->facilities[0]->facilities_name) )
-                                        <span class="chips chips-gray h-24">{{ $hotel->facilities[0]->facilities_name }}</span>
+                                        @if(isset($hotel->facilities[0]->facility_name) )
+                                        <span class="chips chips-gray h-24">{{ $hotel->facilities[0]->facility_name }}</span>
                                         @endif
-                                        @if(isset($hotel->features[0]->features_name) )
-                                        <span class="chips chips-gray h-24">{{ $hotel->features[0]->features_name }}</span>
+                                        @if(isset($hotel->features[0]->feature_name) )
+                                        <span class="chips chips-gray h-24">{{ $hotel->features[0]->feature_name }}</span>
                                         @endif
                                         @if((count($hotel->facilities)+ count($hotel->features)) > 2)
                                         <span class="chips chips-gray h-24">+ {{ (count($hotel->facilities) + count($hotel->features)) - 2   }} </span>
@@ -61,7 +61,7 @@
         </div>
     </div>
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

@@ -41,14 +41,14 @@ class MyFavoriteCtrl extends Controller
             $query->where('facilities.status', '!=', 'deleted');
             $query->where('hotel_facilities.status', '!=', 'deleted');
             $query->where('hotel_facilities.hotel_id', '=', $hoteles[$i]->hotel_id);
-            $query->select(['facilities.facilities_name', 'hotel_facilities.*']);
+            $query->select(['facilities.facility_name', 'hotel_facilities.*']);
             $hoteles[$i]->facilities = $query->get();
     
             $query2 = HotelFeatures::join('features', 'features.id', '=', 'hotel_features.features_id');
             $query2->where('features.status', '!=', 'deleted');
             $query2->where('hotel_features.status', '!=', 'deleted');
             $query2->where('hotel_features.hotel_id', '=', $hoteles[$i]->hotel_id);
-            $query2->select(['features.features_name', 'hotel_features.*']);
+            $query2->select(['features.feature_name', 'hotel_features.*']);
             $hoteles[$i]->features = $query2->get();
         } 
         // dd($hoteles);

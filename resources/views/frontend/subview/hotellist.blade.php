@@ -4,7 +4,7 @@
       <div class="productListCard">
         @if (count($hotel->hasLongStayDiscount) > 0)
           <div class="discountBadge">
-            <span class="onbadgeText">{{ __('home.longStayDiscount') }} {{ __('home.applied') }}</span>
+            <span class="onbadgeText">{{ __('home.LongStayDiscount') }} </span>
           </div>
         @endif
         <div class="productListImg-block">
@@ -27,22 +27,26 @@
               <span class="p2 mb-0">{{ __('home.NoReview') }}</span>
             @endif
           </div>
-          @auth
             <div class="favoritlsstbock markunmarkfavorite">
-              <img src="{{ asset('assets/images/structure/heart-fill.svg') }}" alt=""
-                data-h="{{ $hotel->hotel_id }}" class="markunmarkfavorite heart-fill">
-              <img id="markunmarkfavoriteicon{{ $hotel->hotel_id }}"
-                src="{{ $hotel->has_marked_hotel_count ? asset('assets/images/structure/heart-fill.svg') : asset('assets/images/structure/heart-outline.svg') }}"
-                alt="" data-h="{{ $hotel->hotel_id }}" class="markunmarkfavorite heart-outline">
+              @if (auth()->user() && auth()->user()->id != '')  
+                <img id="markunmarkfavoriteicon{{ $hotel->hotel_id }}"
+                  src="{{ $hotel->has_marked_hotel_count ? asset('assets/images/structure/heart-fill.svg') : asset('assets/images/structure/heart-outline.svg') }}"
+                  alt="" data-h="{{ $hotel->hotel_id }}" class="markunmarkfavorite heart-fill">
+              @else
+                <img src="{{ asset('/assets/images/structure/heart-outline.svg') }}"
+                 data-bs-toggle="modal" data-bs-target=".loginDialog" class="favoriteItem cursor-pointer">
+              @endif
             </div>
-          @endauth
         </div>
         <div class="productListDetail">
           <a href="{{ route('hotel-detail', [$hotel->slug]) . getQueryParams(Request::all()) }}" class="productListDetail">
-            <h5 class="mb-2" >{{ $hotel->hotel_name }}</h5>  
-            <p class="p2 mb-3" >{{ $hotel->sido }}, {{ $hotel->sigungu }} </p>
-            <h6 class="h6 mb-2" style="text-align: right;">{!! getRoomPrice($dayofweek, $hotel->hasActiveRooms, $hotel->hasLongStayDiscount) !!}<small class="pelTm"> /{{ __('home.perNight') }}</small></h6>
-            <p class="p2 mb-3" style="text-align: right;">({{ __('home.IncludeTax') }}) </p>
+            <h5 class="mb-2" style="text-align: center;">{{ $hotel->hotel_name }}</h5>  
+            <p class="p2 mb-3" style="text-align: center;">{{ $hotel->sido }}/ {{ $hotel->sigungu }} </p>
+            <p class="p2 mb-0" style="text-align: right;">1박 요금 시작가  
+              <h6 class="h6 mb-0" style="color: #000; text-align: right;">{!! getRoomPrice($dayofweek, $hotel->hasActiveRooms) !!}</h6>
+              <p class="p2 mb-3" style="text-align: right;">({{ __('home.IncludeTax') }}) </p>
+            </p>
+
             <div class="productLstFtr d-flex">
               @if (count($hotel->hasFeatures) > 0)
                 <span class="chips chips-gray h-24">{{ getFeaturename($hotel->hasFeatures[0]->features_id) }}</span>
@@ -71,13 +75,8 @@
   @endforelse
 </div>
 <script>
-  $(document).ready(function() {
-    $('#markunmarkfavoriteicon').click(function() {
-      console.log('asdkashdakjsh');
-    })
-  })
-  $(document).on('click', '.markunmarkfavorite', function() {
-    // delNTA
+$(document).on('click', '.markunmarkfavorite', function() {
+  @auth
     var h = $(this).attr('data-h');
     $.post("{{ route('markunmarkfavorite') }}", {
       _token: "{{ csrf_token() }}",
@@ -106,5 +105,6 @@
         }, 3000);
       }
     });
+    @endauth
   });
 </script>

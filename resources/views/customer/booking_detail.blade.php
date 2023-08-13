@@ -286,7 +286,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->same_day_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->same_day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->same_day_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->same_day_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -299,7 +299,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_1day_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_1day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_1day_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_1day_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -312,7 +312,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_2days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_2days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_2days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_2days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -325,7 +325,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_3days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_3days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_3days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_3days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -338,7 +338,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_4days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_4days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_4days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_4days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -351,7 +351,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_5days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_5days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_5days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_5days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -364,7 +364,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_6days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_6days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_6days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_6days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -377,7 +377,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_7days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_7days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_7days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_7days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -390,7 +390,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_8days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_8days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_8days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_8days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -403,7 +403,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_9days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_9days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_9days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_9days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -416,7 +416,7 @@
                                                         </div>
                                                         <div class="cancellationPolicyCol2 d-flex align-items-center">
                                                             <p class="p2 mb-0">{{ ($cancellation_policy->b4_10days_refund == "100")?'Fully ':''; }}{{ ($cancellation_policy->b4_10days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_10days_refund}}%</span> {{ __('home.refund') }})</p>
+                                                            <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $cancellation_policy->b4_10days_refund}}%</span> {{ __('home.Refund') }})</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -553,7 +553,7 @@
                             </div>
                             @if($BookingCancelDetail->refund_status =='no_refund' && $BookingCancelDetail->refund_points !=0)
                             <div class="d-flex PriceBreakupRw mt-2">
-                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
+                                <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.Refund') }} {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_points}}</p>
                             </div>
                             @endif
@@ -567,22 +567,22 @@
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_money}} </p>
                             </div>
                             <div class="d-flex PriceBreakupRw mt-2">
-                                <p class="p2 flex-fill PriceBreakupCl-lft"> {{ __('home.refund') }}  {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
+                                <p class="p2 flex-fill PriceBreakupCl-lft"> {{ __('home.Refund') }}  {{ __('home.rewardsPoints') }} | {{ $BookingCancelDetail->refund_points}}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt" style="font-family: 'satoshi-bold';">₩ {{ $BookingCancelDetail->refund_amount_in_points}}</p>
                             </div>
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.bankName') }}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt">{{ ($BookingCancelDetail->bank_name !='')?$BookingCancelDetail->bank_name:'N.A.'; }}</p>
                             </div>
                             @endif
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.accountNo') }}.</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt">{{ ($BookingCancelDetail->account_number !='')?$BookingCancelDetail->account_number:'N.A.'; }}</p>
                             </div>
                             @endif
-                            @if($booking->payment_by_currency != 0)
+                            @if($booking->payment_by_cash != 0)
                             <div class="d-flex PriceBreakupRw mt-2">
                                 <p class="p2 flex-fill PriceBreakupCl-lft">{{ __('home.accountHolder') }}</p>
                                 <p class="p2 flex-fill PriceBreakupCl-rgt">{{ ($BookingCancelDetail->account_holder_name !='')?$BookingCancelDetail->account_holder_name:'N.A.'; }}</p>
@@ -642,7 +642,7 @@
                             <p class="p2 detailTxtRight mb-0">₩ {{ ((((($booking->per_night_charges + $booking->extra_guest_charges)-$booking->long_stay_discount_amount)-$booking->coupon_discount_amount)-$booking->payment_by_points)+$booking->extra_services_charges)-$refundDetails['total_refund_amount'] }}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
-                            <p class="p2 mb-0 detailTxtLeft"> {{ __('home.refund') }}  {{ __('home.rewardPoints') }} | {{$refundDetails['refund_points']}}</p>
+                            <p class="p2 mb-0 detailTxtLeft"> {{ __('home.Refund') }}  {{ __('home.rewardPoints') }} | {{$refundDetails['refund_points']}}</p>
                             <p class="p2 detailTxtRight mb-0">₩ {{$refundDetails['refund_amount_in_points']}}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
@@ -650,7 +650,7 @@
                             <p class="p2 detailTxtRight mb-0">₩ {{$refundDetails['refund_amount_in_money']}}</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
-                            <p class="p3">({{ __('home.cancellationBefore') }} {{$refundDetails['numberOfBeforeDays']}} days: <span class="p-blue">{{$refundDetails['refund_in_percentage']}}%</span> {{ __('home.refund') }})</p>
+                            <p class="p3">({{ __('home.cancellationBefore') }} {{$refundDetails['numberOfBeforeDays']}} days: <span class="p-blue">{{$refundDetails['refund_in_percentage']}}%</span> {{ __('home.Refund') }})</p>
                         </div>
                         <div class="detailTxtRow d-flex mb-2">
                             <p class="p2 mb-0 detailTxtLeft"> {{ __('home.CancellationReason') }}</p>
@@ -738,7 +738,7 @@
     </div>
 </div>    
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

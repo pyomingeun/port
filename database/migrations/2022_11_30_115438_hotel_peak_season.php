@@ -16,8 +16,10 @@ return new class extends Migration
         // Hotel Peak Season
         Schema::create('hotel_peak_season', function (Blueprint $table) {
             $table->id();
+            $table->string('season_name', 250)->default('');
             $table->integer('hotel_id')->default(0);
-            // $table->dateTime('last_activity_at')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->enum('status', array('draft','active','inactive', 'deleted'))->default('draft');
             $table->integer('created_by')->default(0);
             $table->integer('updated_by')->default(0);

@@ -320,7 +320,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->same_day_refund == "100")?'Fully ':''; }}{{ ($hotel->same_day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->same_day_refund}}%</span> {{ __('home.refund') }} )</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->same_day_refund}}%</span> {{ __('home.Refund') }} )</p>
                             </div>
                         </div>
                     </div>
@@ -333,7 +333,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_1day_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_1day_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_1day_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_1day_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -346,7 +346,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_2days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_2days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }}  <span class="cpPercent">{{ $hotel->b4_2days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }}  <span class="cpPercent">{{ $hotel->b4_2days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_3days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_3days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_3days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_3days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -372,7 +372,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_4days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_4days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_4days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_4days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -385,7 +385,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_5days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_5days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_5days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_5days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -398,7 +398,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_6days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_6days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_6days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_6days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -412,7 +412,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ __('home.refundable') }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_7days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_7days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -426,7 +426,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ __('home.refundable') }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_8days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_8days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -439,7 +439,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_9days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_9days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_9days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }} <span class="cpPercent">{{ $hotel->b4_9days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -452,7 +452,7 @@
                             </div>
                             <div class="cancellationPolicyCol2 d-flex align-items-center">
                                 <p class="p2 mb-0">{{ ($hotel->b4_10days_refund == "100")?'Fully ':''; }}{{ ($hotel->b4_10days_refund == "0")?'No Refund':'Refundable'; }}</p>
-                                <p class="p3 mb-0">({{ __('home.youWillGet') }}  <span class="cpPercent">{{ $hotel->b4_10days_refund}}%</span> {{ __('home.refund') }})</p>
+                                <p class="p3 mb-0">({{ __('home.youWillGet') }}  <span class="cpPercent">{{ $hotel->b4_10days_refund}}%</span> {{ __('home.Refund') }})</p>
                             </div>
                         </div>
                     </div>
@@ -465,7 +465,7 @@
 <!-- footer -->
 @include('frontend.layout.footer')
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection    
 <!-- JS section  -->   

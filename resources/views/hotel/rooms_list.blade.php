@@ -65,8 +65,8 @@
                                         <p>
                                         {{ __('home.StandardOccupancy') }}
                                             <span class="sort-arrow-table">
-                                                <i class="fa fa-caret-up arrow-up sortdata  {{ ($c=='standard_occupancy_adult' && $o=='desc')?'hidesorticon':''; }}" data-c="standard_occupancy_adult" data-o="asc" ></i>
-                                                <i class="fa fa-caret-up arrow-down sortdata  {{ ($c=='standard_occupancy_adult' && $o=='asc')?'hidesorticon':''; }}" data-c="standard_occupancy_adult" data-o="desc"></i>
+                                                <i class="fa fa-caret-up arrow-up sortdata  {{ ($c=='standard_occupancy' && $o=='desc')?'hidesorticon':''; }}" data-c="standard_occupancy" data-o="asc" ></i>
+                                                <i class="fa fa-caret-up arrow-down sortdata  {{ ($c=='standard_occupancy' && $o=='asc')?'hidesorticon':''; }}" data-c="standard_occupancy" data-o="desc"></i>
                                             </span>
                                         </p>
                                     </th>
@@ -74,8 +74,8 @@
                                         <p>
                                         {{ __('home.MaxOccupancy') }}
                                             <span class="sort-arrow-table">
-                                                <i class="fa fa-caret-up arrow-up sortdata  {{ ($c=='maximum_occupancy_adult' && $o=='desc')?'hidesorticon':''; }}" data-c="maximum_occupancy_adult" data-o="asc" ></i>
-                                                <i class="fa fa-caret-up arrow-down sortdata  {{ ($c=='maximum_occupancy_adult' && $o=='asc')?'hidesorticon':''; }}" data-c="maximum_occupancy_adult" data-o="desc"></i>
+                                                <i class="fa fa-caret-up arrow-up sortdata  {{ ($c=='maximum_occupancy' && $o=='desc')?'hidesorticon':''; }}" data-c="maximum_occupancy" data-o="asc" ></i>
+                                                <i class="fa fa-caret-up arrow-down sortdata  {{ ($c=='maximum_occupancy' && $o=='asc')?'hidesorticon':''; }}" data-c="maximum_occupancy" data-o="desc"></i>
                                             </span>
                                         </p>
                                     </th>
@@ -122,8 +122,8 @@
                                     <td>{{ (strlen($room->room_name)>35)?substr($room->room_name,0,35).'..':$room->room_name; }}</td>
                                     <td>{{$room->room_size}} m<sup>2<sup></td>
                                     <td>{{$room->no_of_bathrooms}}</td>
-                                    <td>{{$room->standard_occupancy_adult}}</td>
-                                    <td>{{$room->maximum_occupancy_adult}}</td>
+                                    <td>{{$room->standard_occupancy}}</td>
+                                    <td>{{$room->maximum_occupancy}}</td>
                                     <td>₩ {{number_format($room->standard_price_weekday)}}</td>
                                     <td>₩ {{number_format($room->standard_price_weekend)}}</td>
                                     <td>₩ {{number_format($room->standard_price_peakseason)}}</td>
@@ -170,7 +170,7 @@
     </div>
 </div>
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 <!--Delete Modal -->
 <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

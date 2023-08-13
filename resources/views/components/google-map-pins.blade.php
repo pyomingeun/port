@@ -47,22 +47,16 @@
         return async function() {
           let response = await fetch(location.hotelurl + '?' + params.join('&'));
           let data = await response.json();
-          let feature_facility = '';
-          feature_facility += (data.feature_facility.feature !== '') ?
-            `<span class="chips chips-gray h-24">${data.feature_facility.feature}</span>` : '';
-          feature_facility += (data.feature_facility.facility !== '') ?
-            `<span class="chips chips-gray h-24">${data.feature_facility.facility}</span>` : '';
-          feature_facility += (data.feature_facility.feature_facility_total > 0) ?
-            `<span class="chips chips-gray h-24">+${data.feature_facility.feature_facility_total}</span>` :
-            '';
           let reviews = '';
           if (data.hotel.reviews > 0) {
             reviews = `
             <div class="onlist-rat-review d-flex align">
               <span class="rat-chips"><i class="fa fa-star" aria-hidden="true"></i> ${data.hotel.rating}</span>
-              <span class="p2 mb-0">${data.hotel.reviews} Reviews</span>
+              <span class="p2 mb-0">${data.hotel.reviews} {{ __('home.Reviews') }}</span>
             </div>
             `;
+          } else {
+            reviews = `<div class="onlist-rat-review d-flex align"><span class="p2 mb-0">{{ __('home.NoReview') }}</span></div>`;
           }
 
           function showProductBlock(data) {
@@ -80,16 +74,13 @@
             </div>
             <div class="productListDetailinMap">
               <a href="${data.redirect_url}">
-                <h5 class="mb-2">${data.hotel.hotel_name}</h5>  
-                <p class="p2 mb-3">${data.hotel.sido}, ${data.hotel.sigungu}</p>
-                <h6 class="h6 mb-2" style="text-align: right;">${data.price} <small class="pelTm">/{{ __('home.perNight') }}</small></h6>
-                <p class="p2 mb-3" style="text-align: right;">({{ __('home.IncludeTax') }}) </p>
-                <div class="productLstFtr d-flex">
-                  ${feature_facility}
-                </div>
+                <h5 class="mb-2" style="text-align: center;">${data.hotel.hotel_name}</h5>  
+                <p class="p2 mb-3" style="text-align: center;">${data.hotel.sido}/ ${data.hotel.sigungu}</p>
+                <p class="p2 mb-0" style="text-align: right;">1박 요금 시작가  <h6 class="h6 mb-0" style="text-align: right;">${data.price}</h6><p class="p2 mb-0" style="text-align: right;">({{ __('home.IncludeTax') }})</p></p> 
               </a>
             </div>
           `;
+          
           productPopBlock.style.display = 'block'; // Show the block
           }
           showProductBlock(data);

@@ -12,7 +12,7 @@ class NearestTouristAttractions extends Model
     protected $table = 'nearest_tourist_attractions';
     
     protected $fillable = [
-        'hotel_id','attractions_name', 'nta_address', 'nta_latitude', 'nta_longitude', 'nta_description', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'  
+        'hotel_id','attractions_name', 'nta_address', 'nta_latitude', 'nta_longitude', 'nta_description'  
     ];
 
 }

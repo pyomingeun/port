@@ -23,7 +23,7 @@ class FacilitiesCtrl extends Controller
         if($request->q !='')
         {
             $keyword = $request->q;
-            $query->where('facilities_name', 'LIKE', "%{$keyword}%");
+            $query->where('facility_name', 'LIKE', "%{$keyword}%");
 
         }
         
@@ -60,8 +60,8 @@ class FacilitiesCtrl extends Controller
     // facilities-Input submit 
     public function facilitiesInputSubmit(Request $request)
     {
-        $facilities_name = strtolower($request->facilities_name);
-        $isFacilitieExist = Facilities::where('id', '!=', $request->id)->where('facilities_name', '=', $facilities_name)->where('status', '!=', 'deleted')->count();
+        $facility_name = strtolower($request->facility_name);
+        $isFacilitieExist = Facilities::where('id', '!=', $request->id)->where('facility_name', '=', $facility_name)->where('status', '!=', 'deleted')->count();
 
         if($isFacilitieExist > 0)
         {
@@ -77,7 +77,7 @@ class FacilitiesCtrl extends Controller
             if($request->id == 0)
             {
                 $newFacilities= Facilities::create([
-                    'facilities_name' => $facilities_name,
+                    'facility_name' => $facility_name,
                     'created_by'=>auth()->user()->id,
                     'updated_by'=>auth()->user()->id,
                     'created_at'=>Carbon::now(),
@@ -104,7 +104,7 @@ class FacilitiesCtrl extends Controller
 
                 if($facilitie)
                 {
-                    $facilitie->facilities_name = $facilities_name;
+                    $facilitie->facility_name = $facility_name;
                     $facilitie->updated_by = auth()->user()->id;
                     $facilitie->updated_at = Carbon::now();
                     $facilitie->save();

@@ -29,13 +29,13 @@
         background: #EEF5EE;
     }
 
-  .text-capitalize{text-transform: capitalize;} 
+  .text-capitalize{text-transform: capitalize;}
 
   .chips.chips-active {
     background: #EEF5EE;
     color: #008952;
   }
-  
+
   .chips.chips-inactive {
     background: #FFEEE0;
     color: #D17D00;
@@ -54,14 +54,14 @@
   .profile-sec .profile-left-col .profile-left-inner-col .h5 {
     word-wrap: break-word;
   }
-  
+
   .profile-sec .profile-right-col .profile-right-inner-col .profile-dtl-row .p1 {
-  
+
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-  
+
   }
 
 
@@ -109,7 +109,7 @@
   .filter-header-col .datepickerField{
     position: relative;
     width: 155px;
-    
+
   }
   .filter-header-col .datepickerField .form-control{
     padding-left: 15px;
@@ -139,9 +139,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     top: 223px;
-    right: 0px;
+    right: 10px;
     color: white;
     font-size: 12px;
     font-weight: 500;
@@ -153,20 +152,19 @@
     object-fit: contain;
     margin-right: 4px;
   }
-  /* .multiselectDropdownField #selectFacilities[value="Select Facilities"]{    
+  /* .multiselectDropdownField #selectFacilities[value="Select Facilities"]{
     color: #717972 !important;
   } */
 
   .gray-color-inputvalue{ color: #717972 !important;}
 
-  .logo, .logo-b, .logo-w, .footerLogo{ width: 220px !important; }
   .productListDetail .p2.mb-3,
   .productListDetail h5{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
-  } 
+  }
   .productListDetail .chips{
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -196,7 +194,7 @@
     top: 17px !important;
     left: 30px !important;
   }
-  
+
   .points-credited{ color: #015AC3 !important; }
   .points-debited{ color: #B3261E !important; }
 
@@ -314,12 +312,7 @@
 }
 
 .d-none{
-  display:none
-}
-.home-sec1.hotel-detail-sec1{
-  position: sticky;
-  top: 80px;
-  z-index: 5;
+  /* display:none; */
 }
 
 .chips.chips-yes {
@@ -396,7 +389,7 @@
   opacity: 1;
   display: block !important;
 }
-.editorPickslider.sliderArrow.slick-initialized.slick-slider .slick-list .slick-track{ 
+.editorPickslider.sliderArrow.slick-initialized.slick-slider .slick-list .slick-track{
   margin-left: 0px;
 }
 
@@ -413,7 +406,7 @@
   display: block !important;
 }
 .hotel-detail-sec2 .rat-review {
-    margin-bottom: 12px;        
+    margin-bottom: 12px;
 }
 .hotel-detail-sec2 .rat-review .rat-chips {
   font-size: 10px;

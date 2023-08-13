@@ -23,7 +23,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&language=ko&callback=gres"></script>
-
+  <script src="https://kit.fontawesome.com/61c552691a.js" crossorigin="anonymous"></script>
   <style>
     .no-display {
       display: none !important;
@@ -47,6 +47,7 @@
         src="{{ asset('/assets/images/') }}/structure/check-circle-green.svg" class="alertIcn"><span
         id="commonSuccessMsg"></span>
     </p>
+
   </div>
   @yield('js-script')
 </body>

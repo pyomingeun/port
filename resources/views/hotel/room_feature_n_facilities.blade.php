@@ -28,8 +28,8 @@
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($hotel_features as $feature)
                                                             <li class="radiobox-image">
-                                                                <input type="checkbox" id="rmfeatures_{{$feature->features_id}}" name="features[]" value="{{$feature->features_id}}" data-n="{{$feature->features_name}}"  class="rmselect_features_chk" {{ (in_array($feature->features_id, $features_ids))?'checked':''; }} />
-                                                                <label for="rmfeatures_{{$feature->features_id}}">{{$feature->features_name}}</label>
+                                                                <input type="checkbox" id="rmfeatures_{{$feature->features_id}}" name="features[]" value="{{$feature->features_id}}" data-n="{{$feature->feature_name}}"  class="rmselect_features_chk" {{ (in_array($feature->features_id, $features_ids))?'checked':''; }} />
+                                                                <label for="rmfeatures_{{$feature->features_id}}">{{$feature->feature_name}}</label>
                                                             </li>
                                                             @endforeach
                                                         </ul>
@@ -39,7 +39,7 @@
                                                     <div class="selectedTabsRw d-flex flex-wrap align-items-center" id="selected_room_features">
                                                         @if( isset($room_features) && count($room_features)>0)
                                                             @foreach ($room_features as $room_feature)
-                                                            <p class="selectchip" data-r="{{$room_feature->room_id}}" data-r="{{$room_feature->id}}" id="rmfeature_chip_{{$room_feature->features_id}}" data-f="{{$room_feature->features_id}}">{{$room_feature->features_name}}<span class="closechps delete_rmfeature" data-f="{{$room_feature->features_id}}">×</span></p>
+                                                            <p class="selectchip" data-r="{{$room_feature->room_id}}" data-r="{{$room_feature->id}}" id="rmfeature_chip_{{$room_feature->features_id}}" data-f="{{$room_feature->features_id}}">{{$room_feature->feature_name}}<span class="closechps delete_rmfeature" data-f="{{$room_feature->features_id}}">×</span></p>
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -51,34 +51,14 @@
                                         <div class="hotelmanageFormInrcnt RoomFeaturesFacilitiesBox">
                                             <h5 class="hd5 h5">{{ __('home.Room') }} {{ __('home.Facility') }}</h5>
                                             <div class="row">
-                                                <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="form-floating mb-3">
-                                                        <button id="selectFeatures" data-bs-toggle="dropdown" class="form-select" aria-expanded="false"></button>
-                                                        <ul class="dropdown-menu dropdown-menu-start">
-                                                            <li class="radiobox-image">
-                                                                <input type="radio" id="features1" name="Features" value="" />
-                                                                <label for="features1">Spa</label>
-                                                            </li>
-                                                            <li class="radiobox-image">
-                                                                <input type="radio" id="features2" name="Features" value="" />
-                                                                <label for="features2">Poolside bar</label>
-                                                            </li>
-                                                            <li class="radiobox-image">
-                                                                <input type="radio" id="features3" name="Features" value="" />
-                                                                <label for="features3">Car Parking</label>
-                                                            </li>
-                                                        </ul>
-                                                        <label for="selectFeatures" class="label">Select Facilities<span class="required-star">*</span></label>
-                                                    </div>
-                                                </div> -->
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-floating mb-3 multiselectDropdownField">
                                                         <input id="selectFacilities" type="text" name="select_facilities" value="" data-bs-toggle="dropdown" class="form-select gray-color-inputvalue" placeholder="{{ __('home.SelectFacility') }}" autocomplete="off" readonly />
                                                         <ul class="dropdown-menu dropdown-menu-start">
-                                                            @foreach ($hotel_facilities as $facilitie)
+                                                            @foreach ($room_facilities as $facility)
                                                             <li class="radiobox-image">
-                                                                <input type="checkbox" id="rmfacility_{{$facilitie->facilities_id}}" name="facilities[]" value="{{$facilitie->facilities_id}}"  class="rmselect_facilities_chk"  data-n="{{ $facilitie->facilities_name }}" {{ (in_array($facilitie->facilities_id, $facilities_ids))?'checked':''; }} />
-                                                                <label for="rmfacility_{{$facilitie->facilities_id}}">{{$facilitie->facilities_name}}</label>
+                                                                <input type="checkbox" id="rmfacility_{{$facility->facilities_id}}" name="facility[]" value="{{$facility->facilities_id}}"  class="rmselect_facilities_chk"  data-n="{{ $facility->facilities_name }}" {{ (in_array($facility->facilities_id, $facilities_ids))?'checked':''; }} />
+                                                                <label for="rmfacility_{{$facility->facilities_id}}">{{$facility->facility_name}}</label>
                                                             </li>
                                                             @endforeach
                                                         </ul>
@@ -115,7 +95,7 @@
         </div>
     </div>
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

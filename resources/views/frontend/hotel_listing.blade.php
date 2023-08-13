@@ -5,15 +5,13 @@
     const currentPage = 'hotellist'; 
 </script>
 
-<section class="home-sec1 hotellisting-bnr-sec">
+<section class="search-bar">
   <div class="container bannerSearchContainer">
     <div class="row">
-      <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
-        @php
-          $hotelName = $request->has('hname') ? $request->input('hname') : null;                        
-        @endphp
-        <x-search-hotel-form :hotelName="$hotelName" />
-      </div>
+      @php
+        $hotelName = null;                        
+      @endphp
+      <x-search-hotel-form :hotelName="$hotelName" />
     </div>
   </div>
 </section>
@@ -61,21 +59,15 @@
         <div class="filterTabsBox">
           <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button type="button" class="nav-link active" id="tabl" data-bs-toggle="pill"
-                data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
-                <img src="{{ asset('assets/images/structure/filter-list-gray.svg') }}" alt=""
-                  class="filterTabIcon filterTabIconGray">
-                <img src="{{ asset('assets/images/structure/filter-list-green.svg') }}" alt=""
-                  class="filterTabIcon filterTabIconGreen">
+              <button type="button" class="nav-link active" id="tabl" title="confirmfilter" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                <img src="{{ asset('assets/images/structure/filter-list-gray.svg') }}" alt="" class="filterTabIcon filterTabIconGray">
+                <img src="{{ asset('assets/images/structure/filter-list-green.svg') }}" alt="" class="filterTabIcon filterTabIconGreen">
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button type="button" class="nav-link" id="tab2" data-bs-toggle="pill"
-                data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
-                <img src="{{ asset('assets/images/structure/map-gray.svg') }}" alt=""
-                  class="filterTabIcon filterTabIconGray">
-                <img src="{{ asset('assets/images/structure/map-green.svg') }}" alt=""
-                  class="filterTabIcon filterTabIconGreen">
+              <button type="button" class="nav-link" id="tab2" title="showmap" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                <img src="{{ asset('assets/images/structure/map-gray.svg') }}" alt="" class="filterTabIcon filterTabIconGray">
+                <img src="{{ asset('assets/images/structure/map-green.svg') }}" alt="" class="filterTabIcon filterTabIconGreen">
               </button>
             </li>
           </ul>
@@ -83,7 +75,7 @@
       </div>
     </div>
     <div class="row" id="listView">
-      <div class="col-xl-12 col-ld-12 col-md-12 col-sm-12 col-12">
+      <div class="col-xl-11 col-ld-11 col-md-12 col-sm-12 col-12">
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="tabl">
             {{ view('frontend.subview.hotellist', ['hotels' => $hotels, 'dayofweek' => $dayofweek]) }}
@@ -183,7 +175,7 @@
                             {{ in_array($feature->id, $featureSelected) ? 'checked' : '' }}
                             value="{{ $feature->id }}" />
                           <label for="rating1">
-                            <p class="p2 mb-0">{{ $feature->features_name }} <span
+                            <p class="p2 mb-0">{{ $feature->feature_name }} <span
                                 class="ml-auto">({{ $feature->has_hotels_count }})</span></p>
                           </label>
                         </li>
@@ -207,7 +199,7 @@
                             {{ in_array($facility->id, $facilitySelected) ? 'checked' : '' }}
                             value="{{ $facility->id }}" />
                           <label for="rating1">
-                            <p class="p2 mb-0">{{ $facility->facilities_name }} <span
+                            <p class="p2 mb-0">{{ $facility->facility_name }} <span
                                 class="ml-auto">({{ $facility->has_hotels_count }})</span></p>
                           </label>
                         </li>
@@ -229,15 +221,11 @@
     </div>
   </div>
 </div>
-<!-- newsletter -->
-{{-- @include('frontend.layout.newsletter') --}}
-<!-- newsletter -->
 <!-- footer -->
 @include('frontend.layout.footer')
 <!-- footer -->
-<!-- common models -->
-@include('common_models')
-<!-- common models -->
+<!-- common modal -->
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 @section('page-js-include')

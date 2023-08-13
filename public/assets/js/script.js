@@ -1,13 +1,13 @@
-// show loader 
+// show loader
 function loading(){ $('#loading_img').css('display','block'); }
-// hide loader 
+// hide loader
 function unloading(){ $('#loading_img').css('display','none'); }
 
-// field required 
+// field required
 function field_required(field_name,field_id,msg)
 {
-    var filed_value = $("#"+field_id).val();
-    if(filed_value =="" || filed_value ==undefined)
+    var field_value = $("#"+field_id).val();
+    if(field_value =="" || field_value ==undefined)
     {
         $("#"+field_name+"_validate").addClass("has-validation");
         $("#"+field_name+"_err_msg").text(msg);
@@ -20,9 +20,9 @@ function field_required(field_name,field_id,msg)
         return true;
     }
 }
-// ________________________________________________ 
+// ________________________________________________
 
-// check checkBox is checked  
+// check checkBox is checked
 function isChecked(checkbox_id,msg)
 {
     if(!$("#"+checkbox_id).is(':checked'))
@@ -38,7 +38,11 @@ function isChecked(checkbox_id,msg)
 }
 // _________________________________________
 
-// check given value is valid email 
+function isCheckboxChecked(checkboxId) {
+  return $("#" + checkboxId).prop("checked");
+}
+
+// check given value is valid email
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     //var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+(com)+$/;
@@ -46,7 +50,7 @@ function isEmail(email) {
 }
 // ___________________________________________
 
-// check given value is valid string withour any digit 
+// check given value is valid string withour any digit
 function isStringWithoutDigit(stringVal) {
     var regex = /^[a-zA-Z]+ [a-zA-Z]+$/;
     //var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+(com)+$/;
@@ -60,7 +64,7 @@ function isStringWithoutDigit(stringVal) {
     // Allow: backspace, delete, tab, escape, enter and .
     if ($.inArray(e.keyCode, [8,9,13,27]) !== -1 ||
          // Allow: Ctrl+A, Command+A
-        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
          // Allow: home, end, left, right, down, up
         (e.keyCode >= 35 && e.keyCode <= 40)) {
              // let it happen, don't do anything
@@ -79,7 +83,7 @@ function isStringWithoutDigit(stringVal) {
     // Allow: backspace, delete, tab, escape, enter and .
     if ($.inArray(e.keyCode, [8,9,13,27,110]) !== -1 ||
          // Allow: Ctrl+A, Command+A
-        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
          // Allow: home, end, left, right, down, up
         (e.keyCode >= 35 && e.keyCode <= 40)) {
              // let it happen, don't do anything
@@ -98,7 +102,7 @@ function isStringWithoutDigit(stringVal) {
    // Allow: backspace, delete, tab, escape, enter and .
    if ($.inArray(e.keyCode, [8,9,13,27,109]) !== -1 ||
         // Allow: Ctrl+A, Command+A
-       (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+       (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
         // Allow: home, end, left, right, down, up
        (e.keyCode >= 35 && e.keyCode <= 40)) {
             // let it happen, don't do anything
@@ -111,25 +115,25 @@ function isStringWithoutDigit(stringVal) {
 });
 // ---------------------------------------------------------------
 
- 
 
-$(".rightClickDisabled").on("contextmenu",function(){	return false;	}); // right click disabled 
+
+$(".rightClickDisabled").on("contextmenu",function(){	return false;	}); // right click disabled
 $(".keyBoardFalse").keypress(function(){	return false;	}); // all key press disabled
 $('.keyBoardFalse').on("cut copy paste",function(e) {	e.preventDefault();	}); // cut copy and paste disabled
 
-// check max val 
+// check max val
 function checkMaxVal(value,maxval) {
     if(value > maxval)
-       return false; 
+       return false;
     else
         return true;
 }
 // ___________________________________________
 
-// check min val 
+// check min val
 function checkMinVal(value,minval) {
     if(value < minval)
-       return false; 
+       return false;
     else
         return true;
 }
@@ -147,7 +151,7 @@ $(document).on('keyup','.setmaxvalInt',function(e){
     var maxval = parseInt($(this).attr('data-maxval'));
     if(value > maxval)
          $(this).val(maxval);
-});  
+});
 
 
 $(document).on('keyup','.setminval',function(){
@@ -165,46 +169,46 @@ $(document).on('keyup','.setminval',function(){
          $(this).val(maxval);
 }); */
 
-// check max length 
+// check max length
 function checkMaxLength(value,maxlen) {
     valueLen = value.length;
     if(valueLen > maxlen)
-        return false; 
+        return false;
     else
         return true;
 }
 // ___________________________________________
 
-// check min length 
+// check min length
 function checkMinLength(value,minlen) {
     valueLen = value.length;
     if(valueLen < minlen)
-        return false; 
+        return false;
     else
        return true;
 }
 // ___________________________________________
 
-// check exact length 
+// check exact length
 function checkExactLength(value,exactlen) {
     valueLen = value.length;
     if(valueLen == exactlen)
-        return true; 
+        return true;
     else
        return false;
 }
 // ___________________________________________
 
-// check is equal to  
+// check is equal to
 function checkIsEqual(value1,value2) {
     if(value1 == value2)
-        return true; 
+        return true;
     else
         return false;
 }
 // ___________________________________________
 
-// set error box & error msg 
+// set error box & error msg
 function setErrorAndErrorBox(field_name,msg)
 {
         $("#"+field_name+"_validate").addClass("has-validation");
@@ -213,7 +217,7 @@ function setErrorAndErrorBox(field_name,msg)
 }
 // ________________________________________________
 
-// unset error box & error msg 
+// unset error box & error msg
 function unsetErrorAndErrorBox(field_name)
 {
         $("#"+field_name+"_validate").removeClass("has-validation");
@@ -221,13 +225,3 @@ function unsetErrorAndErrorBox(field_name)
         return true;
 }
 // ________________________________________________
-
-
-
-
-
-
-
-
-
-

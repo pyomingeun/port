@@ -22,7 +22,7 @@ class FeaturesCtrl extends Controller
         if($request->q !='')
         {
             $keyword = $request->q;
-            $query->where('features_name', 'LIKE', "%{$keyword}%");
+            $query->where('feature_name', 'LIKE', "%{$keyword}%");
 
         }
         
@@ -60,8 +60,8 @@ class FeaturesCtrl extends Controller
     public function featuresInputSubmit(Request $request)
     {
         //dd($request->all());
-        $features_name = strtolower($request->amenitie_name);
-        $isfeatureExist = Features::where('id', '!=', $request->id)->where('features_name', '=', $features_name)->where('status', '!=', 'deleted')->count();
+        $feature_name = strtolower($request->amenitie_name);
+        $isfeatureExist = Features::where('id', '!=', $request->id)->where('feature_name', '=', $feature_name)->where('status', '!=', 'deleted')->count();
 
         if($isfeatureExist > 0)
         {
@@ -77,8 +77,8 @@ class FeaturesCtrl extends Controller
             if($request->id == 0)
             {
                 $newFeatures= Features::create([
-                    'features_name' => $features_name,
-                    'features_icon' => $request->icon,
+                    'feature_name' => $feature_name,
+                    'feature_icon' => $request->icon,
                     'created_by'=>auth()->user()->id,
                     'updated_by'=>auth()->user()->id,
                     'created_at'=>Carbon::now(),
@@ -105,8 +105,8 @@ class FeaturesCtrl extends Controller
 
                 if($feature)
                 {
-                    $feature->features_name = $features_name;
-                    $feature->features_icon = $request->icon;
+                    $feature->feature_name = $feature_name;
+                    $feature->feature_icon = $request->icon;
                     $feature->updated_by = auth()->user()->id;
                     $feature->updated_at = Carbon::now();
                     $feature->save();
@@ -177,7 +177,7 @@ class FeaturesCtrl extends Controller
         // if($hotel)
         // {
             // $folderPath = public_path('hotel_logo/');
-            $folderPath = 'features_icon/';
+            $folderPath = 'feature_icon/';
             $image_parts = explode(";base64,", $request->image);
             $image_type_aux = explode("image/", $image_parts[0]);
             $image_type = $image_type_aux[1];

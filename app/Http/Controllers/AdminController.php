@@ -704,7 +704,7 @@ class AdminController extends Controller
             if($status =='yes' || $status =='no')
             {
                 $status = ($status =='yes')?'no':'yes'; 
-                $hotel->is_editors_pick = $status;
+                $hotel->editors_pick = $status;
                 $hotel->save();
                 return redirect()->route('hotel_managment')->with('success_msg',"Editors Pick ".$status." successfully");
             }

@@ -22,9 +22,7 @@ return new class extends Migration
             $table->double('value', 10, 2)->default(0);  
             $table->enum('value_type', array('flat','percentage'))->default('percentage');
             $table->enum('status', array('active','inactive','deleted'))->default('active');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
-            $table->timestamps();
+            $table->timestamps(false);
             
         }); 
     }

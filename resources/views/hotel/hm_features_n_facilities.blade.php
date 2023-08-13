@@ -29,8 +29,8 @@
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($features as $feature)
                                                             <li class="radiobox-image">
-                                                                <input type="checkbox" id="features_{{$feature->id}}" name="features[]" data-n="{{$feature->features_name}}" value="{{$feature->id}}"   class="select_features_chk" {{ (in_array($feature->id, $features_ids))?'checked':''; }}  />
-                                                                <label for="features_{{$feature->id}}">{{$feature->features_name}}</label>
+                                                                <input type="checkbox" id="features_{{$feature->id}}" name="features[]" data-n="{{$feature->feature_name}}" value="{{$feature->id}}"   class="select_features_chk" {{ (in_array($feature->id, $features_ids))?'checked':''; }}  />
+                                                                <label for="features_{{$feature->id}}">{{$feature->feature_name}}</label>
                                                             </li>
                                                             @endforeach
                                                         </ul>
@@ -40,7 +40,7 @@
                                                     <div class="selectedTabsRw d-flex flex-wrap align-items-center" id="selected_features">
                                                         @if(count($hotel_features)>0)
                                                             @foreach ($hotel_features as $hotel_feature)
-                                                            <p class="selectchip"  data-fi="{{$hotel_feature->features_id}}" id="feature_chip_{{$hotel_feature->features_id}}">{{$hotel_feature->features_name}}<span class="closechps delete_featuredb" data-fi="{{$hotel_feature->features_id}}" >×</span></p>
+                                                            <p class="selectchip"  data-fi="{{$hotel_feature->features_id}}" id="feature_chip_{{$hotel_feature->features_id}}">{{$hotel_feature->feature_name}}<span class="closechps delete_featuredb" data-fi="{{$hotel_feature->features_id}}" >×</span></p>
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -59,8 +59,8 @@
                                                         <ul class="dropdown-menu dropdown-menu-start">
                                                             @foreach ($facilities as $facilitie)
                                                             <li class="radiobox-image">
-                                                                <input type="checkbox" id="facility_{{$facilitie->id}}" name="facilities[]" data-n="{{$facilitie->facilities_name}}" value="{{$facilitie->id}}"  class="select_facilities_chk"  {{ (in_array($facilitie->id, $facilities_ids))?'checked':''; }} />
-                                                                <label for="facility_{{$facilitie->id}}">{{$facilitie->facilities_name}}</label>
+                                                                <input type="checkbox" id="facility_{{$facilitie->id}}" name="facilities[]" data-n="{{$facilitie->facility_name}}" value="{{$facilitie->id}}"  class="select_facilities_chk"  {{ (in_array($facilitie->id, $facilities_ids))?'checked':''; }} />
+                                                                <label for="facility_{{$facilitie->id}}">{{$facilitie->facility_name}}</label>
                                                             </li>
                                                             @endforeach
                                                         </ul>
@@ -69,7 +69,7 @@
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="selectedTabsRw d-flex flex-wrap align-items-center" id="selected_facilities">
                                                         @foreach ($hotel_facilities as $hotel_facilitie)
-                                                            <p class="selectchip "  data-fi="{{$hotel_facilitie->facilities_id}}" id="facilitie_chip_{{$hotel_facilitie->facilities_id}}">{{$hotel_facilitie->facilities_name}}<span class="closechps delete_facilitiedb" data-fi="{{$hotel_facilitie->facilities_id}}" >×</span></p>
+                                                            <p class="selectchip "  data-fi="{{$hotel_facilitie->facilities_id}}" id="facilitie_chip_{{$hotel_facilitie->facilities_id}}">{{$hotel_facilitie->facility_name}}<span class="closechps delete_facilitiedb" data-fi="{{$hotel_facilitie->facilities_id}}" >×</span></p>
                                                         @endforeach
                                                     </div>
                                                 </div>

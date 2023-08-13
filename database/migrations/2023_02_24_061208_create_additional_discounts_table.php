@@ -18,11 +18,13 @@ return new class extends Migration
             $table->integer('booking_id')->default(0);
             $table->double('amount', 10, 2)->default(0);  
             $table->enum('amount_type', array('flat','percentage'))->default('flat');  
+            $table->double('effective_amount', 10, 2)->default(0)->after('amount_type');
             $table->text('reason')->default('');
             $table->enum('status', array('active','inactive','deleted'))->default('active');
             $table->integer('created_by')->default(0);
             $table->integer('updated_by')->default(0);
             $table->timestamps();
+
         });
     }
 

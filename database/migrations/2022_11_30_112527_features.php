@@ -16,11 +16,9 @@ return new class extends Migration
         // Admin Features
         Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->string('features_name', 250);
-            $table->enum('status', array('active','inactive', 'deleted'))->default('active');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
-            $table->timestamps();
+            $table->string('feature_name', 250);
+            $table->string('feature_icon')->default('')->after('feature_name');
+            $table->timestamps(false);
         });
     }
 

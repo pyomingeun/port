@@ -333,14 +333,14 @@ class HotelController extends Controller
         $query->where('facilities.status', '!=', 'deleted');
         $query->where('hotel_facilities.status', '!=', 'deleted');
         $query->where('hotel_facilities.hotel_id', '=', $id);
-        $query->select(['facilities.facilities_name', 'hotel_facilities.*']);
+        $query->select(['facilities.facility_name', 'hotel_facilities.*']);
         $hotel_facilities = $query->get();
 
         $query2 = HotelFeatures::join('features', 'features.id', '=', 'hotel_features.features_id');
         $query2->where('features.status', '!=', 'deleted');
         $query2->where('hotel_features.status', '!=', 'deleted');
         $query2->where('hotel_features.hotel_id', '=', $id);
-        $query2->select(['features.features_name', 'hotel_features.*']);
+        $query2->select(['features.feature_name', 'hotel_features.*']);
         $hotel_features = $query2->get();
 
         $facilities = Facilities::where('status', '=', 'active')->select('*')->get();
@@ -510,7 +510,7 @@ class HotelController extends Controller
                     $data = [
                         'status' => 1,
                         'message' => 'saved successfully.',
-                        'chip'=>'<p class="selectchip delete_feature" data-ri="'.$is_exist->id.'" data-h="'.$is_exist->hotel_id.'" id="feature_chip_'.$is_exist->id.'" >'.$feature->features_name.'<span class="closechps">×</span></p>'
+                        'chip'=>'<p class="selectchip delete_feature" data-ri="'.$is_exist->id.'" data-h="'.$is_exist->hotel_id.'" id="feature_chip_'.$is_exist->id.'" >'.$feature->feature_name.'<span class="closechps">×</span></p>'
                     ];
                     return response()->json($data);
                 }
@@ -540,7 +540,7 @@ class HotelController extends Controller
                     $data = [
                         'status' => 1,
                         'message' => 'saved successfully.',
-                        'chip'=>'<p class="selectchip delete_feature" data-ri="'.$newFeature->id.'" data-h="'.$newFeature->hotel_id.'" id="feature_chip_'.$newFeature->id.'" >'.$feature->features_name.'<span class="closechps">×</span></p>'
+                        'chip'=>'<p class="selectchip delete_feature" data-ri="'.$newFeature->id.'" data-h="'.$newFeature->hotel_id.'" id="feature_chip_'.$newFeature->id.'" >'.$feature->feature_name.'<span class="closechps">×</span></p>'
                     ];
                     return response()->json($data);
                 }
@@ -588,7 +588,7 @@ class HotelController extends Controller
                     $data = [
                         'status' => 1,
                         'message' => 'saved successfully.',
-                        'chip'=>'<p class="selectchip delete_facilitie" data-ri="'.$is_exist->id.'" data-h="'.$is_exist->hotel_id.'" id="facilitie_chip_'.$is_exist->id.'" >'.$facilitie->facilities_name.'<span class="closechps">×</span></p>'
+                        'chip'=>'<p class="selectchip delete_facilitie" data-ri="'.$is_exist->id.'" data-h="'.$is_exist->hotel_id.'" id="facilitie_chip_'.$is_exist->id.'" >'.$facilitie->facility_name.'<span class="closechps">×</span></p>'
                     ];
                     return response()->json($data);
                 }
@@ -619,7 +619,7 @@ class HotelController extends Controller
                     $data = [
                         'status' => 1,
                         'message' => 'saved successfully.',
-                        'chip'=>'<p class="selectchip delete_facilitie" data-ri="'.$newFacilitie->id.'" data-h="'.$newFacilitie->hotel_id.'" id="facilitie_chip_'.$newFacilitie->id.'" >'.$facilitie->facilities_name.'<span class="closechps">×</span></p>'
+                        'chip'=>'<p class="selectchip delete_facilitie" data-ri="'.$newFacilitie->id.'" data-h="'.$newFacilitie->hotel_id.'" id="facilitie_chip_'.$newFacilitie->id.'" >'.$facilitie->facility_name.'<span class="closechps">×</span></p>'
                     ];
                     return response()->json($data);
                 }
@@ -968,14 +968,14 @@ class HotelController extends Controller
             $query->where('facilities.status', '!=', 'deleted');
             $query->where('hotel_facilities.status', '!=', 'deleted');
             $query->where('hotel_facilities.hotel_id', '=', $id);
-            $query->select(['facilities.facilities_name', 'hotel_facilities.*']);
+            $query->select(['facilities.facility_name', 'hotel_facilities.*']);
             $hotel_facilities = $query->get();
     
             $query2 = HotelFeatures::join('features', 'features.id', '=', 'hotel_features.features_id');
             $query2->where('features.status', '!=', 'deleted');
             $query2->where('hotel_features.status', '!=', 'deleted');
             $query2->where('hotel_features.hotel_id', '=', $id);
-            $query2->select(['features.features_name', 'hotel_features.*']);
+            $query2->select(['features.feature_name', 'hotel_features.*']);
             $hotel_features = $query2->get();
              return view('hotel.hm_summary')->with(['hotel'=>$hotel,'hotel_facilities'=>$hotel_facilities,'hotel_features'=>$hotel_features]);
         }

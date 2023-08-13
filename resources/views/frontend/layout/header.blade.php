@@ -14,36 +14,40 @@
       </a>
     @endif
   </div>
-  <div class="dropdown">
-    <button class="dropdown-toggle" type="button" id="onboardingMenu" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="{{ asset('/assets/images/structure/user-icon.svg') }}" alt=".." class="icon28round" />
-      <img src="{{ asset('/assets/images/structure/menu-icon.svg') }}" alt=".." class="icon16" />
-    </button>
-    @auth()
+  @auth()
+    <div class="dropdown">
+      <button class="dropdown-toggle" type="button" id="onboardingMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bars fa-xl" style="color: #00a99d; margin-right: 10px;"></i> 
+          <span style="font-size: 14px; font-family:Pretendard-medium;">MENU</span>
+      </button>
       <ul class="dropdown-menu" aria-labelledby="afterLoginMenu">
         @if (auth()->user()->access == 'customer')
           <li>
             <a class="dropdown-item" href="{{ route('my-bookings') }}">
-              <img src="{{ asset('/assets/images/structure/my-bookings.svg') }}" alt=".." class="icon24" />
-              <span>{{ __('home.MyBookings') }}</span>
+              <i class="fa-regular fa-calendar-check fa-lg" style="color: #00a99d; margin-left: 5px;" >
+                <span style="font-size: 14px; color: #000;font-family:Pretendard-light;"> {{ __('home.MyBookings') }}</span>
+              </i>
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="{{ route('my_profile') }}">
-              <img src="{{ asset('/assets/images/structure/account-icon.svg') }}" alt=".." class="icon24" />
-              <span>{{ __('home.MyProfile') }}</span>
+              <i class="fa-regular fa-id-badge fa-lg" style="color: #00a99d; margin-left: 5px;" >
+                <span style="font-size: 14px; color: #000;font-family:Pretendard-light;">{{ __('home.MyProfile') }}</span>
+              </i>
             </a>
           </li>
         @elseif (auth()->user()->access == 'hotel_manager' ||
-                auth()->user()->access == 'hotel_staff' ||
-                auth()->user()->access == 'admin')
+                 auth()->user()->access == 'hotel_staff' ||
+                 auth()->user()->access == 'admin')
           <li>
             <a class="dropdown-item" href="{{ route('dashboard') }}">
-              <img src="{{ asset('/assets/images/structure/dashboard-icon.svg') }}" alt=".." class="icon24" />
-              <span>{{ __('home.Dashboard') }}</span>
+              <i class="fa-solid fa-chart-line fa-lg" style="color: #00a99d; margin-left: 5px;">
+                <span> {{ __('home.Dashboard') }}</span>
+              </i>
             </a>
           </li>
         @endif
+        <!--
         @if (App::getLocale() == 'en')
           <li><a class="dropdown-item" href="{{ route('change-language', 'ko') }}">Change to Korean </a></li>
         @else
@@ -55,41 +59,29 @@
             <span>{{ __('home.ChangePassword') }}</span>
           </a>
         </li>
+      -->
         <li>
           <a class="dropdown-item" href="{{ route('logout') }}">
-            <img src="{{ asset('/assets/images/structure/logout-icon.svg') }}" alt=".." class="icon24" />
-            <span>{{ __('home.LogOut') }}</span>
+            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color: #00a99d; margin-left: 5px;">
+              <span style="font-size: 13px; color: #000; font-family:Pretendard-light;">{{ __('home.LogOut') }}</span>
+            </i>
           </a>
         </li>
       </ul>
-    @endauth
-    @guest
-      <ul class="dropdown-menu" aria-labelledby="onboardingMenu">
-        <li><a class="dropdown-item" href="{{ route('signup') }}">{{ __('home.SignUp') }}</a></li>
-        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">{{ __('home.LogIn') }}</a></li>
-        <li>
-          <hr class="dropdown-divider my-1">
-        </li>
-        <!-- <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">Manager/ Staff </a></li> -->
-        <!-- <li>
-                                  <hr class="dropdown-divider my-1">
-                              </li> -->
-        <!-- <li><a class="dropdown-item" href="#">Dashboard </a></li> -->
-        <!-- <li>
-                                  <hr class="dropdown-divider my-1">
-                              </li> -->
-        <!-- <li><a class="dropdown-item" href="#" >Manager/ Staff</a></li>
-                              <li>
-                                  <hr class="dropdown-divider my-1">
-                              </li> -->
-        <li><a class="dropdown-item" href="#">{{ __('home.Help') }}</a></li>
-        <li><a class="dropdown-item" href="#">{{ __('home.Policies') }}</a></li>
-        @if (App::getLocale() == 'en')
+  @endauth
+  @guest
+    <div class="logIn" style="margin-right: 30px;">
+      <a class="LogInbtn" href="#" data-bs-toggle="modal" data-bs-target=".loginDialog">
+        <i class="fa-solid fa-arrow-right-to-bracket fa-xl" style="color: #00a99d;"></i>
+        <span style="font-size: 14px; font-family: Pretendard-bold; color: #00a99d"> LOGIN</span>
+      </a>
+
+        <!-- @if (App::getLocale() == 'en')
           <li><a class="dropdown-item" href="{{ route('change-language', 'ko') }}">Change to Korean </a></li>
         @else
           <li><a class="dropdown-item" href="{{ route('change-language', 'en') }}">Change to English</a></li>
-        @endif
+        @endif -->
       </ul>
-    @endguest
-  </div>
+  @endguest
+    </div>
 </header>

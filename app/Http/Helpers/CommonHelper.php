@@ -15,13 +15,13 @@ use App\Models\ChatMessage;
 function getFeaturename($id)
 {
   $Features = Features::find($id);
-  return $Features->features_name;
+  return $Features->feature_name;
 }
 
 function getFacilityname($id)
 {
   $Features = Facilities::find($id);
-  return $Features->facilities_name;
+  return $Features->facility_name;
 }
 
 function getQueryParams($params)
@@ -34,20 +34,12 @@ function getQueryParams($params)
   return $paramString;
 }
 
-function getRoomPrice($dayofweek, $hasActiveRooms, $hasLongStayDiscount)
+function getRoomPrice($dayofweek, $hasActiveRooms)
 {
-  $originalPrice = ($dayofweek == 5 || $dayofweek == 6)?
-    $hasActiveRooms->standard_price_weekend:
-    $hasActiveRooms->standard_price_weekday;
+  $originalPrice = ($dayofweek == 4 || $dayofweek == 5)?$hasActiveRooms->standard_price_weekend:$hasActiveRooms->standard_price_weekday;
   $showPrice = $originalPrice;
   $returnString = "₩" . siteNumberFormat($showPrice);
-  if (count($hasLongStayDiscount) > 0) {
-    $showPrice =($hasLongStayDiscount[0]->lsd_discount_type == 'percentage')?
-      $showPrice - ($hasLongStayDiscount[0]->lsd_discount_amount / $showPrice * 100):
-      $showPrice - $hasLongStayDiscount[0]->lsd_discount_amount;
-    $returnString = "₩". siteNumberFormat($showPrice) . " <del>₩" .  siteNumberFormat($originalPrice) . "</del>";
-  }
-  
+
   return $returnString;
 }
 
@@ -58,7 +50,7 @@ function getAllRoomMaxPrice($dayofweek) {
     Rooms::max('standard_price_weekday');
 }
 
-// reward points update by admin 
+// reward points update by admin
 function updateRewards($points,$user_id,$rtype,$title,$message,$status='pending',$bookingSlug='',$transaction_on='',$rewardBy='')
 {
     // $access = auth()->user()->access;
@@ -71,20 +63,20 @@ function updateRewards($points,$user_id,$rtype,$title,$message,$status='pending'
     {
         $creditedPoints = Reward::where('user_id','=',$user_id)->where('reward_type','=','credited')->where('status','=','active')->sum('reward_points');
         $debitedPoints = Reward::where('user_id','=',$user_id)->where('reward_type','=','debited')->where('status','=','active')->sum('reward_points');
-        
+
         $remaing_points = $creditedPoints-$debitedPoints;
         if($rtype == 'debited')
         {
             if($status=='active')
               $remaing_points = $remaing_points - $points;
         }
-        
+
         if($rtype == 'credited')
         {
             if($status=='active')
             $remaing_points = $remaing_points + $points;
         }
-        
+
         if($transaction_on =='')
           $transaction_on = date_format(Carbon::now(),"Y-m-d");
         if($rewardBy =='')
@@ -106,14 +98,14 @@ function updateRewards($points,$user_id,$rtype,$title,$message,$status='pending'
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
           ]);
-        
+
         if($newReward)
         {
             $user->total_rewards_points = $remaing_points;
             $user->save();
             $data = [
                 'status' => 1
-            ];    
+            ];
             return response()->json($data);
         }
         else
@@ -123,7 +115,7 @@ function updateRewards($points,$user_id,$rtype,$title,$message,$status='pending'
                 'message' =>'Somthing went wrong.'
             ];
             return response()->json($data);
-        }    
+        }
     }
     else
     {
@@ -131,7 +123,7 @@ function updateRewards($points,$user_id,$rtype,$title,$message,$status='pending'
             'status' => 0,
             'message' =>'Somthing went wrong.'
         ];
-        return response()->json($data);   
+        return response()->json($data);
     }
 }
 
@@ -141,7 +133,7 @@ function checkIsRoomBooked($room_id, $check_in_date, $check_out_date,$booking_id
     if($booking_id != '')
       $whereBookingIdNot = " AND id !='".$booking_id."' ";
 
-    // $sql = "SELECT * FROM `bookings` WHERE room_id = '".$room_id."' AND ( ((check_in_date = '".$check_in_date."' || check_out_date ='".$check_out_date."') || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_out_date."')  || (check_out_date >= '".$check_in_date."' && check_out_date <='".$check_out_date."') || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_in_date."') || (check_in_date <= '".$check_in_date."' && check_out_date >='".$check_out_date."') || (check_in_date <= '".$check_out_date."' && check_out_date >='".$check_out_date."') ) AND (booking_status='on_hold' || booking_status='confirmed' || booking_status='blocked') AND status='active' '".$whereBookingIdNot."')"; 
+    // $sql = "SELECT * FROM `bookings` WHERE room_id = '".$room_id."' AND ( ((check_in_date = '".$check_in_date."' || check_out_date ='".$check_out_date."') || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_out_date."')  || (check_out_date >= '".$check_in_date."' && check_out_date <='".$check_out_date."') || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_in_date."') || (check_in_date <= '".$check_in_date."' && check_out_date >='".$check_out_date."') || (check_in_date <= '".$check_out_date."' && check_out_date >='".$check_out_date."') ) AND (booking_status='on_hold' || booking_status='confirmed' || booking_status='blocked') AND status='active' '".$whereBookingIdNot."')";
     $sql = "SELECT * FROM `bookings` WHERE room_id = '".$room_id."' AND ( ((check_in_date = '".$check_in_date."' ) || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_out_date."')  || (check_out_date > '".$check_in_date."' && check_out_date <'".$check_out_date."') || (check_in_date >= '".$check_in_date."' && check_in_date <='".$check_in_date."') || (check_in_date <= '".$check_in_date."' && check_out_date >'".$check_out_date."') || (check_in_date <= '".$check_out_date."' && check_out_date >'".$check_out_date."') ) AND (booking_status='on_hold' || booking_status='confirmed' || booking_status='blocked') AND status='active' '".$whereBookingIdNot."')";
     $isRoomBooked = DB::select($sql);
     return $isRoomBooked;
@@ -150,7 +142,7 @@ function checkIsRoomBooked($room_id, $check_in_date, $check_out_date,$booking_id
 // check given date is peak season or not
 function thisDateIsPeakSeason($hotel_id, $date)
 {
-    $sql = "SELECT * FROM `hotel_peak_season` WHERE hotel_id = '".$hotel_id."' ( ((start_date = '".$date."' || end_date ='".$date."') || (start_date >= '".$date."' && start_date <='".$date."')  || (end_date >= '".$date."' && end_date <='".$date."') || (start_date >= '".$date."' && start_date <='".$date."') || (start_date <= '".$date."' && end_date >='".$date."') || (start_date <= '".$date."' && end_date >='".$date."') ) AND status='active')"; 
+    $sql = "SELECT * FROM `hotel_peak_season` WHERE hotel_id = '".$hotel_id."' AND ( ((start_date = '".$date."' || end_date ='".$date."') || (start_date >= '".$date."' && start_date <='".$date."')  || (end_date >= '".$date."' && end_date <='".$date."') || (start_date >= '".$date."' && start_date <='".$date."') || (start_date <= '".$date."' && end_date >='".$date."') || (start_date <= '".$date."' && end_date >='".$date."') ) AND status='active')";
     $isRoomBooked = DB::select($sql);
     return $isRoomBooked;
 }
@@ -190,14 +182,14 @@ function checkRoomBlocked($room_id, $date)
     $isRoomBooked = DB::select($sql);
     return $isRoomBooked;
 }
- 
+
 function checkRoomOccupancy($room_id,$adults,$childs)
 {
   $room = Rooms::where('id', '=', $room_id)->where('maximum_occupancy_adult', '>=', $adults)->where('maximum_occupancy_child', '>=', $childs)->first();
-   return $room; 
+   return $room;
 }
 
-function getRefundDetails($id) 
+function getRefundDetails($id)
 {
     $booking = Booking::where('id','=',$id)->where('status','=','active')->first();
     $refundDetails = [];
@@ -211,7 +203,7 @@ function getRefundDetails($id)
     {
         $today = Carbon::now(); //Carbon::now(); // date_format(Carbon::now(),"Y-m-d");
         $check_in_date =Carbon::parse($booking->check_in_date);
-        
+
         $numberOfBeforeDays = $check_in_date->diffInDays($today);
        //  Carbon::parse($booking->check_in_date)->gt(Carbon::now())
         if(Carbon::parse($booking->check_in_date)->gt(Carbon::now()))
@@ -226,10 +218,10 @@ function getRefundDetails($id)
           {
             $cancellation_policy = json_decode($booking->cancellation_policy);
             $cancellation_policy = (array) $cancellation_policy;
-          }   
+          }
           // var_dump($cancellation_policy); die;
           //     dd($cancellation_policy);
-          $booking_total_amount = (((($booking->per_night_charges + $booking->extra_guest_charges)-$booking->long_stay_discount_amount)-$booking->coupon_discount_amount))+$booking->extra_services_charges; 
+          $booking_total_amount = (((($booking->per_night_charges + $booking->extra_guest_charges)-$booking->long_stay_discount_amount)-$booking->coupon_discount_amount))+$booking->extra_services_charges;
 
           $applicableRefundPercentage  = 0;
           $refundDetails['numberOfBeforeDays'] = $numberOfBeforeDays;
@@ -251,8 +243,8 @@ function getRefundDetails($id)
             else
             {
                 $applicableRefundPercentage = $cancellation_policy['b4_10days_refund'];
-            }    
-                  
+            }
+
           }
           $refundDetails['refund_in_percentage'] = $applicableRefundPercentage;
 
@@ -277,7 +269,7 @@ function getRefundDetails($id)
               $refundDetails['refund_points'] = $booking->reward_points_used;
               $refundDetails['refund_amount_in_points'] = $booking->payment_by_points;
               $refundDetails['refund_amount_in_money'] = $refundAmount - $booking->payment_by_points;
-              $refundDetails['total_refund_amount'] = $refundAmount;            
+              $refundDetails['total_refund_amount'] = $refundAmount;
           }
         }
 
@@ -285,13 +277,13 @@ function getRefundDetails($id)
     return $refundDetails;
 }
 
-function getTopMagazine() 
+function getTopMagazine()
 {
   $posts =Post::where('status', 'active')->where('type', 'magazine')->orderBy('id', 'desc')->take(10)->get();
   return $posts;
 }
 
-function getTopEvent() 
+function getTopEvent()
 {
   $posts =Post::where('status', 'active')->where('type', 'events')->orderBy('id', 'desc')->take(10)->get();
   return $posts;
@@ -300,14 +292,14 @@ function getTopEvent()
 function siteNumberFormat($number=0)
 {
     round($number);
-    $nombre_format_francais = number_format($number, 0, ',');
-    return $nombre_format_francais;  
+    $number_format = number_format($number, 0, ',');
+    return $number_format;
 }
 
 function subsribeUs($email,$user_id )
 {
       $email = strtolower($email);
-     
+
       $isExist = NewsLetter::where('email', '=', $email)->where('status', '!=', 'deleted')->first();
 
       if($isExist)
@@ -320,7 +312,7 @@ function subsribeUs($email,$user_id )
               $isExist->updated_by = $user_id;
               $isExist->updated_at = Carbon::now();
               $isExist->save();
-  
+
               $data = [
                   'status' => 1,
                   'message' => 'Thank-you for subscribe news-letter.'
@@ -340,14 +332,14 @@ function subsribeUs($email,$user_id )
       {
           $newFeatures= NewsLetter::create([
               'email' => $email,
-              'is_subscribed' =>1, 
-              'status' =>'active', 
+              'is_subscribed' =>1,
+              'status' =>'active',
               'created_by'=>$user_id,
               'updated_by'=>$user_id,
               'created_at'=>Carbon::now(),
-              'updated_at'=>Carbon::now(),          
+              'updated_at'=>Carbon::now(),
           ]);
-          
+
           if($newFeatures)
           {
               $data = [
@@ -356,7 +348,7 @@ function subsribeUs($email,$user_id )
               ];
 
               return response()->json($data);
-          }   
+          }
       }
 }
 
@@ -364,13 +356,13 @@ function sendNotification($user_id,$message="",$booking_id=0)
 {
     $newNotification = Notification::create([
         'user_id' => $user_id,
-        'booking_id' =>$booking_id, 
-        'message' =>$message, 
-        'status' =>'active', 
+        'booking_id' =>$booking_id,
+        'message' =>$message,
+        'status' =>'active',
         'created_by'=>$user_id,
         'updated_by'=>$user_id,
         'created_at'=>Carbon::now(),
-        'updated_at'=>Carbon::now(),          
+        'updated_at'=>Carbon::now(),
     ]);
     return $newNotification;
 }

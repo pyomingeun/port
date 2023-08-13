@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('booking_id');
             $table->integer('commission_rate');
             $table->integer('commission');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
+            $table->integer('sales_amount')->default('0');
+            $table->integer('payble_amount')->default('0');
             $table->timestamps();
         });
     }

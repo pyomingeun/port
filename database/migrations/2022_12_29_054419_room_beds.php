@@ -20,9 +20,6 @@ return new class extends Migration
             $table->integer('room_id')->default(0);
             $table->string('bed_type', 250)->default('');
             $table->integer('bed_qty')->default(0);
-            $table->enum('status', array('draft','active','inactive', 'deleted'))->default('draft');
-            $table->integer('created_by')->default(0);
-            $table->integer('updated_by')->default(0);
             $table->timestamps();
         });
     }

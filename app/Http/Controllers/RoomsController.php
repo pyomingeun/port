@@ -30,7 +30,6 @@ class RoomsController extends Controller
     {
         $hotel_id = auth()->user()->id;
         $query = Rooms::where('rooms.status', '!=', 'deleted')->where('rooms.hotel_id', '=', $hotel_id);
-        // $query->where('rooms.status', '=', 'customer');
         $query->select(['*']);
         $query->get();
 
@@ -157,7 +156,7 @@ class RoomsController extends Controller
         $imgurl = asset("/room_images/".$newImg->room_image);
         $is_featured_cls = ($is_featured==1)?"fa fa-star favStar favStar-fill":"fa fa-star-o favStar favStar-outline";
         $marktitle ="<div class='tooltipbox centerArrowTT'><small class='mediumfont'>Mark as Featured</small> </div>";
-        $imgRes ='<div class="hotelImgaesPreviewCol" id="room_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delRoomOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="hotelPreviewImage"></div>';
+        $imgRes ='<div class="hotelImgaesPreviewCol" id="room_img_'.$newImg->id.'"><img src="'.$delurl.'" alt="" class="deteteImageIcon delHotelOtherImg" data-i="'.$newImg->id.'"><i class="markfeaturedhmimg '.$is_featured_cls.'" data-i="'.$newImg->id.'" aria-hidden="true" data-bs-toggle="tooltip" data-bs-html="true" title="'.$marktitle.'" id="featured_icon_'.$newImg->id.'"></i><img src="'.$imgurl.'" alt="N.A." class="img-thumbnail"></div>';
         return response()->json(['status'=>1,'message'=>'upload successfully','img'=>$imgRes]);
     }
     // close
@@ -194,7 +193,6 @@ class RoomsController extends Controller
             $room->basic_info_status = 1;
 
 	        $room->no_of_bathrooms = $request->no_of_bathrooms;
-            $room->beds_status = 1;
 
             $room->save();
 
@@ -210,14 +208,8 @@ class RoomsController extends Controller
                             $newBed = RoomBeds::create([
                                 'hotel_id' => $hotel_id,
                                 'room_id' => $room->id,
-                                'no_of_bathrooms' => $request->no_of_bathrooms,
                                 'bed_type' => $request->bed_type[$i],
                                 'bed_qty' => $request->bed_qty[$i],
-                                'status' =>'active',
-                                'created_by' => $hotel_id,
-                                'updated_by' => $hotel_id,
-                                'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()
                             ]);
                         }
                     }
@@ -229,11 +221,8 @@ class RoomsController extends Controller
                             $row = RoomBeds::where($whereRow)->first();
                             if($row)
                             {
-                                $row->updated_by = auth()->user()->id;
-                                $row->updated_at = Carbon::now();
                                 $row->bed_type  = $request->bed_type[$i];
                                 $row->bed_qty = $request->bed_qty[$i];
-                                $row->status = 'active';
                                 $row->save();
                             }
                         }
@@ -291,12 +280,7 @@ class RoomsController extends Controller
                                 'hotel_id' => $hotel_id,
                                 'room_id' => $newRoom->id,
                                 'bed_type' => $request->bed_type[$i],
-                                'bed_qty' => $request->bed_qty[$i],
-                                'status' =>'active',
-                                'created_by' => $hotel_id,
-                                'updated_by' => $hotel_id,
-                                'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()
+                                'bed_qty' => $request->bed_qty[$i]
                             ]);
                         }
 
@@ -335,8 +319,7 @@ class RoomsController extends Controller
         $bed = RoomBeds::where($whereBed)->first();
         if($bed)
         {
-            $bed->status = 'deleted';
-            $bed->save();
+            $bed->delete();
             // $image->delete();
             return response()->json(['status'=>1,'message'=>'Deleted successfully']);
         }
@@ -357,17 +340,13 @@ class RoomsController extends Controller
         $room = Rooms::where('slug', '=', $slug)->where('status', '!=', 'deleted')->first();
         // dd($hotel);
         $query = HotelFacilities::join('facilities', 'facilities.id', '=', 'hotel_facilities.facilities_id');
-        $query->where('facilities.status', '!=', 'deleted');
-        $query->where('hotel_facilities.status', '!=', 'deleted');
         $query->where('hotel_facilities.hotel_id', '=', $hotel_id);
-        $query->select(['facilities.facilities_name', 'hotel_facilities.*']);
+        $query->select(['facilities.facility_name', 'hotel_facilities.*']);
         $hotel_facilities = $query->get();
 
         $query2 = HotelFeatures::join('features', 'features.id', '=', 'hotel_features.features_id');
-        $query2->where('features.status', '!=', 'deleted');
-        $query2->where('hotel_features.status', '!=', 'deleted');
         $query2->where('hotel_features.hotel_id', '=', $hotel_id);
-        $query2->select(['features.features_name', 'hotel_features.*']);
+        $query2->select(['features.feature_name', 'hotel_features.*']);
         $hotel_features = $query2->get();
 
         $features_ids = array();
@@ -376,8 +355,8 @@ class RoomsController extends Controller
         \Artisan::call('view:clear');
         if($room)
         {
-            $selected_features_ids = DB::select("select GROUP_CONCAT(DISTINCT(features_id)) as ids from room_features WHERE room_id='".$room->id."' AND status !='deleted'");
-            $selected_facilities_ids = DB::select("select GROUP_CONCAT(DISTINCT(facilities_id)) as ids from room_facilities WHERE room_id='".$room->id."' AND status !='deleted'");
+            $selected_features_ids = DB::select("select GROUP_CONCAT(DISTINCT(features_id)) as ids from room_features WHERE room_id='".$room->id."' ");
+            $selected_facilities_ids = DB::select("select GROUP_CONCAT(DISTINCT(facilities_id)) as ids from room_facilities WHERE room_id='".$room->id."' ");
 
             if($selected_features_ids !='' && $selected_features_ids !=null && $selected_features_ids !=false)
             {
@@ -389,19 +368,15 @@ class RoomsController extends Controller
             }
 
             $query = RoomFacilities::join('facilities', 'facilities.id', '=', 'room_facilities.facilities_id');
-            $query->where('facilities.status', '!=', 'deleted');
-            $query->where('room_facilities.status', '!=', 'deleted');
             $query->where('room_facilities.hotel_id', '=', $hotel_id);
             $query->where('room_facilities.room_id', '=', $room->id);
-            $query->select(['facilities.facilities_name', 'room_facilities.*']);
+            $query->select(['facilities.facility_name', 'room_facilities.*']);
             $room_facilities = $query->get();
 
             $query2 = RoomFeatures::join('features', 'features.id', '=', 'room_features.features_id');
-            $query2->where('features.status', '!=', 'deleted');
-            $query2->where('room_features.status', '!=', 'deleted');
             $query2->where('room_features.hotel_id', '=', $hotel_id);
             $query2->where('room_features.room_id', '=', $room->id);
-            $query2->select(['features.features_name', 'room_features.*']);
+            $query2->select(['features.feature_name', 'room_features.*']);
             $room_features = $query2->get();
 
             return view('hotel.room_feature_n_facilities')->with(['room'=>$room,'slug'=>$room->slug,'features_ids'=>$features_ids,'facilities_ids'=>$facilities_ids,'room_facilities'=>$room_facilities,'room_features'=>$room_features,'hotel_facilities'=>$hotel_facilities,'hotel_features'=>$hotel_features,'empty_val'=>'']);
@@ -677,7 +652,7 @@ class RoomsController extends Controller
             $query2->where('room_features.status', '!=', 'deleted');
             $query2->where('room_features.hotel_id', '=', $hotel_id);
             $query2->where('room_features.room_id', '=', $room->id);
-            $query2->select(['features.features_name', 'room_features.*']);
+            $query2->select(['features.feature_name', 'room_features.*']);
             $room_features = $query2->get();
 
             return view('hotel.room_summary')->with(['room'=>$room,'slug'=>$room->slug,'room_facilities'=>$room_facilities,'room_features'=>$room_features]);
@@ -933,7 +908,7 @@ class RoomsController extends Controller
                                                 'coupon_discount_amount' => 0,
                                                 'long_stay_discount_amount' => 0,
                                                 'reward_points_used' => 0,
-                                                'payment_by_currency' => 0,
+                                                'payment_by_cash' => 0,
                                                 'payment_by_points' => 0,
                                                 'booking_status' => 'blocked',
                                                 'payment_status' => 'waiting',

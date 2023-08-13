@@ -65,7 +65,7 @@
   </div>
 	@include('frontend.layout.newsletter')
   @include('frontend.layout.footer')
-  @include('common_models')
+  @include('common_modal')
   @include('frontend.layout.footer_script')
 @endsection
 @section('page-js-include')

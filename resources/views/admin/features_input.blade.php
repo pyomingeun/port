@@ -25,24 +25,24 @@
                                                    
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="form-floating" id="amenitie_name_validate">
-                                                            <input type="text" class="form-control a-enter-submit" id="amenitie_name" placeholder="Amenitie Name" name="amenitie_name" value="{{(isset($feature->features_name))?$feature->features_name:''; }}"  >
+                                                            <input type="text" class="form-control a-enter-submit" id="amenitie_name" placeholder="Amenitie Name" name="amenitie_name" value="{{(isset($feature->feature_name))?$feature->feature_name:''; }}"  >
                                                             <label for="amenitie_name">Amenitie Name<span class="required-star">*</span></label>
                                                             <p class="error-inp" id="amenitie_name_err_msg"></p>
                                                         </div>
                                                     </div>
                                                     @php
-                                                    $features_icon ='';
-                                                    if(isset($feature->features_icon) && $feature->features_icon !='') 
-                                                        $features_icon = $feature->features_icon;
+                                                    $feature_icon ='';
+                                                    if(isset($feature->feature_icon) && $feature->feature_icon !='') 
+                                                        $feature_icon = $feature->feature_icon;
                                                     @endphp                                                                        
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="hotelInfoRow d-flex align-items-center">
                                                             <div class="uploadhotelimageBox">
-                                                                <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon cursor-p"  id="picDelcross" style="display:{{(isset($feature->features_icon) && $feature->features_icon !='' )?'block':'none'; }}">
+                                                                <img src="{{asset('/assets/images/')}}/structure/delete-circle-red.svg" alt="" class="deteteImageIcon cursor-p"  id="picDelcross" style="display:{{(isset($feature->feature_icon) && $feature->feature_icon !='' )?'block':'none'; }}">
                                                                 
-                                                                <img src="{{asset('/features_icon/').'/'.$features_icon }}" alt="" class="uploadhotelimage " id="myprofilepic"  style="display:{{(isset($feature->features_icon) && $feature->features_icon !='' )?'block':'none'; }}" >
+                                                                <img src="{{asset('/feature_icon/').'/'.$feature_icon }}" alt="" class="uploadhotelimage " id="myprofilepic"  style="display:{{(isset($feature->feature_icon) && $feature->feature_icon !='' )?'block':'none'; }}" >
                                                                 
-                                                                <img src="{{asset('/assets/images/')}}/structure/features_default_icon.png" alt="" class="uploadhotelimage" id="defaultprofilepic" style="display:{{ ( (isset($feature->features_icon) && $feature->features_icon =='' ) || $feature_id == 0 )?'block':'none'; }}">
+                                                                <img src="{{asset('/assets/images/')}}/structure/features_default_icon.png" alt="" class="uploadhotelimage" id="defaultprofilepic" style="display:{{ ( (isset($feature->feature_icon) && $feature->feature_icon =='' ) || $feature_id == 0 )?'block':'none'; }}">
                                                                 <input type="file" class="uploadinput image"  name="logo" id="logo" accept="image/png, image/jpeg"> 
                                                             </div>
                                                             <div class="hotelInfoDes">
@@ -102,7 +102,7 @@
   </div>
 </div>  
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 <!--Delete Modal -->
 <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -284,7 +284,7 @@
                             {
                                 // unloading();
                                 // location.reload();
-                                var picurl = "{{asset('/features_icon/'); }}";
+                                var picurl = "{{asset('/feature_icon/'); }}";
                                 picurl = picurl+'/'+data.logo;
                                 $('#icon').val(data.logo);
                                 $('#defaultprofilepic').css('display','none');

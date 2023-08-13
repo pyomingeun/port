@@ -281,7 +281,7 @@
                                         @if(count($hotel_features) >0)
                                             <div class="selectedTabsRw d-flex flex-wrap align-items-center">
                                                 @foreach ($hotel_features as $hotel_feature)    
-                                                    <p class="selectchip">{{$hotel_feature->features_name}}</p>
+                                                    <p class="selectchip">{{$hotel_feature->feature_name}}</p>
                                                 @endforeach
                                             </div>
                                         @else
@@ -293,7 +293,7 @@
                                         @if(count($hotel_facilities) >0)
                                             <div class="selectedTabsRw d-flex flex-wrap align-items-center">
                                                 @foreach ($hotel_facilities as $facilitie)
-                                                    <p class="selectchip">{{$facilitie->facilities_name}} </p>
+                                                    <p class="selectchip">{{$facilitie->facility_name}} </p>
                                                 @endforeach
                                             </div>
                                         @else
@@ -498,7 +498,7 @@
     </div>
 </div>    
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 @include('frontend.layout.footer_script')
 @endsection
 <!-- JS section  -->   

@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            //
-            $table->dropColumn('start_date');
-            $table->dropColumn('end_date');
-            $table->dropColumn('slug');
+        Schema::create('magazines', function (Blueprint $table) {
+            $table->id();
+            $table->integer('hotel_id');
+            $table->string('magazine_title', 50);
+            $table->string('contents',150);
+            $table->string('cover_img',150);
+            $table->string('banner_img',150);
+            $table->timestamps();
         });
     }
 
@@ -28,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('magazines');
     }
 };

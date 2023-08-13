@@ -61,12 +61,18 @@ class AuthController extends Controller
         $timestamp = Carbon::now()->timestamp;
         $activation_code = $timestamp."".$randomId;
 
+        if($request->y14 && $request->privacy && $request->service)
+            $agreeRequired = 1;
+
         $newuser= Unregistered::create([
             'full_name' => $request->full_name,
             'email' => strtolower($request->email), //$request->email,
             'phone' => $request->phone,
             'activation_code' => $activation_code,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'agree_required' => $agreeRequired,
+            'agree_forever' => $request->forever,
+            'agree_message' => $request->message,
         ]);
         
 
@@ -240,7 +246,7 @@ class AuthController extends Controller
             }
             else{
                 $data = [
-                    'message' => "Your email or password is invalid.",
+                    'message' => "이메일/비밀번호를 확인하세요!",
                     'nextpageurl'=>""
                 ];
                 return response()->json($data);
@@ -291,7 +297,7 @@ class AuthController extends Controller
             $nextpageurl = route('forgot_email_sent', ['id' => $user->id]);
             $data = [
                 'status' => 1,
-                'message'=>'Email resent successfully.',
+                'message'=>'',
                 'name' => $user->first_name,
                 'url' => $url,
                 'nextpageurl' => $nextpageurl
@@ -300,10 +306,10 @@ class AuthController extends Controller
             return response()->json($data);
            // return response()->json(['status' => 1, 'message' => 'Reset password link sent to your email.']);
         } else {
-            // return response()->json(['status' => 0, 'message' => 'This email is not register with us.']);
+            // return response()->json(['status' => 0, 'message' => '{{ __('home.CannotFindEmail') }}']);
             $data = [
                 'status' => 0,
-                'message' => "This email is not register with us.",
+                'message' => '',
                 'nextpageurl'=>""
             ];
             return response()->json($data);
@@ -683,10 +689,107 @@ class AuthController extends Controller
     public function kakao()
     {
         # code...
+        $restAPIKey  = $_ENV['KAKAO_CLIENT_ID'];
+        $redirectUri = $_ENV['KAKAO_REDIRECT_URI'];
+        $returnCode  = $_GET["code"];	//발급받은 code 값
+        $tokenApiUri = "https://kauth.kakao.com/oauth/token";
+        
+        $params = sprintf( 'grant_type=authorization_code&client_id=%s&redirect_uri=%s&code=%s', $restAPIKey, $redirectUri, $returnCode);
+        $opts = array(
+            CURLOPT_URL => $tokenApiUri,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSLVERSION => 1,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $params,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false
+         );
+         $curlSession = curl_init();
+         curl_setopt_array($curlSession, $opts);
+         $tokenResult = curl_exec($curlSession);
+         curl_close($curlSession);
+         echo $tokenResult;
+
+        $accessTokenJson = json_decode($tokenResult, true);
+        $accessToken     = $accessTokenJson['access_token'];
+        #TODO : 받아온 accessTokenJson에  refresh_token,expires_in도 같이 들어 있음. 
+        #       만료시간은 다음과 같음.
+        #       access_token(12시간),refresh_token(30일이랬는데 만료 시간 보면 6일인것 같음),expires_in(만료시간,초단위), refresh_token_expires_in(만료시간,초단위)
+
+        $userInfoApiUri  = "https://kapi.kakao.com/v2/user/me";
+        $opts = array(
+        CURLOPT_URL => $userInfoApiUri,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSLVERSION => 1,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => false,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => array("Authorization: Bearer " . $accessToken)
+        );
+        
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $userInfoResult = curl_exec($curlSession);
+        curl_close($curlSession);
+        echo $userInfoResult;
+        $userInfoJson = json_decode($userInfoResult, true);
+
+        #TODO : 받아온 user정보를 DB에 저장해야 함.
     }
 
     public function naver()
     {
         # code...
+          // 네이버 로그인 콜백 예제
+        $restAPIKey     = $_ENV['NAVER_CLIENT_ID'];
+        $client_secret  = $_ENV['NAVER_CLIENT_SECRET'];
+        $redirectUri    = $_ENV['NAVER_REDIRECT_URI'];
+        $returnCode     = $_GET["code"];
+        $state          = $_GET["state"];
+
+        $tokenApiUri = "https://nid.naver.com/oauth2.0/token";
+        
+        $params = sprintf( 'grant_type=authorization_code&client_id=%s&client_secret=%s&redirect_uri=%s&code=%s&state=%s', $restAPIKey, $client_secret, $redirectUri, $returnCode, $state);
+        $opts = array(
+            CURLOPT_URL => $tokenApiUri,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSLVERSION => 1,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $params,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false
+         );
+         $curlSession = curl_init();
+         curl_setopt_array($curlSession, $opts);
+         $tokenResult = curl_exec($curlSession);
+         $status_code = curl_getinfo($curlSession, CURLINFO_HTTP_CODE);
+         curl_close($curlSession);
+        
+        if($status_code == 200) {
+            echo $tokenResult;
+        } else {
+            echo "Error 내용:".$tokenResult;
+        }
+
+        $accessTokenJson = json_decode($tokenResult, true);
+        $accessToken     = $accessTokenJson['access_token'];
+
+        $userInfoApiUri  = "https://openapi.naver.com/v1/nid/me";
+        $opts = array(
+        CURLOPT_URL => $userInfoApiUri,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSLVERSION => 1,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => false,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => array("Authorization: Bearer " . $accessToken)
+        );
+        
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $userInfoResult = curl_exec($curlSession);
+        curl_close($curlSession);
+
+        $userInfoJson = json_decode($userInfoResult, true);
     }
 }

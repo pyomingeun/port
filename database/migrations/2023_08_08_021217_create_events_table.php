@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('additional_discounts', function (Blueprint $table) {
-            $table->double('effective_amount', 10, 2)->default(0)->after('amount_type');
+        Schema::create('events', function (Blueprint $table) {
+            $table->id();
+            $table->integer('hotel_id');
+            $table->string('event_name', 50);
+            $table->dateTime('start_date');
+            $table->dateTime('expiry_date');
+            $table->string('contents',250);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('additional_discounts', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('events');
     }
 };

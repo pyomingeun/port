@@ -1,10 +1,11 @@
+
 <form method="get" action="{{ route('hotel-list') }}" id="form-submit">
   <div class="bannerSearchBox d-flex align-items-center">
     <div class="bannerSearchCol">
       <div class="form-floating">
-        <img src="{{ asset('/assets/images/structure/location.svg') }}" alt="" class="searchFielsIcns" />
+        <img src="{{ asset('/assets/images/structure/location.svg') }}" alt="Location" class="searchFieldIcon" />
         <input type="text" class="form-control" id="search" name="search" placeholder="Destination" value="{{ isset($hotelName) ? $hotelName : (Request::get('search') ? Request::get('search') : '') }}">
-        <label for="floatingInput">{{ __('home.Destination') }}</label>
+        <label for="search">{{ __('home.Destination') }}</label>
         <span class="error-inp" id="localtionError"></span>
       </div>
       <input type="hidden" name="latitude" id="latitude"value="{{ Request::get('latitude') ? Request::get('latitude') : '' }}">
@@ -16,43 +17,45 @@
     <div class="bannerSearchCol">
       <div class="checkinoutBox d-flex align-items-center date-picker">
         <div class="form-floating bnrCheckin">
-          <img src="{{ asset('/assets/images/structure/calendar-green.svg') }}" alt="" class="searchFielsIcns" />
-          <input type="text" class="form-control doubledatepicker" id="checkInDate" name="checkin_dates" />
-          <label for="floatingInput">{{ __('home.CheckIn') }}</label>
+          <img src="{{ asset('/assets/images/structure/calendar-green.svg') }}" alt="Canlender Image" class="searchFieldIcon" />
+          <input type="text" class="form-control doubledatepicker" id="checkInDate" name="checkin_dates" placeholder="Select check-in date"/>
+          <label for="checkInDate">{{ __('home.CheckIn') }}</label>
           <div class="customeDateBox" id="checkInDateBlock"></div>
         </div>
         <div class="form-floating bnrCheckout">
-          <input type="text" class="form-control handleClick" id="checkOutDate" name="checkout_dates">
-          <label for="floatingInput">{{ __('home.CheckOut') }}</label>
+          <img src="{{ asset('/assets/images/structure/calendar-green.svg') }}" alt="Canlender Image" class="searchFieldIcon" />  
+          <input type="text" class="form-control handleClick" id="checkOutDate" name="checkout_dates" placeholder="Select checkout date">
+          <label for="checkOutDate">{{ __('home.CheckOut') }}</label>
           <div class="customeDateBox" id="checkOutDateBlock"></div>
         </div>
       </div>
     </div>
     <div class="bannerSearchCol">
       <div class="form-floating">
-        <img src="{{ asset('/assets/images/structure/user-green.svg') }}" alt="" class="searchFielsIcns" />
-        <button type="button" class="form-select guestdropdownBtn">
+        <img src="{{ asset('/assets/images/structure/user-green.svg') }}" alt="User" class="searchFieldIcon" />
+        <button type="button" class="form-select guestdropdownBtn" id="guestddb">
           <span class="guestNo" id="adultNo">{{ Request::get('adult') ? Request::get('adult') : '2' }}</span>
           <span class="guestTxt">{{ __('home.Adult') }}</span>
           <span class="guestNo" id="childNo">{{ Request::get('child') ? Request::get('child') : '0' }}</span>
           <span class="guestTxt">{{ __('home.Child') }}</span>
         </button>
+        <label for="guestddb" class="label">{{ __('home.NoOfGuest') }}</label>
         <ul class="dropdown-menu guestdropdown" style="min-width: 180px">
           <li class="">
               <div class="quantity-row d-flex align-items-center mb-3">
                 <p class="p2 mb-0">{{ __('home.Adult') }}</p>
                 <div class="quantity-box d-flex align-items-center ml-auto">
-                  <span class="minus aminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}"> </span>
+                  <span class="minus aminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}" alt="Minus Icon"> </span>
                   <input type="text" name="adult" id="noOfAdult" value="{{ Request::get('adult') ? Request::get('adult') : '2' }}" />
-                  <span class="plus aplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}"> </span>
+                  <span class="plus aplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}" alt="Plus Icon"> </span>
                 </div>
               </div>
               <div class="quantity-row d-flex align-items-center mb-3">
                 <p class="p2 mb-0">{{ __('home.Child') }}</p>
                 <div class="quantity-box d-flex align-items-center ml-auto">
-                  <span class="minus cminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}"> </span>
+                  <span class="minus cminus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/minus-icon.svg') }}" alt="Minus Icon"> </span>
                   <input type="text" name="child" id="noOfChild" value="{{ Request::get('child') ? Request::get('child') : '0' }}" />
-                  <span class="plus cplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}"></span>
+                  <span class="plus cplus d-flex align-items-center justify-content-center"> <img src="{{ asset('/assets/images/structure/plus-icon.svg') }}" alt="Plus Icon"></span>
                 </div>
               </div>
           </li>
@@ -68,26 +71,26 @@
 
             @for ($i = 1; $i <= $childAgeCount; $i++)
               <div> 
-                <label style="font-size: 18px; color: black; margin-bottom: 1px;">{{ __('home.Child') }} {{ $i }} :</label>
-                    <select class="dropdown" name="childage{{ $i }}">
+                <label for="childage{{ $i }}" style="font-size: 10px; color: black; margin-bottom: 5px; ">{{ __('home.Child') }} {{ $i }} :</label>
+                    <select class="dropdown" name="childage{{ $i }}" id="childage{{ $i }}">
                       @php
                         $selectedChildAge = Request::get('childage'.$i);
                       @endphp
                       @for ($j = 0; $j <= 17; $j++)
-                        <option value="{{ $j }}" @if ($j == $selectedChildAge) selected @endif>{{ $j }}</option>
+                        <option style="font-size: 10px;" value="{{ $j }}" @if ($j == $selectedChildAge) selected @endif>{{ $j }}</option>
                       @endfor
                     </select>
               </div>
             @endfor
           </div>
           <div class="button-container" style="display: flex;  justify-content: flex-end;">
-            <button type="button" class="btn btn-primary confirmDropdown" id="confirmDropdown">{{ __('home.Confirm') }}</button>
+            <button type="button" class="btn btn-primary" id="confirmDropdown">{{ __('home.Confirm') }}</button>
           </div>
         </ul>
       </div>
     </div>
     <div class="bannerSearchBtnBox">
-      <button type="submit" class="btn">
+      <button type="submit" class="btn" title="Confirm selection">
         <img src="{{ asset('/assets/images/structure/search-w.svg') }}">
       </button>
     </div>
@@ -211,7 +214,7 @@
         const label = document.createElement("label");
         const childIndex = currentQuantity + 1;
         label.innerHTML = "{{ __('home.Child') }} " + childIndex + " :";
-        label.setAttribute("style", "font-size: 18px; color: black; margin-bottom: 1px;");
+        label.setAttribute("style", "font-size: 14px; color: black; margin-bottom: 1px;");
         labelContainer.appendChild(label);
 
         const dropdown = document.createElement("select");
@@ -278,6 +281,12 @@
     });
       
       loadgoogle_map();
+    
+    $(".guestdropdownBtn").on("click", function(e) {
+      $(".bodyscroll").removeClass("bodyscroll");
+      $('.guestdropdown').show();
+    });
+
     });
 
     if (currentPage === 'home') {

@@ -142,8 +142,8 @@
                                         <p>
                                            Editor's Pick 
                                            <span class="sort-arrow-table">
-                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='hotel_info.is_editors_pick' && $o=='desc')?'hidesorticon':''; }}" data-c="hotel_info.is_editors_pick" data-o="asc"></i>
-                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='hotel_info.is_editors_pick' && $o=='asc')?'hidesorticon':''; }}" data-c="hotel_info.is_editors_pick" data-o="desc"></i>
+                                                <i class="fa fa-caret-up arrow-up sortdata {{ ($c=='hotel_info.editors_pick' && $o=='desc')?'hidesorticon':''; }}" data-c="hotel_info.editors_pick" data-o="asc"></i>
+                                                <i class="fa fa-caret-up arrow-down sortdata {{ ($c=='hotel_info.editors_pick' && $o=='asc')?'hidesorticon':''; }}" data-c="hotel_info.editors_pick" data-o="desc"></i>
                                             </span>
                                         </p>
                                     </th>    
@@ -166,7 +166,7 @@
                                     <td style="text-align:center;"><b>{{ $hotel->completed_percentage; }}%</b></td>
                                     <!-- <td><span class="chips chips-orange">Planned</span></td> -->
                                     <td class="text-capitalize"><a href="{{ route('manager_status',['id'=>$hotel->hotel_id,'status'=>$hotel->status])}}"><span class="cursor-pointer chips chips-{{$hotel->status}}">{{$hotel->status}}</span></a></td>
-                                    <td class="text-capitalize"><a href="{{ route('ediotrs-pick',['id'=>$hotel->hotel_id,'status'=>$hotel->is_editors_pick])}}"><span class="cursor-pointer chips chips-{{$hotel->is_editors_pick}}">{{$hotel->is_editors_pick}}</span></a></td>
+                                    <td class="text-capitalize"><a href="{{ route('ediotrs-pick',['id'=>$hotel->hotel_id,'status'=>$hotel->editors_pick])}}"><span class="cursor-pointer chips chips-{{$hotel->editors_pick}}">{{$hotel->editors_pick}}</span></a></td>
                                     <td class="actionDropdown">
                                         <button class="dropdown-toggle actiob-dd-Btn" data-bs-toggle="dropdown">
                                             <img src="{{asset('/assets/images/')}}/structure/dots.svg" alt="" class="actiob-dd-Icon">
@@ -218,7 +218,7 @@
 
         
 <!-- common models -->
-@include('common_models')
+@include('common_modal')
 <!--Delete Modal -->
 <div class="modal fade deleteDialog" tabindex="-1" aria-labelledby="DeleteDialogLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

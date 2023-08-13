@@ -11,11 +11,11 @@ class Facilities extends Model
     protected $table = 'facilities';
     
     protected $fillable = [
-        'facilities_name', 'facilities_icon', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'  
+        'facility_name', 'facility_icon'  
     ];
 
     public function hasHotels()
     {
-        return $this->hasMany(HotelFacilities::class, "facilities_id",  "id")->where('status','active'); 
+        return $this->hasMany(HotelFacilities::class, "facilities_id",  "id"); 
     }
 }
