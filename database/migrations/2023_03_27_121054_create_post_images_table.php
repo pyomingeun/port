@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('post_images');
         Schema::create('post_images', function (Blueprint $table) {
             $table->id();
             $table->integer('post_id');

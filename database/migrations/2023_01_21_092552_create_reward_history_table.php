@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('reward_history');
         Schema::create('reward_history', function (Blueprint $table) {
             $table->id();
             $table->string('slug',250);

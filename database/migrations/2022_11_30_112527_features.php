@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Admin Features
+        Schema::dropIfExists('features');
         Schema::create('features', function (Blueprint $table) {
             $table->id();
             $table->string('feature_name', 250);

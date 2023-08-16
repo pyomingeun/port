@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // create my favorites table 
+        Schema::dropIfExists('rating_reviews');
         Schema::create('rating_reviews', function (Blueprint $table) {
 
             $table->id();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->integer('service')->default(0);
             $table->integer('value_for_money')->default(0);
             $table->double('avg_rating', 8, 1)->default(0);
-            $table->text('review')->default('');
+            $table->text('review');
             $table->enum('status', array('active','inactive','deleted'))->default('active');
             $table->integer('created_by')->default(0);
             $table->integer('updated_by')->default(0);

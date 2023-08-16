@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
          // Cancellation Charges
+        Schema::dropIfExists('cancellation_charges');
         Schema::create('cancellation_charges', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->default(0);

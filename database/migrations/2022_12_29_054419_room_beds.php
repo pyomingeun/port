@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Room Beds
+        Schema::dropIfExists('room_beds');
         Schema::create('room_beds', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->default(0);

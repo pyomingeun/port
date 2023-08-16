@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('notifyfor');
         Schema::create('notifyfor', function (Blueprint $table) {
             $table->id();
             $table->string('title', 250)->default('');

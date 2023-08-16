@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('booking_cancel_details');
         Schema::create('booking_cancel_details', function (Blueprint $table) {
             $table->id();
             $table->integer('booking_id')->default(0);
@@ -20,8 +21,8 @@ return new class extends Migration
             $table->double('refund_amount_in_money', 10, 2)->default(0);  
             $table->double('total_refund_amount', 10, 2)->default(0);  
             $table->integer('refund_points')->default(0);  
-            $table->text('cancellation_reason')->default('');
-            $table->text('adjusted_reason')->default('');
+            $table->text('cancellation_reason');
+            $table->text('adjusted_reason');
             $table->integer('refund_percentage')->default(0);
             $table->integer('cancellation_before_n_days')->default(0);
             $table->string('bank_name')->default('');  

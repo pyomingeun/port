@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Hotel Long Stay Discount
+        Schema::dropIfExists('long_stay_discount');
         Schema::create('long_stay_discount', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->default(0);

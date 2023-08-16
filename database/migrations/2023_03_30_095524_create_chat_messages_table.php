@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('chat_messages');
         Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('chat_room_id')->unsigned();

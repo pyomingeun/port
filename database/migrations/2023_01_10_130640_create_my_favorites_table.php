@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // create my favorites table 
+        Schema::dropIfExists('my_favorites');
         Schema::create('my_favorites', function (Blueprint $table) {
 
             $table->id();

@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('events');
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id');

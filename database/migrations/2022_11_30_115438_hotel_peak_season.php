@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Hotel Peak Season
+        Schema::dropIfExists('hotel_peak_season');
         Schema::create('hotel_peak_season', function (Blueprint $table) {
             $table->id();
             $table->string('season_name', 250)->default('');

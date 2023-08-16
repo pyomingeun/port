@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('payout_history');
         Schema::create('payout_history', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id');

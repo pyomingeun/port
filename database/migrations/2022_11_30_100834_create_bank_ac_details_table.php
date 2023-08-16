@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // hotel manager bank details 
+        Schema::dropIfExists('bank_ac_details');
         Schema::create('bank_ac_details', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->default(0);

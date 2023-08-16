@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Near By Tourist Attractions
+        Schema::dropIfExists('nearest_tourist_attractions');
         Schema::create('nearest_tourist_attractions', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->default(0);
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('nta_address', 250);
             $table->string('nta_latitude', 250)->default('');
             $table->string('nta_longitude', 250)->default('');
-            $table->longText('nta_description')->default('');
+            $table->longText('nta_description');
             $table->timestamps(false);
         });
     }

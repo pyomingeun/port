@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('admin_global_variables');
         // create admin_global_variables table 
         Schema::create('admin_global_variables', function (Blueprint $table) {
 

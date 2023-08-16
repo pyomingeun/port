@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // create booking table 
+        Schema::dropIfExists('bookings');
         Schema::create('bookings', function (Blueprint $table) {
 
             $table->id();
@@ -34,9 +35,9 @@ return new class extends Migration
             $table->integer('childs_plus_nyear')->default(0);
             $table->integer('childs_below_nyear')->default(0);
             $table->integer('no_of_extra_guest')->default(0);
-            $table->text('child_ages')->default('');
-            $table->longText('customer_notes')->default('');
-            $table->longText('host_notes')->default('');
+            $table->text('child_ages');
+            $table->longText('customer_notes');
+            $table->longText('host_notes');
             $table->integer('per_night_charges')->default(0);
             $table->integer('weekday_price')->default(0);
             $table->integer('weekend_price')->default(0);
@@ -61,11 +62,10 @@ return new class extends Migration
             $table->enum('payment_method', array('direct_bank_transfer','credit_card'));
             $table->tinyInteger('is_payout_generated')->default(0);
             $table->tinyInteger('is_points_sent')->default(0);
-            $table->longText('cancellation_policy')->nullable();
+            $table->longText('cancellation_policy');
             $table->integer('canceled_by')->default(0);
-            $table->timestamps('canceled_at')->nullable();
-            $table->integer('confirmed_by')->default(0);
-            $table->timestamps('confirmed_at')->nullable();
+            $table->timestamp('canceled_at')->nullable();
+            $table->timestamp('confirmed_at')->nullable();
             $table->integer('confirmed_by')->default(0);
             $table->timestamps();
         });        

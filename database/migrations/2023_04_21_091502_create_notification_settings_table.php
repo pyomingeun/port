@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('notification_settings');
         Schema::create('notification_settings', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->default(0);

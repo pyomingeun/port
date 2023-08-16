@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Admin Facilities
+        Schema::dropIfExists('facilities');
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('facility_name', 50);

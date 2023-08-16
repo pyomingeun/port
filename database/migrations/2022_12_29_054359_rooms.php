@@ -15,6 +15,7 @@ return new class extends Migration
     {
         //
         // create rooms table 
+        Schema::dropIfExists('rooms');
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->default('');
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->string('room_size', 10)->default('');
             $table->integer('no_of_bathrooms')->default(0);
             $table->string('room_featured_img', 250)->default('');
-            $table->longText('room_description')->default('');
+            $table->longText('room_description');
             $table->integer('standard_occupancy')->default(0);
             $table->integer('maximum_occupancy')->default(0);
             $table->integer('freechild_occupancy')->default(0);
