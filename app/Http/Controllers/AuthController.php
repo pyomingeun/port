@@ -17,6 +17,8 @@ use App\Mail\CustomerWelcomeEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\HotelInfo;
+use SocialiteProviders\Kakao\KakaoProvider;
+
 // use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller
@@ -709,6 +711,14 @@ class AuthController extends Controller
          $tokenResult = curl_exec($curlSession);
          curl_close($curlSession);
          echo $tokenResult;
+        // {
+        //     "access_token": "htf_EHrsgtfzYblW-4L6vW8gQgoBgb5Tx2DCq1CxCj11GgAAAYnNYLL_",
+        //     "token_type": "bearer",
+        //     "refresh_token": "6iea6XzIK2PcXist8W8D1smsDPulOnoaqY2N-dAhCj11GgAAAYnNYLL-",
+        //     "expires_in": 21599,
+        //     "scope": "account_email profile_image profile_nickname",
+        //     "refresh_token_expires_in": 5183999
+        // }
 
         $accessTokenJson = json_decode($tokenResult, true);
         $accessToken     = $accessTokenJson['access_token'];
@@ -733,6 +743,41 @@ class AuthController extends Controller
         curl_close($curlSession);
         echo $userInfoResult;
         $userInfoJson = json_decode($userInfoResult, true);
+        
+        #TODO : 받아온 user정보를 DB에 저장해야 함.
+        # 
+        # {
+        #    "id": 2941937660,
+        #    "connected_at": "2023-07-31T06:00:08Z",
+        #    "properties": {
+        #        "nickname": "HankookVilla",
+        #        "profile_image": "http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg",
+        #        "thumbnail_image": "http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_110x110.jpg"
+        #    },
+        #    "kakao_account": {
+        #        "profile_nickname_needs_agreement": false,
+        #        "profile_image_needs_agreement": false,
+        #        "profile": {
+        #        "nickname": "HankookVilla",
+        #        "thumbnail_image_url": "http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_110x110.jpg",
+        #        "profile_image_url": "http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg",
+        #        "is_default_image": true
+        #        },
+        #        "has_email": true,
+        #        "email_needs_agreement": false,
+        #        "is_email_valid": true,
+        #        "is_email_verified": true,
+        #        "email": "hankookvillas@gmail.com"
+        #    }
+
+        // 전화번호와 정보동의까지 받고  User테이블에 저장해야함.
+        // $user = User::where('phone_number', $phoneNumber)->first();
+        // if ($user) {
+        //     $user->fcm_token = $fcmToken;
+        //     $user->save();
+        // }
+	echo $userInfoResult;
+        $userInfoJson = json_decode($userInfoResult, true);
 
         #TODO : 받아온 user정보를 DB에 저장해야 함.
     }
@@ -740,7 +785,6 @@ class AuthController extends Controller
     public function naver()
     {
         # code...
-          // 네이버 로그인 콜백 예제
         $restAPIKey     = $_ENV['NAVER_CLIENT_ID'];
         $client_secret  = $_ENV['NAVER_CLIENT_SECRET'];
         $redirectUri    = $_ENV['NAVER_REDIRECT_URI'];
@@ -758,19 +802,24 @@ class AuthController extends Controller
             CURLOPT_POSTFIELDS => $params,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false
-         );
-         $curlSession = curl_init();
-         curl_setopt_array($curlSession, $opts);
-         $tokenResult = curl_exec($curlSession);
-         $status_code = curl_getinfo($curlSession, CURLINFO_HTTP_CODE);
-         curl_close($curlSession);
-        
-        if($status_code == 200) {
-            echo $tokenResult;
-        } else {
-            echo "Error 내용:".$tokenResult;
-        }
-
+        );
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $tokenResult = curl_exec($curlSession);
+        $status_code = curl_getinfo($curlSession, CURLINFO_HTTP_CODE);
+        curl_close($curlSession);
+        echo $tokenResult;
+        // if($status_code == 200) {
+        //     echo $tokenResult;
+        // } else {
+        //     echo "Error 내용:".$tokenResult;
+        // }
+        # {
+        #    "access_token": "AAAAPb3Pi3J0No1PQo6iYFT_izAMoXCKMhH2DdX5bxuMnxZJsnifQJCWT21YpFaCHacZeWYfa5DxxhJN1GrS3QBixgI",
+        #    "refresh_token": "S9JdiiWw1vlMZoii5GBvK96BipEPEngOisKX7IUWrSNKCzNiiJTJksCdxwtayugY731HwJyc2r7ZGtVmc4wckIVJnWdlh3ip4Roc481kfsq5RaVOdlntJsoCZTwpf7zkquSp0ip",
+        #    "token_type": "bearer",
+        #    "expires_in": "3600"
+        # }
         $accessTokenJson = json_decode($tokenResult, true);
         $accessToken     = $accessTokenJson['access_token'];
 
@@ -790,6 +839,26 @@ class AuthController extends Controller
         $userInfoResult = curl_exec($curlSession);
         curl_close($curlSession);
 
+        echo $userInfoResult;
+        $userInfoJson = json_decode($userInfoResult, true);
+
+        # {
+        #    "resultcode": "00",
+        #    "message": "success",
+        #    "response": {
+        #        "id": "2jmtMOygj6TadqYWXeMZ85laDTuxGgHbzCQGP0CKDxg",
+        #        "email": "hankookvillas@naver.com",
+        #        "mobile": "010-2288-2662",
+        #        "mobile_e164": "+821022882662",
+        #        "name": "\uc190\ud61c\uc775"
+        #    }
+        # }
+        // $newuser= User::create([
+        //     'full_name' => $user->full_name,
+        //     'email' => $user->email,
+        //     'phone' => $user->phone,
+        //     'password' => $user->password
+        // ]); 
         $userInfoJson = json_decode($userInfoResult, true);
     }
 }

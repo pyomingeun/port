@@ -27,7 +27,7 @@ class PaymentController extends Controller
 
     public function return(PaymentGateway $paymentGateway, Request $request, $order_id)
     {
-        $response = $paymentGateway->validateReturn($request->all());
+        $response = $paymentGateway->validateReturn((object)$request->all());
         dd($order_id, $response);
     }
 

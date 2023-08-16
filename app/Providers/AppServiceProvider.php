@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
                 env('INI_ENVIRONMENT', 'test'),
                 env('INI_MID', 'INIpayTest'),
                 env('INI_SIGN_KEY', 'SU5JTElURV9UUklQTEVERVNfS0VZU1RS'),
-                env('INI_RETURN_URL', 'http://localhost:8000/payment/complete'),
+                //env('INI_RETURN_URL', 'http://localhost:8000/payment/complete'),
+                env('INI_RETURN_URL', 'http://localhost:8000/payment/return'),
                 env('INI_CANCEL_URL', 'http://localhost:8000/payment/cancel'),
                 env('INI_VERSION', '1.0')
             );

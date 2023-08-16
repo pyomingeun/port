@@ -7,3 +7,6 @@ Route::get('/payment', 'PaymentController@store');
 
 Route::post('/payment/return/{orderid}', 'PaymentController@return');
 Route::get('/payment/cancel/{orderid}', 'PaymentController@cancel');
+
+Route::get('/refund', 'PaymentController@refundPayment');
+ 
