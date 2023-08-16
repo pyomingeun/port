@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('payouts', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id');
-            $table->string('slug', 250)->default('')->after('hotel_id');
+            $table->string('slug', 250)->default('');
             $table->timestamp('sales_period_start')->useCurrent();
             $table->timestamp('sales_period_end')->useCurrent();
             $table->timestamp('settlement_date')->useCurrent();
